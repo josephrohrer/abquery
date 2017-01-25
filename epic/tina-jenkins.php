@@ -12,7 +12,7 @@
 			<li>Occupation: Stay at home mom.</li>
 			<li>Technology: iPhone 7 updated to iOS 10, with an older HP Laptop using windows 7 ultimate.</li>
 			<li>Needs: Needs to find a new house for her family.</li>
-			<li>Goals: Glendas goals are to try and keep her daughters love and to be surrounded by apple products constantly.</li>
+			<li>Goals: Tinas goal is to try and find  new house and by using our site she can determine whether or not it will be safe.</li>
 		</ul>
 	</body>
 </html>
