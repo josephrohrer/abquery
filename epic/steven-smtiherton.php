@@ -7,7 +7,7 @@
 	<body>
 		<h1>Steven Smtiherton Persona and Use Case</h1>
 		<h2>Persona</h2>
-		<p>Name: Steven Smtiherton</p>
+		<p>Name: Steven Shithead Smtiherton</p>
 		<p>Age: 37</p>
 		<p>Occupation: Professional kettlebell strength trainer</p>
 		<p>Technology: Droid Turbo 2 running Android Marshmallow, Macbook Air running OS X</p>
