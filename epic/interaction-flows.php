@@ -27,8 +27,7 @@
 			<li>"ABQ Move Safe" shows up on the first page of search results and Burt clicks on it.</li>
 			<li>Burt enters in one of the potential addresses for his business into the search bar and presses enter.</li>
 			<li>The site displays a map with his potential business in the center and a default view of crime surrounding it.</li>
-			<li>He is able to change the default view to expand the area of his search and to filter the various crimes.</li>
-			<li></li>
+			<li>He is able to change the default view to expand the area of his search and to filter crimes for vandalism and car theft.</li>
 		</ul>
 	</body>
 
