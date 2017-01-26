@@ -11,7 +11,8 @@
 			<li>Our site sends a page with a search bar for addresses directly and a map below that which can be expanded to see a full heatmap of crime crossed with parks.</li>
 			<li>She decides to put in her own address because that is the area of information that she is interested in.</li>
 			<li>The site sends back a new page with a small heatmap of the area and two sections containing info on parks and crime nearby that can be clicked on to be expanded.</li>
-			<li>She decides to click on the crime section to see the expanded data list.</li>
+			<li>She decides to click on the crime section to see the expanded data list and toggles to see crimes specifically such as breaking and entering and vehicular homicide out of concern for her family.</li>
+			<li>The site displays her the information from her area including only the crimes she toggled on.</li>
 		</ul>
 		<h3>Interaction Flow for Steven Smtiherton</h3>
 		<ul>
