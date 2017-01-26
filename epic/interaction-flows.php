@@ -7,10 +7,11 @@
 	<body>
 		<h3>Interaction flow for Tina Jenkins</h3>
 		<ul>
-			<li>Tina decides to look at our site on her laptop to look up houses that she can potentially move to.</li>
-			<li>The site displays a miniature version of the map that can be clicked to expand into a full version that will be coated in heatmap layers. And there will be a search option where they can input an address to search an area directly.</li>
-			<li>Since she has a list of potential addresses she inputs one into the search bar.</li>
-			<li>The site will send back cards with information on crime and parks which can be toggled or expanded to see the metadata.</li>
+			<li>Tina is sitting at home one day and realizes she needs to verify her family's safety by looking up how much crime has occured near her house and she finds our site and clicks the link.</li>
+			<li>Our site sends a page with a search bar for addresses directly and a map below that which can be expanded to see a full heatmap of crime crossed with parks.</li>
+			<li>She decides to put in her own address because that is the area of information that she is interested in.</li>
+			<li>The site sends back a new page with a small heatmap of the area and two sections containing info on parks and crime nearby that can be clicked on to be expanded.</li>
+			<li>She decides to click on the crime section to see the expanded data list.</li>
 		</ul>
 		<h3>Interaction Flow for Steven Smtiherton</h3>
 		<ul>
