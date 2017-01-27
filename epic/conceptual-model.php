@@ -11,7 +11,7 @@
 		<ul>
 			<li>crimeObjectId(Primary Key)</li>
 			<li>crimeLocation</li>
-			<li>crimeDescription</li>
+			<li>crimeDescription(Ghost Entity</li>
 			<li>crimeDate</li>
 		</ul>
 		<h3>Parks</h3>
