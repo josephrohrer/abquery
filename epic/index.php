@@ -22,11 +22,12 @@
 			<h2>Personas</h2>
 				<ul>
 					<li><a href="burt-macklin.php">Burt Macklin</a></li>
-					<li><a href="steven-smtiherton.php">Steven Smitherton</a></li>
+					<li><a href="steven-smtiherton.php">Steven Smtiherton</a></li>
 					<li><a href="tina-jenkins.php">Tina Jenkins</a></li>
 				</ul>
 					<h2><a href="use-cases.php">Use Cases</a></h2>
 					<h2><a href="interaction-flows.php">Interaction Flows</a></h2>
+					<h2><a href="conceptual-model.php">Conceptual Model</a></h2>
 </main>
 </body>
 </html>
