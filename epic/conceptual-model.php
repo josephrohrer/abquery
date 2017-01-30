@@ -12,31 +12,27 @@
 			<li>crimeObjectId(Primary Key)</li>
 			<li>crimeLocation</li>
 			<li>crimeDescription(Ghost Entity)</li>
+			<li>crimeGeometry</li>
 			<li>crimeDate</li>
 		</ul>
 		<h3>Parks</h3>
 		<ul>
 			<li>parkObjectId(Primary Key)</li>
 			<li>parkName</li>
-			<li>parkAcres</li>
-			<li>parkLitTennisCourts</li>
-			<li>parkUnlitTennisCourts</li>
-			<li>parkPlayAreas</li>
-			<li>parkFullBasketballCourts</li>
-			<li>parkHalfBasketballCourts</li>
-			<li>parkSoccerFields</li>
-			<li>parkLitSoftballFields</li>
-			<li>parkUnlitSoftballFields</li>
-			<li>parkYouthBallFields</li>
-			<li>parkIndoorPools</li>
-			<li>parkOutdoorPools</li>
-			<li>parkHorseshoePits</li>
-			<li>parkVolleyballCourts</li>
-			<li>parkBackstops</li>
-			<li>parkPicnicTables</li>
-			<li>parkShadeStructures</li>
-			<li>parkParkingSpaces</li>
-			<li>parkJoggingPaths</li>
+			<li>parkGeometry</li>
+			<li>parkDeveloped</li>
+		</ul>
+		<h3>Amenities</h3>
+		<ul>
+			<li>amenityId</li>
+			<li>amenityCityName</li>
+			<li>amenityName</li>
+		</ul>
+		<h3>Amenity Park</h3>
+		<ul>
+			<li>amenityParkAmenityId</li>
+			<li>amenityParkParkId</li>
+			<li>amenityParkValue</li>
 		</ul>
 		<h2>ERD</h2>
 		<img src="../images/erd.jpg" alt="ERD"/>
