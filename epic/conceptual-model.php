@@ -31,7 +31,7 @@
 		<h3>Amenity Park</h3>
 		<ul>
 			<li>amenityParkAmenityId(foreign key)</li>
-			<li>amenityParkParkId(foreign key)</li>
+			<li>amenityParkParkObjectId(foreign key)</li>
 			<li>amenityParkValue</li>
 		</ul>
 		<h2>ERD</h2>
