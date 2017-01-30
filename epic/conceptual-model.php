@@ -24,14 +24,14 @@
 		</ul>
 		<h3>Amenities</h3>
 		<ul>
-			<li>amenityId</li>
+			<li>amenityId(primary)</li>
 			<li>amenityCityName</li>
 			<li>amenityName</li>
 		</ul>
 		<h3>Amenity Park</h3>
 		<ul>
-			<li>amenityParkAmenityId</li>
-			<li>amenityParkParkId</li>
+			<li>amenityParkAmenityId(foreign key)</li>
+			<li>amenityParkParkId(foreign key)</li>
 			<li>amenityParkValue</li>
 		</ul>
 		<h2>ERD</h2>
