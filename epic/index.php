@@ -2,11 +2,11 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8"/>
-		<title>ABQ-MoveSafe</title>
+		<title>ABQuery</title>
 	</head>
 	<body>
 		<header>
-			<h1>ABQ-MoveSafe</h1>
+			<h1>ABQuery</h1>
 		</header>
 		<main>
 			<h2>Executive Summary</h2>
