@@ -25,7 +25,7 @@ class Crime implements \JsonSerializable {
 	private $crimeDescription;
 	/**
 	 * spatial coordinates that can be used to place the crime on a map
-	 * @var point $crimeGeometry
+	 * @var Point $crimeGeometry
 	 */
 	private $crimeGeometry;
 	/**
@@ -124,6 +124,37 @@ class Crime implements \JsonSerializable {
 
 
 	/**
+	 * accessor method for crime description
+	 *
+	 * @return string value of crime description
+	*/
+	public function getCrimeDescription() {
+		return($this->crimeDescription);
+	}
+
+
+	/**
+	 * mutator method for crime description
+	 *
+	 * @param string $newCrimeDescription new value of crime description
+	 * @throws \InvalidArgumentException if $newCrimeDescription is insecure
+	 * @throws \RangeException if $newCrimeDescription is > 255
+	 * @throws \TypeError if $newCrimeDescription is not a string
+	 */
+	public function setCrimeDescription(string $newCrimeDescription) {
+		$newCrimeDescription = trim($newCrimeDescription);
+		$newCrimeDescription = filter_var($newCrimeDescription, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($newCrimeDescription) === true) {
+			throw(new \InvalidArgumentException("crime description is empty or insecure"));
+		}
+		if(strlen($newCrimeDescription) > 255) {
+			throw(new \RangeException("crime description is too large"));
+		}
+		$this->crimeDescription = $newCrimeDescription;
+	}
+
+
+	/**
 	 * accessor method for crime geometry
 	 *
 	 * @return Point value of crime geometry
@@ -169,7 +200,7 @@ class Crime implements \JsonSerializable {
 		} catch(\RangeException $range) {
 			throw(new \RangeException($range->getMessage(), 0, $range));
 		}
-		$this->crimeDate = $newCrimeDate
+		$this->crimeDate = $newCrimeDate;
 	}
 
 
