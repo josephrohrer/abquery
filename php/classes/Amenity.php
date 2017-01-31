@@ -97,6 +97,7 @@ class Amenity implements \JsonSerialize {
 	public function getAmenityCityName() {
 		return ($this->amenityCityName);
 	}
+
 	/**
 	 * mutator method for amenity city name
 	 *
@@ -121,5 +122,50 @@ class Amenity implements \JsonSerialize {
 		// store the amenity city name content
 		$this->AmenityCityName = $newAmenityCityName;
 	}
-}
 
+	/**
+	 * accessor method for amenity name
+	 *
+	 * @return string value of amenity name
+	 **/
+	public function getAmenityName() {
+		return ($this->amenityName);
+	}
+
+	/**
+	 * mutator method for amenity name
+	 *
+	 * @param string $newAmenityName new value of amenity name
+	 * @throws \InvalidArgumentException if $newAmenityName is insecure
+	 * @throws \RangeException if $newAmenityName is > 32 characters
+	 * @throws \TypeError if $newAmenityCityName is not a string
+	 **/
+	public function setAmenityName(string $newAmenityName) {
+		// verify the name content is secure
+		$newAmenityName = trim($newAmenityName);
+		$newAmenityName = filter_var($newAmenityName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($newAmenityName) === true) {
+			throw(new \InvalidArgumentException("name is empty or insecure"));
+		}
+
+		// verify the amenity name content will fit in the database
+		if(strlen($newAmenityName) > 32) {
+			throw(new \RangeException("name content too large"));
+		}
+
+		// store the amenity city name content
+		$this->AmenityName = $newAmenityName;
+	}
+
+	/**
+	 * formats the state variables for JSON serialization
+	 *
+	 * @return array resulting state variables to serialize
+	 **/
+	public function jsonSerialize() {
+		$fields = get_object_vars($this);
+		return ($fields);
+
+	}
+
+}
