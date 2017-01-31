@@ -27,7 +27,35 @@ class Amenity implements \JsonSerialize {
 
 	/**
 	 * constructor for this Amenity entity
+	 *
+	 * @param int $newAmenityId id of an amenity in ABQ city data set: Parks
+	 * @param string $newAmenityCityName name of an amenity given in ABQ city data set: Parks
+	 * @param string $newAmenityName name of an amenity in ABQ city data set: Parks given by ABQuery
+	 * @throws \InvalidArgumentException if data types are not valid
+	 * @throws \RangeException if data values are out of bounds (e.g., strings too long, negative integers)
+	 * @throws \TypeError if data types violate type hints
+	 * @throws \Exception if some other exception occurs
 	 **/
+
+	public function __construct(int $newAmenityId = null, string $newAmenityCityName, string $newAmenityName) {
+		try{
+			$this->setAmenityId($newAmenityId);
+			$this->setAmenityCityName($newAmenityCityName);
+			$this->setAmenityName($newAmenityName);
+		} catch(\InvalidArgumentException $invalidArgument) {
+			// rethrow the exception to the caller
+			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(\RangeException $range) {
+			// rethrow the exception to the caller
+			throw(new \RangeException($range->getMessage(), 0, $range));
+		} catch(\TypeError $typeError) {
+			// rethrow the exception to the caller
+			throw(new \TypeError($typeError->getMessage(), 0, $typeError));
+		} catch(\Exception $exception) {
+			// rethrow the exception to the caller
+			throw(new \Exception($exception->getMessage(), 0, $exception));
+		}
+	}
 
 	/**
 	 * accessor method for amenityId
