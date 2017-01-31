@@ -41,14 +41,14 @@ class Crime implements \JsonSerializable {
 	 * @param int $newCrimeId id of a specific crime
 	 * @param string $newCrimeLocation block-level location that the crime was committed
 	 * @param string $newCrimeDescription the type of crime that was committed
-	 * @param point $newCrimeGeometry coordinates near where the crime was committed
+	 * @param Point $newCrimeGeometry coordinates near where the crime was committed
 	 * @param datetime $newCrimeDate date on which the crime was reported
 	 * @throws \InvalidArgumentException if data types are not valid
 	 * @throws \RangeException if data values are out of bounds
 	 * @throws \TypeError if data violates type hints
 	 * @throws \Exception if some other exception occurs
 	 */
-	public function __construct(int $newCrimeId, string $newCrimeLocation, string $newCrimeDescription, point $newCrimeGeometry, datetime $newCrimeDate) {
+	public function __construct(int $newCrimeId, string $newCrimeLocation, string $newCrimeDescription, Point $newCrimeGeometry, datetime $newCrimeDate) {
 		try {
 			$this->setCrimeId($newCrimeId);
 			$this->setCrimeLocation($newCrimeLocation);
@@ -126,7 +126,7 @@ class Crime implements \JsonSerializable {
 	/**
 	 * accessor method for crime geometry
 	 *
-	 * @return point value of crime gemoetry
+	 * @return Point value of crime geometry
 	 */
 	public function getCrimeGeometry() {
 		return($this->crimeGeometry);
@@ -136,8 +136,41 @@ class Crime implements \JsonSerializable {
 	/**
 	 * mutator method for crime geometry
 	 *
-	 * @param point $newCrimegemoetry new value of crime geometry
+	 * @param Point $newCrimeGemoetry new value of crime geometry
+	 * @throws error based on Point class
 	 */
+	public function setCrimeGeometry(Point $newCrimeGeometry) {
+		$this->crimeGeometry = $newCrimeGeometry;
+	}
+
+
+	/**
+	 * accessor method for crime date
+	 *
+	 * @return \DateTime value for crime date
+	 */
+	public function getCrimeDate() {
+		return($this->crimeDate);
+	}
+
+
+	/**
+	 * mutator method for crime date
+	 *
+	 * @param \DateTime $newCrimeDate crime date as a DateTime object
+	 * @throws \InvalidArgumentException if $newCrimeDate is not a valid object or string
+	 * @throws \RangeException if $newCrimeDate is a date that does not exist
+	 */
+	public function setCrimeDate($newCrimeDate) {
+		try {
+			$newCrimeDate = self::validateDateTime($newCrimeDate);
+		} catch(\InvalidArgumentException $invalidArgument) {
+			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(\RangeException $range) {
+			throw(new \RangeException($range->getMessage(), 0, $range));
+		}
+		$this->crimeDate = $newCrimeDate
+	}
 
 
 	public function jsonSerialize() {
