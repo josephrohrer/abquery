@@ -67,32 +67,80 @@ class Crime implements \JsonSerializable {
 	}
 
 
-/**
- * accessor method for crimeId
- */
+	/**
+	 * accessor method for crimeId
+	 *
+	 * @return int value for crime id
+	 */
+	public function getCrimeId() {
+		return ($this->crimeId);
+	}
 
 
-/**
- * mutator for crimeId
- */
+	/**
+	 * mutator for crimeId
+	 *
+	 * @param int $newCrimeId new value of crime id
+	 * @throws \RangeException if $newCrimeId is not positive
+	 * @throws \TypeError if $newCrimeId is not an integer
+	 */
+	public function setCrimeId(int $newCrimeId) {
+		if($newCrimeId <= 0) {
+			throw(new \RangeException("crime id is not positive"));
+		}
+		$this->crimeId = $newCrimeId;
+	}
 
 
-/**
- * accessor for crimeLocation
- *
- * @return string value of crime location content
- */
-public
-function getCrimeLocation() {
-	return ($this->crimeLocation);
-}
+	/**
+	 * accessor for crimeLocation
+	 *
+	 * @return string value of crime location content
+	 */
+	public function getCrimeLocation() {
+		return ($this->crimeLocation);
+	}
 
 
-/**
- * mutator method for crime location
- *
- * @param string $newCrimeLocation new value of crime location
- * @throws \InvalidArgumentException if $newCrimeLocation is insecure
- * @throws \RangeException
- */
+	/**
+	 * mutator method for crime location
+	 *
+	 * @param string $newCrimeLocation new value of crime location
+	 * @throws \InvalidArgumentException if $newCrimeLocation is insecure
+	 * @throws \RangeException if $newCrimeLocation is > 72 characters
+	 * @throws \TypeError if $newCrimeLocation is not a string
+	 */
+	public function setCrimeLocation(string $newCrimeLocation) {
+		$newCrimeLocation = trim($newCrimeLocation);
+		$newCrimeLocation = filter_var($newCrimeLocation, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($newCrimeLocation) === true) {
+			throw(new \InvalidArgumentException("crime location is empty or insecure"));
+		}
+		if(strlen($newCrimeLocation) > 72) {
+			throw(new \RangeException("crime location too large"));
+		}
+		$this->crimeLocation = $newCrimeLocation;
+	}
+
+
+	/**
+	 * accessor method for crime geometry
+	 *
+	 * @return point value of crime gemoetry
+	 */
+	public function getCrimeGeometry() {
+		return($this->crimeGeometry);
+	}
+
+
+	/**
+	 * mutator method for crime geometry
+	 *
+	 * @param point $newCrimegemoetry new value of crime geometry
+	 */
+
+
+	public function jsonSerialize() {
+		// TODO: Implement jsonSerialize() method.
+	}
 }
