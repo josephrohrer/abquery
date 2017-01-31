@@ -88,32 +88,44 @@ class Park implements \JsonSerializable {
 	/**
 	 * accessor method for park name
 	 *
+	 *
 	 **/
 
 	/**
 	 * mutator method for park name
 	 *
-	 */
-
-	/**
-	 * accessor method for park geometry
 	 *
 	 **/
 
 	/**
-	 * mutator method for park geometry
+	 * accessor method for park geometry
 	 *
-	 */
+	 * @return point value of crime geometry
+	 *
+	 **/
+	public function getParkGeometry() {
+		return($this->parkGeometry);
+	}
+
+
+	/**
+	 * mutator method for park geometry
+	 * @param point $newParkGeometry new value of park geometry
+	 *
+	 **/
+
 
 	/**
 	 * accessor method for park developed
+	 *
 	 *
 	 **/
 
 	/**
 	 * mutator method for park developed
 	 *
-	 */
+	 *
+	 **/
 
 	public function jsonSerialize() {
 		// TODO: Implement jsonSerialize() method.
