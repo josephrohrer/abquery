@@ -42,12 +42,12 @@ class Park implements \JsonSerializable {
 	 * @throws \TypeError if data types violate type hints
 	 * @throws \Exception if some other exception occurs
 	 **/
-	public function __construct() {
+	public function __construct(int $newParkId, string $newParkName, point $newParkGeometry, boolean $newParkDeveloped) {
 		try {
-			$this->setParkId($newParkId)
-			$this->setParkName($newParkName)
-			$this->setParkGeometry($newParkGeometry)
-			$this->setParkDeveloped($newParkDeveloped)
+			$this->setParkId($newParkId);
+			$this->setParkName($newParkName);
+			$this->setParkGeometry($newParkGeometry);
+			$this->setParkDeveloped($newParkDeveloped);
 		} catch(\InvalidArgumentException $invalidArgument) {
 			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
 		} catch(\RangeException $range) {
@@ -61,6 +61,7 @@ class Park implements \JsonSerializable {
 
 	/**
 	 * accessor method for park id
+	 *
 	 *
 	 **/
 
