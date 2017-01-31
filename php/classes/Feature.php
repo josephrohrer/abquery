@@ -109,14 +109,10 @@ class Feature implements \JsonSerializable {
 	/**
 	 * mutator method for fature value
 	 *
-	 * @param int
+	 * @param int $newFeatureValue
 	 * @throws \RangeException
 	 * @throws |TypeError
 	 *
-	 */
-
-	/**
-	 * @param int $newFeatureValue
 	 */
 	public function setFeatureValue(int $newFeatureValue) {
 		//verify that the function park id is positive
