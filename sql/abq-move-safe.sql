@@ -1,6 +1,6 @@
 -- create the crime entity --
 CREATE TABLE crime (
-	crimeId    INT UNSIGNED NOT NULL,
+	crimeId          INT UNSIGNED NOT NULL,
 	crimeLocation    VARCHAR(72)  NOT NULL,
 	crimeGeometry    POINT        NOT NULL,
 	crimeDescription VARCHAR(255) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE crime (
 
 -- create the park entity --
 CREATE TABLE park (
-	parkId  INT UNSIGNED NOT NULL,
+	parkId        INT UNSIGNED NOT NULL,
 	parkName      VARCHAR(60)  NOT NULL,
 	parkGeometry  POINT        NOT NULL,
 	parkDeveloped BOOLEAN,
@@ -30,9 +30,9 @@ CREATE TABLE amenity (
 
 -- creates the amenityPark weak attribute --
 CREATE TABLE feature (
-	featureAmenityId    INT UNSIGNED NOT NULL,
-	featureParkId INT UNSIGNED NOT NULL,
-	featureValue        INT UNSIGNED,
+	featureAmenityId INT UNSIGNED NOT NULL,
+	featureParkId    INT UNSIGNED NOT NULL,
+	featureValue     INT UNSIGNED,
 	INDEX (featureAmenityId),
 	FOREIGN KEY (featureAmenityId) REFERENCES amenity (amenityId),
 	INDEX (featureParkId),
