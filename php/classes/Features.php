@@ -18,6 +18,40 @@ class Features implements \JsonSerializable {
 	 */
 	private $featureParkId;
 	/**
-	 * @var
+	 * @var int $featureValue
+	 * Value for the specific feature given, representative of the number of said features available in the park.
 	 */
+	private $featureValue;
+
+	/**
+	 * constructor for the Feature entity
+	 *
+	 * @param int|null $newFeatureAmenityId id of this amenity feature or null if new amenity feature
+	 *@param int|null $newFeatureParkId id of this park feature or null if new park feature
+	 *@param int|null $newFeatureValue value of this feature or null if new value
+	 *@throws \InvalidArgumentException if the data is not valid format
+	 *@throws \RangeException if the data is out of range value parameter
+	 *@throws \TypeError if the data violates type
+	 *@throws \Exception if any other exception occurs
+	 */
+
+	public function __construct(int $newFeatureAmenityId = null, int $newFeatureParkId = null, int $newFeatureValue = null) {
+		try {
+			$this->setFeatureAmenityId($newFeatureAmenityId);
+			$this->setFeatureParkId($newFeatureParkId);
+			$this->setFeatureValue($newFeatureValue);
+		} catch(\InvalidArgumentException $invalidArgument) {
+			// rethrow the exception to the caller
+			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(\RangeException $rangeException) {
+			// rethrow the exception to the caller
+			throw(new \RangeException($rangeException->getMessage(), 0, $rangeException));
+		} catch(\TypeError $typeError) {
+			//rethrow the exception to the caller
+			throw(new \TypeError($typeError->getMessage(), 0, $typeError));
+		}catch (\Exception $exception) {
+			//rethrow the exception to the caller
+			throw(new \Exception($exception->getMessage(), 0, $exception));
+		}
+	}
 }
