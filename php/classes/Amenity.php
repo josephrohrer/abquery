@@ -38,7 +38,7 @@ class Amenity implements \JsonSerialize {
 	 **/
 
 	public function __construct(int $newAmenityId = null, string $newAmenityCityName, string $newAmenityName) {
-		try{
+		try {
 			$this->setAmenityId($newAmenityId);
 			$this->setAmenityCityName($newAmenityCityName);
 			$this->setAmenityName($newAmenityName);
@@ -58,7 +58,7 @@ class Amenity implements \JsonSerialize {
 	}
 
 	/**
-	 * accessor method for amenityId
+	 * accessor method for amenity id
 	 *
 	 * @return int|null value of amenity id
 	 **/
@@ -67,7 +67,8 @@ class Amenity implements \JsonSerialize {
 	}
 
 	/**
-	 * mutator for amenityId
+	 * mutator method for amenity id
+	 *
 	 * @param int|null $newAmenityId new value of amenity id
 	 * @throws \RangeException if $newAmenityId is not positive
 	 * @throws \TypeError if $newAmenityId is not an integer
@@ -84,9 +85,41 @@ class Amenity implements \JsonSerialize {
 			throw(new \RangeException("amenity id is not positive"));
 		}
 
-		// convert and store the tweet id
+		// convert and store the amenity id
 		$this->amenityId = $newAmenityId;
 	}
-}
 
+	/**
+	 * accessor method for amenity city name
+	 *
+	 * @return string value of amenity city name
+	 **/
+	public function getAmenityCityName() {
+		return ($this->amenityCityName);
+	}
+	/**
+	 * mutator method for amenity city name
+	 *
+	 * @param string $newAmenityCityName new value of amenity city name
+	 * @throws \InvalidArgumentException if $newAmenityCityName is insecure
+	 * @throws \RangeException if $newAmenityCityName is > 32 characters
+	 * @throws \TypeError if $newAmenityCityName is not a string
+	 **/
+	public function setAmenityCityName(string $newAmenityCityName) {
+		// verify the name content is secure
+		$newAmenityCityName = trim($newAmenityCityName);
+		$newAmenityCityName = filter_var($newAmenityCityName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($newAmenityCityName) === true) {
+			throw(new \InvalidArgumentException("name is empty or insecure"));
+		}
+
+		// verify the amenity city name content will fit in the database
+		if(strlen($newAmenityCityName) > 32) {
+			throw(new \RangeException("name content too large"));
+		}
+
+		// store the amenity city name content
+		$this->AmenityCityName = $newAmenityCityName;
+	}
+}
 
