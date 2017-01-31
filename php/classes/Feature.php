@@ -6,7 +6,7 @@
  *
  * @author bsmtih@cnm.edu
  **/
-class Features implements \JsonSerializable {
+class Feature implements \JsonSerializable {
 	/**
 	 * @var int $featureAmenityId
 	 * Foreign key for the feature to amenity relationship
@@ -64,11 +64,64 @@ class Features implements \JsonSerializable {
 	/**
 	 *mutator method for feature amenity id
 	 *
-	 *@param int|null $newFeatureAmenityId new value of amenity feature id
+	 *@param int $newFeatureAmenityId new value of amenity feature id
 	 *@throws \RangeException if $newFeatureAmenityId is not positive
 	 *@throws \TypeError if $newFeatureAmenityId is not an integer
 	 */
-	public function setFeatureAmenityId(int $newFeatureAmenityId = null) {
+	public function setFeatureAmenityId(int $newFeatureAmenityId) {
+		//verify that the amenity id is positive
+		if($newFeatureAmenityId <=0) {
+			throw(new \RangeException("the amenity id is not positive"));
+		}
+		// convert and store the amenity id
+		$this->featureAmenityId = $newFeatureAmenityId;
+	}
+	/**
+	 * accessor method for feature park id
+	 */
+	/**
+	 * @return int
+	 */
+	public function getFeatureParkId() {
+		return $this->featureParkId;
+	}
+	/**
+	 * mutator method for feature park id
+	 *
+	 * @param int $newFeatureParkId
+	 * @throws \RangeException
+	 * @throws \TypeError
+	 *
+	 */
 
+	public function setFeatureParkId(int $newFeatureParkId) {
+		 //verify that the function park id is positive
+		if($newFeatureParkId <= 0) {
+			throw(new \RangeException("the function park id is not positive"));
+		}
+	}
+	/**
+	 * accessor method for feature value
+	 */
+		public function getFeatureValue() {
+			return $this->featureValue;
+	}
+	/**
+	 * mutator method for fature value
+	 *
+	 * @param int
+	 * @throws \RangeException
+	 * @throws |TypeError
+	 *
+	 */
+
+	/**
+	 * @param int $newFeatureValue
+	 */
+	public function setFeatureValue(int $newFeatureValue) {
+		//verify that the function park id is positive
+		if($newFeatureValue <0) {
+			throw(new \RangeException("the value is less than zero"));
+		}
 	}
 }
