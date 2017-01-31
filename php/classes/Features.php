@@ -54,4 +54,21 @@ class Features implements \JsonSerializable {
 			throw(new \Exception($exception->getMessage(), 0, $exception));
 		}
 	}
+	/**
+	 * accessor method for feature amenity id
+	 */
+	public function getFeatureAmenityId() {
+		return($this->featureAmenityId);
+	}
+
+	/**
+	 *mutator method for feature amenity id
+	 *
+	 *@param int|null $newFeatureAmenityId new value of amenity feature id
+	 *@throws \RangeException if $newFeatureAmenityId is not positive
+	 *@throws \TypeError if $newFeatureAmenityId is not an integer
+	 */
+	public function setFeatureAmenityId(int $newFeatureAmenityId = null) {
+
+	}
 }
