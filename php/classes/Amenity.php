@@ -24,3 +24,41 @@ class Amenity implements \JsonSerialize {
 	 * @var string &amenityName
 	 */
 	private $amenityName;
+
+	/**
+	 * constructor for this Amenity entity
+	 **/
+
+	/**
+	 * accessor method for amenityId
+	 *
+	 * @return int|null value of amenity id
+	 **/
+	public function getAmenityId() {
+		return ($this->amenityId);
+	}
+
+	/**
+	 * mutator for amenityId
+	 * @param int|null $newAmenityId new value of amenity id
+	 * @throws \RangeException if $newAmenityId is not positive
+	 * @throws \TypeError if $newAmenityId is not an integer
+	 **/
+	public function setAmenityId(int $newAmenityId = null) {
+		// base case: if the amenity id is null, this a new amenity without a mySQL assigned id
+		if($newAmenityId === null) {
+			$this->AmenityId = null;
+			return;
+		}
+
+		// verify the amenity id is positive
+		if($newAmenityId <= 0) {
+			throw(new \RangeException("amenity id is not positive"));
+		}
+
+		// convert and store the tweet id
+		$this->amenityId = $newAmenityId;
+	}
+}
+
+
