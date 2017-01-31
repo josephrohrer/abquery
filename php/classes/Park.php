@@ -21,7 +21,7 @@ class Park implements \JsonSerializable {
 	private $parkName;
 	/**
 	 * spatial coordinates that are used to put a center of the park on a map
-	 * @var point $parkGeometry
+	 * @var Point $parkGeometry
 	 **/
 	private $parkGeometry;
 	/**
@@ -35,14 +35,14 @@ class Park implements \JsonSerializable {
 	 *
 	 * @param int $newParkId
 	 * @param string $newParkName
-	 * @param point $newParkGeometry
+	 * @param Point $newParkGeometry
 	 * @param boolean $newParkDeveloped
 	 * @throws \InvalidArgumentException if data types are not valid
 	 * @throws \RangeException if data values are out of bounds
 	 * @throws \TypeError if data types violate type hints
 	 * @throws \Exception if some other exception occurs
 	 **/
-	public function __construct(int $newParkId, string $newParkName, point $newParkGeometry, boolean $newParkDeveloped) {
+	public function __construct(int $newParkId, string $newParkName, Point $newParkGeometry, boolean $newParkDeveloped) {
 		try {
 			$this->setParkId($newParkId);
 			$this->setParkName($newParkName);
@@ -62,13 +62,28 @@ class Park implements \JsonSerializable {
 	/**
 	 * accessor method for park id
 	 *
-	 *
+	 * @return int value of park id
 	 **/
+	public function getParkId() {
+		return($this->parkId);
+	}
+
 
 	/**
 	 * mutator method for park id
-	 *
-	 */
+	 * @param int $newParkId new value of park id
+	 * @throws \RangeException if $newParkId is not positive
+	 * @throws \TypeError if $newParkId is not an integer
+	 **/
+	public function setParkId(int $newParkId) {
+		if($newParkId <= 0) {
+			throw(new \RangeException("park id is not positive"));
+		}
+
+		$this->parkId = $newParkId;
+	}
+
+
 
 	/**
 	 * accessor method for park name
