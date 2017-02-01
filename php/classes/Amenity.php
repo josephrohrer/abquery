@@ -1,5 +1,5 @@
 <?php
-namespace Edu\Cnm\jminnich\ABQuery;
+namespace Edu\Cnm\jminnich\Abquery;
 
 require_once("autoload.php");
 
@@ -195,5 +195,4 @@ class Amenity implements \JsonSerialize {
 		// update the null amenityId with what mySQL just gave us
 		$this->amenityId = intval($pdo->lastInsertId());
 	}
-
 }
