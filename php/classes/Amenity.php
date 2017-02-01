@@ -1,4 +1,8 @@
 <?php
+namespace Edu\Cnm\jminnich\ABQuery;
+
+require_once("autoload.php");
+
 /**
  * Classes for the amenity entity
  *
