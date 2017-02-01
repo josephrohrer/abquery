@@ -22,7 +22,6 @@ class Feature implements \JsonSerializable {
 	 * Value for the specific feature given, representative of the number of said features available in the park.
 	 */
 	private $featureValue;
-
 	/**
 	 * constructor for the Feature entity
 	 *
@@ -34,7 +33,6 @@ class Feature implements \JsonSerializable {
 	 * @throws \TypeError if the data violates type
 	 * @throws \Exception if any other exception occurs
 	 */
-
 	public function __construct(int $newFeatureAmenityId = null, int $newFeatureParkId = null, int $newFeatureValue = null) {
 		try {
 			$this->setFeatureAmenityId($newFeatureAmenityId);
@@ -54,14 +52,12 @@ class Feature implements \JsonSerializable {
 			throw(new \Exception($exception->getMessage(), 0, $exception));
 		}
 	}
-
 	/**
 	 * accessor method for feature amenity id
 	 */
 	public function getFeatureAmenityId() {
 		return ($this->featureAmenityId);
 	}
-
 	/**
 	 *mutator method for feature amenity id
 	 *
@@ -86,7 +82,6 @@ class Feature implements \JsonSerializable {
 	public function getFeatureParkId() {
 		return $this->featureParkId;
 	}
-
 	/**
 	 * mutator method for feature park id
 	 *
@@ -95,21 +90,18 @@ class Feature implements \JsonSerializable {
 	 * @throws \TypeError
 	 *
 	 */
-
 	public function setFeatureParkId(int $newFeatureParkId) {
 		//verify that the function park id is positive
 		if($newFeatureParkId <= 0) {
 			throw(new \RangeException("the function park id is not positive"));
 		}
 	}
-
 	/**
 	 * accessor method for feature value
 	 */
 	public function getFeatureValue() {
 		return $this->featureValue;
 	}
-
 	/**
 	 * mutator method for feature value
 	 *
@@ -124,7 +116,6 @@ class Feature implements \JsonSerializable {
 			throw(new \RangeException("the value is less than zero"));
 		}
 	}
-
 	/**
 	 * inserts this Feature into mySQL
 	 *
