@@ -28,7 +28,7 @@ CREATE TABLE amenity (
 	PRIMARY KEY (amenityId)
 );
 
--- creates the amenityPark weak attribute --
+-- creates the feature entity weak entity --
 CREATE TABLE feature (
 	featureAmenityId INT UNSIGNED NOT NULL,
 	featureParkId    INT UNSIGNED NOT NULL,

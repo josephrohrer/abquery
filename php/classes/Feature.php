@@ -135,7 +135,7 @@ class Feature implements \JsonSerializable {
 	public function insert(\PDO $PDO) {
 
 	//create query template
-$query = "INSERT INTO feature(featureAmenityId, featureParkId, featureValue) VALUES(:featureAmenityId, :featureParkId, :featureValue";
+$query = "INSERT INTO feature(featureAmenityId, featureParkId, featureValue) VALUES(:featureAmenityId, :featureParkId, :featureValue)";
 $statement = $PDO->prepare($query);
 
 //bind the member variables to the place holders in the template
