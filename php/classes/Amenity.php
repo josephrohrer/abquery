@@ -76,7 +76,7 @@ class Amenity implements \JsonSerialize {
 	public function setAmenityId(int $newAmenityId = null) {
 		// base case: if the amenity id is null, this a new amenity without a mySQL assigned id
 		if($newAmenityId === null) {
-			$this->AmenityId = null;
+			$this->amenityId = null;
 			return;
 		}
 
@@ -120,7 +120,7 @@ class Amenity implements \JsonSerialize {
 		}
 
 		// store the amenity city name content
-		$this->AmenityCityName = $newAmenityCityName;
+		$this->amenityCityName = $newAmenityCityName;
 	}
 
 	/**
@@ -154,7 +154,7 @@ class Amenity implements \JsonSerialize {
 		}
 
 		// store the amenity city name content
-		$this->AmenityName = $newAmenityName;
+		$this->amenityName = $newAmenityName;
 	}
 
 	/**
