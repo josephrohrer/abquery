@@ -60,7 +60,6 @@ class Feature implements \JsonSerializable {
 	public function getFeatureAmenityId() {
 		return($this->featureAmenityId);
 	}
-
 	/**
 	 *mutator method for feature amenity id
 	 *
@@ -107,7 +106,7 @@ class Feature implements \JsonSerializable {
 			return $this->featureValue;
 	}
 	/**
-	 * mutator method for fature value
+	 * mutator method for feature value
 	 *
 	 * @param int $newFeatureValue
 	 * @throws \RangeException
@@ -120,4 +119,12 @@ class Feature implements \JsonSerializable {
 			throw(new \RangeException("the value is less than zero"));
 		}
 	}
+		/**
+		 * formats all of the available variables to JSON readable format.
+		 */
+		public function jsonSerialize() {
+			$fields = get_object_vars($this);
+			return($fields);
+		}
+
 }
