@@ -195,4 +195,45 @@ class Amenity implements \JsonSerialize {
 		// update the null amenityId with what mySQL just gave us
 		$this->amenityId = intval($pdo->lastInsertId());
 	}
+	/**
+	 * gets the Amenity by amenity name
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $amenityName name of amenities to search for
+	 * @return \SplFixedArray SplFixedArray of Amenities found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 **/
+	public static function getAmenityByAmenityName(\PDO $pdo, string $amenityName) {
+		// sanitize the description before searching
+		$amenityName = trim($amenityName);
+		$amenityName = filter_var($amenityName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($amenityName) === true) {
+			throw(new \PDOException("amenity name is invalid"));
+		}
+
+		// create query template
+		$query = "SELECT amenityName, amenityId, amenityCityName FROM amenity WHERE amenityName LIKE :amenityName";
+		$statement = $pdo->prepare($query);
+
+		// bind the amenity name to the place holder in the template
+		$amenityName = "%$amenityName%";
+		$parameters = ["amenityName" => $amenityName];
+		$statement->execute($parameters);
+
+		// build an array of amenities
+		$amenities = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$amenity = new Amenity($row["AmenityId"], $row["AmenityName"], $row["AmenityCityName"]);
+				$amenities[$amenities->key()] = $amenities;
+				$amenities->next();
+			} catch(\Exception $exception) {
+				// if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($amenities);
+	}
 }
