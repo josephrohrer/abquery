@@ -14,7 +14,7 @@ CREATE TABLE park (
 	parkId        INT UNSIGNED NOT NULL,
 	parkName      VARCHAR(60)  NOT NULL,
 	parkGeometry  POINT        NOT NULL,
-	parkDeveloped BOOLEAN,
+	parkDeveloped TINYINT UNSIGNED,
 	UNIQUE (parkId),
 	PRIMARY KEY (parkId)
 );
