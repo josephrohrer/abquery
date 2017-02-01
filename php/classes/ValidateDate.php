@@ -1,5 +1,5 @@
 <?php
-namespace Edu\Cnm\Bgilbert9\abquery;
+namespace Edu\Cnm\Abquery;
 
 /**
  * Trait to Validate a mySQL Date

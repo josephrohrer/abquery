@@ -1,4 +1,7 @@
 <?php
+namespace Edu\Cnm\Abquery;
+
+require_once("autoload.php");
 
 /**
  * Classes for the crime entity
@@ -30,7 +33,7 @@ class Crime implements \JsonSerializable {
 	private $crimeGeometry;
 	/**
 	 * the date on which the crime was reported
-	 * @var datetime $crimeDate
+	 * @var DateTime $crimeDate
 	 */
 	private $crimeDate;
 
@@ -42,13 +45,13 @@ class Crime implements \JsonSerializable {
 	 * @param string $newCrimeLocation block-level location that the crime was committed
 	 * @param string $newCrimeDescription the type of crime that was committed
 	 * @param Point $newCrimeGeometry coordinates near where the crime was committed
-	 * @param datetime $newCrimeDate date on which the crime was reported
+	 * @param DateTime $newCrimeDate date on which the crime was reported
 	 * @throws \InvalidArgumentException if data types are not valid
 	 * @throws \RangeException if data values are out of bounds
 	 * @throws \TypeError if data violates type hints
 	 * @throws \Exception if some other exception occurs
 	 */
-	public function __construct(int $newCrimeId, string $newCrimeLocation, string $newCrimeDescription, Point $newCrimeGeometry, datetime $newCrimeDate) {
+	public function __construct(int $newCrimeId, string $newCrimeLocation, string $newCrimeDescription, Point $newCrimeGeometry, DateTime $newCrimeDate) {
 		try {
 			$this->setCrimeId($newCrimeId);
 			$this->setCrimeLocation($newCrimeLocation);
