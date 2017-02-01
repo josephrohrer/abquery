@@ -133,15 +133,20 @@ class Feature implements \JsonSerializable {
 	 * @throws \TypeError if $pdo is not a PDO connection object
 	 **/
 	public function insert(\PDO $PDO) {
-
 	//create query template
 $query = "INSERT INTO feature(featureAmenityId, featureParkId, featureValue) VALUES(:featureAmenityId, :featureParkId, :featureValue)";
 $statement = $PDO->prepare($query);
-
 //bind the member variables to the place holders in the template
 $parameters = ["featureAmenityId" => $this->featureAmenityId, "featureParkId" => $this->featureParkId, "featureValue" => $this->featureValue];
 $statement->execute($parameters);
 }
+	/**
+	 * deletes this feature from mySQL
+	 *
+	 * @param \PDO $PDO PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $PDO is not a PDO connection object
+	 */
 		/**
 		 * formats the state variables to JSON readable format.
 		 *
@@ -157,6 +162,5 @@ $statement->execute($parameters);
 			 * @throws \PDOException when mySQL related errors occur
 			 * @throws \TypeError if $pdo is not a PDO connection object
 			 **/
-
 		}
 }
