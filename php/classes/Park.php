@@ -143,7 +143,6 @@ class Park implements \JsonSerializable {
 	 * accessor method for park developed
 	 *
 	 * @return boolean for if park is developed
-	 * if  > 0, devleoped = true
 	 *
 	 **/
 	public function getParkDeveloped() {
@@ -153,8 +152,15 @@ class Park implements \JsonSerializable {
 	/**
 	 * mutator method for park developed
 	 *
+	 * @param tinyint $newParkDeveloped value of park developed
+	 * @throws error if not 1 or 0
 	 *
 	 **/
+	public function setParkDeveloped($newParkDeveloped) {
+		if ($newParkDeveloped < 0 || $newParkDeveloped > 1)
+			throw(new \InvalidArgumentException("park developed must be 1 or 0"));
+	}
+
 
 	public function jsonSerialize() {
 		// TODO: Implement jsonSerialize() method.
