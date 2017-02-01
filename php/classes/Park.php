@@ -84,18 +84,36 @@ class Park implements \JsonSerializable {
 	}
 
 
-
 	/**
 	 * accessor method for park name
 	 *
-	 *
+	 * @return string value of park name
 	 **/
+	public function getParkName() {
+		return($this->parkName);
+	}
 
 	/**
 	 * mutator method for park name
 	 *
-	 *
+	 * @param string $newParkName
+	 * @throws \InvalidArgumentException if $newParkName is insecure
+	 * @throws \RangeException if $newParkName is > 60 characters
+	 * @throws \TypeError if $newParkName is not a string
 	 **/
+	public function setParkName(string $newParkName) {
+		$newParkName = trim($newParkName);
+		$newParkName = filter_var($newParkName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($newParkName) === true) {
+			throw(new \InvalidArgumentException("name content is empty or insecure"));
+		}
+
+		if(strlen($newParkName) > 60) {
+			throw(new \RangeException("name content too large"));
+		}
+
+		$this->parkName = $newParkName;
+	}
 
 	/**
 	 * accessor method for park geometry
@@ -111,9 +129,12 @@ class Park implements \JsonSerializable {
 	/**
 	 * mutator method for park geometry
 	 * @param point $newParkGeometry new value of park geometry
+	 * @throws error based on Point class
 	 *
 	 **/
-
+	public function setParkGeometry(Point $newParkGeometry) {
+		$this->parkGeometry = $newParkGeometry;
+	}
 
 	/**
 	 * accessor method for park developed
