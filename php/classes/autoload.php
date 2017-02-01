@@ -4,8 +4,8 @@
  * PSR-4 Compliant Autoloader
  *
  * This will dynamically load classes by resolving the prefix and class name. This is the method that frameworks
- * such as Laravel and Composer automatically resolve class names and load them. To use it, simply set the
- * configurable parameters inside the closure. This example is taken from PHP-FIG, referenced below.
+ * such as Laravel and Composer automatically resolve class names and load them. To use  it, simply set the
+ * configurable parameters inside the closure. This example is taken from PHP-FIG, refer enced below.
  *
  * @param string $class fully qualified class name to load
  * @see http://www.php-fig.org/psr/psr-4/examples/ PSR-4 Example Autoloader

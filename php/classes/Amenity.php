@@ -167,5 +167,29 @@ class Amenity implements \JsonSerialize {
 		return ($fields);
 
 	}
+	/**
+	 * inserts this Amenity into mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 **/
+	public function insert(\PDO $pdo) {
+		// enforce the amenityId is null (i.e., don't insert an amenity that already exists)
+		if($this->amenityId !== null) {
+			throw(new \PDOException("not a new amenity"));
+		}
+
+		// create query template
+		$query = "INSERT INTO amenity(amenityId, amenityCityName, amenityName) VALUES(:amenityId, :amenityCityName, :amenityName)";
+		$statement = $pdo->prepare($query);
+
+		// bind the member variables to the place holders in the template
+		$parameters = ["amenityId" => $this->amenityId, "amenityCityName" => $this->amenityCityName, "amenityName" => $this->amenityName];
+		$statement->execute($parameters);
+
+		// update the null amenityId with what mySQL just gave us
+		$this->amenityId = intval($pdo->lastInsertId());
+	}
 
 }
