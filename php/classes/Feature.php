@@ -140,18 +140,6 @@ $statement = $pdo->prepare($query);
 $parameters = ["featureAmenityId" => $this->featureAmenityId, "featureParkId" => $this->featureParkId, "featureValue" => $this->featureValue];
 $statement->execute($parameters);
 }
-	/**
-	 * deletes this feature from mySQL
-	 *
-	 * @param \PDO $PDO PDO connection object
-	 * @throws \PDOException when mySQL related errors occur
-	 * @throws \TypeError if $PDO is not a PDO connection object
-	 */
-		/**
-		 * formats the state variables to JSON readable format.
-		 *
-		 * @return array making state variables to serialize.
-		 */
 		public function jsonSerialize() {
 			$fields = get_object_vars($this);
 			return($fields);
