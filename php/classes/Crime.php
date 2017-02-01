@@ -11,6 +11,7 @@ require_once("autoload.php");
  * @author bgilbert9@cnm.edu
  */
 class Crime implements \JsonSerializable {
+	use ValidateDate;
 	/**
 	 * id for each individual crime as provided by the city data, this is a primary key
 	 * @var int $crimeId
@@ -33,7 +34,7 @@ class Crime implements \JsonSerializable {
 	private $crimeGeometry;
 	/**
 	 * the date on which the crime was reported
-	 * @var DateTime $crimeDate
+	 * @var \DateTime $crimeDate
 	 */
 	private $crimeDate;
 
@@ -45,13 +46,13 @@ class Crime implements \JsonSerializable {
 	 * @param string $newCrimeLocation block-level location that the crime was committed
 	 * @param string $newCrimeDescription the type of crime that was committed
 	 * @param Point $newCrimeGeometry coordinates near where the crime was committed
-	 * @param DateTime $newCrimeDate date on which the crime was reported
+	 * @param \DateTime $newCrimeDate date on which the crime was reported
 	 * @throws \InvalidArgumentException if data types are not valid
 	 * @throws \RangeException if data values are out of bounds
 	 * @throws \TypeError if data violates type hints
 	 * @throws \Exception if some other exception occurs
 	 */
-	public function __construct(int $newCrimeId, string $newCrimeLocation, string $newCrimeDescription, Point $newCrimeGeometry, DateTime $newCrimeDate) {
+	public function __construct(int $newCrimeId, string $newCrimeLocation, string $newCrimeDescription, Point $newCrimeGeometry, $newCrimeDate) {
 		try {
 			$this->setCrimeId($newCrimeId);
 			$this->setCrimeLocation($newCrimeLocation);
@@ -171,7 +172,7 @@ class Crime implements \JsonSerializable {
 	 * mutator method for crime geometry
 	 *
 	 * @param Point $newCrimeGemoetry new value of crime geometry
-	 * @throws error based on Point class
+	 * @throws \TypeError based on Point class
 	 */
 	public function setCrimeGeometry(Point $newCrimeGeometry) {
 		$this->crimeGeometry = $newCrimeGeometry;
