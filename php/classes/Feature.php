@@ -1,4 +1,7 @@
 <?php
+namespace Edu\Cnm\bsmtih\Abquery;
+
+require_once("autoload.php");
 /**
  * Classes for the Features entity
  *
@@ -6,6 +9,7 @@
  *
  * @author bsmtih@cnm.edu
  **/
+
 class Feature implements \JsonSerializable {
 	/**
 	 * @var int $featureAmenityId
