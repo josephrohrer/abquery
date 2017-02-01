@@ -1,7 +1,7 @@
 <?php
 namespace Edu\Cnm\Jrohrer\Abquery;
 
-require_once("autoload.php")
+require_once("autoload.php");
 
 /**
  * Classes for the Park entity
