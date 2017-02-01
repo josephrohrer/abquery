@@ -241,36 +241,36 @@ class Amenity implements \JsonSerialize {
 	 *
 	 * @param \PDO $pdo PDO connection object
 	 * @param int $amenityId amenity id to search for
-	 * @return Tweet|null Tweet found or null if not found
+	 * @return Amenity|null Amenity found or null if not found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
 	 **/
-	public static function getTweetByTweetId(\PDO $pdo, int $tweetId) {
-		// sanitize the tweetId before searching
-		if($tweetId <= 0) {
-			throw(new \PDOException("tweet id is not positive"));
+	public static function getAmenityByAmenityId(\PDO $pdo, int $amenityId) {
+		// sanitize the amenityId before searching
+		if($amenityId <= 0) {
+			throw(new \PDOException("amenity id is not positive"));
 		}
 
 		// create query template
-		$query = "SELECT tweetId, tweetProfileId, tweetContent, tweetDate FROM tweet WHERE tweetId = :tweetId";
+		$query = "SELECT amenityId, amenityCityName, amenityName FROM amenity WHERE amenityId = :amenityId";
 		$statement = $pdo->prepare($query);
 
-		// bind the tweet id to the place holder in the template
-		$parameters = ["tweetId" => $tweetId];
+		// bind the amenity id to the place holder in the template
+		$parameters = ["amenityId" => $amenityId];
 		$statement->execute($parameters);
 
-		// grab the tweet from mySQL
+		// grab the amenity from mySQL
 		try {
-			$tweet = null;
+			$amenity = null;
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$tweet = new Tweet($row["tweetId"], $row["tweetProfileId"], $row["tweetContent"], $row["tweetDate"]);
+				$amenity = new Amenity($row["amenityId"], $row["amenityName"], $row["amenityCityName"]);
 			}
 		} catch(\Exception $exception) {
 			// if the row couldn't be converted, rethrow it
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
-		return($tweet);
+		return($amenity);
 	}
 }
