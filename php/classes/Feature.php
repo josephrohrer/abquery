@@ -135,6 +135,18 @@ $statement = $pdo->prepare($query);
 $parameters = ["featureAmenityId" => $this->featureAmenityId, "featureParkId" => $this->featureParkId, "featureValue" => $this->featureValue];
 $statement->execute($parameters);
 }
+	/**
+	 * gets the feature by amenity id
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $amenityId primary key to search for
+	 * @return \SplFixedArray SplFixedArray of amenity keys found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws
+	 */
+	/**
+	 * @return array
+	 */
 		public function jsonSerialize() {
 			$fields = get_object_vars($this);
 			return($fields);
