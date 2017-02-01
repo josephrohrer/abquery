@@ -158,7 +158,7 @@ class Park implements \JsonSerializable {
 	 **/
 	public function setParkDeveloped($newParkDeveloped) {
 		if ($newParkDeveloped < 0 || $newParkDeveloped > 1)
-			throw(new \InvalidArgumentException("park developed must be 1 or 0"));
+			throw(new \RangeException("park developed must be 1 or 0"));
 	}
 
 
