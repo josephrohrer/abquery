@@ -1,4 +1,7 @@
 <?php
+namespace Edu\Cnm\Jrohrer\Abquery;
+
+require_once("autoload.php")
 
 /**
  * Classes for the Park entity
@@ -118,7 +121,7 @@ class Park implements \JsonSerializable {
 	/**
 	 * accessor method for park geometry
 	 *
-	 * @return point value of crime geometry
+	 * @return point value of park geometry
 	 *
 	 **/
 	public function getParkGeometry() {
@@ -139,8 +142,13 @@ class Park implements \JsonSerializable {
 	/**
 	 * accessor method for park developed
 	 *
+	 * @return boolean for if park is developed
+	 * if  > 0, devleoped = true
 	 *
 	 **/
+	public function getParkDeveloped() {
+		return($this->parkDeveloped);
+	}
 
 	/**
 	 * mutator method for park developed
