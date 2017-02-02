@@ -139,11 +139,26 @@ $statement->execute($parameters);
 	 * gets the feature by amenity id
 	 *
 	 * @param \PDO $pdo PDO connection object
-	 * @param int $amenityId primary key to search for
+	 * @param int $featureAmenityId primary key to search for
 	 * @return \SplFixedArray SplFixedArray of amenity keys found
 	 * @throws \PDOException when mySQL related errors occur
-	 * @throws
+	 * @throws \TypeError when variables are not the correct data type.
 	 */
+	public static function getFeatureByFeatureValue(\PDO $pdo, int $featureValue) {
+		//sanitize before searching
+		$featureValue = filter_var($featureValue, FILTER_SANITIZE_NUMBER_INT);
+		if(empty($featureValue) === true) {
+			throw(new \PDOException("there is no value for this feature"));
+		}
+		//create query template
+		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM feature WHERE featureAmenityId IS featureAmenityId";
+	$statement = $pdo->prepare($query);
+		//bind the value to the place holder in the template
+		$featureValue = "%featureValue&";
+		$parameters = ["featureValue => $featureValue"];
+		$statement->execute($parameters);
+		//build an array of
+	}
 	/**
 	 * @return array
 	 */
