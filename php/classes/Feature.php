@@ -1,5 +1,5 @@
 <?php
-namespace Edu\Cnm\bsmtih\Abquery;
+namespace Edu\Cnm\Abquery;
 
 require_once("autoload.php");
 /**
@@ -129,7 +129,7 @@ class Feature implements \JsonSerializable {
 	 **/
 	public function insert(\PDO $pdo) {
 	//create query template
-$query = "INSERT INTO feature(featureAmenityId, featureParkId, featureValue) VALUES(:featureAmenityId, :featureParkId, :featureValue)";
+$query = "INSERT INTO Feature(featureAmenityId, featureParkId, featureValue) VALUES(:featureAmenityId, :featureParkId, :featureValue)";
 $statement = $pdo->prepare($query);
 //bind the member variables to the place holders in the template
 $parameters = ["featureAmenityId" => $this->featureAmenityId, "featureParkId" => $this->featureParkId, "featureValue" => $this->featureValue];
@@ -139,7 +139,7 @@ $statement->execute($parameters);
 	 * gets the feature by amenity id
 	 *
 	 * @param \PDO $pdo PDO connection object
-	 * @param int $featureAmenityId primary key to search for
+	 * @param int featureValue primary key to search for
 	 * @return \SplFixedArray SplFixedArray of amenity keys found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type.
@@ -157,7 +157,8 @@ $statement->execute($parameters);
 		$featureValue = "%featureValue&";
 		$parameters = ["featureValue => $featureValue"];
 		$statement->execute($parameters);
-		//build an array of
+		//build an array of features
+
 	}
 	/**
 	 * @return array
