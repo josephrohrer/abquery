@@ -1,5 +1,5 @@
 <?php
-namespace Edu\Cnm\jminnich\Abquery;
+namespace Edu\Cnm\Abquery;
 
 require_once("autoload.php");
 
@@ -12,7 +12,7 @@ require_once("autoload.php");
  */
 
 
-class Amenity implements \JsonSerialize {
+class Amenity implements \JsonSerializable {
 	/**
 	 * id for each individual amenity as provided by the ABQ city data set: Parks, this is a primary key
 	 * @var int $AmenityId
@@ -185,11 +185,11 @@ class Amenity implements \JsonSerialize {
 		}
 
 		// create query template
-		$query = "INSERT INTO amenity(amenityId, amenityCityName, amenityName) VALUES(:amenityId, :amenityCityName, :amenityName)";
+		$query = "INSERT INTO amenity(amenityCityName, amenityName) VALUES(:amenityCityName, :amenityName)";
 		$statement = $pdo->prepare($query);
 
 		// bind the member variables to the place holders in the template
-		$parameters = ["amenityId" => $this->amenityId, "amenityCityName" => $this->amenityCityName, "amenityName" => $this->amenityName];
+		$parameters = ["amenityCityName" => $this->amenityCityName, "amenityName" => $this->amenityName];
 		$statement->execute($parameters);
 
 		// update the null amenityId with what mySQL just gave us
@@ -226,8 +226,8 @@ class Amenity implements \JsonSerialize {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
-				$amenity = new Amenity($row["AmenityId"], $row["AmenityName"], $row["AmenityCityName"]);
-				$amenities[$amenities->key()] = $amenities;
+				$amenity = new Amenity($row["amenityId"], $row["amenityName"], $row["amenityCityName"]);
+				$amenities[$amenities->key()] = $amenity;
 				$amenities->next();
 			} catch(\Exception $exception) {
 				// if the row couldn't be converted, rethrow it
