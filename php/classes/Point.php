@@ -1,5 +1,5 @@
 <?php
-namespace Cnm\Edu\Abquery;
+namespace Edu\Cnm\Abquery;
 
 require_once("autoload.php");
 
