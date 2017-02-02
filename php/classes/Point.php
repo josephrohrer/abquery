@@ -89,7 +89,28 @@ class Point implements \JsonSerializable {
 	}
 
 
+	public static function euclideanMean(\SplFixedArray $points) {
+		if(count($points) === 0) {
+			throw (new \RangeException("cannot find the center of nothing"));
+		}
+		$centerLatitude = 0.0;
+		$centerLongitude = 0.0;
+		foreach($points as $point) {
+			$centerLatitude = $centerLatitude + $point->getLatitude();
+			$centerLongitude = $centerLongitude + $point->getLongitude();
+		}
+		$centerLatitude = $centerLatitude / count($points);
+		$centerLongitude = $centerLongitude / count($points);
+
+		$centerPoint = new Point ($centerLatitude, $centerLongitude);
+		return($centerPoint);
+	}
+
+
 	public function jsonSerialize() {
-		return(get_object_vars($this));
+		$fields = [];
+		$fields["lat"] = $this->latitude;
+		$fields["lng"] = $this->longitude;
+		return($fields);
 	}
 }

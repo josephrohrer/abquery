@@ -171,7 +171,7 @@ class Crime implements \JsonSerializable {
 	/**
 	 * mutator method for crime geometry
 	 *
-	 * @param Point $newCrimeGemoetry new value of crime geometry
+	 * @param Point $newCrimeGeometry new value of crime geometry
 	 * @throws \TypeError based on Point class
 	 */
 	public function setCrimeGeometry(Point $newCrimeGeometry) {
