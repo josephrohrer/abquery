@@ -2,6 +2,7 @@
 namespace Edu\Cnm\Abquery;
 
 require_once("autoload.php");
+
 /**
  * Classes for the Features entity
  *
@@ -9,7 +10,6 @@ require_once("autoload.php");
  *
  * @author bsmtih@cnm.edu
  **/
-
 class Feature implements \JsonSerializable {
 	/**
 	 * @var int $featureAmenityId
@@ -26,6 +26,7 @@ class Feature implements \JsonSerializable {
 	 * Value for the specific feature given, representative of the number of said features available in the park.
 	 */
 	private $featureValue;
+
 	/**
 	 * constructor for the Feature entity
 	 *
@@ -56,12 +57,14 @@ class Feature implements \JsonSerializable {
 			throw(new \Exception($exception->getMessage(), 0, $exception));
 		}
 	}
+
 	/**
 	 * accessor method for feature amenity id
 	 */
 	public function getFeatureAmenityId() {
 		return ($this->featureAmenityId);
 	}
+
 	/**
 	 *mutator method for feature amenity id
 	 *
@@ -86,6 +89,7 @@ class Feature implements \JsonSerializable {
 	public function getFeatureParkId() {
 		return $this->featureParkId;
 	}
+
 	/**
 	 * mutator method for feature park id
 	 *
@@ -100,12 +104,14 @@ class Feature implements \JsonSerializable {
 			throw(new \RangeException("the function park id is not positive"));
 		}
 	}
+
 	/**
 	 * accessor method for feature value
 	 */
 	public function getFeatureValue() {
 		return $this->featureValue;
 	}
+
 	/**
 	 * mutator method for feature value
 	 *
@@ -120,6 +126,7 @@ class Feature implements \JsonSerializable {
 			throw(new \RangeException("the value is less than zero"));
 		}
 	}
+
 	/**
 	 * inserts this Feature into mySQL
 	 *
@@ -128,50 +135,32 @@ class Feature implements \JsonSerializable {
 	 * @throws \TypeError if $pdo is not a PDO connection object
 	 **/
 	public function insert(\PDO $pdo) {
-	//create query template
-$query = "INSERT INTO Feature(featureAmenityId, featureParkId, featureValue) VALUES(:featureAmenityId, :featureParkId, :featureValue)";
-$statement = $pdo->prepare($query);
+		//create query template
+		$query = "INSERT INTO Feature(featureAmenityId, featureParkId, featureValue) VALUES(:featureAmenityId, :featureParkId, :featureValue)";
+		$statement = $pdo->prepare($query);
 //bind the member variables to the place holders in the template
-$parameters = ["featureAmenityId" => $this->featureAmenityId, "featureParkId" => $this->featureParkId, "featureValue" => $this->featureValue];
-$statement->execute($parameters);
-}
+		$parameters = ["featureAmenityId" => $this->featureAmenityId, "featureParkId" => $this->featureParkId, "featureValue" => $this->featureValue];
+		$statement->execute($parameters);
+	}
+
 	/**
-	 * gets the feature by amenity id
+	 * gets the feature by feature value
 	 *
 	 * @param \PDO $pdo PDO connection object
-	 * @param int featureValue primary key to search for
+	 * @param int $featureValue primary key to search for
 	 * @return \SplFixedArray SplFixedArray of amenity keys found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type.
 	 */
-	public static function getFeatureByFeatureValue(\PDO $pdo, int $featureValue) {
-		//sanitize before searching
-		$featureValue = filter_var($featureValue, FILTER_SANITIZE_NUMBER_INT);
-		if(empty($featureValue) === true) {
-			throw(new \PDOException("there is no value for this feature"));
-		}
-		//create query template
-		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM feature WHERE featureAmenityId IS featureAmenityId";
-	$statement = $pdo->prepare($query);
-		//bind the value to the place holder in the template
-		$featureValue = "%featureValue&";
-		$parameters = ["featureValue => $featureValue"];
-		$statement->execute($parameters);
-		//build an array of features
-
+	public function jsonSerialize() {
+		$fields = get_object_vars($this);
+		return ($fields);
+		/**
+		 * inserts this Value into mySQL
+		 *
+		 * @param \PDO $pdo PDO connection object
+		 * @throws \PDOException when mySQL related errors occur
+		 * @throws \TypeError if $pdo is not a PDO connection object
+		 **/
 	}
-	/**
-	 * @return array
-	 */
-		public function jsonSerialize() {
-			$fields = get_object_vars($this);
-			return($fields);
-			/**
-			 * inserts this Value into mySQL
-			 *
-			 * @param \PDO $pdo PDO connection object
-			 * @throws \PDOException when mySQL related errors occur
-			 * @throws \TypeError if $pdo is not a PDO connection object
-			 **/
-		}
 }
