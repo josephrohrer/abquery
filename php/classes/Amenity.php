@@ -162,16 +162,6 @@ class Amenity implements \JsonSerializable {
 	}
 
 	/**
-	 * formats the state variables for JSON serialization
-	 *
-	 * @return array resulting state variables to serialize
-	 **/
-	public function jsonSerialize() {
-		$fields = get_object_vars($this);
-		return ($fields);
-
-	}
-	/**
 	 * inserts this Amenity into mySQL
 	 *
 	 * @param \PDO $pdo PDO connection object
@@ -302,5 +292,14 @@ class Amenity implements \JsonSerializable {
 		}
 		return ($amenities);
 	}
+	/**
+	 * formats the state variables for JSON serialization
+	 *
+	 * @return array resulting state variables to serialize
+	 **/
+	public function jsonSerialize() {
+		$fields = get_object_vars($this);
+		return ($fields);
 
+	}
 }
