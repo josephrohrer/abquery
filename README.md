@@ -1,2 +1,2 @@
-# abq-move-safe
-Repository for Team Safehouse of the Deep Dive Coding Bootcamp
+# abquery
+Repository for Team ABQuery of the Deep Dive Coding Bootcamp.
