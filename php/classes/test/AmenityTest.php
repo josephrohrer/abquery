@@ -50,11 +50,21 @@ class AmenityTest extends AbqueryTest {
 		$numRows = $this->getConnection()->getRowCount("amenity");
 
 		// create a new Amenity and insert it into mySQL
-		$amenity = new Amenity(null, $this->profile->getProfileId(), $this->VALID_AMENITYNAME, $this->VALID_AMENITYCITYNAME);
+		$amenity = new Amenity(null, $this->VALID_AMENITYNAME, $this->VALID_AMENITYCITYNAME);
 		$amenity->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoAmenity = Amenity::getAmenityByAmenityId($this->getPDO(), $amenity->getAmenityId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("amenity"));
+	}
+	/**
+	 * test inserting an Amenity that already exists
+	 *
+	 * @expectedException PDOException
+	 **/
+	public function testInsertInvalidAmenity() {
+		// create an Amenity with a non null amenity id and watch it fail
+		$amenity = new Amenity(AbqueryTest::INVALID_KEY, $this->VALID_AMENITYNAME, $this->VALID_AMENITYCITYNAME);
+		$amenity->insert($this->getPDO());
 	}
 }
