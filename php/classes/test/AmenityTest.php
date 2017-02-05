@@ -1,10 +1,10 @@
 <?php
-namespace Edu\Cnm\Abquery\Test;
+namespace Edu\Cnm\Abquery\DataDesign\Test;
 
-use Edu\Cnm\Abquery\{Amenity};
+use Edu\Cnm\Abquery\DataDesign\{Amenity};
 
 // grab the project test parameters
-require_once("abqueryTest.php");
+require_once("DataDesignTest.php");
 
 // grab the class under scrutiny
 require_once(dirname(__DIR__) . "/classes/autoload.php");
@@ -14,11 +14,10 @@ require_once(dirname(__DIR__) . "/classes/autoload.php");
  *
  * This is a complete PHPUnit test of the Amenity class. It is complete because *ALL* mySQL/PDO enabled methods are tested for both invalid and valid inputs.
  *
- * @see Tweet
  * @author Jennifer Quay Minnich <jminnich@cnm.edu>
  **/
 
-class AmenityTest extends AbqueryTest {
+class AmenityTest extends DataDesignTest {
 	/**
 	 * name of the Amenity
 	 * @var string $VALID_AMENITYNAME
@@ -66,5 +65,27 @@ class AmenityTest extends AbqueryTest {
 		// create an Amenity with a non null amenity id and watch it fail
 		$amenity = new Amenity(AbqueryTest::INVALID_KEY, $this->VALID_AMENITYNAME, $this->VALID_AMENITYCITYNAME);
 		$amenity->insert($this->getPDO());
+	}
+	/**
+	 * test grabbing an Amenity by amenity name
+	 **/
+	public function testGetValidAmenityByAmenityName() {
+		// count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("amenity");
+
+		// create a new Amenity and insert it into mySQL
+		$amenity = new Amenity(null, $this->VALID_AMENITYNAME, $this->VALID_AMENITYCITYNAME);
+		$amenity->insert($this->getPDO());
+
+		// grab the data from mySQL and enforce the fields match our expectations
+		$results = Amenity::getAmenityByAmenityName($this->getPDO(), $amenity->getAmenityName());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("amenity"));
+		$this->assertCount(1, $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\DataDesign\\Amenity", $results);
+
+		// grab the result from the array and validate it
+		$pdoAmenity = $results[0];
+		$this->assertEquals($pdoAmenity->getAmenityName(), $this->VALID_AMENITYNAME);
+		$this->assertEquals($pdoAmenity->getAmenityCityName(), $this->VALID_AMENITYCITYNAME);
 	}
 }
