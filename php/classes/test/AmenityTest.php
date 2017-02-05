@@ -40,8 +40,21 @@ class AmenityTest extends AbqueryTest {
 		// create and insert a Profile to own the test Amenity
 		$this->profile = new Profile(null, "@phpunit", "test@phpunit.de", "+12125551212");
 		$this->profile->insert($this->getPDO());
+	}
 
-		// calculate the date (just use the time the unit test was setup...)
-		$this->VALID_AMENITYDATE = new \DateTime();
+	/**
+	 * test inserting a valid Amenity and verify that the actual mySQL data matches
+	 **/
+	public function testInsertValidAmenity() {
+		// count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("amenity");
+
+		// create a new Amenity and insert it into mySQL
+		$amenity = new Amenity(null, $this->profile->getProfileId(), $this->VALID_AMENITYNAME, $this->VALID_AMENITYCITYNAME);
+		$amenity->insert($this->getPDO());
+
+		// grab the data from mySQL and enforce the fields match our expectations
+		$pdoAmenity = Amenity::getAmenityByAmenityId($this->getPDO(), $amenity->getAmenityId());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("amenity"));
 	}
 }
