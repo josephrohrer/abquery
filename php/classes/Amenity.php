@@ -300,6 +300,6 @@ class Amenity implements \JsonSerializable {
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		return ($fields);
-
 	}
+
 }

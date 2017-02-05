@@ -96,4 +96,26 @@ class AmenityTest extends DataDesignTest {
 		$amenity = Amenity::getAmenityByAmenityName($this->getPDO(), "you will find nothing");
 		$this->assertCount(0, $amenity);
 	}
+	/**
+	 * test grabbing all Amenities
+	 **/
+	public function testGetAllValidAmenities() {
+		// count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("amenities");
+
+		// create a new Amenity and insert to into mySQL
+		$amenity = new Amenity(null, $this->VALID_AMENITYNAME, $this->VALID_AMENITYCITYNAME);
+		$amenity->insert($this->getPDO());
+
+		// grab the data from mySQL and enforce the fields match our expectations
+		$results = Amenity::getAllAmenities($this->getPDO());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("amenity"));
+		$this->assertCount(1, $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\DataDesign\\Amenity", $results);
+
+		// grab the result from the array and validate it
+		$pdoAmenity = $results[0];
+		$this->assertEquals($pdoAmenity->getAmenityName(), $this->VALID_AMENITYNAME);
+		$this->assertEquals($pdoAmenity->getAmenityCityName(), $this->VALID_AMENITYCITYNAME);
+	}
 }
