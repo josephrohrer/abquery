@@ -88,4 +88,12 @@ class AmenityTest extends DataDesignTest {
 		$this->assertEquals($pdoAmenity->getAmenityName(), $this->VALID_AMENITYNAME);
 		$this->assertEquals($pdoAmenity->getAmenityCityName(), $this->VALID_AMENITYCITYNAME);
 	}
+	/**
+	 * test grabbing an Amenity by a name that does not exist
+	 **/
+	public function testGetInvalidAmenityByAmenityName() {
+		// grab an amenity by searching for a name that does not exist
+		$amenity = Amenity::getAmenityByAmenityName($this->getPDO(), "you will find nothing");
+		$this->assertCount(0, $amenity);
+	}
 }
