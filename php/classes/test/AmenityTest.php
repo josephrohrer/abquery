@@ -1,7 +1,7 @@
 <?php
-namespace Edu\Cnm\Abquery\DataDesign\Test;
+namespace Edu\Cnm\Abquery\Test;
 
-use Edu\Cnm\Abquery\DataDesign\{Amenity};
+use Edu\Cnm\Abquery\{Amenity};
 
 // grab the project test parameters
 require_once("DataDesignTest.php");
@@ -13,7 +13,7 @@ require_once(dirname(__DIR__) . "/classes/autoload.php");
  * Full PHPUnit test for the Amenity class
  *
  * This is a complete PHPUnit test of the Amenity class. It is complete because *ALL* mySQL/PDO enabled methods are tested for both invalid and valid inputs.
- *
+ * @see Tweet example
  * @author Jennifer Quay Minnich <jminnich@cnm.edu>
  **/
 

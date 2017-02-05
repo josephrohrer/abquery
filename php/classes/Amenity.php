@@ -7,7 +7,7 @@ require_once("autoload.php");
  * Classes for the amenity entity
  *
  * These are the classes for the amenity entity including the accessor and mutator methods
- *
+ * @see Tweet example
  * @author jminnich@cnm.edu
  */
 
@@ -301,5 +301,4 @@ class Amenity implements \JsonSerializable {
 		$fields = get_object_vars($this);
 		return ($fields);
 	}
-
 }
