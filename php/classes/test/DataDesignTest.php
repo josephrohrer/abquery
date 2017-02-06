@@ -51,4 +51,17 @@ abstract class DataDesignTest extends \PHPUnit_Extensions_Database_TestCase {
 		$dataset->addTable("amenityName");
 		return ($dataset);
 	}
+	/**
+	 * templates the setUp method that runs before each test; this method expunges the database before each run
+	 *
+	 * @see https://phpunit.de/manual/current/en/fixtures.html#fixtures.more-setup-than-teardown PHPUnit Fixtures: setUp and tearDown
+	 * @see https://github.com/sebastianbergmann/dbunit/issues/37 TRUNCATE fails on tables which have foreign key constraints
+	 * @return \PHPUnit_Extensions_Database_Operation_Composite array containing delete and insert commands
+	 **/
+	public final function getSetUpOperation() {
+		return new \PHPUnit_Extensions_Database_Operation_Composite(array(
+			\PHPUnit_Extensions_Database_Operation_Factory::DELETE_ALL(),
+			\PHPUnit_Extensions_Database_Operation_Factory::INSERT()
+		));
+	}
 }
