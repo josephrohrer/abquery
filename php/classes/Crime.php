@@ -211,4 +211,27 @@ class Crime implements \JsonSerializable {
 	public function jsonSerialize() {
 		// TODO: Implement jsonSerialize() method.
 	}
+
+
+	/**
+	 * inserts this crime into mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL relates errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+	public function insert(\PDO $pdo) {
+		if($this->crimeId !== null) {
+			throw(new \PDOException("not a new crime"));
+		}
+		$query = "INSERT INTO crime(crimeLocation, crimeDescription, crimeGeometry, crimeDate) VALUES(:crimeLocation, :crimeDescription, :crimeGeometry, :crimeDate)";
+		$statement = $pdo->prepare($query);
+		$parameters = ["crimeLocation" => $this->crimeLocation, "crimeDescription" => $this->crimeDescription, "crimeGeometry" => $this->crimeGeometry, "crimeDate" => $this->crimeDate];
+		$statement->execute($parameters);
+		$this->crimeId = intval($pdo->lastInsertId());
+	}
+
+
+
+
 }
