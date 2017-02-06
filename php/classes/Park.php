@@ -174,7 +174,7 @@ class Park implements \JsonSerializable {
 		}
 		$query = "INSERT INTO park(parkName, parkGeometry, parkDeveloped) VALUES(:parkName, :parkGeometry, :parkDeveloped)";
 		$statement = $pdo->prepare($query);
-		$parameters = ["parkName" => $this->parkName, "parkGeometry => $this->parkGeometry", "parkDeveloped => $this->parkDeveloped"]
+		$parameters = ["parkName" => $this->parkName, "parkGeometry => $this->parkGeometry", "parkDeveloped => $this->parkDeveloped"];
 		$statement->execute($parameters);
 		$this->parkId = intval($pdo->lastInsertId());
 	}
@@ -199,7 +199,7 @@ class Park implements \JsonSerializable {
 
 		try {
 			$tweet = null;
-			$statement->setFetchMode(\PDO: :FETCH_ASSOC);
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
 				$tweet = new Tweet($row["parkId"], $row["parkName"], $row["parkGeometry"], $row["parkDeveloped"]);
@@ -210,15 +210,14 @@ class Park implements \JsonSerializable {
 		return($park);
 		}
 	}
-}
-
-
-
-
-	public function jsonSerialize() {
-		// TODO: Implement jsonSerialize() method.
-	}
 
 	/**
-
+ 	* formats the state variables for JSON serialization
+	 *
+	 * @return array resulting state variables to serialize
+ 	**/
+	public function jsonSerialize() {
+		$fields = get_object_vars($this);
+		return($fields);
+	}
 }
