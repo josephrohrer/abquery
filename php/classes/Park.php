@@ -1,5 +1,5 @@
 <?php
-namespace Edu\Cnm\Jrohrer\Abquery;
+namespace Edu\Cnm\Abquery;
 
 require_once("autoload.php");
 
@@ -45,7 +45,7 @@ class Park implements \JsonSerializable {
 	 * @throws \TypeError if data types violate type hints
 	 * @throws \Exception if some other exception occurs
 	 **/
-	public function __construct(int $newParkId, string $newParkName, Point $newParkGeometry, boolean $newParkDeveloped) {
+	public function __construct(int $newParkId, string $newParkName, Point $newParkGeometry, tinyint $newParkDeveloped) {
 		try {
 			$this->setParkId($newParkId);
 			$this->setParkName($newParkName);
@@ -161,10 +161,64 @@ class Park implements \JsonSerializable {
 			throw(new \RangeException("park developed must be 1 or 0"));
 	}
 
+	/**
+	 * insert into MySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connnection object
+	 **/
+	public function insert(\PDO $pdo) {
+		if($this->parkId !== null) {
+			throw(new \PDOException("not a new park"));
+		}
+		$query = "INSERT INTO park(parkName, parkGeometry, parkDeveloped) VALUES(:parkName, :parkGeometry, :parkDeveloped)";
+		$statement = $pdo->prepare($query);
+		$parameters = ["parkName" => $this->parkName, "parkGeometry => $this->parkGeometry", "parkDeveloped => $this->parkDeveloped"]
+		$statement->execute($parameters);
+		$this->parkId = intval($pdo->lastInsertId());
+	}
+
+	/**
+	 * gets the Park by parkId
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $parkId park id to search for
+	 * @return Park|null Park found or null if not found
+	 * @throws \PDOException when mySQL related errors
+	 * @throws \TypeError when variables are not the correct data type
+	 **/
+	public static function getParkByParkId(\PDO $pdo, int $parkId) {
+		if($parkId <= 0) {
+			throw(new \PDOException("park id is not positive"));
+		}
+		$query = "SELECT parkId, parkName, parkGeometry, parkDeveloped FROM park WHERE parkId = :parkid";
+		$statement = $pdo->prepare($query);
+		$parameters = ["parkId" => $parkId];
+		$statement->execute($parameters);
+
+		try {
+			$tweet = null;
+			$statement->setFetchMode(\PDO: :FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$tweet = new Tweet($row["parkId"], $row["parkName"], $row["parkGeometry"], $row["parkDeveloped"]);
+			}
+		} catch(\Exception $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($park);
+		}
+	}
+}
+
+
+
 
 	public function jsonSerialize() {
 		// TODO: Implement jsonSerialize() method.
 	}
 
+	/**
 
 }
