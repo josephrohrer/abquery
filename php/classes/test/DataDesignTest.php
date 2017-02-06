@@ -21,3 +21,34 @@ namespace Edu\Cnm\Abquery\Test;
  * @see: Tweet example
  * @author Jennifer Quay Minnich <jminnich@cnm.edu>
  **/
+
+abstract class DataDesignTest extends \PHPUnit_Extensions_Database_TestCase {
+	/**
+	 * invalid id to use for an INT UNSIGNED field (maximum allowed INT UNSIGNED in mySQL) + 1
+	 * @see https://dev.mysql.com/doc/refman/5.6/en/integer-types.html mySQL Integer Types
+	 * @var int INVALID_KEY
+	 **/
+	const INVALID_KEY = 4294967296;
+
+	/**
+	 * PHPUnit database connection interface
+	 * @var \PHPUnit_Extensions_Database_DB_IDatabaseConnection $connection
+	 **/
+	protected $connection = null;
+
+	/**
+	 * assembles the table from the schema and provides it to PHPUnit
+	 *
+	 * @return \PHPUnit_Extensions_Database_DataSet_QueryDataSet assembled schema for PHPUnit
+	 **/
+	public final function getDataSet() {
+		$dataset = new \PHPUnit_Extensions_Database_DataSet_QueryDataSet($this->getConnection());
+
+		// add all the tables for the project here
+		// THESE TABLES *MUST* BE LISTED IN THE SAME ORDER THEY WERE CREATED!!!!
+		$dataset->addTable("amenityId");
+		$dataset->addTable("amenityCityName");
+		$dataset->addTable("amenityName");
+		return ($dataset);
+	}
+}
