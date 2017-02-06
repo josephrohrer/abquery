@@ -1,5 +1,5 @@
 <?php
-namespace Edu\Cnm\Abquery\Test;
+namespace Edu\Cnm\Abquery\AbqueryTest;
 
 
 // grab the encrypted properties file !!!!!!!!!!!

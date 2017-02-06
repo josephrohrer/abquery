@@ -1,10 +1,10 @@
 <?php
 namespace Edu\Cnm\Abquery\Test;
 
-use Edu\Cnm\Abquery\{Amenity};
+use Edu\Cnm\Abquery\AbqueryTest\{Amenity};
 
 // grab the project test parameters
-require_once("DataDesignTest.php");
+require_once("AbqueryTest.php");
 
 // grab the class under scrutiny
 require_once(dirname(__DIR__) . "/classes/autoload.php");
@@ -17,7 +17,7 @@ require_once(dirname(__DIR__) . "/classes/autoload.php");
  * @author Jennifer Quay Minnich <jminnich@cnm.edu>
  **/
 
-class AmenityTest extends DataDesignTest {
+class AmenityTest extends AbqueryTest {
 	/**
 	 * name of the Amenity
 	 * @var string $VALID_AMENITYNAME
