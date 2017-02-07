@@ -198,18 +198,17 @@ class Park implements \JsonSerializable {
 		$statement->execute($parameters);
 
 		try {
-			$tweet = null;
+			$park = null;
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$tweet = new Tweet($row["parkId"], $row["parkName"], $row["parkGeometry"], $row["parkDeveloped"]);
+				$park = new Park($row["parkId"], $row["parkName"], $row["parkGeometry"], $row["parkDeveloped"]);
 			}
 		} catch(\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
 		return($park);
 		}
-	}
 
 /**
  * gets all parks
@@ -234,9 +233,9 @@ public static function getAllParks(\PDO $pdo) {
 		} catch(\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
+		return ($parks);
 	}
-	return($parks);
-
+}
 
 	/**
  	* formats the state variables for JSON serialization
