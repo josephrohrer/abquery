@@ -86,7 +86,7 @@ class Amenity implements \JsonSerializable {
 
 		// verify the amenity id is positive
 		if($newAmenityId <= 0) {
-			throw(new \RangeException("amenity id is not positive"));
+			throw(new \RangeException("quality over quantity, amenity id is not positive"));
 		}
 
 		// convert and store the amenity id
@@ -115,12 +115,12 @@ class Amenity implements \JsonSerializable {
 		$newAmenityCityName = trim($newAmenityCityName);
 		$newAmenityCityName = filter_var($newAmenityCityName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		if(empty($newAmenityCityName) === true) {
-			throw(new \InvalidArgumentException("name is empty or insecure"));
+			throw(new \InvalidArgumentException("size matters, name is empty or insecure"));
 		}
 
 		// verify the amenity city name content will fit in the database
 		if(strlen($newAmenityCityName) > 32) {
-			throw(new \RangeException("name content too large"));
+			throw(new \RangeException("size matters, content too large"));
 		}
 
 		// store the amenity city name content
@@ -149,12 +149,12 @@ class Amenity implements \JsonSerializable {
 		$newAmenityName = trim($newAmenityName);
 		$newAmenityName = filter_var($newAmenityName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		if(empty($newAmenityName) === true) {
-			throw(new \InvalidArgumentException("name is empty or insecure"));
+			throw(new \InvalidArgumentException("size matters, name is empty or insecure"));
 		}
 
 		// verify the amenity name content will fit in the database
 		if(strlen($newAmenityName) > 32) {
-			throw(new \RangeException("name content too large"));
+			throw(new \RangeException("size matters, name content too large"));
 		}
 
 		// store the amenity city name content
