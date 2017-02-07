@@ -91,15 +91,15 @@ class FeatureTest extends AbqueryTest {
 		$this->assertCount(0, $feature);
 	}
 	/**
-	 * test grabbing all Amenities
+	 * test grabbing all Features
 	 **/
-	public function testGetAllValidAmenities() {
+	public function testGetAllValidAFeatures() {
 		// count the number of rows and save it for later
-		$numRows = $this->getConnection()->getRowCount("amenities");
+		$numRows = $this->getConnection()->getRowCount("features");
 
-		// create a new Amenity and insert to into mySQL
-		$amenity = new Amenity(null, $this->VALID_AMENITYNAME, $this->VALID_AMENITYCITYNAME);
-		$amenity->insert($this->getPDO());
+		// create a new Feature and insert to into mySQL
+		$feature = new Feature(null, $this->VALID_FEATUREPARKID, $this->VALID_FEATUREAMENITYID, $this->FEATUREVALUE);
+		$feature->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$results = Amenity::getAllAmenities($this->getPDO());
