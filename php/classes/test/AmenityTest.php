@@ -69,7 +69,7 @@ class AmenityTest extends AbqueryTest {
 		$results = Amenity::getAmenityByAmenityName($this->getPDO(), $amenity->getAmenityName());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("amenity"));
 		$this->assertCount(1, $results);
-		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\DataDesign\\Amenity", $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\Amenity", $results);
 
 		// grab the result from the array and validate it
 		$pdoAmenity = $results[0];
@@ -99,7 +99,7 @@ class AmenityTest extends AbqueryTest {
 		$results = Amenity::getAllAmenities($this->getPDO());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("amenity"));
 		$this->assertCount(1, $results);
-		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\DataDesign\\Amenity", $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\Amenity", $results);
 
 		// grab the result from the array and validate it
 		$pdoAmenity = $results[0];
