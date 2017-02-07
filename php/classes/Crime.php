@@ -131,9 +131,9 @@ class Crime implements \JsonSerializable {
 	 * accessor method for crime description
 	 *
 	 * @return string value of crime description
-	*/
+	 */
 	public function getCrimeDescription() {
-		return($this->crimeDescription);
+		return ($this->crimeDescription);
 	}
 
 
@@ -164,7 +164,7 @@ class Crime implements \JsonSerializable {
 	 * @return Point value of crime geometry
 	 */
 	public function getCrimeGeometry() {
-		return($this->crimeGeometry);
+		return ($this->crimeGeometry);
 	}
 
 
@@ -185,7 +185,7 @@ class Crime implements \JsonSerializable {
 	 * @return \DateTime value for crime date
 	 */
 	public function getCrimeDate() {
-		return($this->crimeDate);
+		return ($this->crimeDate);
 	}
 
 
@@ -257,7 +257,7 @@ class Crime implements \JsonSerializable {
 		} catch(\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
-		return($crime);
+		return ($crime);
 	}
 
 
@@ -295,7 +295,7 @@ class Crime implements \JsonSerializable {
 				throw(new \PDOException($exception->getMessage(), 0, $exception));
 			}
 		}
-		return($crimes);
+		return ($crimes);
 	}
 
 
@@ -333,7 +333,7 @@ class Crime implements \JsonSerializable {
 				throw(new \PDOException($exception->getMessage(), 0, $exception));
 			}
 		}
-		return($crimes);
+		return ($crimes);
 	}
 
 
@@ -365,7 +365,7 @@ class Crime implements \JsonSerializable {
 				throw(new \PDOException($exception->getMessage(), 0, $exception));
 			}
 		}
-		return($crimes);
+		return ($crimes);
 	}
 
 
@@ -393,12 +393,12 @@ class Crime implements \JsonSerializable {
 				throw(new \PDOException($exception->getMessage(), 0, $exception));
 			}
 		}
-		return($crimes);
+		return ($crimes);
 	}
 
 
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
-		return($fields);
+		return ($fields);
 	}
 }
