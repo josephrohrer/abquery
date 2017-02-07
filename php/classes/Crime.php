@@ -208,11 +208,6 @@ class Crime implements \JsonSerializable {
 	}
 
 
-	public function jsonSerialize() {
-		// TODO: Implement jsonSerialize() method.
-	}
-
-
 	/**
 	 * inserts this crime into mySQL
 	 *
@@ -342,6 +337,68 @@ class Crime implements \JsonSerializable {
 	}
 
 
+	/**
+	 * gets crime by date
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param  \DateTime $crimeDate crime date to search for
+	 * @return \SplFixedArray SplFixedArray of tweets found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public static function getCrimeByCrimeDate(\PDO $pdo, \DateTime $crimeDate) {
+		$query = "SELECT crimeId, crimeLocation, crimeDescription, crimeGeometry, crimeDate FROM crime WHERE crimeDate LIKE :$crimeDate";
+		$statement = $pdo->prepare($query);
+
+		$crimeDate = "%crimeDate%";
+		$parameters = ["crimeDate" => $crimeDate];
+		$statement->execute($parameters);
+
+		$crimes = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], $row["crimeGeometry"], $row["crimeDate"]);
+				$crimes[$crimes->key()] = $crime;
+				$crimes->next();
+			} catch(\Exception $exception) {
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($crimes);
+	}
 
 
+	/**
+	 * gets all crimes
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @return \SplFixedArray SplFixedArray of crimes found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public static function getAllCrimes(\PDO $pdo) {
+		$query = "SELECT crimeId, crimeLocation, crimeDescription, crimeGeometry, crimeDate FROM crime";
+		$statement = $pdo->prepare($query);
+		$statement->execute();
+
+		$crimes = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], $row["crimeGeometry"], $row["crimeDate"]);
+				$crimes[$crimes->key()] = $crime;
+				$crimes->next();
+			} catch(\Exception $exception) {
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($crimes);
+	}
+
+
+	public function jsonSerialize() {
+		$fields = get_object_vars($this);
+		return($fields);
+	}
 }
