@@ -172,9 +172,9 @@ class Park implements \JsonSerializable {
 		if($this->parkId !== null) {
 			throw(new \PDOException("not a new park"));
 		}
-		$query = "INSERT INTO park(parkName, parkGeometry, parkDeveloped) VALUES(:parkName, :parkGeometry, :parkDeveloped)";
+		$query = "INSERT INTO park(parkName, parkGeometry, parkDeveloped) VALUES(:parkName, POINT(:parkGeometryX, :parkGeometryY), :parkDeveloped)";
 		$statement = $pdo->prepare($query);
-		$parameters = ["parkName" => $this->parkName, "parkGeometry => $this->parkGeometry", "parkDeveloped => $this->parkDeveloped"];
+		$parameters = ["parkName" => $this->parkName, "parkGeometryX" => $this->parkGeometry->getLatitude(), "parkGeometryY" => $this->parkGeometry->getLongitude(), "parkDeveloped" => $this->parkDeveloped];
 		$statement->execute($parameters);
 		$this->parkId = intval($pdo->lastInsertId());
 	}
@@ -192,7 +192,7 @@ class Park implements \JsonSerializable {
 		if($parkId <= 0) {
 			throw(new \PDOException("park id is not positive"));
 		}
-		$query = "SELECT parkId, parkName, parkGeometry, parkDeveloped FROM park WHERE parkId = :parkid";
+		$query = "SELECT parkId, parkName, ST_X(parkGeometry) AS parkGeometryX, ST_Y(parkGeometry) AS parkGeometryY, parkDeveloped FROM park WHERE parkId = :parkid";
 		$statement = $pdo->prepare($query);
 		$parameters = ["parkId" => $parkId];
 		$statement->execute($parameters);
@@ -202,7 +202,7 @@ class Park implements \JsonSerializable {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$park = new Park($row["parkId"], $row["parkName"], $row["parkGeometry"], $row["parkDeveloped"]);
+				$park = new Park($row["parkId"], $row["parkName"], new Point($row["parkGeometryX"],$row["parkGeometryY"]), $row["parkDeveloped"]);
 			}
 		} catch(\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
@@ -219,7 +219,7 @@ class Park implements \JsonSerializable {
 	 * @throws \TypeError when variables are not the correct data type
 	 */
 	public static function getAllParks(\PDO $pdo) {
-		$query = "SELECT parkId, parkName, parkGeometry, parkDeveloped FROM park";
+		$query = "SELECT parkId, parkName, ST_X(parkGeometry) AS parkGeometryX, ST_Y(parkGeometry) AS parkGeometryY, parkDeveloped FROM park";
 		$statement = $pdo->prepare($query);
 		$statement->execute();
 
@@ -227,7 +227,7 @@ class Park implements \JsonSerializable {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
-				$park = new Park($row["parkId"], $row["parkName"], $row["cparkGeometry"], $row["parkDeveloped"]);
+				$park = new Park($row["parkId"], $row["parkName"], new Point($row["parkGeometryX"],$row["parkGeometryY"]), $row["parkDeveloped"]);
 				$parks[$parks->key()] = $park;
 				$parks->next();
 			} catch(\Exception $exception) {
