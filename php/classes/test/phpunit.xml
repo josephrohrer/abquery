@@ -2,9 +2,9 @@
 	<testsuites>
 		<testsuite name="Abquery">
 			<file>AmenityTest.php</file>
-			<!--<file>CombativePlantTest.php</file>
-			<file>CompanionPlantTest.php</file>
-			<file>PlantAreaTest.php</file> -->
+			<!--<file>CrimeTest.php</file>
+			<file>ParkTest.php</file>
+			<file>FeatureTest.php</file> -->
 		</testsuite>
 	</testsuites>
 	<filter>
