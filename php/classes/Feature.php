@@ -223,12 +223,5 @@ class Feature implements \JsonSerializable {
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		return ($fields);
-		/**
-		 * inserts this Value into mySQL
-		 *
-		 * @param \PDO $pdo PDO connection object
-		 * @throws \PDOException when mySQL related errors occur
-		 * @throws \TypeError if $pdo is not a PDO connection object
-		 **/
 	}
 }

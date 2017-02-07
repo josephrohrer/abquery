@@ -1,7 +1,7 @@
 <?php
 namespace Edu\Cnm\Abquery\Test;
 
-use Edu\Cnm\Abquery\AbqueryTest\{Amenity};
+use Edu\Cnm\Abquery\Test\{Amenity};
 
 // grab the project test parameters
 require_once("AbqueryTest.php");
@@ -22,12 +22,12 @@ class AmenityTest extends AbqueryTest {
 	 * name of the Amenity
 	 * @var string $VALID_AMENITYNAME
 	 **/
-	protected $VALID_AMENITYNAME = "PHPUnit test passing";
+	protected $VALID_AMENITYNAME = "You have unlocked amenities. Amenities are a desirable or useful feature or facility of a building or place";
 	/**
 	 * city name of the Amenity
 	 * @var string $VALID_AMENITYCITYNAME
 	 **/
-	protected $VALID_AMENITYCITYNAME = "PHPUnit test passing";
+	protected $VALID_AMENITYCITYNAME = "You have unlocked amenities. Amenities are a desirable or useful feature or facility of a building or place";
 
 	/**
 	 * test inserting a valid Amenity and verify that the actual mySQL data matches
