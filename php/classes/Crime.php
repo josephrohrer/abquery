@@ -341,17 +341,29 @@ class Crime implements \JsonSerializable {
 	 * gets crime by date
 	 *
 	 * @param \PDO $pdo PDO connection object
-	 * @param  \DateTime $crimeDate crime date to search for
-	 * @return \SplFixedArray SplFixedArray of tweets found
+	 * @param  \DateTime|string $crimeSunriseDate, $crimeSunsetDate crime date to search for
+	 * FIXME:make another param line for sunset
+	 * @return \SplFixedArray SplFixedArray of crimes found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
 	 */
-	public static function getCrimeByCrimeDate(\PDO $pdo, \DateTime $crimeDate) {
-		$query = "SELECT crimeId, crimeLocation, crimeDescription, crimeGeometry, crimeDate FROM crime WHERE crimeDate LIKE :$crimeDate";
+	public static function getCrimeByCrimeDate(\PDO $pdo, $crimeSunriseDate, $crimeSunsetDate) {
+		if ((empty($crimeSunriseDate) === true)  || (empty($crimeSunsetDate) === true)) {
+			throw(new \InvalidArgumentException("date is empty or null"));
+		}
+		try {
+			$crimeSunriseDate = self::validateDateTime($crimeSunriseDate);
+			$crimeSunsetDate = self::validateDateTime($crimeSunsetDate);
+		} catch(\InvalidArgumentException $invalidArgument) {
+			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(\RangeException $range) {
+			throw(new \RangeException($range->getMessage(), 0, $range));
+		}
+
+		$query = "SELECT crimeId, crimeLocation, crimeDescription, crimeGeometry, crimeDate FROM crime WHERE crimeDate >= :crimeSunriseDate AND crimeDate <= :crimeSunsetDate";
 		$statement = $pdo->prepare($query);
 
-		$crimeDate = "%crimeDate%";
-		$parameters = ["crimeDate" => $crimeDate];
+		$parameters = ["crimeSunriseDate" => $crimeSunriseDate, "crimeSunsetDate" => $crimeSunsetDate];
 		$statement->execute($parameters);
 
 		$crimes = new \SplFixedArray($statement->rowCount());
