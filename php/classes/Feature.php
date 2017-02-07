@@ -143,15 +143,6 @@ class Feature implements \JsonSerializable {
 		$statement->execute($parameters);
 	}
 
-	/**
-	 * gets the feature by feature value
-	 *
-	 * @param \PDO $pdo PDO connection object
-	 * @param int $featureValue primary key to search for
-	 * @return \SplFixedArray SplFixedArray of amenity keys found
-	 * @throws \PDOException when mySQL related errors occur
-	 * @throws \TypeError when variables are not the correct data type.
-	 */
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		return ($fields);
