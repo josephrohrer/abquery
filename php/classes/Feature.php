@@ -143,6 +143,83 @@ class Feature implements \JsonSerializable {
 		$statement->execute($parameters);
 	}
 
+	/**
+	 * gets the feature by featureAmenityId
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $featureAmenityId amenity id to search by
+	 * @return \SplFixedArray SplFixedArray of features found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 **/
+	public static function getFeatureByFeatureAmenityId(\PDO $pdo, int $featureAmenityId) {
+		// sanitize the amenity id before searching
+		if($featureAmenityId <= 0) {
+			throw(new \RangeException("feature amenity id must be positive"));
+		}
+
+		// create query template
+		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM feature WHERE featureAmenityId = :featureAmenityId";
+		$statement = $pdo->prepare($query);
+
+		// bind the feature amenity id to the place holder in the template
+		$parameters = ["featureAmenityId" => $featureAmenityId];
+		$statement->execute($parameters);
+
+		// build an array of features
+		$features = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$feature = new Feature($row["featureAmenityId"], $row["featureParkId"], $row["featureValue"]);
+				$features[$features->key()] = $feature;
+				$features->next();
+			} catch(\Exception $exception) {
+				// if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($features);
+	}
+
+	/**
+	 * gets the feature by featureParkId
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $featureParkId amenity id to search by
+	 * @return \SplFixedArray SplFixedArray of features found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 **/
+	public static function getFeatureByFeatureParkId(\PDO $pdo, int $featureParkId) {
+		// sanitize the amenity id before searching
+		if($featureParkId <= 0) {
+			throw(new \RangeException("feature park id must be positive"));
+		}
+
+		// create query template
+		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM feature WHERE featureParkId = :featureParkId";
+		$statement = $pdo->prepare($query);
+
+		// bind the feature park id to the place holder in the template
+		$parameters = ["featureParkId" => $featureParkId];
+		$statement->execute($parameters);
+
+		// build an array of features
+		$features = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$feature = new Feature($row["featureAmenityId"], $row["featureParkId"], $row["featureValue"]);
+				$features[$features->key()] = $feature;
+				$features->next();
+			} catch(\Exception $exception) {
+				// if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($features);
+	}
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		return ($fields);
