@@ -1,0 +1,15 @@
+<phpunit>
+	<testsuites>
+		<testsuite name="Abquery">
+			<file>AmenityTest.php</file>
+			<!--<file>CombativePlantTest.php</file>
+			<file>CompanionPlantTest.php</file>
+			<file>PlantAreaTest.php</file> -->
+		</testsuite>
+	</testsuites>
+	<filter>
+		<whitelist processUncoveredFilesFromWhiteList="true">
+			<directory suffix=".php">../classes</directory>
+		</whitelist>
+	</filter>
+</phpunit>
