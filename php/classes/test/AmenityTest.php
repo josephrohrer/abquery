@@ -1,7 +1,7 @@
 <?php
 namespace Edu\Cnm\Abquery\Test;
 
-use Edu\Cnm\Abquery\Test\{Amenity};
+use Edu\Cnm\Abquery\{Amenity};
 
 // grab the project test parameters
 require_once("AbqueryTest.php");
