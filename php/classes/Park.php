@@ -211,6 +211,33 @@ class Park implements \JsonSerializable {
 		}
 	}
 
+/**
+ * gets all parks
+ *
+ * @param \PDO $pdo PDO connection object
+ * @return \SplFixedArray SplFixedArray of crimes found or null if not found
+ * @throws \PDOException when mySQL related errors occur
+ * @throws \TypeError when variables are not the correct data type
+ */
+public static function getAllParks(\PDO $pdo) {
+	$query = "SELECT parkId, parkName, parkGeometry, parkDeveloped FROM park";
+	$statement = $pdo->prepare($query);
+	$statement->execute();
+
+	$crimes = new \SplFixedArray($statement->rowCount());
+	$statement->setFetchMode(\PDO::FETCH_ASSOC);
+	while(($row = $statement->fetch()) !== false) {
+		try {
+			$park = new Park($row["parkId"], $row["parkName"], $row["cparkGeometry"], $row["parkDeveloped"]);
+			$parks[$parks->key()] = $park;
+			$parks->next();
+		} catch(\Exception $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+	}
+	return($parks);
+
+
 	/**
  	* formats the state variables for JSON serialization
 	 *
