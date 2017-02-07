@@ -22,12 +22,12 @@ class AmenityTest extends AbqueryTest {
 	 * name of the Amenity
 	 * @var string $VALID_AMENITYNAME
 	 **/
-	protected $VALID_AMENITYNAME = "You have unlocked amenities. Amenities are a desirable or useful feature or facility of a building or place";
+	protected $VALID_AMENITYNAME = "You have unlocked amenities. Amenities are a desirable or useful feature of a building or place";
 	/**
 	 * city name of the Amenity
 	 * @var string $VALID_AMENITYCITYNAME
 	 **/
-	protected $VALID_AMENITYCITYNAME = "You have unlocked amenities. Amenities are a desirable or useful feature or facility of a building or place";
+	protected $VALID_AMENITYCITYNAME = "You have unlocked amenities. Amenities are a desirable or useful feature of a building or place";
 
 	/**
 	 * test inserting a valid Amenity and verify that the actual mySQL data matches
@@ -47,7 +47,7 @@ class AmenityTest extends AbqueryTest {
 	/**
 	 * test inserting an Amenity that already exists
 	 *
-	 * @expectedException PDOException
+	 * @expectedException RangeException
 	 **/
 	public function testInsertInvalidAmenity() {
 		// create an Amenity with a non null amenity id and watch it fail
@@ -89,7 +89,7 @@ class AmenityTest extends AbqueryTest {
 	 **/
 	public function testGetAllValidAmenities() {
 		// count the number of rows and save it for later
-		$numRows = $this->getConnection()->getRowCount("amenities");
+		$numRows = $this->getConnection()->getRowCount("amenity");
 
 		// create a new Amenity and insert to into mySQL
 		$amenity = new Amenity(null, $this->VALID_AMENITYNAME, $this->VALID_AMENITYCITYNAME);
