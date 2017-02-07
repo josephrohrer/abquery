@@ -98,18 +98,19 @@ class FeatureTest extends AbqueryTest {
 		$numRows = $this->getConnection()->getRowCount("features");
 
 		// create a new Feature and insert to into mySQL
-		$feature = new Feature(null, $this->VALID_FEATUREPARKID, $this->VALID_FEATUREAMENITYID, $this->FEATUREVALUE);
+		$feature = new Feature(null, $this->VALID_FEATUREPARKID, $this->VALID_FEATUREAMENITYID, $this->VALID_FEATUREVALUE);
 		$feature->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
-		$results = Amenity::getAllAmenities($this->getPDO());
-		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("amenity"));
+		$results = Feature::getAllFeatures($this->getPDO());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("features"));
 		$this->assertCount(1, $results);
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\DataDesign\\Amenity", $results);
 
 		// grab the result from the array and validate it
-		$pdoAmenity = $results[0];
-		$this->assertEquals($pdoAmenity->getAmenityName(), $this->VALID_AMENITYNAME);
-		$this->assertEquals($pdoAmenity->getAmenityCityName(), $this->VALID_AMENITYCITYNAME);
+		$pdoFeature = $results[0];
+		$this->assertEquals($pdoFeature->getFeatureAmenityId(), $this->VALID_FEATUREAMENITYID);
+		$this->assertEquals($pdoFeature->getFeatureParkId(), $this->VALID_FEATUREPARKID);
+		$this->assertEquals($pdoFeature->getFeatureValue(), $this->VALID_FEATUREVALUE);
 	}
 }
