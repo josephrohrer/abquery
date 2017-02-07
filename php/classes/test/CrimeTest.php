@@ -61,6 +61,26 @@ class CrimeTest extends AbqueryTest {
 	/**
 	 * test grabbing a crime by crime location
 	 */
+	public function testGetValidCrimebyCrimeLocation() {
+		$numRows = $this->getConnection()->getRowCount("crime");
+
+		$crime = new Crime(null, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEDATE);
+		$crime->insert($this->getPDO());
+
+		$results = Crime::getCrimeByCrimeLocation($this->getPDO(), $crime->getCrimeLocation());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("crime"));
+		$this->assertCount(1, $results);
+		$this->assertContainsOnlyInstanceOf("Edu\\Cnm\\Abquery\\Crime", $results);
+
+		$pdoCrime = $results[0];
+		$this->assertEquals($pdoCrime->getCrimeLocation(), $this->VALID_CRIMELOCATION);
+		$this->assertEquals($pdoCrime->getCrimeDescription(), $this->VALID_CRIMEDESCRIPTION);
+		$this->assertEquals($pdoCrime->getCrimeDate(), $this->VALID_CRIMEDATE);
+	}
+
+	/**
+	 * test grabbing a crime by a location that doews not exist
+	 */
 
 
 
