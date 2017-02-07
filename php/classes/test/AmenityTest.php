@@ -30,18 +30,6 @@ class AmenityTest extends AbqueryTest {
 	protected $VALID_AMENITYCITYNAME = "PHPUnit test passing";
 
 	/**
-	 * create dependent objects before running each test
-	 **/
-	public final function setUp() {
-		// run the default setUp() method first
-		parent::setUp();
-
-		// create and insert a Profile to own the test Amenity
-		$this->profile = new Profile(null, "@phpunit", "test@phpunit.de", "+12125551212");
-		$this->profile->insert($this->getPDO());
-	}
-
-	/**
 	 * test inserting a valid Amenity and verify that the actual mySQL data matches
 	 **/
 	public function testInsertValidAmenity() {
