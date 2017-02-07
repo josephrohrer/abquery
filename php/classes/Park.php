@@ -68,7 +68,7 @@ class Park implements \JsonSerializable {
 	 * @return int value of park id
 	 **/
 	public function getParkId() {
-		return($this->parkId);
+		return ($this->parkId);
 	}
 
 
@@ -93,7 +93,7 @@ class Park implements \JsonSerializable {
 	 * @return string value of park name
 	 **/
 	public function getParkName() {
-		return($this->parkName);
+		return ($this->parkName);
 	}
 
 	/**
@@ -125,7 +125,7 @@ class Park implements \JsonSerializable {
 	 *
 	 **/
 	public function getParkGeometry() {
-		return($this->parkGeometry);
+		return ($this->parkGeometry);
 	}
 
 
@@ -146,7 +146,7 @@ class Park implements \JsonSerializable {
 	 *
 	 **/
 	public function getParkDeveloped() {
-		return($this->parkDeveloped);
+		return ($this->parkDeveloped);
 	}
 
 	/**
@@ -157,7 +157,7 @@ class Park implements \JsonSerializable {
 	 *
 	 **/
 	public function setParkDeveloped($newParkDeveloped) {
-		if ($newParkDeveloped < 0 || $newParkDeveloped > 1)
+		if($newParkDeveloped < 0 || $newParkDeveloped > 1)
 			throw(new \RangeException("park developed must be 1 or 0"));
 	}
 
@@ -172,9 +172,9 @@ class Park implements \JsonSerializable {
 		if($this->parkId !== null) {
 			throw(new \PDOException("not a new park"));
 		}
-		$query = "INSERT INTO park(parkName, parkGeometry, parkDeveloped) VALUES(:parkName, :parkGeometry, :parkDeveloped)";
+		$query = "INSERT INTO park(parkName, parkGeometry, parkDeveloped) VALUES(:parkName, POINT(:parkGeometryX, :parkGeometryY), :parkDeveloped)";
 		$statement = $pdo->prepare($query);
-		$parameters = ["parkName" => $this->parkName, "parkGeometry => $this->parkGeometry", "parkDeveloped => $this->parkDeveloped"];
+		$parameters = ["parkName" => $this->parkName, "parkGeometryX" => $this->parkGeometry->getLatitude(), "parkGeometryY" => $this->parkGeometry->getLongitude(), "parkDeveloped" => $this->parkDeveloped];
 		$statement->execute($parameters);
 		$this->parkId = intval($pdo->lastInsertId());
 	}
@@ -192,7 +192,7 @@ class Park implements \JsonSerializable {
 		if($parkId <= 0) {
 			throw(new \PDOException("park id is not positive"));
 		}
-		$query = "SELECT parkId, parkName, parkGeometry, parkDeveloped FROM park WHERE parkId = :parkid";
+		$query = "SELECT parkId, parkName, ST_X(parkGeometry) AS parkGeometryX, ST_Y(parkGeometry) AS parkGeometryY, parkDeveloped FROM park WHERE parkId = :parkid";
 		$statement = $pdo->prepare($query);
 		$parameters = ["parkId" => $parkId];
 		$statement->execute($parameters);
@@ -202,48 +202,48 @@ class Park implements \JsonSerializable {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$park = new Park($row["parkId"], $row["parkName"], $row["parkGeometry"], $row["parkDeveloped"]);
+				$park = new Park($row["parkId"], $row["parkName"], new Point($row["parkGeometryX"],$row["parkGeometryY"]), $row["parkDeveloped"]);
 			}
 		} catch(\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
-		return($park);
-		}
-
-/**
- * gets all parks
- *
- * @param \PDO $pdo PDO connection object
- * @return \SplFixedArray SplFixedArray of crimes found or null if not found
- * @throws \PDOException when mySQL related errors occur
- * @throws \TypeError when variables are not the correct data type
- */
-public static function getAllParks(\PDO $pdo) {
-	$query = "SELECT parkId, parkName, parkGeometry, parkDeveloped FROM park";
-	$statement = $pdo->prepare($query);
-	$statement->execute();
-
-	$crimes = new \SplFixedArray($statement->rowCount());
-	$statement->setFetchMode(\PDO::FETCH_ASSOC);
-	while(($row = $statement->fetch()) !== false) {
-		try {
-			$park = new Park($row["parkId"], $row["parkName"], $row["cparkGeometry"], $row["parkDeveloped"]);
-			$parks[$parks->key()] = $park;
-			$parks->next();
-		} catch(\Exception $exception) {
-			throw(new \PDOException($exception->getMessage(), 0, $exception));
-		}
-		return ($parks);
+		return ($park);
 	}
-}
 
 	/**
- 	* formats the state variables for JSON serialization
+	 * gets all parks
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @return \SplFixedArray SplFixedArray of crimes found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public static function getAllParks(\PDO $pdo) {
+		$query = "SELECT parkId, parkName, ST_X(parkGeometry) AS parkGeometryX, ST_Y(parkGeometry) AS parkGeometryY, parkDeveloped FROM park";
+		$statement = $pdo->prepare($query);
+		$statement->execute();
+
+		$crimes = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$park = new Park($row["parkId"], $row["parkName"], new Point($row["parkGeometryX"],$row["parkGeometryY"]), $row["parkDeveloped"]);
+				$parks[$parks->key()] = $park;
+				$parks->next();
+			} catch(\Exception $exception) {
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+			return ($parks);
+		}
+	}
+
+	/**
+	 * formats the state variables for JSON serialization
 	 *
 	 * @return array resulting state variables to serialize
- 	**/
+	 **/
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
-		return($fields);
+		return ($fields);
 	}
 }
