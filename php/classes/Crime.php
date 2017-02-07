@@ -219,9 +219,9 @@ class Crime implements \JsonSerializable {
 		if($this->crimeId !== null) {
 			throw(new \PDOException("not a new crime"));
 		}
-		$query = "INSERT INTO crime(crimeLocation, crimeDescription, crimeGeometry, crimeDate) VALUES(:crimeLocation, :crimeDescription, :crimeGeometry, :crimeDate)";
+		$query = "INSERT INTO crime(crimeLocation, crimeDescription, crimeGeometry, crimeDate) VALUES(:crimeLocation, :crimeDescription, POINT(:crimeGeometryX, :parkGeometryY), :crimeDate)";
 		$statement = $pdo->prepare($query);
-		$parameters = ["crimeLocation" => $this->crimeLocation, "crimeDescription" => $this->crimeDescription, "crimeGeometry" => $this->crimeGeometry, "crimeDate" => $this->crimeDate];
+		$parameters = ["crimeLocation" => $this->crimeLocation, "crimeDescription" => $this->crimeDescription, "crimeGeometryX" => $this->crimeGeometry->getLatitude(), "crimeGeometryY" => $this->crimeGeometry->getLongitude(), "crimeDate" => $this->crimeDate];
 		$statement->execute($parameters);
 		$this->crimeId = intval($pdo->lastInsertId());
 	}
@@ -241,7 +241,7 @@ class Crime implements \JsonSerializable {
 			throw(new \PDOException("crime id is not positive"));
 		}
 
-		$query = "SELECT crimeId, crimeLocation, crimeDescription, crimeGeometry, crimeDate FROM crime WHERE crimeId = :crimeId";
+		$query = "SELECT crimeId, crimeLocation, crimeDescription, ST_X(crimeGeometry) AS crimeGeometryX, ST_Y(crimeGeometry) AS crimeGeometryY, crimeDate FROM crime WHERE crimeId = :crimeId";
 		$statement = $pdo->prepare($query);
 
 		$parameters = ["crimeId" => $crimeId];
@@ -252,7 +252,7 @@ class Crime implements \JsonSerializable {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], $row["crimeGeometry"], $row["crimeDate"]);
+				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], new Point($row["crimeGeometryX"],$row["crimeGeometryY"]), $row["crimeDate"]);
 			}
 		} catch(\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
@@ -277,7 +277,7 @@ class Crime implements \JsonSerializable {
 			throw(new \PDOException("crime location is invalid"));
 		}
 
-		$query = "SELECT crimeId, crimeLocation, crimeDescription, crimeGeometry, crimeDate FROM crime WHERE crimeLocation LIKE :crimeLocation";
+		$query = "SELECT crimeId, crimeLocation, crimeDescription, ST_X(crimeGeometry) AS crimeGeometryX, ST_Y(crimeGeometry) AS crimeGeometryY, crimeDate FROM crime WHERE crimeLocation LIKE :crimeLocation";
 		$statement = $pdo->prepare($query);
 
 		$crimeLocation = "%$crimeLocation%";
@@ -288,7 +288,7 @@ class Crime implements \JsonSerializable {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
-				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], $row["crimeGeometry"], $row["crimeDate"]);
+				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], new Point($row["crimeGeometryX"],$row["crimeGeometryY"]), $row["crimeDate"]);
 				$crimes[$crimes->key()] = $crime;
 				$crimes->next();
 			} catch(\Exception $exception) {
@@ -315,7 +315,7 @@ class Crime implements \JsonSerializable {
 			throw(new \PDOException("crime description is invalid"));
 		}
 
-		$query = "SELECT crimeId, crimeLocation, crimeDescription, crimeGeometry, crimeDate FROM crime WHERE crimeDescription LIKE :crimeDescription";
+		$query = "SELECT crimeId, crimeLocation, crimeDescription, ST_X(crimeGeometry) AS crimeGeometryX, ST_Y(crimeGeometry) AS crimeGeometryY, crimeDate FROM crime WHERE crimeDescription LIKE :crimeDescription";
 		$statement = $pdo->prepare($query);
 
 		$crimeDescription = "%$crimeDescription%";
@@ -326,7 +326,7 @@ class Crime implements \JsonSerializable {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
-				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], $row["crimeGeometry"], $row["crimeDate"]);
+				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], new Point($row["crimeGeometryX"],$row["crimeGeometryY"]), $row["crimeDate"]);
 				$crimes[$crimes->key()] = $crime;
 				$crimes->next();
 			} catch(\Exception $exception) {
@@ -341,8 +341,8 @@ class Crime implements \JsonSerializable {
 	 * gets crime by date
 	 *
 	 * @param \PDO $pdo PDO connection object
-	 * @param  \DateTime|string $crimeSunriseDate, $crimeSunsetDate crime date to search for
-	 * FIXME:make another param line for sunset
+	 * @param  \DateTime|string $crimeSunriseDate crime date to search for
+	 * @param  \DateTime|string $crimeSunsetDate crime date to search for
 	 * @return \SplFixedArray SplFixedArray of crimes found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
@@ -360,7 +360,7 @@ class Crime implements \JsonSerializable {
 			throw(new \RangeException($range->getMessage(), 0, $range));
 		}
 
-		$query = "SELECT crimeId, crimeLocation, crimeDescription, crimeGeometry, crimeDate FROM crime WHERE crimeDate >= :crimeSunriseDate AND crimeDate <= :crimeSunsetDate";
+		$query = "SELECT crimeId, crimeLocation, crimeDescription, ST_X(crimeGeometry) AS crimeGeometryX, ST_Y(crimeGeometry) AS crimeGeometryY, crimeDate FROM crime WHERE crimeDate >= :crimeSunriseDate AND crimeDate <= :crimeSunsetDate";
 		$statement = $pdo->prepare($query);
 
 		$parameters = ["crimeSunriseDate" => $crimeSunriseDate, "crimeSunsetDate" => $crimeSunsetDate];
@@ -370,7 +370,7 @@ class Crime implements \JsonSerializable {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
-				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], $row["crimeGeometry"], $row["crimeDate"]);
+				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], new Point($row["crimeGeometryX"],$row["crimeGeometryY"]), $row["crimeDate"]);
 				$crimes[$crimes->key()] = $crime;
 				$crimes->next();
 			} catch(\Exception $exception) {
@@ -390,7 +390,7 @@ class Crime implements \JsonSerializable {
 	 * @throws \TypeError when variables are not the correct data type
 	 */
 	public static function getAllCrimes(\PDO $pdo) {
-		$query = "SELECT crimeId, crimeLocation, crimeDescription, crimeGeometry, crimeDate FROM crime";
+		$query = "SELECT crimeId, crimeLocation, crimeDescription, ST_X(crimeGeometry) AS crimeGeometryX, ST_Y(crimeGeometry) AS crimeGeometryY, crimeDate FROM crime";
 		$statement = $pdo->prepare($query);
 		$statement->execute();
 
@@ -398,7 +398,7 @@ class Crime implements \JsonSerializable {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
-				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], $row["crimeGeometry"], $row["crimeDate"]);
+				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], new Point($row["crimeGeometryX"],$row["crimeGeometryY"]), $row["crimeDate"]);
 				$crimes[$crimes->key()] = $crime;
 				$crimes->next();
 			} catch(\Exception $exception) {
@@ -411,6 +411,7 @@ class Crime implements \JsonSerializable {
 
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
+		$fields["crimeDate"] = $this->crimeDate->getTimestamp() * 1000;
 		return ($fields);
 	}
 }
