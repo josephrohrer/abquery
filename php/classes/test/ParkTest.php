@@ -1,13 +1,13 @@
 <?php
 namespace Edu\Cnm\Abquery\Test;
 
-use Edu\Cnm\Abquery\Test\{Park};
+use Edu\Cnm\Abquery\{Park};
 
 // grab the project test parameters
 require_once("AbqueryTest.php");
 
 // grab the class under scrutiny
-require_once(dirname(__DIR__) . "autoload.php");
+require_once(dirname(__DIR__) . "/autoload.php");
 
 /**
  * Full PHPUnit test for the Park class
