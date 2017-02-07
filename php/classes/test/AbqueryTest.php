@@ -1,8 +1,9 @@
 <?php
-namespace Edu\Cnm\Abquery\AbqueryTest;
+namespace Edu\Cnm\Abquery\Test;
 
 
 // grab the encrypted properties file !!!!!!!!!!!
+require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
 
 
 /**
@@ -45,10 +46,10 @@ abstract class AbqueryTest extends \PHPUnit_Extensions_Database_TestCase {
 		$dataset = new \PHPUnit_Extensions_Database_DataSet_QueryDataSet($this->getConnection());
 
 		// add all the tables for the project here LISTED IN THE SAME ORDER THEY WERE CREATED!!!!
-		$dataset->addTable("Crime");
-		$dataset->addTable("Park");
-		$dataset->addTable("Amenity");
-		$dataset->addTable("Feature");
+		$dataset->addTable("crime");
+		$dataset->addTable("park");
+		$dataset->addTable("amenity");
+		$dataset->addTable("feature");
 		return ($dataset);
 	}
 	/**
