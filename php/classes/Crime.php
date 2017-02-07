@@ -232,6 +232,116 @@ class Crime implements \JsonSerializable {
 	}
 
 
+	/**
+	 * gets the crime by crime id
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $crimeId crime id to search by
+	 * @return Crime|null Crime found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public static function getCrimeByCrimeId(\PDO $pdo, int $crimeId) {
+		if($crimeId <= 0) {
+			throw(new \PDOException("crime id is not positive"));
+		}
+
+		$query = "SELECT crimeId, crimeLocation, crimeDescription, crimeGeometry, crimeDate FROM crime WHERE crimeId = :crimeId";
+		$statement = $pdo->prepare($query);
+
+		$parameters = ["crimeId" => $crimeId];
+		$statement->execute($parameters);
+
+		try {
+			$crime = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], $row["crimeGeometry"], $row["crimeDate"]);
+			}
+		} catch(\Exception $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($crime);
+	}
+
+
+	/**
+	 * gets the Crime by location
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $crimeLocation crime content to search for
+	 * @return \SplFixedArray SplFixedArray of crimes found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public static function getCrimeByCrimeLocation(\PDO $pdo, string $crimeLocation) {
+		$crimeLocation = trim($crimeLocation);
+		$crimeLocation = filter_var($crimeLocation, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($crimeLocation) === true) {
+			throw(new \PDOException("crime location is invalid"));
+		}
+
+		$query = "SELECT crimeId, crimeLocation, crimeDescription, crimeGeometry, crimeDate FROM crime WHERE crimeLocation LIKE :crimeLocation";
+		$statement = $pdo->prepare($query);
+
+		$crimeLocation = "%$crimeLocation%";
+		$parameters = ["crimeLocation" => $crimeLocation];
+		$statement->execute($parameters);
+
+		$crimes = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], $row["crimeGeometry"], $row["crimeDate"]);
+				$crimes[$crimes->key()] = $crime;
+				$crimes->next();
+			} catch(\Exception $exception) {
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($crimes);
+	}
+
+
+	/**
+	 * gets crime by description
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $crimeDescription crime content to search for
+	 * @return \SplFixedArray SplFixedArray of crimes found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public static function getCrimeByCrimeDescription(\PDO $pdo, string $crimeDescription) {
+		$crimeDescription = trim($crimeDescription);
+		$crimeDescription = filter_var($crimeDescription, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($crimeDescription) === true) {
+			throw(new \PDOException("crime description is invalid"));
+		}
+
+		$query = "SELECT crimeId, crimeLocation, crimeDescription, crimeGeometry, crimeDate FROM crime WHERE crimeDescription LIKE :crimeDescription";
+		$statement = $pdo->prepare($query);
+
+		$crimeDescription = "%$crimeDescription%";
+		$parameters = ["crimeDescription" => $crimeDescription];
+		$statement->execute($parameters);
+
+		$crimes = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$crime = new Crime($row["crimeId"], $row["crimeLocation"], $row["crimeDescription"], $row["crimeGeometry"], $row["crimeDate"]);
+				$crimes[$crimes->key()] = $crime;
+				$crimes->next();
+			} catch(\Exception $exception) {
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($crimes);
+	}
+
+
 
 
 }
