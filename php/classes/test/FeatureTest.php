@@ -1,6 +1,7 @@
 <?php
 namespace Edu\Cnm\Abquery\Test;
 
+use Edu\Cnm\Abquery\Feature;
 use Edu\Cnm\Abquery\Test\{Amenity};
 
 // grab the project test parameters
@@ -10,39 +11,39 @@ require_once("AbqueryTest.php");
 require_once(dirname(__DIR__) . "/autoload.php");
 
 /**
- * Full PHPUnit test for the Amenity class
+ * Full PHPUnit test for the Feature class
  *
- * This is a complete PHPUnit test of the Amenity class. It is complete because *ALL* mySQL/PDO enabled methods are tested for both invalid and valid inputs.
+ * This is a complete PHPUnit test of the Feature class. It is complete because *ALL* mySQL/PDO enabled methods are tested for both invalid and valid inputs.
  * @see Tweet example
- * @author Jennifer Quay Minnich <jminnich@cnm.edu>
+ * @author Benjamin Smith <bsmtih@cnm.edu>
  **/
 
-class AmenityTest extends AbqueryTest {
+class FeatureTest extends AbqueryTest {
 	/**
-	 * name of the Amenity
-	 * @var string $VALID_AMENITYNAME
+	 * name of the Feature
+	 * @var string $VALID_FEATURENAME
 	 **/
-	protected $VALID_AMENITYNAME = "You have unlocked amenities. Amenities are a desirable or useful feature or facility of a building or place";
+	protected $VALID_FEATURENAME = "You have unlocked features. Features are a park of a park that is variable and draws attraction";
 	/**
-	 * city name of the Amenity
-	 * @var string $VALID_AMENITYCITYNAME
+	 * amenity id of the Feature
+	 * @var string $VALID_FEATUREAMENITYID
 	 **/
-	protected $VALID_AMENITYCITYNAME = "You have unlocked amenities. Amenities are a desirable or useful feature or facility of a building or place";
+	protected $VALID_FEATUREAMENITYID = "You have unlocked features. Features are a park of a park that is variable and draws attraction";
 
 	/**
-	 * test inserting a valid Amenity and verify that the actual mySQL data matches
+	 * test inserting a valid Feature and verify that the actual mySQL data matches
 	 **/
-	public function testInsertValidAmenity() {
+	public function testInsertValidFeature() {
 		// count the number of rows and save it for later
-		$numRows = $this->getConnection()->getRowCount("amenity");
+		$numRows = $this->getConnection()->getRowCount("feature");
 
-		// create a new Amenity and insert it into mySQL
-		$amenity = new Amenity(null, $this->VALID_AMENITYNAME, $this->VALID_AMENITYCITYNAME);
-		$amenity->insert($this->getPDO());
+		// create a new Feature and insert it into mySQL
+		$feature = new Feature(null, $this->VALID_FEATURENAME, $this->VALID_FEATUREAMENITYID);
+		$feature->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
-		$pdoAmenity = Amenity::getAmenityByAmenityId($this->getPDO(), $amenity->getAmenityId());
-		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("amenity"));
+		$pdoFeature = Feature::getFeatureByFeatureAmenityId($this->getPDO(), $feature->getFeatureAmenityIdId());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("feature"));
 	}
 	/**
 	 * test inserting an Amenity that already exists
