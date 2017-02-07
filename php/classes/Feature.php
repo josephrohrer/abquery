@@ -159,7 +159,7 @@ class Feature implements \JsonSerializable {
 		}
 
 		// create query template
-		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM feature WHERE featureAmenityId = :featureAmenityId";
+		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM Feature WHERE featureAmenityId = :featureAmenityId";
 		$statement = $pdo->prepare($query);
 
 		// bind the feature amenity id to the place holder in the template
@@ -192,13 +192,13 @@ class Feature implements \JsonSerializable {
 	 * @throws \TypeError when variables are not the correct data type
 	 **/
 	public static function getFeatureByFeatureParkId(\PDO $pdo, int $featureParkId) {
-		// sanitize the amenity id before searching
+		// sanitize the park id before searching
 		if($featureParkId <= 0) {
 			throw(new \RangeException("feature park id must be positive"));
 		}
 
 		// create query template
-		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM feature WHERE featureParkId = :featureParkId";
+		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM Feature WHERE featureParkId = :featureParkId";
 		$statement = $pdo->prepare($query);
 
 		// bind the feature park id to the place holder in the template
