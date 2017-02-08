@@ -7,7 +7,7 @@ use Edu\Cnm\Abquery\Feature;
 require_once("AbqueryTest.php");
 
 // grab the class under scrutiny
-require_once(dirname(__DIR__) . "/autoload.php");
+require_once(dirname(__DIR__) . "../classes/autoload.php");
 
 /**
  * Full PHPUnit test for the Feature class
@@ -20,17 +20,17 @@ require_once(dirname(__DIR__) . "/autoload.php");
 class FeatureTest extends AbqueryTest {
 	/**
 	 * name of the Feature
-	 * @var string $VALID_FEATUREVALUE
+	 * @var int $VALID_FEATUREVALUE
 	 **/
 	protected $VALID_FEATUREVALUE = "You have unlocked features. Features are a park of a park that is variable and draws attraction";
 	/**
 	 * amenity id of the Feature
-	 * @var string $VALID_FEATUREAMENITYID
+	 * @var int $VALID_FEATUREAMENITYID
 	 **/
 	protected $VALID_FEATUREAMENITYID = "You have unlocked features. Features are a park of a park that is variable and draws attraction";
 	/**
 	 * park id of the feature
-	 * @var string $VALID_FEATUREPARKID
+	 * @var int $VALID_FEATUREPARKID
 	 **/
 	protected $VALID_FEATUREPARKID = "You have unlocked features. Features are a park of a park that is variable and draws attraction";
 
