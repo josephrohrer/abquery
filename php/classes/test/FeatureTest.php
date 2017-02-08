@@ -7,7 +7,7 @@ use Edu\Cnm\Abquery\Feature;
 require_once("AbqueryTest.php");
 
 // grab the class under scrutiny
-require_once(dirname(__DIR__) . "../classes/autoload.php");
+require_once(dirname(__DIR__) . "/autoload.php");
 
 /**
  * Full PHPUnit test for the Feature class
