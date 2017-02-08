@@ -56,8 +56,8 @@ class FeatureTest extends AbqueryTest {
 	 **/
 	public function testInsertInvalidFeatureAmenityId() {
 		// create an Feature with a non null feature amenity id and watch it fail
-		$amenity = new Feature(AbqueryTest::INVALID_KEY, $this->VALID_FEATUREVALUE, $this->VALID_FEATUREAMENITYID);
-		$amenity->insert($this->getPDO());
+		$feature = new Feature(AbqueryTest::INVALID_KEY, $this->VALID_FEATUREVALUE, $this->VALID_FEATUREAMENITYID, $this->VALID_FEATUREPARKID);
+		$feature->insert($this->getPDO());
 	}
 	/**
 	 * test grabbing a Feature by feature park id
