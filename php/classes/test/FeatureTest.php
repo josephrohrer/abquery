@@ -4,6 +4,7 @@ namespace Edu\Cnm\Abquery\Test;
 use Edu\Cnm\Abquery\Amenity;
 use Edu\Cnm\Abquery\Feature;
 use Edu\Cnm\Abquery\Park;
+use Edu\Cnm\Abquery\Point;
 
 // grab the project test parameters
 require_once("AbqueryTest.php");
@@ -56,8 +57,11 @@ class FeatureTest extends AbqueryTest {
 		$this->amenity = new Amenity(null, "potato-house", "dumbshit-house");
 		$this->amenity->insert($this->getPDO());
 
+		//create a stupid pos point to use in the park setUp
+		$basePoint = new Point(1.1,1.1);
+
 		//create and insert a Park to own the test Feature
-		$this->park = new Park(null, "park-for-lil-shits", 50.110148212230001, "1" );
+		$this->park = new Park(null, "park-for-lil-shits", $basePoint, "1" );
 		$this->park->insert($this->getPDO());
 	}
 	/**
