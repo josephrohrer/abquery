@@ -105,7 +105,7 @@ class FeatureTest extends AbqueryTest {
 		$results = Feature::getAllFeatures($this->getPDO());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("features"));
 		$this->assertCount(1, $results);
-		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\DataDesign\\Amenity", $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\DataDesign\\Feature", $results);
 
 		// grab the result from the array and validate it
 		$pdoFeature = $results[0];
