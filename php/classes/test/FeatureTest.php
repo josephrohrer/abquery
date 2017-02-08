@@ -72,7 +72,7 @@ class FeatureTest extends AbqueryTest {
 		$numRows = $this->getConnection()->getRowCount("feature");
 
 		// create a new Feature and insert it into mySQL
-		$feature = new Feature(null, $this->VALID_FEATUREVALUE, $this->VALID_FEATUREAMENITYID, $this->VALID_FEATUREPARKID);
+		$feature = new Feature(null, $this->VALID_FEATUREVALUE, $this->amenity->getAmenityId(), $this->park->getParkId());
 		$feature->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
