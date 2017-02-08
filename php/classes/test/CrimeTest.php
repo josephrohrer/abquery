@@ -2,7 +2,7 @@
 namespace Edu\Cnm\Abquery\Test;
 
 use Edu\Cnm\Abquery\{
-	Crime
+	Crime, Point
 };
 
 require_once("AbqueryTest.php");
@@ -18,11 +18,17 @@ require_once(dirname(__DIR__) . "/autoload.php");
  * @author Brett Gilbert <bgilbert9.cnm.edu>
  */
 class CrimeTest extends AbqueryTest {
+	protected $VALID_CRIMEID = 42;
 	/**
 	 * content of crime location
 	 * @var string $VALID_CRIMELOCATION
 	 */
 	protected $VALID_CRIMELOCATION = "GOOD NEWS EVERYONE!!! PHPUnit crime location test passing";
+	/**
+	 * content of the crime geometry
+	 * @var Point $VALID_CRIMEGEOMETRY
+	 */
+	protected $VALID_CRIMEGEOMETRY = "COOD NBWS EVERYONE!!! PHPUnit crime location test passing";
 	/**
 	 * content of the crime description
 	 * @var string $VALID_CRIMEDESCRIPTION
@@ -33,6 +39,17 @@ class CrimeTest extends AbqueryTest {
 	 * @var \DateTime $VALID_CRIMEDATE
 	 */
 	protected $VALID_CRIMEDATE = "GOOD NEWS EVERYONE!!! PHPUnit crime date test passing";
+
+
+	/**
+	 * create dependant objects before running each test
+	 */
+	public final function setUp() {
+		parent::setUp();
+
+		$this->geometry = new Geometry(null, -106.69703244562174, 35.10964229145246);
+		$this->geometry->insert($this->getPDO());
+	}
 
 
 	/**
@@ -145,7 +162,7 @@ class CrimeTest extends AbqueryTest {
 	 * test grabbing a crime by a date that does not exist
 	 */
 	public function testGetInvalidCrimeByCrimeDate() {
-		$crime = Crime::getCrimeByCrimeDate($this->getPDO(), "wabba lubba dub dub, there's nothing here for crime description, Morty!");
+		$crime = Crime::getCrimeByCrimeDate($this->getPDO(), "wabba lubba dub dub, there's nothing here for crime date, Morty!");
 		$this->assertCount(0, $crime);
 	}
 
