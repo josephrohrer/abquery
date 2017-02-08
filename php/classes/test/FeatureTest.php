@@ -1,7 +1,9 @@
 <?php
 namespace Edu\Cnm\Abquery\Test;
 
+use Edu\Cnm\Abquery\Amenity;
 use Edu\Cnm\Abquery\Feature;
+use Edu\Cnm\Abquery\Park;
 
 // grab the project test parameters
 require_once("AbqueryTest.php");
@@ -34,6 +36,30 @@ class FeatureTest extends AbqueryTest {
 	 **/
 	protected $VALID_FEATUREPARKID = "You have unlocked features. Features are a park of a park that is variable and draws attraction";
 
+	/**
+	 * Amenity that created the feature; this is for foreign key relations
+	 * @var Amenity amenity
+	 */
+	protected $amenity = null;
+
+	/**
+	 * Park that created the feature; this is for foreign key relations
+	 * @var Park park
+	 */
+	protected $park = null;
+
+	public final function setUp() {
+		//run the default setUp() method first
+		parent::setUp();
+
+		//create and insert an Amenity to own the test Feature
+		$this->amenity = new Amenity(null, "potato-house", "dumbshit-house");
+		$this->amenity->insert($this->getPDO());
+
+		//create and insert a Park to own the test Feature
+		$this->park = new Park(null, "park-for-lil-shits", 50.110148212230001, "1" );
+		$this->park->insert($this->getPDO());
+	}
 	/**
 	 * test inserting a valid Feature and verify that the actual mySQL data matches
 	 **/
