@@ -22,12 +22,12 @@ class AmenityTest extends AbqueryTest {
 	 * name of the Amenity
 	 * @var string $VALID_AMENITYNAME
 	 **/
-	protected $VALID_AMENITYNAME = "You have unlocked amenities. Amenities are a desirable or useful feature of a building or place";
+	protected $VALID_AMENITYNAME = "anemone";
 	/**
 	 * city name of the Amenity
 	 * @var string $VALID_AMENITYCITYNAME
 	 **/
-	protected $VALID_AMENITYCITYNAME = "You have unlocked amenities. Amenities are a desirable or useful feature of a building or place";
+	protected $VALID_AMENITYCITYNAME = "anemone";
 
 	/**
 	 * test inserting a valid Amenity and verify that the actual mySQL data matches
