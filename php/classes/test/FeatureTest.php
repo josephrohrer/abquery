@@ -58,7 +58,7 @@ class FeatureTest extends AbqueryTest {
 		$this->amenity->insert($this->getPDO());
 
 		//create a stupid pos point to use in the park setUp
-		$basePoint = new Point(1.1,1.1);
+		$basePoint = new Point(91.12312312312312,91.12312312312312);
 
 		//create and insert a Park to own the test Feature
 		$this->park = new Park(1234, "park-for-lil-shits", $basePoint, (1) );

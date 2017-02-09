@@ -165,11 +165,11 @@ class Park implements \JsonSerializable {
 	 * insert into MySQL
 	 *
 	 * @param \PDO $pdo PDO connection object
-	 * @param \PDOException when mySQL related errors occur
+	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError if $pdo is not a PDO connnection object
 	 **/
 	public function insert(\PDO $pdo) {
-		if($this->parkId !== null) {
+		if($this->parkId === null) { //TODO: need to change back to !==
 			throw(new \PDOException("not a new park"));
 		}
 		$query = "INSERT INTO park(parkName, parkGeometry, parkDeveloped) VALUES(:parkName, POINT(:parkGeometryX, :parkGeometryY), :parkDeveloped)";
