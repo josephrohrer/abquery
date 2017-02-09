@@ -22,4 +22,34 @@ class PointTest extends AbqueryTest {
 	 * FIXME: euclidean center
 	 */
 
+	public function testValidPoint(){
+			$point = new Point($this->VALID_LAT, $this->VALID_LONG);
+			//use mutators to make a valid case
+			$point->setLat($this->VALID_LAT);
+			$point->setLong($this->VALID_LONG);
+			//assert values are equal
+			$this->assertEquals($point->getLat(), $this->VALID_LAT);
+			$this->assertEquals($point->getLong(), $this->VALID_LONG);
+		}
+
+	/**
+ 	*test using valid latitude
+ 	*/
+
+	public function testInvalidPointLat(){
+		$point = new Point($this->INVALID_LAT, $this->VALID_LONG);
+		//use mutators to make an invalid case
+		$point->setLat($this->INVALID_LAT);
+		$point->setLong($this->VALID_LONG);
+	}
+	/**
+	 *test using valid longitude
+	 */
+
+	public function testInvalidPointLong(){
+		$point = new Point($this->VALID_LAT, $this->INVALID_LONG);
+		//use mutators to make an invalid case
+		$point->setLat($this->VALID_LAT);
+		$point->setLong($this->INVALID_LONG);
+	}
 }
