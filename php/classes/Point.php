@@ -20,7 +20,6 @@ class Point implements \JsonSerializable {
 	 */
 	private $longitude;
 
-
 	/**
 	 * constructor for the point entity
 	 *
@@ -105,7 +104,6 @@ class Point implements \JsonSerializable {
 		$centerPoint = new Point ($centerLatitude, $centerLongitude);
 		return($centerPoint);
 	}
-
 
 	public function jsonSerialize() {
 		$fields = [];

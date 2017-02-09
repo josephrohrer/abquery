@@ -30,8 +30,11 @@ class PointTest extends PHPUnit_Framework_TestCase {
 		$this->VALID_EUCLIDEAN_POINTS[0] = new Point(50.110148212230001, 50.110148212230001);
 		$this->VALID_EUCLIDEAN_POINTS[1] = new Point(25.110148212230001, 25.110148212230001);
 		$this->VALID_EUCLIDEAN_POINTS[2] = new Point(75.110148212230001, 25.110148212230001);
-		$this->VALID_CENTER_POINT = new Point(50.110148212230001, 33.443481545563334);
+
 		$this->INVALID_EUCLIDEAN_POINTS = new \SplFixedArray(0);
+
+		// this is the valid mean to check against
+		$this->VALID_CENTER_POINT = new Point(50.110148212230001, 33.443481545563334);
 	}
 
 	/**
@@ -49,7 +52,9 @@ class PointTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 *test using valid latitude
+	 *test using invalid latitude
+	 *
+	 * @expectedException \RangeException
 	 */
 
 	public function testInvalidPointLat() {
@@ -60,9 +65,9 @@ class PointTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 *test using valid longitude
+	 * test using invalid longitude
+	 * @expectedException \RangeException
 	 */
-
 	public function testInvalidPointLong() {
 		$point = new Point($this->VALID_LAT, $this->INVALID_LONG);
 		//use mutators to make an invalid case
@@ -71,17 +76,39 @@ class PointTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 *test for the euclidean center
+	 * test using valid euclidean center
 	 */
-
 	public function testValidEuclideanMean() {
+
+		// new instance of the point class
+		$point = new Point($this->VALID_LAT, $this->VALID_LONG);
+
+		// calc the center point from the Point class
+		$testCenterPoint = $point->euclideanMean($this->VALID_EUCLIDEAN_POINTS);
+		var_dump(null);
+
+		// compare the calculated point to the "mathed" point
+		$this->assertEquals($testCenterPoint, $this->VALID_CENTER_POINT);
 
 		// create new variable called $centerPoint
 		// set $centerPoint to be a method call to euclideanMean(), plugging in the \SplFixedArray $VALID_EUCLIDEAN_POINTS
 		// use manual math answers into assertEquas
 		// then you assertEquals that YOUR $centerPoint result matches the $centerPoint result from the euclideanMean() function
+
+
+		$point = new Point($this->VALID_EUCLIDEAN_POINTS);
+		//use mutators to make a valid case
+
 	}
 
+	/**
+	 * test using invalid euclidean center
+	 * @expectedException \RangeException
+	 */
 	public function testInvalidEuclideanMean() {
+		$point = new Point($this->INVALID_EUCLIDEAN_POINTS);
+		//use mutators to make an invalid case
+		$point->setCenterPoint($this->INVALID_CENTER_POINT);
 	}
 }
+
