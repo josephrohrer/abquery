@@ -147,6 +147,8 @@ class Park implements \JsonSerializable {
 	 **/
 	public function getParkDeveloped() {
 		return ($this->parkDeveloped);
+
+		//FIXME: add boolean?
 	}
 
 	/**
