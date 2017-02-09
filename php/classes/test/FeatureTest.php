@@ -51,17 +51,17 @@ class FeatureTest extends AbqueryTest {
 
 	public final function setUp() {
 		//run the default setUp() method first
-		parent::setUp();
+		parent::getSetUpOperation();
 
 		//create and insert an Amenity to own the test Feature
 		$this->amenity = new Amenity(null, "potato-house", "dumbshit-house");
 		$this->amenity->insert($this->getPDO());
 
 		//create a stupid pos point to use in the park setUp
-		$basePoint = new Point(91.12312312312312,91.12312312312312);
+		$basePoint = new Point(91.12312312312312, 91.12312312312312);
 
 		//create and insert a Park to own the test Feature
-		$this->park = new Park(1234, "park-for-lil-shits", $basePoint, (1) );
+		$this->park = new Park(1234, "park-for-lil-shits", $basePoint, (1));
 		$this->park->insert($this->getPDO());
 	}
 	/**
