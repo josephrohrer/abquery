@@ -1,9 +1,7 @@
 <?php
 namespace Edu\Cnm\Abquery\Test;
 
-use Edu\Cnm\Abquery\{
-	Crime, Point
-};
+use Edu\Cnm\Abquery\{Crime, Point};
 
 require_once("AbqueryTest.php");
 
@@ -75,12 +73,14 @@ class CrimeTest extends AbqueryTest {
 
 	/**
 	 * test inserting a valid Crime and verify that the actual mySQL data matches
-	 * FIXME: FROM HERE DOWN, FIX ORDER AND REMOVE SUNRISE AND SUNSET
 	 **/
 	public function testInsertValidCrime() {
 		$numRows = $this->getConnection()->getRowCount("crime");
 
-		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMESUNRISEDATE, $this->VALID_CRIMEDATE, $this->VALID_CRIMESUNSETDATE);
+		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEDATE);
+
+		var_dump($crime);
+
 		$crime->insert($this->getPDO());
 
 		$pdoCrime = Crime::getCrimeByCrimeId($this->getPDO(), $crime->getCrimeId());
@@ -93,8 +93,8 @@ class CrimeTest extends AbqueryTest {
 	 *
 	 * @expectedException \PDOException
 	 */
-	public function testInsertInvalicCrime() {
-		$crime = new Crime(AbqueryTest::INVALID_KEY, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMESUNRISEDATE, $this->VALID_CRIMEDATE, $this->VALID_CRIMESUNSETDATE);
+	public function testInsertInvalidCrime() {
+		$crime = new Crime(AbqueryTest::INVALID_KEY, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMEDESCRIPTION,  $this->VALID_CRIMEDATE);
 		$crime->insert($this->getPDO());
 	}
 
@@ -105,7 +105,7 @@ class CrimeTest extends AbqueryTest {
 	public function testGetValidCrimeByCrimeLocation() {
 		$numRows = $this->getConnection()->getRowCount("crime");
 
-		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMESUNRISEDATE, $this->VALID_CRIMEDATE, $this->VALID_CRIMESUNSETDATE);
+		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMEDATE);
 		$crime->insert($this->getPDO());
 
 		$results = Crime::getCrimeByCrimeLocation($this->getPDO(), $crime->getCrimeLocation());
@@ -137,7 +137,7 @@ class CrimeTest extends AbqueryTest {
 	public function testGetValidCrimeByCrimeDescription() {
 		$numRows = $this->getConnection()->getRowCount("crime");
 
-		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMESUNRISEDATE, $this->VALID_CRIMEDATE, $this->VALID_CRIMESUNSETDATE);
+		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMEDATE);
 		$crime->insert($this->getPDO());
 
 		$results = Crime::getCrimeByCrimeDescription($this->getPDO(), $crime->getCrimeDescription());
@@ -169,7 +169,7 @@ class CrimeTest extends AbqueryTest {
 	public function testGetValidCrimeByCrimeDate() {
 		$numRows = $this->getConnection()->getRowCount("crime");
 
-		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMESUNRISEDATE, $this->VALID_CRIMEDATE, $this->VALID_CRIMESUNSETDATE);
+		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMEDATE);
 		$crime->insert($this->getPDO());
 
 		$results = Crime::getCrimeByCrimeDate($this->getPDO(), $crime->getCrimeDate());
@@ -199,10 +199,9 @@ class CrimeTest extends AbqueryTest {
 	 * test grabbing all crimes
 	 **/
 	public function testGetAllValidCrimes() {
-		// count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("crime");
 
-		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMESUNRISEDATE, $this->VALID_CRIMEDATE, $this->VALID_CRIMESUNSETDATE);
+		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMEDATE);
 		$crime->insert($this->getPDO());
 
 		$results = Crime::getAllCrimes($this->getPDO());

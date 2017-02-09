@@ -46,13 +46,13 @@ class Crime implements \JsonSerializable {
 	 * @param string $newCrimeLocation block-level location that the crime was committed
 	 * @param Point $newCrimeGeometry coordinates near where the crime was committed
 	 * @param string $newCrimeDescription the type of crime that was committed
-	 * @param \DateTime $newCrimeDate date on which the crime was reported
+	 * @param \DateTime|string $newCrimeDate date on which the crime was reported
 	 * @throws \InvalidArgumentException if data types are not valid
 	 * @throws \RangeException if data values are out of bounds
 	 * @throws \TypeError if data violates type hints
 	 * @throws \Exception if some other exception occurs
 	 */
-	public function __construct(int $newCrimeId, string $newCrimeLocation, string $newCrimeDescription, Point $newCrimeGeometry, $newCrimeDate) {
+	public function __construct(int $newCrimeId, string $newCrimeLocation, Point $newCrimeGeometry, string $newCrimeDescription, $newCrimeDate) {
 		try {
 			$this->setCrimeId($newCrimeId);
 			$this->setCrimeLocation($newCrimeLocation);
@@ -182,7 +182,7 @@ class Crime implements \JsonSerializable {
 	/**
 	 * accessor method for crime date
 	 *
-	 * @return \DateTime value for crime date
+	 * @return \DateTime|string value for crime date
 	 */
 	public function getCrimeDate() {
 		return ($this->crimeDate);
@@ -192,7 +192,7 @@ class Crime implements \JsonSerializable {
 	/**
 	 * mutator method for crime date
 	 *
-	 * @param \DateTime $newCrimeDate crime date as a DateTime object
+	 * @param \DateTime|string $newCrimeDate crime date as a DateTime object or string
 	 * @throws \InvalidArgumentException if $newCrimeDate is not a valid object or string
 	 * @throws \RangeException if $newCrimeDate is a date that does not exist
 	 */
@@ -216,14 +216,24 @@ class Crime implements \JsonSerializable {
 	 * @throws \TypeError if $pdo is not a PDO connection object
 	 */
 	public function insert(\PDO $pdo) {
-		if($this->crimeId !== null) {
+		if($this->crimeId === null) {
 			throw(new \PDOException("not a new crime"));
 		}
-		$query = "INSERT INTO crime(crimeLocation, crimeDescription, crimeGeometry, crimeDate) VALUES(:crimeLocation, :crimeDescription, POINT(:crimeGeometryX, :parkGeometryY), :crimeDate)";
+
+		$query = "INSERT INTO crime(crimeId, crimeLocation, crimeGeometry, crimeDescription, crimeDate) VALUES(:crimeId, :crimeLocation, POINT(:crimeGeometryX, :crimeGeometryY), :crimeDescription, :crimeDate)";
 		$statement = $pdo->prepare($query);
-		$parameters = ["crimeLocation" => $this->crimeLocation, "crimeDescription" => $this->crimeDescription, "crimeGeometryX" => $this->crimeGeometry->getLatitude(), "crimeGeometryY" => $this->crimeGeometry->getLongitude(), "crimeDate" => $this->crimeDate];
+
+		$formattedDate = $this->crimeDate->format("Y-m-d H:i:s");
+
+		$parameters = [
+			"crimeId" => $this->crimeId,
+			"crimeLocation" => $this->crimeLocation,
+			"crimeGeometryX" => $this->crimeGeometry->getLatitude(),
+			"crimeGeometryY" => $this->crimeGeometry->getLongitude(),
+			"crimeDescription" => $this->crimeDescription,
+			"crimeDate" => $formattedDate];
 		$statement->execute($parameters);
-		$this->crimeId = intval($pdo->lastInsertId());
+		//$this->crimeId = intval($pdo->lastInsertId());
 	}
 
 

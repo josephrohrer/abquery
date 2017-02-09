@@ -7,8 +7,7 @@ namespace Edu\Cnm\Abquery;
  * This trait will inject a private method to validate a mySQL style date (e.g., 2016-01-15 15:32:48). It will
  * convert a string representation to a DateTime object or throw an exception.
  *
- * @author Brett Gilbert <bgilbert9@cnm.edu>
- * @see https://bootcamp-coders.cnm.edu/class-materials/object-oriented/object-oriented-php.php
+ * @author Dylan McDonald <dmcdonald21@cnm.edu>
  **/
 trait ValidateDate {
 	private static function validateDate($newDate) {
