@@ -20,12 +20,12 @@ class Amenity implements \JsonSerializable {
 	private $amenityId;
 	/**
 	 * basic description of the amenity as provided by the ABQ city data set: Parks
-	 * @var string &cityName
+	 * @var string $cityName
 	 */
 	private $amenityCityName;
 	/**
 	 * description of amenity as provided by ABQuery authors
-	 * @var string &amenityName
+	 * @var string $amenityName
 	 */
 	private $amenityName;
 
@@ -171,7 +171,7 @@ class Amenity implements \JsonSerializable {
 	public function insert(\PDO $pdo) {
 		// enforce the amenityId is null (i.e., don't insert an amenity that already exists)
 		if($this->amenityId !== null) {
-			throw(new \PDOException("not a new amenity"));
+			throw(new \RangeException("not a new amenity"));
 		}
 
 		// create query template

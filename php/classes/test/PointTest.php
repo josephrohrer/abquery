@@ -1,6 +1,9 @@
 <?php
 namespace Edu\Cnm\Abquery\Test;
-use Edu\Cnm\Abquery\{Point};
+
+use Edu\Cnm\Abquery\{
+	Point
+};
 
 require_once("AbqueryTest.php");
 require_once(dirname(__DIR__) . "/autoload.php");
@@ -10,7 +13,6 @@ require_once(dirname(__DIR__) . "/autoload.php");
  * @see \Edu\Cnm\Abquery\Point
  * @author Abquery
  **/
-
 class PointTest extends PHPUnit_Framework_TestCase {
 	protected $VALID_LAT = -106.69669124212061;
 	protected $VALID_LONG = 35.110150828348985;
@@ -21,7 +23,6 @@ class PointTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * PHPUnit test for the Euclidean center
-	 * FIXME: euclidean center why would we use a fixed array for floats/ fixed array says it's for integers? Please help!
 	 */
 
 	public final function setUp() {
@@ -29,10 +30,22 @@ class PointTest extends PHPUnit_Framework_TestCase {
 
 		$this->VALID_EUCLIDEAN_POINTS = new \SplFixedArray(3);
 		$this->VALID_EUCLIDEAN_POINTS[0] = new Point(50.110148212230001, 50.110148212230001);
-		//FIXME: rinse & repeat
+		$this->VALID_EUCLIDEAN_POINTS[1] = new Point(25.110148212230001, 25.110148212230001);
+		$this->VALID_EUCLIDEAN_POINTS[2] = new Point(75.110148212230001, 25.110148212230001);
+
+		/**
+		 * //test inserting an invalid point
+		 **/
 		$this->INVALID_EUCLIDEAN_POINTS = new \SplFixedArray(0);
 	}
 
+	/**
+	 * PHPUnit test for the Euclidean center
+	 */
+
+	public function testValidEuclideanPoint() {
+
+	}
 
 	public function testValidPoint() {
 		$point = new Point($this->VALID_LAT, $this->VALID_LONG);
@@ -65,6 +78,4 @@ class PointTest extends PHPUnit_Framework_TestCase {
 		$point->setLat($this->VALID_LAT);
 		$point->setLong($this->INVALID_LONG);
 	}
-
-
 }
