@@ -19,34 +19,36 @@ class PointTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * PHPUnit test for the Euclidean center
-	 * FIXME: euclidean center
+	 * FIXME: euclidean center why would we use a fixed array for floats/ fixed array says it's for integers? Please help!
 	 */
 
-	public function testValidPoint(){
-			$point = new Point($this->VALID_LAT, $this->VALID_LONG);
-			//use mutators to make a valid case
-			$point->setLat($this->VALID_LAT);
-			$point->setLong($this->VALID_LONG);
-			//assert values are equal
-			$this->assertEquals($point->getLat(), $this->VALID_LAT);
-			$this->assertEquals($point->getLong(), $this->VALID_LONG);
-		}
+
+	public function testValidPoint() {
+		$point = new Point($this->VALID_LAT, $this->VALID_LONG);
+		//use mutators to make a valid case
+		$point->setLat($this->VALID_LAT);
+		$point->setLong($this->VALID_LONG);
+		//assert values are equal
+		$this->assertEquals($point->getLat(), $this->VALID_LAT);
+		$this->assertEquals($point->getLong(), $this->VALID_LONG);
+	}
 
 	/**
- 	*test using valid latitude
- 	*/
+	 *test using valid latitude
+	 */
 
-	public function testInvalidPointLat(){
+	public function testInvalidPointLat() {
 		$point = new Point($this->INVALID_LAT, $this->VALID_LONG);
 		//use mutators to make an invalid case
 		$point->setLat($this->INVALID_LAT);
 		$point->setLong($this->VALID_LONG);
 	}
+
 	/**
 	 *test using valid longitude
 	 */
 
-	public function testInvalidPointLong(){
+	public function testInvalidPointLong() {
 		$point = new Point($this->VALID_LAT, $this->INVALID_LONG);
 		//use mutators to make an invalid case
 		$point->setLat($this->VALID_LAT);
