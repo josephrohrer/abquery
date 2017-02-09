@@ -29,7 +29,7 @@ class Park implements \JsonSerializable {
 	private $parkGeometry;
 	/**
 	 * boolean that will determine if park area is developed or undeveloped
-	 * @var boolean $parkDeveloped
+	 * @var bool $parkDeveloped
 	 **/
 	private $parkDeveloped;
 
@@ -45,7 +45,7 @@ class Park implements \JsonSerializable {
 	 * @throws \TypeError if data types violate type hints
 	 * @throws \Exception if some other exception occurs
 	 **/
-	public function __construct(int $newParkId, string $newParkName, Point $newParkGeometry, tinyint $newParkDeveloped) {
+	public function __construct(int $newParkId, string $newParkName, Point $newParkGeometry, bool $newParkDeveloped) {
 		try {
 			$this->setParkId($newParkId);
 			$this->setParkName($newParkName);
@@ -132,7 +132,7 @@ class Park implements \JsonSerializable {
 	/**
 	 * mutator method for park geometry
 	 * @param point $newParkGeometry new value of park geometry
-	 * @throws error based on Point class
+	 * @throws \TypeError based on Point class
 	 *
 	 **/
 	public function setParkGeometry(Point $newParkGeometry) {
@@ -152,8 +152,8 @@ class Park implements \JsonSerializable {
 	/**
 	 * mutator method for park developed
 	 *
-	 * @param tinyint $newParkDeveloped value of park developed
-	 * @throws error if not 1 or 0
+	 * @param bool $newParkDeveloped value of park developed
+	 * @throws \RangeException if not 1 or 0
 	 *
 	 **/
 	public function setParkDeveloped($newParkDeveloped) {

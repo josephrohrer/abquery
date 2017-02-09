@@ -61,7 +61,7 @@ class FeatureTest extends AbqueryTest {
 		$basePoint = new Point(1.1,1.1);
 
 		//create and insert a Park to own the test Feature
-		$this->park = new Park(null, "park-for-lil-shits", $basePoint, "1" );
+		$this->park = new Park(1234, "park-for-lil-shits", $basePoint, (1) );
 		$this->park->insert($this->getPDO());
 	}
 	/**
@@ -72,7 +72,7 @@ class FeatureTest extends AbqueryTest {
 		$numRows = $this->getConnection()->getRowCount("feature");
 
 		// create a new Feature and insert it into mySQL
-		$feature = new Feature(null, $this->VALID_FEATUREVALUE, $this->amenity->getAmenityId(), $this->park->getParkId());
+		$feature = new Feature($this->VALID_FEATUREVALUE, $this->amenity->getAmenityId(), $this->park->getParkId());
 		$feature->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
