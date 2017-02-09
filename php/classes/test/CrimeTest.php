@@ -79,7 +79,7 @@ class CrimeTest extends AbqueryTest {
 	public function testInsertValidCrime() {
 		$numRows = $this->getConnection()->getRowCount("crime");
 
-		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDATE);
+		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMESUNRISEDATE, $this->VALID_CRIMEDATE, $this->VALID_CRIMESUNSETDATE);
 		$crime->insert($this->getPDO());
 
 		$pdoCrime = Crime::getCrimeByCrimeId($this->getPDO(), $crime->getCrimeId());
@@ -93,7 +93,7 @@ class CrimeTest extends AbqueryTest {
 	 * @expectedException \PDOException
 	 */
 	public function testInsertInvalicCrime() {
-		$crime = new Crime(AbqueryTest::INVALID_KEY, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEDATE);
+		$crime = new Crime(AbqueryTest::INVALID_KEY, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMESUNRISEDATE, $this->VALID_CRIMEDATE, $this->VALID_CRIMESUNSETDATE);
 		$crime->insert($this->getPDO());
 	}
 
@@ -104,7 +104,7 @@ class CrimeTest extends AbqueryTest {
 	public function testGetValidCrimeByCrimeLocation() {
 		$numRows = $this->getConnection()->getRowCount("crime");
 
-		$crime = new Crime(null, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEDATE);
+		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMESUNRISEDATE, $this->VALID_CRIMEDATE, $this->VALID_CRIMESUNSETDATE);
 		$crime->insert($this->getPDO());
 
 		$results = Crime::getCrimeByCrimeLocation($this->getPDO(), $crime->getCrimeLocation());
@@ -113,8 +113,10 @@ class CrimeTest extends AbqueryTest {
 		$this->assertContainsOnlyInstanceOf("Edu\\Cnm\\Abquery\\Crime", $results);
 
 		$pdoCrime = $results[0];
+		$this->assertEquals($pdoCrime->getCrimeId(), $this->VALID_CRIMEID);
 		$this->assertEquals($pdoCrime->getCrimeLocation(), $this->VALID_CRIMELOCATION);
 		$this->assertEquals($pdoCrime->getCrimeDescription(), $this->VALID_CRIMEDESCRIPTION);
+		$this->assertEquals($pdoCrime->getcrimeGeometry(), $this->VALID_CRIMEGEOMETRY);
 		$this->assertEquals($pdoCrime->getCrimeDate(), $this->VALID_CRIMEDATE);
 	}
 
@@ -134,7 +136,7 @@ class CrimeTest extends AbqueryTest {
 	public function testGetValidCrimeByCrimeDescription() {
 		$numRows = $this->getConnection()->getRowCount("crime");
 
-		$crime = new Crime(null, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEDATE);
+		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMESUNRISEDATE, $this->VALID_CRIMEDATE, $this->VALID_CRIMESUNSETDATE);
 		$crime->insert($this->getPDO());
 
 		$results = Crime::getCrimeByCrimeDescription($this->getPDO(), $crime->getCrimeDescription());
@@ -143,8 +145,10 @@ class CrimeTest extends AbqueryTest {
 		$this->assertContainsOnlyInstanceOf("Edu\\Cnm\\Abquery\\Crime", $results);
 
 		$pdoCrime = $results[0];
+		$this->assertEquals($pdoCrime->getCrimeId(), $this->VALID_CRIMEID);
 		$this->assertEquals($pdoCrime->getCrimeLocation(), $this->VALID_CRIMELOCATION);
 		$this->assertEquals($pdoCrime->getCrimeDescription(), $this->VALID_CRIMEDESCRIPTION);
+		$this->assertEquals($pdoCrime->getcrimeGeometry(), $this->VALID_CRIMEGEOMETRY);
 		$this->assertEquals($pdoCrime->getCrimeDate(), $this->VALID_CRIMEDATE);
 	}
 
@@ -164,7 +168,7 @@ class CrimeTest extends AbqueryTest {
 	public function testGetValidCrimeByCrimeDate() {
 		$numRows = $this->getConnection()->getRowCount("crime");
 
-		$crime = new Crime(null, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEDATE);
+		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMESUNRISEDATE, $this->VALID_CRIMEDATE, $this->VALID_CRIMESUNSETDATE);
 		$crime->insert($this->getPDO());
 
 		$results = Crime::getCrimeByCrimeDate($this->getPDO(), $crime->getCrimeDate());
@@ -173,8 +177,10 @@ class CrimeTest extends AbqueryTest {
 		$this->assertContainsOnlyInstanceOf("Edu\\Cnm\\Abquery\\Crime", $results);
 
 		$pdoCrime = $results[0];
+		$this->assertEquals($pdoCrime->getCrimeId(), $this->VALID_CRIMEID);
 		$this->assertEquals($pdoCrime->getCrimeLocation(), $this->VALID_CRIMELOCATION);
 		$this->assertEquals($pdoCrime->getCrimeDescription(), $this->VALID_CRIMEDESCRIPTION);
+		$this->assertEquals($pdoCrime->getcrimeGeometry(), $this->VALID_CRIMEGEOMETRY);
 		$this->assertEquals($pdoCrime->getCrimeDate(), $this->VALID_CRIMEDATE);
 	}
 
@@ -195,7 +201,7 @@ class CrimeTest extends AbqueryTest {
 		// count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("crime");
 
-		$crime = new Crime(null, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEDATE);
+		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMESUNRISEDATE, $this->VALID_CRIMEDATE, $this->VALID_CRIMESUNSETDATE);
 		$crime->insert($this->getPDO());
 
 		$results = Crime::getAllCrimes($this->getPDO());
@@ -204,8 +210,10 @@ class CrimeTest extends AbqueryTest {
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\Crime", $results);
 
 		$pdoCrime = $results[0];
+		$this->assertEquals($pdoCrime->getCrimeId(), $this->VALID_CRIMEID);
 		$this->assertEquals($pdoCrime->getCrimeLocation(), $this->VALID_CRIMELOCATION);
 		$this->assertEquals($pdoCrime->getCrimeDescription(), $this->VALID_CRIMEDESCRIPTION);
+		$this->assertEquals($pdoCrime->getcrimeGeometry(), $this->VALID_CRIMEGEOMETRY);
 		$this->assertEquals($pdoCrime->getCrimeDate(), $this->VALID_CRIMEDATE);
 	}
 }
