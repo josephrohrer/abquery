@@ -23,15 +23,15 @@ class Crime implements \JsonSerializable {
 	 */
 	private $crimeLocation;
 	/**
-	 * type of crime committed i.e. robbery, auto theft, etc. this ia a ghost entity
-	 * @var string $crimeDescription
-	 */
-	private $crimeDescription;
-	/**
 	 * spatial coordinates that can be used to place the crime on a map
 	 * @var Point $crimeGeometry
 	 */
 	private $crimeGeometry;
+	/**
+	 * type of crime committed i.e. robbery, auto theft, etc. this ia a ghost entity
+	 * @var string $crimeDescription
+	 */
+	private $crimeDescription;
 	/**
 	 * the date on which the crime was reported
 	 * @var \DateTime $crimeDate
@@ -44,8 +44,8 @@ class Crime implements \JsonSerializable {
 	 *
 	 * @param int $newCrimeId id of a specific crime
 	 * @param string $newCrimeLocation block-level location that the crime was committed
-	 * @param string $newCrimeDescription the type of crime that was committed
 	 * @param Point $newCrimeGeometry coordinates near where the crime was committed
+	 * @param string $newCrimeDescription the type of crime that was committed
 	 * @param \DateTime $newCrimeDate date on which the crime was reported
 	 * @throws \InvalidArgumentException if data types are not valid
 	 * @throws \RangeException if data values are out of bounds
@@ -56,8 +56,8 @@ class Crime implements \JsonSerializable {
 		try {
 			$this->setCrimeId($newCrimeId);
 			$this->setCrimeLocation($newCrimeLocation);
-			$this->setCrimeDescription($newCrimeDescription);
 			$this->setCrimeGeometry($newCrimeGeometry);
+			$this->setCrimeDescription($newCrimeDescription);
 			$this->setCrimeDate($newCrimeDate);
 		} catch(\InvalidArgumentException $invalidArgument) {
 			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
@@ -128,6 +128,27 @@ class Crime implements \JsonSerializable {
 
 
 	/**
+	 * accessor method for crime geometry
+	 *
+	 * @return Point value of crime geometry
+	 */
+	public function getCrimeGeometry() {
+		return ($this->crimeGeometry);
+	}
+
+
+	/**
+	 * mutator method for crime geometry
+	 *
+	 * @param Point $newCrimeGeometry new value of crime geometry
+	 * @throws \TypeError based on Point class
+	 */
+	public function setCrimeGeometry(Point $newCrimeGeometry) {
+		$this->crimeGeometry = $newCrimeGeometry;
+	}
+
+
+	/**
 	 * accessor method for crime description
 	 *
 	 * @return string value of crime description
@@ -155,27 +176,6 @@ class Crime implements \JsonSerializable {
 			throw(new \RangeException("crime description is too large"));
 		}
 		$this->crimeDescription = $newCrimeDescription;
-	}
-
-
-	/**
-	 * accessor method for crime geometry
-	 *
-	 * @return Point value of crime geometry
-	 */
-	public function getCrimeGeometry() {
-		return ($this->crimeGeometry);
-	}
-
-
-	/**
-	 * mutator method for crime geometry
-	 *
-	 * @param Point $newCrimeGeometry new value of crime geometry
-	 * @throws \TypeError based on Point class
-	 */
-	public function setCrimeGeometry(Point $newCrimeGeometry) {
-		$this->crimeGeometry = $newCrimeGeometry;
 	}
 
 

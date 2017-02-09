@@ -29,15 +29,15 @@ class CrimeTest extends AbqueryTest {
 	 */
 	protected $VALID_CRIMELOCATION = "crime location test passing";
 	/**
-	 * content of the crime description
-	 * @var string $VALID_CRIMEDESCRIPTION
-	 */
-	protected $VALID_CRIMEDESCRIPTION = "crime description test passing";
-	/**
 	 * content of the crime geometry
 	 * @var Point $VALID_CRIMEGEOMETRY
 	 */
 	protected $VALID_CRIMEGEOMETRY = null;
+	/**
+	 * content of the crime description
+	 * @var string $VALID_CRIMEDESCRIPTION
+	 */
+	protected $VALID_CRIMEDESCRIPTION = "crime description test passing";
 	/**
 	 * timestamp of the crime sunrise date
 	 * @var \DateTime $VALID_CRIMESUNRISEDATE
@@ -75,6 +75,7 @@ class CrimeTest extends AbqueryTest {
 
 	/**
 	 * test inserting a valid Crime and verify that the actual mySQL data matches
+	 * FIXME: FROM HERE DOWN, FIX ORDER AND REMOVE SUNRISE AND SUNSET
 	 **/
 	public function testInsertValidCrime() {
 		$numRows = $this->getConnection()->getRowCount("crime");
