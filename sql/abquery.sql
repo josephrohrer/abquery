@@ -2,8 +2,8 @@
 CREATE TABLE crime (
 	crimeId          INT UNSIGNED NOT NULL,
 	crimeLocation    VARCHAR(72)  NOT NULL,
-	crimeDescription VARCHAR(255) NOT NULL,
 	crimeGeometry    POINT        NOT NULL,
+	crimeDescription VARCHAR(255) NOT NULL,
 	crimeDate        DATETIME,
 	UNIQUE (crimeId),
 	PRIMARY KEY (crimeId)
