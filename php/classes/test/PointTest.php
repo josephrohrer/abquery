@@ -30,18 +30,13 @@ class PointTest extends PHPUnit_Framework_TestCase {
 		$this->VALID_EUCLIDEAN_POINTS[0] = new Point(50.110148212230001, 50.110148212230001);
 		$this->VALID_EUCLIDEAN_POINTS[1] = new Point(25.110148212230001, 25.110148212230001);
 		$this->VALID_EUCLIDEAN_POINTS[2] = new Point(75.110148212230001, 25.110148212230001);
+		$this->VALID_CENTER_POINT = new Point(50.110148212230001, 33.443481545563334);
 		$this->INVALID_EUCLIDEAN_POINTS = new \SplFixedArray(0);
 	}
+
 	/**
-	 * PHPUnit test for the Euclidean center
-	 */
-
-	public function testValidEuclideanPoint() {
-
-	}
-		/**
-		 * test inserting a valid point
-		 **/
+	 * test inserting a valid point
+	 **/
 
 	public function testValidPoint() {
 		$point = new Point($this->VALID_LAT, $this->VALID_LONG);
@@ -73,5 +68,20 @@ class PointTest extends PHPUnit_Framework_TestCase {
 		//use mutators to make an invalid case
 		$point->setLat($this->VALID_LAT);
 		$point->setLong($this->INVALID_LONG);
+	}
+
+	/**
+	 *test for the euclidean center
+	 */
+
+	public function testValidEuclideanMean() {
+
+		// create new variable called $centerPoint
+		// set $centerPoint to be a method call to euclideanMean(), plugging in the \SplFixedArray $VALID_EUCLIDEAN_POINTS
+		// use manual math answers into assertEquas
+		// then you assertEquals that YOUR $centerPoint result matches the $centerPoint result from the euclideanMean() function
+	}
+
+	public function testInvalidEuclideanMean() {
 	}
 }
