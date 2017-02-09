@@ -11,7 +11,7 @@ require_once(dirname(__DIR__) . "/autoload.php");
  * @author Abquery
  **/
 
-class PointTest extends AbqueryTest {
+class PointTest extends PHPUnit_Framework_TestCase {
 	protected $VALID_LAT = -106.69669124212061;
 	protected $VALID_LONG = 35.110150828348985;
 	protected $INVALID_LAT = 190.69669124212061;
