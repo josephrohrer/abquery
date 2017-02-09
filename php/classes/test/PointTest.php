@@ -85,7 +85,6 @@ class PointTest extends PHPUnit_Framework_TestCase {
 
 		// calc the center point from the Point class
 		$testCenterPoint = $point->euclideanMean($this->VALID_EUCLIDEAN_POINTS);
-		var_dump(null);
 
 		// compare the calculated point to the "mathed" point
 		$this->assertEquals($testCenterPoint, $this->VALID_CENTER_POINT);
