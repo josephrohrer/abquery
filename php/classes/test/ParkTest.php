@@ -1,7 +1,9 @@
 <?php
 namespace Edu\Cnm\Abquery\Test;
 
-use Edu\Cnm\Abquery\{Park};
+use Edu\Cnm\Abquery\{
+	Park, Point
+};
 
 // grab the project test parameters
 require_once("AbqueryTest.php");
@@ -16,14 +18,37 @@ require_once(dirname(__DIR__) . "/autoload.php");
  * @see Tweet example
  * @author Joseph Rohrer <jrohrer@cnm.edu>
  **/
-
 class ParkTest extends AbqueryTest {
 	/**
+	 * valid value of park id
+	 * @var int $VALID_PARKID
+	 */
+	protected $VALID_PARKID = 42;
+	/**
+	 * content of the park name
 	 * @var string $VALID_PARKNAME
 	 */
 	protected $VALID_PARKNAME = "PHPUnit test passing";
+	/**
+	 * content of the crime geometry
+	 * @var Point $VALID_PARKGEOMETRY
+	 */
 	protected $VALID_PARKGEOMETRY = "PHPUnit test passing";
+	/**
+	 * content of park developed
+	 * @var int $VALID_PARKDEVELOPED
+	 */
 	protected $VALID_PARKDEVELOPED = "PHPUnit test passing";
+
+
+	/**
+	 * create dependent objects before running each test
+	 **/
+	public final function setUp() {
+		parent::setUp();
+
+		$this->VALID_PARKGEOMETRY = new Point(-106.69703244562174, 35.10964229145246);
+	}
 
 	/**
 	 * test inserting a valid Park and verify that the actual mySQL data matches
@@ -33,7 +58,7 @@ class ParkTest extends AbqueryTest {
 		$numRows = $this->getConnection()->getRowCount("park");
 
 		// create a new Park and insert it into mySQL
-		$park = new Park(null, $this->VALID_PARKNAME, $this->VALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
+		$park = new Park($this->VALID_PARKID, $this->VALID_PARKNAME, $this->VALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
 		$park->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
@@ -60,17 +85,18 @@ class ParkTest extends AbqueryTest {
 		$numRows = $this->getConnection()->getRowCount("parks");
 
 		// create a new Park and insert to into mySQL
-		$park = new Park(null, $this->VALID_PARKNAME, $this->VALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
+		$park = new Park($this->VALID_PARKID, $this->VALID_PARKNAME, $this->VALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
 		$park->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$results = Park::getAllParks($this->getPDO());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("park"));
 		$this->assertCount(1, $results);
-		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\DataDesign\\Park", $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\Park", $results);
 
 		// grab the result from the array and validate it
 		$pdoPark = $results[0];
+		$this->assertEquals($pdoPark->getParkId(), $this->VALID_PARKID);
 		$this->assertEquals($pdoPark->getParkName(), $this->VALID_PARKNAME);
 		$this->assertEquals($pdoPark->getParkGeometry(), $this->VALID_PARKGEOMETRY);
 		$this->assertEquals($pdoPark->getParkDeveloped(), $this->VALID_PARKDEVELOPED);
