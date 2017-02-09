@@ -20,7 +20,7 @@ class PointTest extends PHPUnit_Framework_TestCase {
 	protected $INVALID_EUCLIDEAN_POINTS = null;
 
 	/**
-	 * PHPUnit test for the Euclidean center
+	 * create setUp
 	 */
 
 	public final function setUp() {
@@ -30,13 +30,8 @@ class PointTest extends PHPUnit_Framework_TestCase {
 		$this->VALID_EUCLIDEAN_POINTS[0] = new Point(50.110148212230001, 50.110148212230001);
 		$this->VALID_EUCLIDEAN_POINTS[1] = new Point(25.110148212230001, 25.110148212230001);
 		$this->VALID_EUCLIDEAN_POINTS[2] = new Point(75.110148212230001, 25.110148212230001);
-
-		/**
-		 * //test inserting an invalid point
-		 **/
 		$this->INVALID_EUCLIDEAN_POINTS = new \SplFixedArray(0);
 	}
-
 	/**
 	 * PHPUnit test for the Euclidean center
 	 */
@@ -44,6 +39,9 @@ class PointTest extends PHPUnit_Framework_TestCase {
 	public function testValidEuclideanPoint() {
 
 	}
+		/**
+		 * test inserting a valid point
+		 **/
 
 	public function testValidPoint() {
 		$point = new Point($this->VALID_LAT, $this->VALID_LONG);
