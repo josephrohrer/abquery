@@ -28,17 +28,17 @@ class ParkTest extends AbqueryTest {
 	 * content of the park name
 	 * @var string $VALID_PARKNAME
 	 */
-	protected $VALID_PARKNAME = "PHPUnit test passing";
+	protected $VALID_PARKNAME = "Park For Little Shits";
 	/**
 	 * content of the crime geometry
 	 * @var Point $VALID_PARKGEOMETRY
 	 */
-	protected $VALID_PARKGEOMETRY = "PHPUnit test passing";
+	protected $VALID_PARKGEOMETRY = null;
 	/**
 	 * content of park developed
 	 * @var int $VALID_PARKDEVELOPED
 	 */
-	protected $VALID_PARKDEVELOPED = "PHPUnit test passing";
+	protected $VALID_PARKDEVELOPED = 1;
 
 
 	/**
@@ -48,6 +48,7 @@ class ParkTest extends AbqueryTest {
 		parent::setUp();
 
 		$this->VALID_PARKGEOMETRY = new Point(-106.69703244562174, 35.10964229145246);
+		var_dump($this->VALID_PARKGEOMETRY);
 	}
 
 	/**
@@ -82,7 +83,7 @@ class ParkTest extends AbqueryTest {
 	 **/
 	public function testGetAllValidParks() {
 		// count the number of rows and save it for later
-		$numRows = $this->getConnection()->getRowCount("parks");
+		$numRows = $this->getConnection()->getRowCount("park");
 
 		// create a new Park and insert to into mySQL
 		$park = new Park($this->VALID_PARKID, $this->VALID_PARKNAME, $this->VALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
