@@ -18,27 +18,41 @@ require_once(dirname(__DIR__) . "/autoload.php");
  * @author Brett Gilbert <bgilbert9.cnm.edu>
  */
 class CrimeTest extends AbqueryTest {
+	/**
+	 * valid calue of crime id
+	 * @var int $VALID_CRIMEID
+	 */
 	protected $VALID_CRIMEID = 42;
 	/**
 	 * content of crime location
 	 * @var string $VALID_CRIMELOCATION
 	 */
-	protected $VALID_CRIMELOCATION = "GOOD NEWS EVERYONE!!! PHPUnit crime location test passing";
-	/**
-	 * content of the crime geometry
-	 * @var Point $VALID_CRIMEGEOMETRY
-	 */
-	protected $VALID_CRIMEGEOMETRY = "COOD NBWS EVERYONE!!! PHPUnit crime location test passing";
+	protected $VALID_CRIMELOCATION = "crime location test passing";
 	/**
 	 * content of the crime description
 	 * @var string $VALID_CRIMEDESCRIPTION
 	 */
-	protected $VALID_CRIMEDESCRIPTION = "GOOD NEWS EVERYONE!!! PHPUnit crime description test passing";
+	protected $VALID_CRIMEDESCRIPTION = "crime description test passing";
+	/**
+	 * content of the crime geometry
+	 * @var Point $VALID_CRIMEGEOMETRY
+	 */
+	protected $VALID_CRIMEGEOMETRY = null;
+	/**
+	 * timestamp of the crime sunrise date
+	 * @var \DateTime $VALID_CRIMESUNRISEDATE
+	 */
+	protected $VALID_CRIMESUNRISEDATE = null;
 	/**
 	 * timestamp of the crime
 	 * @var \DateTime $VALID_CRIMEDATE
 	 */
-	protected $VALID_CRIMEDATE = "GOOD NEWS EVERYONE!!! PHPUnit crime date test passing";
+	protected $VALID_CRIMEDATE = null;
+	/**
+	 * timestamp of the crime sunset date
+	 * @var \DateTime $VALID_CRIMESUNSETDATE
+	 */
+	protected $VALID_CRIMESUNSETDATE = null;
 
 
 	/**
@@ -47,8 +61,15 @@ class CrimeTest extends AbqueryTest {
 	public final function setUp() {
 		parent::setUp();
 
-		$this->geometry = new Geometry(null, -106.69703244562174, 35.10964229145246);
-		$this->geometry->insert($this->getPDO());
+		$this->VALID_CRIMEGEOMETRY = new Point(-106.69703244562174, 35.10964229145246);
+
+		$this->VALID_CRIMESUNRISEDATE = new \DateTime();
+		$this->VALID_CRIMESUNRISEDATE->sub(new \DateInterval("P10D"));
+
+		$this->VALID_CRIMEDATE = new \DateTime();
+
+		$this->VALID_CRIMESUNSETDATE = new \DateTime();
+		$this->VALID_CRIMESUNSETDATE->add(new \DateInterval("P10D"));
 	}
 
 
@@ -58,7 +79,7 @@ class CrimeTest extends AbqueryTest {
 	public function testInsertValidCrime() {
 		$numRows = $this->getConnection()->getRowCount("crime");
 
-		$crime = new Crime(null, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDATE);
+		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEDATE);
 		$crime->insert($this->getPDO());
 
 		$pdoCrime = Crime::getCrimeByCrimeId($this->getPDO(), $crime->getCrimeId());

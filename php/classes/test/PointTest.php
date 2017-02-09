@@ -16,11 +16,22 @@ class PointTest extends PHPUnit_Framework_TestCase {
 	protected $VALID_LONG = 35.110150828348985;
 	protected $INVALID_LAT = 190.69669124212061;
 	protected $INVALID_LONG = 95.110150828348985;
+	protected $VALID_EUCLIDEAN_POINTS = null;
+	protected $INVALID_EUCLIDEAN_POINTS = null;
 
 	/**
 	 * PHPUnit test for the Euclidean center
 	 * FIXME: euclidean center why would we use a fixed array for floats/ fixed array says it's for integers? Please help!
 	 */
+
+	public final function setUp() {
+		parent::setUp();
+
+		$this->VALID_EUCLIDEAN_POINTS = new \SplFixedArray(3);
+		$this->VALID_EUCLIDEAN_POINTS[0] = new Point(50.110148212230001, 50.110148212230001);
+		//FIXME: rinse & repeat
+		$this->INVALID_EUCLIDEAN_POINTS = new \SplFixedArray(0);
+	}
 
 
 	public function testValidPoint() {
@@ -54,4 +65,6 @@ class PointTest extends PHPUnit_Framework_TestCase {
 		$point->setLat($this->VALID_LAT);
 		$point->setLong($this->INVALID_LONG);
 	}
+
+
 }
