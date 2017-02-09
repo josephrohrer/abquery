@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS feature;
+DROP TABLE IF EXISTS amenity;
+DROP TABLE IF EXISTS park;
+DROP TABLE IF EXISTS crime;
+
 -- create the crime entity --
 CREATE TABLE crime (
 	crimeId          INT UNSIGNED NOT NULL,
@@ -34,7 +39,8 @@ CREATE TABLE feature (
 	featureParkId    INT UNSIGNED NOT NULL,
 	featureValue     INT UNSIGNED,
 	INDEX (featureAmenityId),
-	FOREIGN KEY (featureAmenityId) REFERENCES amenity (amenityId),
 	INDEX (featureParkId),
-	FOREIGN KEY (featureParkId) REFERENCES park (parkId)
+	FOREIGN KEY (featureAmenityId) REFERENCES amenity (amenityId),
+	FOREIGN KEY (featureParkId) REFERENCES park (parkId),
+	PRIMARY KEY (featureAmenityId, featureParkId)
 );
