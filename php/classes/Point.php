@@ -32,6 +32,8 @@ class Point implements \JsonSerializable {
 	 */
 	public function __construct(float $newLongitude, float $newLatitude) {
 		try {
+			$this->setLongitude($newLongitude);
+			$this->setLatitude($newLatitude);
 		} catch(\InvalidArgumentException $invalidArgument) {
 			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
 		} catch(\RangeException $range) {
