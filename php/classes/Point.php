@@ -108,7 +108,11 @@ class Point implements \JsonSerializable {
 		$centerPoint = new Point ($centerLongitude, $centerLatitude);
 		return($centerPoint);
 	}
-
+	/**
+	 * formats the state variables for JSON serialization
+	 *
+	 * @return array resulting state variables to serialize
+	 **/
 	public function jsonSerialize() {
 		$fields = [];
 		$fields["lng"] = $this->longitude;
