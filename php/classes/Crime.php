@@ -228,8 +228,8 @@ class Crime implements \JsonSerializable {
 		$parameters = [
 			"crimeId" => $this->crimeId,
 			"crimeLocation" => $this->crimeLocation,
-			"crimeGeometryX" => $this->crimeGeometry->getLatitude(),
-			"crimeGeometryY" => $this->crimeGeometry->getLongitude(),
+			"crimeGeometryX" => $this->crimeGeometry->getLongitude(),
+			"crimeGeometryY" => $this->crimeGeometry->getLatitude(),
 			"crimeDescription" => $this->crimeDescription,
 			"crimeDate" => $formattedDate];
 		$statement->execute($parameters);

@@ -59,7 +59,7 @@ class CrimeTest extends AbqueryTest {
 	public final function setUp() {
 		parent::setUp();
 
-		$this->VALID_CRIMEGEOMETRY = new Point(-106.69703244562174, 35.10964229145246);
+		$this->VALID_CRIMEGEOMETRY = new Point(35.10964229145246, -106.69703244562174);
 
 		$this->VALID_CRIMESUNRISEDATE = new \DateTime();
 		$this->VALID_CRIMESUNRISEDATE->sub(new \DateInterval("P10D"));
@@ -78,9 +78,6 @@ class CrimeTest extends AbqueryTest {
 		$numRows = $this->getConnection()->getRowCount("crime");
 
 		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEDATE);
-
-		var_dump($crime);
-
 		$crime->insert($this->getPDO());
 
 		$pdoCrime = Crime::getCrimeByCrimeId($this->getPDO(), $crime->getCrimeId());
