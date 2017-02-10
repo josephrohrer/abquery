@@ -163,7 +163,7 @@ class Feature implements \JsonSerializable {
 		}
 
 		// create query template
-		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM Feature WHERE featureAmenityId = :featureAmenityId";
+		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM feature WHERE featureAmenityId = :featureAmenityId";
 		$statement = $pdo->prepare($query);
 
 		// bind the feature amenity id to the place holder in the template
@@ -202,7 +202,7 @@ class Feature implements \JsonSerializable {
 		}
 
 		// create query template
-		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM Feature WHERE featureParkId = :featureParkId";
+		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM feature WHERE featureParkId = :featureParkId";
 		$statement = $pdo->prepare($query);
 
 		// bind the feature park id to the place holder in the template
@@ -223,6 +223,35 @@ class Feature implements \JsonSerializable {
 			}
 		}
 		return($features);
+	}
+	/**
+	 * gets all features
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @return \SplFixedArray SplFixedArray of Features found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 *
+	 */
+	public static function getALLFeatures(\PDO $pdo) {
+		// create query template
+		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM feature";
+		$statement = $pdo->prepare($query);
+		$statement->execute();
+
+		//build an array of Features
+		$features = new \SplFixedArray($statement->rowCount());
+		$statement-> setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$feature = new Feature($row["featureAmenityId"], $row["featureParkId"], $row["featureValue"]);
+				$features[$features->key()] = $feature;
+				$features->next();
+			} catch(\Exception $exception) {
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return ($features);
 	}
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
