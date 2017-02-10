@@ -21,11 +21,11 @@
 			transition: width 0.4s ease-in-out;
 		}
 	</style>
-	<body>
+	<body id="body">
 		<header>
 		</header>
 		<main>
-			<img src="images/logo.png" alt="ABQuery Logo">
+			<img src="images/logosmaller.png" alt="ABQuery Logo">
 			<br>
 			<input type="text" name="search" placeholder="Search..">
 		</main>
