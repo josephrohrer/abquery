@@ -45,11 +45,12 @@ class PointTest extends \PHPUnit_Framework_TestCase {
 	public function testValidPoint() {
 		$point = new Point($this->VALID_LONG, $this->VALID_LAT);
 		//use mutators to make a valid case
-		$point->setLatitude($this->VALID_LAT);
 		$point->setLongitude($this->VALID_LONG);
+		$point->setLatitude($this->VALID_LAT);
 		//assert values are equal
-		$this->assertEquals($point->getLatitude(), $this->VALID_LAT);
 		$this->assertEquals($point->getLongitude(), $this->VALID_LONG);
+		$this->assertEquals($point->getLatitude(), $this->VALID_LAT);
+
 	}
 
 	/**
@@ -61,8 +62,9 @@ class PointTest extends \PHPUnit_Framework_TestCase {
 	public function testInvalidPointLatitude() {
 		$point = new Point($this->VALID_LONG, $this->INVALID_LAT);
 		//use mutators to make an invalid case
-		$point->setLatitude($this->INVALID_LAT);
 		$point->setLongitude($this->VALID_LONG);
+		$point->setLatitude($this->INVALID_LAT);
+
 	}
 
 	/**
@@ -72,8 +74,9 @@ class PointTest extends \PHPUnit_Framework_TestCase {
 	public function testInvalidPointLong() {
 		$point = new Point($this->INVALID_LONG, $this->VALID_LAT);
 		//use mutators to make an invalid case
-		$point->setLatitude($this->VALID_LAT);
 		$point->setLongitude($this->INVALID_LONG);
+		$point->setLatitude($this->VALID_LAT);
+
 	}
 
 	/**
