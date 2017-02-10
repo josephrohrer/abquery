@@ -64,6 +64,9 @@ class ParkTest extends AbqueryTest {
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoPark = Park::getParkByParkId($this->getPDO(), $park->getParkId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("park"));
+		$this->assertEquals($pdoPark->getParkName(), this->VALID_PARKNAME);
+		$this->assertEquals($pdoPark->getParkGeometry(), this->VALID_PARKGEOMETRY);
+		$this->assertEquals($pdoPark->getParkDeveloped(), this->VALID_PARKDEVELOPED);
 	}
 
 	/**
