@@ -102,7 +102,10 @@ class Feature implements \JsonSerializable {
 		//verify that the function park id is positive
 		if($newFeatureParkId <= 0) {
 			throw(new \RangeException("the function park id is not positive"));
+			//store the new park id
 		}
+			$this->featureParkId = $newFeatureParkId;
+
 	}
 
 	/**
@@ -124,7 +127,9 @@ class Feature implements \JsonSerializable {
 		//verify that the function park id is positive
 		if($newFeatureValue < 0) {
 			throw(new \RangeException("the value is less than zero"));
+			//store the new featureValue
 		}
+			$this->featureValue = $newFeatureValue;
 	}
 
 	/**
@@ -136,7 +141,7 @@ class Feature implements \JsonSerializable {
 	 **/
 	public function insert(\PDO $pdo) {
 		//create query template
-		$query = "INSERT INTO Feature(featureAmenityId, featureParkId, featureValue) VALUES(:featureAmenityId, :featureParkId, :featureValue)";
+		$query = "INSERT INTO feature(featureAmenityId, featureParkId, featureValue) VALUES(:featureAmenityId, :featureParkId, :featureValue)";
 		$statement = $pdo->prepare($query);
 //bind the member variables to the place holders in the template
 		$parameters = ["featureAmenityId" => $this->featureAmenityId, "featureParkId" => $this->featureParkId, "featureValue" => $this->featureValue];

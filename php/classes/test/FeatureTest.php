@@ -24,18 +24,17 @@ class FeatureTest extends AbqueryTest {
 	 * name of the Feature
 	 * @var int $VALID_FEATUREVALUE
 	 **/
-	protected $VALID_FEATUREVALUE = "You have unlocked features. Features are a park of a park that is variable and draws attraction";
+	protected $VALID_FEATUREVALUE = 5;
 	/**
 	 * amenity id of the Feature
 	 * @var int $VALID_FEATUREAMENITYID
 	 **/
-	protected $VALID_FEATUREAMENITYID = "You have unlocked features. Features are a park of a park that is variable and draws attraction";
+	protected $VALID_FEATUREAMENITYID = 123;
 	/**
 	 * park id of the feature
 	 * @var int $VALID_FEATUREPARKID
 	 **/
-	protected $VALID_FEATUREPARKID = "You have unlocked features. Features are a park of a park that is variable and draws attraction";
-
+	protected $VALID_FEATUREPARKID = 1234;
 	/**
 	 * Amenity that created the feature; this is for foreign key relations
 	 * @var Amenity amenity
@@ -72,7 +71,7 @@ class FeatureTest extends AbqueryTest {
 		$numRows = $this->getConnection()->getRowCount("feature");
 
 		// create a new Feature and insert it into mySQL
-		$feature = new Feature($this->VALID_FEATUREAMENITYID, $this->VALID_FEATUREPARKID, $this->VALID_FEATUREVALUE());
+		$feature = new Feature($this->VALID_FEATUREAMENITYID, $this->VALID_FEATUREPARKID, $this->VALID_FEATUREVALUE);
 		$feature->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
@@ -112,7 +111,7 @@ class FeatureTest extends AbqueryTest {
 		$pdoFeature = $results[0];
 		$this->assertEquals($pdoFeature->getFeatureParkId(), $this->VALID_FEATUREPARKID);
 		$this->assertEquals($pdoFeature->getFeatureAmenityId(), $this->VALID_FEATUREAMENITYID);
-		$this->assertEquals($pdoFeature->getFeatureValue);
+		$this->assertEquals($pdoFeature->getFeatureValue(), $this->VALID_FEATUREVALUE);
 	}
 	/**
 	 * test grabbing a Feature by an id that does not exist
@@ -130,7 +129,7 @@ class FeatureTest extends AbqueryTest {
 		$numRows = $this->getConnection()->getRowCount("features");
 
 		// create a new Feature and insert to into mySQL
-		$feature = new Feature(null, $this->VALID_FEATUREPARKID, $this->VALID_FEATUREAMENITYID, $this->VALID_FEATUREVALUE);
+		$feature = new Feature($this->VALID_FEATUREPARKID, $this->VALID_FEATUREAMENITYID, $this->VALID_FEATUREVALUE);
 		$feature->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
