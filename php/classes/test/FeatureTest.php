@@ -19,7 +19,6 @@ require_once(dirname(__DIR__) . "/autoload.php");
  * @see Tweet example
  * @author Benjamin Smith <bsmtih@cnm.edu>
  **/
-
 class FeatureTest extends AbqueryTest {
 	/**
 	 * name of the Feature
@@ -51,19 +50,20 @@ class FeatureTest extends AbqueryTest {
 
 	public final function setUp() {
 		//run the default setUp() method first
-		parent::getSetUpOperation();
+		parent::setUp();
 
 		//create and insert an Amenity to own the test Feature
-		$this->amenity = new Amenity(null, "potato-house", "dumbshit-house");
+		$this->amenity = new Amenity(null, "househouse", "dumbshit-house");
 		$this->amenity->insert($this->getPDO());
 
 		//create a stupid pos point to use in the park setUp
-		$basePoint = new Point(91.12312312312312, 91.12312312312312);
+		$basePoint = new Point(12.12312312312312, 12.12312312312312);
 
 		//create and insert a Park to own the test Feature
-		$this->park = new Park(1234, "park-for-lil-shits", $basePoint, (1));
+		$this->park = new Park(1234, "park-for-lil-shits", $basePoint, 1);
 		$this->park->insert($this->getPDO());
 	}
+
 	/**
 	 * test inserting a valid Feature and verify that the actual mySQL data matches
 	 **/
@@ -72,13 +72,14 @@ class FeatureTest extends AbqueryTest {
 		$numRows = $this->getConnection()->getRowCount("feature");
 
 		// create a new Feature and insert it into mySQL
-		$feature = new Feature($this->VALID_FEATUREVALUE, $this->amenity->getAmenityId(), $this->park->getParkId());
+		$feature = new Feature($this->VALID_FEATUREAMENITYID, $this->VALID_FEATUREPARKID, $this->VALID_FEATUREVALUE());
 		$feature->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoFeature = Feature::getFeatureByFeatureAmenityId($this->getPDO(), $feature->getFeatureAmenityId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("feature"));
 	}
+
 	/**
 	 * test inserting a feature that already exists
 	 *
@@ -89,6 +90,7 @@ class FeatureTest extends AbqueryTest {
 		$feature = new Feature(AbqueryTest::INVALID_KEY, $this->VALID_FEATUREVALUE, $this->VALID_FEATUREAMENITYID, $this->VALID_FEATUREPARKID);
 		$feature->insert($this->getPDO());
 	}
+
 	/**
 	 * test grabbing a Feature by feature park id
 	 **/
@@ -97,7 +99,7 @@ class FeatureTest extends AbqueryTest {
 		$numRows = $this->getConnection()->getRowCount("feature");
 
 		// create a new feature and insert it into mySQL
-		$feature = new Feature(null, $this->VALID_FEATUREVALUE, $this->VALID_FEATUREPARKID);
+		$feature = new Feature($this->VALID_FEATUREAMENITYID,  $this->VALID_FEATUREPARKID, $this->VALID_FEATUREVALUE);
 		$feature->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
@@ -123,7 +125,7 @@ class FeatureTest extends AbqueryTest {
 	/**
 	 * test grabbing all Features
 	 **/
-	public function testGetAllValidAFeatures() {
+	public function testGetAllValidFeatures() {
 		// count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("features");
 
