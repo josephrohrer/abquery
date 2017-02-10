@@ -48,7 +48,6 @@ class ParkTest extends AbqueryTest {
 		parent::setUp();
 
 		$this->VALID_PARKGEOMETRY = new Point(-106.69703244562174, 35.10964229145246);
-		var_dump($this->VALID_PARKGEOMETRY);
 	}
 
 	/**
@@ -72,11 +71,11 @@ class ParkTest extends AbqueryTest {
 	 *
 	 * @expectedException PDOException
 	 **/
-	public function testInsertInvalidPark() {
-		// create a Park with a non null amenity id and watch it fail
-		$park = new Park(AbqueryTest::INVALID_KEY, $this->VALID_PARKNAME, $this->VALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
-		$park->insert($this->getPDO());
-	}
+//	public function testInsertInvalidPark() {
+//		// create a Park with a non null amenity id and watch it fail
+//		$park = new Park(AbqueryTest::INVALID_KEY, $this->VALID_PARKNAME, $this->VALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
+//		$park->insert($this->getPDO());
+//	}
 
 	/**
 	 * test grabbing all Parks

@@ -147,20 +147,16 @@ class Park implements \JsonSerializable {
 	 **/
 	public function getParkDeveloped() {
 		return ($this->parkDeveloped);
-
-		//FIXME: add boolean?
 	}
 
 	/**
 	 * mutator method for park developed
 	 *
 	 * @param bool $newParkDeveloped value of park developed
-	 * @throws \RangeException if not 1 or 0
 	 *
 	 **/
 	public function setParkDeveloped($newParkDeveloped) {
-		if($newParkDeveloped < 0 || $newParkDeveloped > 1)
-			throw(new \RangeException("park developed must be 1 or 0"));
+		$this->parkDeveloped = filter_var($newParkDeveloped, FILTER_VALIDATE_BOOLEAN);
 	}
 
 	/**
@@ -168,12 +164,16 @@ class Park implements \JsonSerializable {
 	 *
 	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when mySQL related errors occur
-	 * @throws \TypeError if $pdo is not a PDO connnection object
+	 * @throws \TypeError if $pdo is not a PDO connection object
 	 **/
 	public function insert(\PDO $pdo) {
 		if($this->parkId === null) { //TODO: need to change back to !==
 			throw(new \PDOException("not a new park"));
 		}
+		var_dump($this);
+
+		// reformat the boolean for mySQL
+		$parkDeveloped = $this->parkDeveloped ? 1 : 0;
 		$query = "INSERT INTO park(parkId, parkName, parkGeometry, parkDeveloped) VALUES(:parkId, :parkName, POINT(:parkGeometryX, :parkGeometryY), :parkDeveloped)";
 		$statement = $pdo->prepare($query);
 		$parameters = [
@@ -181,9 +181,8 @@ class Park implements \JsonSerializable {
 			"parkName" => $this->parkName,
 			"parkGeometryX" => $this->parkGeometry->getLongitude(),
 			"parkGeometryY" => $this->parkGeometry->getLatitude(),
-			"parkDeveloped" => $this->parkDeveloped];
+			"parkDeveloped" => $parkDeveloped];
 		$statement->execute($parameters);
-		$this->parkId = intval($pdo->lastInsertId());
 	}
 
 	/**
@@ -196,10 +195,11 @@ class Park implements \JsonSerializable {
 	 * @throws \TypeError when variables are not the correct data type
 	 **/
 	public static function getParkByParkId(\PDO $pdo, int $parkId) {
+		var_dump($parkId);
 		if($parkId <= 0) {
 			throw(new \PDOException("park id is not positive"));
 		}
-		$query = "SELECT parkId, parkName, ST_X(parkGeometry) AS parkGeometryX, ST_Y(parkGeometry) AS parkGeometryY, parkDeveloped FROM park WHERE parkId = :parkid";
+		$query = "SELECT parkId, parkName, ST_X(parkGeometry) AS parkGeometryX, ST_Y(parkGeometry) AS parkGeometryY, parkDeveloped FROM park WHERE parkId = :parkId";
 		$statement = $pdo->prepare($query);
 		$parameters = ["parkId" => $parkId];
 		$statement->execute($parameters);
@@ -230,7 +230,7 @@ class Park implements \JsonSerializable {
 		$statement = $pdo->prepare($query);
 		$statement->execute();
 
-		$crimes = new \SplFixedArray($statement->rowCount());
+		$parks = new \SplFixedArray($statement->rowCount());
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
