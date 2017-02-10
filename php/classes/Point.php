@@ -14,23 +14,23 @@ class Point implements \JsonSerializable {
 	/**
 	 * @var float $longitude
 	 */
-	private $latitude;
+	private $longitude;
 	/**
 	 * @var float $latitude
 	 */
-	private $longitude;
+	private $latitude;
 
 	/**
 	 * constructor for the point entity
 	 *
-	 * @param float $newLatitude the longitude value of the point
-	 * @param float @newLongitude the latitude value of the point
+	 * @param float $newLongitude the longitude value of the point
+	 * @param float @newLatitude the latitude value of the point
 	 * @throws \InvalidArgumentException if data types are not valid
 	 * @throws \RangeException if data values are out of bounds
 	 * @throws \TypeError if data types violate type hints
 	 * @throws \Exception if some other exception
 	 */
-	public function __construct(float $newLatitude, float $newLongitude) {
+	public function __construct(float $newLongitude, float $newLatitude) {
 		try {
 		} catch(\InvalidArgumentException $invalidArgument) {
 			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
@@ -41,29 +41,6 @@ class Point implements \JsonSerializable {
 		} catch(\Exception $exception) {
 			throw(new \Exception($exception->getMessage(), 0, $exception));
 		}
-	}
-
-
-	/**
-	 * accessor method for latitude
-	 *
-	 * @return float value for latitude
-	 */
-	public function getLatitude() {
-		return($this->latitude);
-	}
-
-
-	/**
-	 * mutator method for latitude
-	 *
-	 * @param float $newLatitude new value of Latitude
-	 * @throws \RangeException if $newLatitude is not in the range(-180,180)
-	 */
-	public function setLatitude(float $newLatitude) {
-		if($newLatitude < -180 || $newLatitude > 180)
-			throw(new \RangeException("latitude is not within the range (-180,180)"));
-		$this->latitude = $newLatitude;
 	}
 
 
@@ -80,13 +57,36 @@ class Point implements \JsonSerializable {
 	/**
 	 * mutator method for longitude
 	 *
-	 * @param float $newLongitude new value of longitude
-	 * @throws \RangeException if $newLongitude is not in the range(-90,90)
+	 * @param float $newLongitude new value of Longitude
+	 * @throws \RangeException if $newLongitude is not in the range(-180,180)
 	 */
 	public function setLongitude(float $newLongitude) {
-		if($newLongitude < -90 || $newLongitude > 90)
-			throw(new \RangeException("longitude is not within the range (-90,90)"));
+		if($newLongitude < -180 || $newLongitude > 180)
+			throw(new \RangeException("longitude is not within the range (-180,180)"));
 		$this->longitude = $newLongitude;
+	}
+
+
+	/**
+	 * accessor method for latitude
+	 *
+	 * @return float value for latitude
+	 */
+	public function getLatitude() {
+		return($this->latitude);
+	}
+
+
+	/**
+	 * mutator method for latitude
+	 *
+	 * @param float $newLatitude new value of latitude
+	 * @throws \RangeException if $newLatitude is not in the range(-90,90)
+	 */
+	public function setLatitude(float $newLatitude) {
+		if($newLatitude < -90 || $newLatitude > 90)
+			throw(new \RangeException("latitude is not within the range (-90,90)"));
+		$this->latitude = $newLatitude;
 	}
 
 
@@ -94,23 +94,23 @@ class Point implements \JsonSerializable {
 		if(count($points) === 0) {
 			throw (new \RangeException("cannot find the center of nothing"));
 		}
-		$centerLatitude = 0.0;
 		$centerLongitude = 0.0;
+		$centerLatitude = 0.0;
 		foreach($points as $point) {
-			$centerLatitude = $centerLatitude + $point->getLatitude();
 			$centerLongitude = $centerLongitude + $point->getLongitude();
+			$centerLatitude = $centerLatitude + $point->getLatitude();
 		}
-		$centerLatitude = $centerLatitude / count($points);
 		$centerLongitude = $centerLongitude / count($points);
+		$centerLatitude = $centerLatitude / count($points);
 
-		$centerPoint = new Point ($centerLatitude, $centerLongitude);
+		$centerPoint = new Point ($centerLongitude, $centerLatitude);
 		return($centerPoint);
 	}
 
 	public function jsonSerialize() {
 		$fields = [];
-		$fields["lat"] = $this->latitude;
 		$fields["lng"] = $this->longitude;
+		$fields["lat"] = $this->latitude;
 		return($fields);
 	}
 }
