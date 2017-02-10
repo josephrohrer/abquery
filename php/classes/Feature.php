@@ -105,7 +105,6 @@ class Feature implements \JsonSerializable {
 			//store the new park id
 		}
 			$this->featureParkId = $newFeatureParkId;
-
 	}
 
 	/**
