@@ -174,9 +174,10 @@ class Park implements \JsonSerializable {
 		if($this->parkId === null) { //TODO: need to change back to !==
 			throw(new \PDOException("not a new park"));
 		}
-		$query = "INSERT INTO park(parkName, parkGeometry, parkDeveloped) VALUES(:parkName, POINT(:parkGeometryX, :parkGeometryY), :parkDeveloped)";
+		$query = "INSERT INTO park(parkId, parkName, parkGeometry, parkDeveloped) VALUES(:parkId, :parkName, POINT(:parkGeometryX, :parkGeometryY), :parkDeveloped)";
 		$statement = $pdo->prepare($query);
 		$parameters = [
+			"parkId" => $this->parkId,
 			"parkName" => $this->parkName,
 			"parkGeometryX" => $this->parkGeometry->getLongitude(),
 			"parkGeometryY" => $this->parkGeometry->getLatitude(),
