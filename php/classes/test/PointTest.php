@@ -61,8 +61,8 @@ class PointTest extends \PHPUnit_Framework_TestCase {
 	public function testInvalidPointLatitude() {
 		$point = new Point($this->INVALID_LAT, $this->VALID_LONG);
 		//use mutators to make an invalid case
-		$point->setLat($this->INVALID_LAT);
-		$point->setLong($this->VALID_LONG);
+		$point->setLatitude($this->INVALID_LAT);
+		$point->setLongitude($this->VALID_LONG);
 	}
 
 	/**
@@ -96,7 +96,6 @@ class PointTest extends \PHPUnit_Framework_TestCase {
 		// use manual math answers into assertEquas
 		// then you assertEquals that YOUR $centerPoint result matches the $centerPoint result from the euclideanMean() function
 
-
 	}
 
 	/**
@@ -104,9 +103,7 @@ class PointTest extends \PHPUnit_Framework_TestCase {
 	 * @expectedException \RangeException
 	 */
 	public function testInvalidEuclideanMean() {
-		$point = new Point($this->INVALID_EUCLIDEAN_POINTS);
-		//use mutators to make an invalid case
-		$point->setCenterPoint($this->INVALID_CENTER_POINT);
+		Point::euclideanMean($this->INVALID_EUCLIDEAN_POINTS);
 	}
 }
 
