@@ -63,6 +63,7 @@ class Point implements \JsonSerializable {
 	public function setLatitude(float $newLatitude) {
 		if($newLatitude < -180 || $newLatitude > 180)
 			throw(new \RangeException("latitude is not within the range (-180,180)"));
+		$this->latitude = $newLatitude;
 	}
 
 
@@ -85,6 +86,7 @@ class Point implements \JsonSerializable {
 	public function setLongitude(float $newLongitude) {
 		if($newLongitude < -90 || $newLongitude > 90)
 			throw(new \RangeException("longitude is not within the range (-90,90)"));
+		$this->longitude = $newLongitude;
 	}
 
 

@@ -11,13 +11,14 @@ require_once(dirname(__DIR__) . "/autoload.php");
  * @see \Edu\Cnm\Abquery\Point
  * @author Abquery
  **/
-class PointTest extends PHPUnit_Framework_TestCase {
+class PointTest extends \PHPUnit_Framework_TestCase {
 	protected $VALID_LAT = -106.69669124212061;
 	protected $VALID_LONG = 35.110150828348985;
 	protected $INVALID_LAT = 190.69669124212061;
 	protected $INVALID_LONG = 95.110150828348985;
 	protected $VALID_EUCLIDEAN_POINTS = null;
 	protected $INVALID_EUCLIDEAN_POINTS = null;
+	protected $VALID_CENTER_POINT = null;
 
 	/**
 	 * create setUp
@@ -44,11 +45,11 @@ class PointTest extends PHPUnit_Framework_TestCase {
 	public function testValidPoint() {
 		$point = new Point($this->VALID_LAT, $this->VALID_LONG);
 		//use mutators to make a valid case
-		$point->setLat($this->VALID_LAT);
-		$point->setLong($this->VALID_LONG);
+		$point->setLatitude($this->VALID_LAT);
+		$point->setLongitude($this->VALID_LONG);
 		//assert values are equal
-		$this->assertEquals($point->getLat(), $this->VALID_LAT);
-		$this->assertEquals($point->getLong(), $this->VALID_LONG);
+		$this->assertEquals($point->getLatitude(), $this->VALID_LAT);
+		$this->assertEquals($point->getLongitude(), $this->VALID_LONG);
 	}
 
 	/**
@@ -57,7 +58,7 @@ class PointTest extends PHPUnit_Framework_TestCase {
 	 * @expectedException \RangeException
 	 */
 
-	public function testInvalidPointLat() {
+	public function testInvalidPointLatitude() {
 		$point = new Point($this->INVALID_LAT, $this->VALID_LONG);
 		//use mutators to make an invalid case
 		$point->setLat($this->INVALID_LAT);
@@ -71,8 +72,8 @@ class PointTest extends PHPUnit_Framework_TestCase {
 	public function testInvalidPointLong() {
 		$point = new Point($this->VALID_LAT, $this->INVALID_LONG);
 		//use mutators to make an invalid case
-		$point->setLat($this->VALID_LAT);
-		$point->setLong($this->INVALID_LONG);
+		$point->setLatitude($this->VALID_LAT);
+		$point->setLongitude($this->INVALID_LONG);
 	}
 
 	/**
@@ -82,6 +83,7 @@ class PointTest extends PHPUnit_Framework_TestCase {
 
 		// new instance of the point class
 		$point = new Point($this->VALID_LAT, $this->VALID_LONG);
+		//OR 		$point = new Point($this->VALID_EUCLIDEAN_POINTS);?
 
 		// calc the center point from the Point class
 		$testCenterPoint = $point->euclideanMean($this->VALID_EUCLIDEAN_POINTS);
@@ -94,9 +96,6 @@ class PointTest extends PHPUnit_Framework_TestCase {
 		// use manual math answers into assertEquas
 		// then you assertEquals that YOUR $centerPoint result matches the $centerPoint result from the euclideanMean() function
 
-
-		$point = new Point($this->VALID_EUCLIDEAN_POINTS);
-		//use mutators to make a valid case
 
 	}
 
