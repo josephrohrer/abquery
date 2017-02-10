@@ -233,7 +233,7 @@ class Feature implements \JsonSerializable {
 	 * @throws \TypeError when variables are not the correct data type
 	 *
 	 */
-	public static function getALLFeatures(\PDO $pdo) {
+	public static function getAllFeatures(\PDO $pdo) {
 		// create query template
 		$query = "SELECT featureAmenityId, featureParkId, featureValue FROM feature";
 		$statement = $pdo->prepare($query);
