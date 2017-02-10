@@ -47,7 +47,7 @@ class ParkTest extends AbqueryTest {
 	public final function setUp() {
 		parent::setUp();
 
-		$this->VALID_PARKGEOMETRY = new Point(-106.69703244562174, 35.10964229145246);
+		$this->VALID_PARKGEOMETRY = new Point(35.10964229145246, -106.69703244562174);
 		var_dump($this->VALID_PARKGEOMETRY);
 	}
 

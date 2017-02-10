@@ -176,7 +176,11 @@ class Park implements \JsonSerializable {
 		}
 		$query = "INSERT INTO park(parkName, parkGeometry, parkDeveloped) VALUES(:parkName, POINT(:parkGeometryX, :parkGeometryY), :parkDeveloped)";
 		$statement = $pdo->prepare($query);
-		$parameters = ["parkName" => $this->parkName, "parkGeometryX" => $this->parkGeometry->getLatitude(), "parkGeometryY" => $this->parkGeometry->getLongitude(), "parkDeveloped" => $this->parkDeveloped];
+		$parameters = [
+			"parkName" => $this->parkName,
+			"parkGeometryX" => $this->parkGeometry->getLongitude(),
+			"parkGeometryY" => $this->parkGeometry->getLatitude(),
+			"parkDeveloped" => $this->parkDeveloped];
 		$statement->execute($parameters);
 		$this->parkId = intval($pdo->lastInsertId());
 	}
