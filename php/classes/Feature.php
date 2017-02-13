@@ -253,6 +253,9 @@ class Feature implements \JsonSerializable {
 		}
 		return ($features);
 	}
+	/**json serialize function to format the variables to be read by other code types
+	 *
+	 **/
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		return ($fields);
