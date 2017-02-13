@@ -1,9 +1,9 @@
 <phpunit>
 	<testsuites>
 		<testsuite name="Abquery">
-			<!--<file>ParkTest.php</file>
+			<file>ParkTest.php</file>
 			<file>CrimeTest.php</file>
-			<file>AmenityTest.php</file>-->
+			<file>AmenityTest.php</file>
 			<file>FeatureTest.php</file>
 		</testsuite>
 	</testsuites>

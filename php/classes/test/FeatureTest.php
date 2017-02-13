@@ -42,7 +42,7 @@ class FeatureTest extends AbqueryTest {
 		parent::setUp();
 
 		//create and insert an Amenity to own the test Feature
-		$this->amenity = new Amenity(9, "househouse", "dumbshit-house");
+		$this->amenity = new Amenity(null , "househouse", "dumbshit-house");
 		$this->amenity->insert($this->getPDO());
 
 		//create a stupid pos point to use in the park setUp
