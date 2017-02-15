@@ -30,6 +30,10 @@ try {
 	$pdo = connectToEncryptedMySQL("/etc/apache2/abquery-mysql/park.ini");
 
 	//determines which HTTP method needs to be processed and stores the result in $method.
-	$method = array_key_exists("HTTP_x_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_x_HTTP_METHOD"]
+	$method = array_key_exists("HTTP_x_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
+
+	//stores the Primary Key for the GET, DELETE, and PUT methods in $id. This key will come in the URL sent by the front end. If no key is present, $id will remain empty. Note that the input is filtered.
+	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+
 }
 
