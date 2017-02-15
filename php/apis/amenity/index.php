@@ -60,6 +60,65 @@ try {
 		if($amenities !== null) {
 			$reply->data = $amenities;
 		}
+		// If there is nothing in $id, and it is a GET request, then we simply return all amenities. We store all the amenities in the $amenities variable, and then store them in the $reply->data state variable.
+
 	}
-	// If there is nothing in $id, and it is a GET request, then we simply return all amenities. We store all the amenities in the $amenities variable, and then store them in the $reply->data state variable.
+else
+	if($method === "PUT") || $method === "POST") {
+// this line determines if the request is a PUT or a POST request
+
+
+	verifyXsrf();
+	$requestContent = file_get_contents("php://input");
+	// Retrieves the JSON package that the front end sent, and stores it in $requestContent. Here we are using file_get_contents("php://input") to get the request from the front end. file_get_contents() is a PHP function that reads a file into a string. The argument for the function, here, is "php://input". This is a read only stream that allows raw data to be read from the front end request which is, in this case, a JSON package.
+
+
+	$requestObject = json_decode($requestContent);
+	// This line then decodes the JSON package and stores that result in $requestObject.
+
+
+	//Here we check to make sure that there is content for the Amenity. If $requestObject->AmenityContent is empty, an exception is thrown. The PUT method will use the new content to UPDATE an existing Amenity and the POST method will use the content to create a new Tweet.
+	//if(empty($requestObject->amenityContent) === true) {
+		//throw(new \InvalidArgumentException ("No amenity content", 405));
+	//}
+
+	// determines if the request is a PUT.
+	// If the request is a PUT, we proceed to the next section and retrieve the Amenity that needs to be updated. The Amenity is retrieved by Amenity ID using the ID that was sent in the url and stored in $id.
+	//if($method === "PUT") {
+		//retrieve the tweet to update
+		//$amenity = Amenity::getAmenityByAmenityId($pdo, $id);
+		//if($amenity === null) {
+			//throw(new RuntimeException("Amenity does not exist", 404));
+		//}
+
+		//$amenity->setamenityContent($requestObject->tweetContent);
+		// stores the updated content in the retrieved Tweet object.
+
+		//calls the Tweet objects UPDATE function and updates the DataBase
+		//$tweet->update($pdo);
+
+		// stores the "Tweet updated OK" message in the $reply->message state variable.
+		//$reply->message = "Tweet updated OK";
+
+
+
+
+		// If it is not a PUT request, we move to Line 87 to determine if it is a POST request.
+
+
+	} else if($method === "POST")
+		// If it is a POST request we continue to the proceeding lines and make sure that a Profile ID was sent with the request. A new Tweet cannot be created without the Profile ID. See the constructor in the Tweet class.
+		//make sure profileId is available
+		if(empty($requestObject->profileId) === true) {
+			throw(new \InvalidArgumentException ("No Profile ID", 405));
+		}
+
+
+	// creates a new Tweet object and stores it in $tweet
+	$tweet = new Tweet(null, $requestObject->profileId, $requestObject->tweetContent, null);
+	// calls the INSERT method in $tweet which inserts the object into the DataBase.
+	$tweet->insert($pdo);;
+
+	// stores the "Tweet created OK" message in the $reply->message state variable.
+	$reply->message = "Tweet created OK";
 }
