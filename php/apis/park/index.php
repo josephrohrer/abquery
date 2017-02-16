@@ -4,7 +4,7 @@ require_once "autoload.php";
 require_once "/lib/xsrf.php";
 require_once "/etc/apache2/capstone-mysql/encrypted-config.php";
 
-use Edu\Cnm\bsmtih\abquery;
+use Edu\Cnm\Abquery\php\classes\{Park};
 
 /**
  * api for Park class
@@ -32,8 +32,48 @@ try {
 	//determines which HTTP method needs to be processed and stores the result in $method.
 	$method = array_key_exists("HTTP_x_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
 
-	//stores the Primary Key for the GET, DELETE, and PUT methods in $id. This key will come in the URL sent by the front end. If no key is present, $id will remain empty. Note that the input is filtered.
-	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+	//sanitize input
+	$parkId = filter_input(INPUT_GET, "parkId", FILTER_VALIDATE_INT);
+	$parkName = filter_input(INPUT_GET, "parkName", FILTER_SANITIZE_STRING);
+	$parkGeometryX = filter_input(INPUT_GET, "parkGeometryX", FILTER_SANITIZE_NUMBER_FLOAT);
+	$parkGeometryY = filter_input(INPUT_GET, "parkGeometryY", FILTER_SANITIZE_NUMBER_FLOAT);
+	$parkDeveloped = filter_input(INPUT_GET, "parkDeveloped", FILTER_VALIDATE_BOOLEAN);
 
+	//make sure the id is valid for methods that require it
+	if(($method === "DELETE" || $method === "PUT") && (empty($id) === true || $id < 0)) {
+		throw(new InvalidArgumentException("YUNO PUT ID", 405));
+	}
+
+	// handle GET request - if id is present, that park is returned, otherwise all parks are returned
+	if($method === "GET") {
+		//set XSRF cookie
+		setXsrfCookie();
+
+		//get a specific park or all parks and update reply
+		if(empty($parkId) === false) {
+			$park = Park::getParkByParkId($pdo, $parkId);
+			if($park !== null) {
+				$reply->data = $park;
+			}
+		}
+
+	} else {
+		throw (new InvalidArgumentException("Invalid HTTP method request"));
+	}
+
+	// update reply with exception information
+} catch(Exception $exception) {
+	$reply->status = $exception->getCode();
+	$reply->message = $exception->getMessage();
+} catch(TypeError $typeError) {
+	$reply->status = $typeError->getCode();
+	$reply->message = $typeError->getMessage();
 }
 
+header("Content-type: application/json");
+if($reply->data === null) {
+	unset($reply->data);
+}
+
+// encode and return reply to front end caller
+echo json_encode($reply);
