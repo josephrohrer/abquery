@@ -41,23 +41,26 @@ try {
 	if($method === "GET") {
 		//set XSRF cookie
 		setXsrfCookie("/");
-		// handle GET request - if id is present, that amenity is present, that amenity is returned, otherwise all amenities are returned
 
-
-		// Here, we determine if a Key was sent in the URL by checking $id. If so, we pull the requested Amenity by Amenity ID from the DataBase and store it in $amenity.
+		//get a specific amenity or all amenities and update reply
 		if(empty($id) === false) {
-			$amenity = Amenity::getaAmenitybyAmenityId($pdo, $id);
+			$amenity = Amenity::getAmenityByAmenityId($pdo, $id);
 			if($amenity !== null) {
 				$reply->data = $amenity;
-				// Here, we store the retrieved Amenity in the $reply->data state variable.
+			}
+		} else if(empty($amenityCityName) === false) {
+			$amenities = Amenity::getAmenityByAmenityCityName($pdo, $amenityCityName);
+			if($amenities !== null) {
+				$reply->data = $amenities;
+			}
+		} else if(empty($content) === false) {
+			$amenities = Amenity::getAmenityByAmenityName($pdo, $amenityName);
+			if($amenities !== null) {
+				$reply->data = $amenities;
+			}
+		} else {
+			$amenities = Amenity::getAllAmenities($pdo);
+			if($amenities !== null) {
+				$reply->data = $amenities;
 			}
 		}
-
-	} else {
-		$amenities = Amenity::getAllAmenities($pdo);
-		if($amenities !== null) {
-			$reply->data = $amenities;
-		}
-	}
-		// If there is nothing in $id, and it is a GET request, then we simply return all amenities. We store all the amenities in the $amenities variable, and then store them in the $reply->data state variable.
-
