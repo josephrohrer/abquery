@@ -1,7 +1,7 @@
 <?php
 
 
-require_once(dirname(__DIR__)) . "/php/classes/test/autoload.php");
+require_once(dirname(__DIR__) . "/classes/autoload.php");
 
 
 /**
@@ -15,8 +15,8 @@ class DataDownloader {
 
 	/**
 	 *
-	 * crime: http://data.cabq.gov/publicsafety/policeincidents/policeincidentsJSON_ALL
-	 * parks: http://data.cabq.gov/community/parksandrec/parks/ParksJSON_ALL
+	 * crime: http://coagisweb.cabq.gov/arcgis/rest/services/public/APD_Incidents/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson
+	 * parks: http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson
 	 *
 	 **/
 
@@ -24,12 +24,22 @@ class DataDownloader {
 	 * Gets the metadata from a file url
 	 *
 	 * @param string %url to grab from
-	 * @param int $redirect whether to redirect or not
 	 * @return mixed stream data
 	 * @throws Exception if file doesn't exist.
 	 **/
 
-	public static function getMetaData($url, $redirect = 1) {
+	public static function getMetaData($url) { //FIXME: do we need a redirect?
+		$options = array();
+		$options["http"] = array();
+		$options["http"]["method"] = "HEAD";
+		$context = stream_context_create($options);
+		$fd = fopen($url, "rb", false, $context);
+		$metaData = stream_get_meta_data($fd);
+		if($fd === false) {
+			throw(new \RuntimeException("unable to open HTTP stream"));
+		}
+		fclose($fd);
+		return($metaData);
 	}
 
 	/**
@@ -67,5 +77,5 @@ class DataDownloader {
 	}
 }
 
-DataDownloader::readDataJson("http://data.cabq.gov/publicsafety/policeincidents/policeincidentsJSON_ALL");
-DataDownloader::readDataJson("http://data.cabq.gov/community/parksandrec/parks/ParksJSON_ALL"); // FIXME: change URLS
+DataDownloader::readDataJson("http://coagisweb.cabq.gov/arcgis/rest/services/public/APD_Incidents/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson");
+DataDownloader::readDataJson("http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson");
