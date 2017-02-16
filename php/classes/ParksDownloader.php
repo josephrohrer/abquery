@@ -25,7 +25,9 @@ class DataDownloader {
 DataDownloader::readDataJson("http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson");
 
 
-"OBJECTID": 276728,
+
+
+/**"OBJECTID": 276728,
     "PARKNAME": "AZTEC",
     "PARKSTATUS": "D",
     "JURISDICTIcON": "CITY",
@@ -71,4 +73,5 @@ $amenityName = "";
 	35.120333961168839
 ],
 
+**/
 
