@@ -4,7 +4,7 @@ require_once "../classes/autoloader.php";
 require_once "../lib/xsrf.php";
 require_once "/etc/apache2/capstone-mysql/encrypted-config.php";
 
-use Edu\Cnm\Abquery;
+use Edu\Cnm\Abquery\Amenity;
 
 /**
  * * api for Amenity class
