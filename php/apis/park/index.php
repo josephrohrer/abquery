@@ -4,7 +4,7 @@ require_once "autoload.php";
 require_once "/lib/xsrf.php";
 require_once "/etc/apache2/capstone-mysql/encrypted-config.php";
 
-use Edu\Cnm\Abquery\php\classes\{Park};
+use Edu\Cnm\Abquery\Park;
 
 /**
  * api for Park class
