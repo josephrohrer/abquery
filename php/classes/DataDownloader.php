@@ -29,8 +29,8 @@ class DataDownloader {
 	 **/
 
 	public static function getMetaData($url) { //FIXME: do we need a redirect?
-		$options = array();
-		$options["http"] = array();
+		$options = [];
+		$options["http"] = [];
 		$options["http"]["method"] = "HEAD";
 		$context = stream_context_create($options);
 		$fd = fopen($url, "rb", false, $context);
@@ -41,6 +41,7 @@ class DataDownloader {
 		fclose($fd);
 		return($metaData);
 	}
+
 
 	/**
 	 *
@@ -54,7 +55,7 @@ class DataDownloader {
 	public static function readDataJson($url) {
 
 		// http://php.net/manual/en/function.stream-context-create.php creates a stream for file input
-		$context = stream_context_create(array("http" => array("ignore_errors" => true, "method" => "GET")));
+		$context = stream_context_create(["http" => ["ignore_errors" => true, "method" => "GET"]]);
 		try {
 			// http://php.net/manual/en/function.file-get-contents.php file-get-contents returns file in string context
 			if(($jsonData = file_get_contents($url, null, $context)) === false) {
@@ -77,5 +78,5 @@ class DataDownloader {
 	}
 }
 
-DataDownloader::readDataJson("http://coagisweb.cabq.gov/arcgis/rest/services/public/APD_Incidents/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson");
-DataDownloader::readDataJson("http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson");
+// DataDownloader::readDataJson("http://coagisweb.cabq.gov/arcgis/rest/services/public/APD_Incidents/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson");
+// DataDownloader::readDataJson("http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson");
