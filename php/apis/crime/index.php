@@ -65,3 +65,28 @@ try {
 				$reply->data = $crimes;
 			}
 		}
+
+	} else {
+		throw (new InvalidArgumentException("Invalid HTTP Method Request"));
+		// If the method request is not GET, PUT, POST, or DELETE, an exception is thrown
+	}
+
+// update reply with exception information
+} catch(Exception $exception) {
+	$reply->status = $exception->getCode();
+	$reply->message = $exception->getMessage();
+	$reply->trace = $exception->getTraceAsString();
+} catch(TypeError $typeError) {
+	$reply->status = $typeError->getCode();
+	$reply->message = $typeError->getMessage();
+}
+// In these lines, the Exceptions are caught and the $reply object is updated with the data from the caught exception. Note that $reply->status will be updated with the correct error code in the case of an Exception.
+
+header("Content-type: application/json");
+// sets up the response header.
+if($reply->data === null) {
+	unset($reply->data);
+}
+
+echo json_encode($reply);
+// finally - JSON encodes the $reply object and sends it back to the front end.
