@@ -1,4 +1,5 @@
 <?php
+//FIXME: REQUIRE ONCE AND NAMESPACE
 
 require_once(dirname(__DIR__) . "/classes/autoload.php");
 
