@@ -21,6 +21,32 @@ class DataDownloader extends \DataDownloader {
 
 readDataJson($url) {
 
+/**
+ *
+ * attributes
+ * OBJECTID -> $parkId
+ * PARKNAME -> $parkName
+ * PARKSTATUS -> null
+ * JURISDICTION -> null
+ *
+ *
+ *
+ * geometry
+ * rings
+ * -> create an array of points for each parkId
+ * -> plug into ->
+ * -> $euclideanMean
+ *
+ * FEATURES
+ * attributes
+ * $parkId ->
+ *
+ *
+**/
+
+
+foreach()
+
 
 }
 
@@ -36,7 +62,7 @@ DataDownloader::readDataJson("http://coagisweb.cabq.gov/arcgis/rest/services/pub
 /**"OBJECTID": 276728,
     "PARKNAME": "AZTEC",
     "PARKSTATUS": "D",
-    "JURISDICTIcON": "CITY",
+    "JURISDICTION": "CITY",
     "ACRES": 5.5388133799999997,
     "DEVELOPEDACRES": 5.5,
     "LITTENNISCOURTS": 0,
@@ -58,7 +84,26 @@ DataDownloader::readDataJson("http://coagisweb.cabq.gov/arcgis/rest/services/pub
     "PARKINGSPACES": 0,
     "JOGGINGPATHS": 0,
 
-
+ *
+"geometry": {
+"rings": [
+[
+[
+-11866750.687800001,
+4173246.3906000033
+],
+[
+-11866753.1613,
+4173248.9043999985
+],
+[
+-11866754.5711,
+4173253.1036000028
+],
+ *
+ *
+ *
+ *
 
 $parkId = "";
 $parkName = "";
@@ -73,11 +118,9 @@ $featureValue =
 $amenityId = 1;
 $amenityCityName = "";
 $amenityName = "";
-
-[
-	-106.54086466695048,
-	35.120333961168839
-],
-
-**/
+ *
+ *
+ *
+ *
+ **/
 
