@@ -21,11 +21,11 @@ class DataDownloader {
 	 **/
 
 	/**
-	 * Gets the metadata from a file url
+	 * Gets the etag from a file url
 	 *
 	 * @param string %url to grab from
-	 * @return mixed stream data
-	 * @throws Exception if file doesn't exist.
+	 * @return string $eTag to be compared to previous etag to determine last download
+	 * @throws \RuntimeException if stream cant be opened.
 	 **/
 
 	public static function getMetaData($url) {
@@ -47,7 +47,6 @@ class DataDownloader {
 				$eTag = $explodeETag[1];
 			}
 		}
-		var_dump($eTag);
 		return ($eTag);
 	}
 
@@ -57,8 +56,9 @@ class DataDownloader {
 	 * Decodes Json file, converts to string, sifts through the string and inserts the data into the database
 	 *
 	 * @param string $url
-	 * @throws PDOException PDO related errors
-	 * @throws Exception catch-all exception
+	 * @throws \PDOException PDO related errors
+	 * @throws \Exception catch-all exception
+	 * @return \SplFixedArray $allData
 	 **/
 
 	public static function readDataJson($url) {
@@ -78,15 +78,15 @@ class DataDownloader {
 			$jsonFeatures = $jsonConverted->features;
 
 			// create array from converted Json file
-			$properties = new \SplFixedArray(count($jsonFeatures));
+			$attributes = new \SplFixedArray(count($jsonFeatures));
 
 	} catch(\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
-		return ($properties);
+		return ($attributes);
 	}
 }
 
-$meta = DataDownloader::getMetaData("http://coagisweb.cabq.gov/arcgis/rest/services/public/APD_Incidents/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson");
-//("http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson");
+//("http://coagisweb.cabq.gov/arcgis/rest/services/public/APD_Incidents/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson");
+$meta = DataDownloader::getMetaData("http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson");
 
