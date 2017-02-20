@@ -1,7 +1,7 @@
 <?php
-//FIXME: REQUIRE ONCE AND NAMESPACE
 
-require_once(dirname(__DIR__) . "/classes/autoload.php");
+namespace Edu\Cnm\Abquery;
+require_once("autoload.php");
 
 /**
  * This class will download parks data from the City of Albuquerque City Data Database.
@@ -9,7 +9,9 @@ require_once(dirname(__DIR__) . "/classes/autoload.php");
  * @author Joseph Rohrer jrohrer@cnm.edu
  *
  **/
-class DataDownloader {
+
+
+class DataDownloader extends \DataDownloader {
 
 	/**
 	 *
@@ -17,7 +19,10 @@ class DataDownloader {
 	 *
 	 **/
 
+readDataJson($url) {
 
+
+}
 
 
 
