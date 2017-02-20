@@ -1,5 +1,5 @@
 <?php
-//FIXME: NAMESPACE
+namespace Edu\Cnm\Abquery;
 
 require_once("autoload.php");
 

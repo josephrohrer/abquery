@@ -1,5 +1,5 @@
 <?php
-//FIXME: NAMESPACE
+namespace Edu\Cnm\Abquery;
 
 require_once("autoload.php");
 
@@ -39,11 +39,16 @@ class DataDownloader {
 			throw(new \RuntimeException("unable to open HTTP stream"));
 		}
 		fclose($fd);
-		foreach($metaData["wrapper_data"] as $header){
-			$explodeHeader = explode(": ", $header);
-			//FIXME: IF ETAG
+		$header = $metaData["wrapper_data"];
+		foreach($header as $value) {
+			$explodeETag = explode(": ", $value);
+			$findETag = array_search("ETag", $explodeETag);
+			if($findETag !== false) {
+				$eTag = $explodeETag[1];
+			}
 		}
-		return($eTag);
+		var_dump($eTag);
+		return ($eTag);
 	}
 
 
@@ -82,6 +87,6 @@ class DataDownloader {
 	}
 }
 
-// DataDownloader::readDataJson("http://coagisweb.cabq.gov/arcgis/rest/services/public/APD_Incidents/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson");
-$meta = DataDownloader::getMetaData("http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson");
-var_dump($meta);
+$meta = DataDownloader::getMetaData("http://coagisweb.cabq.gov/arcgis/rest/services/public/APD_Incidents/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson");
+//("http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson");
+
