@@ -16,18 +16,26 @@ class CrimeDownloader extends DataDownloader {
 	 **/
 }
 
+//TODO: pull new etag (getMetaData) and compare with the one saved in ini and compare. if different, download new data (readDataJson).
 
-
+/**
+ * assigns data from object->features->attributes
+ */
 foreach($attributes as $attribute) {
 	$crimeId = $attribute->OBJECTID;
 	$crimeLocation = $attribute->CV_BLOCK_ADD;
 	$crimeDescription = $attribute->CVINC_TYPE;
 	$crimeDate = $attribute->date;
-
-
 }
+
+/**
+ * assigns data from object->features->geometry
+ */
 foreach($jsonFeatures as $crimeFeature) {
-	$crimeCoordinates = $crimeFeature->geometry;
+	$crimeGeometry = $crimeFeature->geometry;
+
+	//FIXME: is all of this necessary? seems useful for parks but not crime
+
 	if($crimeFeature->geometry->type === "esriGeometryPoint") {
 		$coordinates = new \SplFixedArray(count($crimeCoordinates));
 		foreach($crimeCoordinates as $coordinate) {
