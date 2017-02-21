@@ -1,7 +1,7 @@
 <?php
 
-require_once "../classes/autoload.php";
-require_once "../lib/xsrf.php";
+require_once dirname(__DIR__,3)."../classes/autoload.php";
+require_once require_once dirname(__DIR__,3)."../lib/xsrf.php";
 require_once "/etc/apache2/capstone-mysql/encrypted-config.php";
 
 use Edu\Cnm\Abquery\Amenity;
