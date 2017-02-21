@@ -167,10 +167,9 @@ class Park implements \JsonSerializable {
 	 * @throws \TypeError if $pdo is not a PDO connection object
 	 **/
 	public function insert(\PDO $pdo) {
-		if($this->parkId === null) { //TODO: need to change back to !==
+		if($this->parkId === null) {
 			throw(new \PDOException("not a new park"));
 		}
-		var_dump($this);
 
 		// reformat the boolean for mySQL
 		$parkDeveloped = $this->parkDeveloped ? 1 : 0;
