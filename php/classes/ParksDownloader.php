@@ -19,7 +19,41 @@ class DataDownloader extends \DataDownloader {
 	 *
 	 **/
 
-readDataJson($url) {
+	/**
+	 * foreach that pulls name and parkId from the JSON
+	 */
+
+
+	foreach($attributes as $attribute) {
+	$parkId = $attribute->OBJECTID;
+	$parkName = $attribute->PARKNAME;
+	}
+
+
+	/**
+	 * foreach loop that will make an array of points from the JSON and send it to the euclideanMean function in the Point class
+	 */
+
+	foreach($jsonFeatures as $parkFeature) {
+	$park = $crimeFeature->geometry;
+	if($crimeFeature->geometry->type === "esriGeometryPoint") {
+		$coordinates = new \SplFixedArray(count($parkCoordinates));
+		foreach($crimeCoordinates as $coordinate) {
+			$coordinates[$coordinates->key()] = $coordinate;
+			$coordinates->next();
+		}
+	// FIXME: Put into euclideanMean
+
+	/**
+	 * foreach to pull in developed acres and put it into parkDeveloped boolean to return if YES or NO for developed
+	 **/
+
+
+	/**
+	* foreach to take rest of park JSON and put into a features array
+	/**
+
+
 
 /**
  *
@@ -27,7 +61,7 @@ readDataJson($url) {
  * OBJECTID -> $parkId
  * PARKNAME -> $parkName
  * PARKSTATUS -> null
- * JURISDICTION -> null
+ * JURISDICTION -> null     Do you have to set these to null or can you skip them?!!!
  *
  *
  *
