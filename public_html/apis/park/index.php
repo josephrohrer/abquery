@@ -27,7 +27,7 @@ $reply->data = null;
 
 try {
 	//grab the mySQL database connection
-	$pdo = connectToEncryptedMySQL("/etc/apache2/abquery-mysql/park.ini");
+	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/abquery.ini");
 
 	//determines which HTTP method needs to be processed and stores the result in $method.
 	$method = array_key_exists("HTTP_x_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
