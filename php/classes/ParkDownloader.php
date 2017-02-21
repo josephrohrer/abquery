@@ -2,6 +2,7 @@
 
 namespace Edu\Cnm\Abquery;
 require_once("autoload.php");
+require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
 
 /**
  * This class will download parks data from the City of Albuquerque City Data Database.

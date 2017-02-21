@@ -2,6 +2,7 @@
 namespace Edu\Cnm\Abquery;
 
 require_once("autoload.php");
+require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
 
 
 /**
@@ -31,6 +32,7 @@ class DataDownloader {
 		if($whichETag !== "crime" && $whichETag !== "park") {
 			throw(new \RuntimeException("not a valid etag", 400));
 		}
+
 		$options = [];
 		$options["http"] = [];
 		$options["http"]["method"] = "HEAD";
@@ -40,6 +42,7 @@ class DataDownloader {
 		if($fd === false) {
 			throw(new \RuntimeException("unable to open HTTP stream"));
 		}
+
 		fclose($fd);
 		$header = $metaData["wrapper_data"];
 		$eTag = null;
@@ -50,10 +53,10 @@ class DataDownloader {
 				$eTag = $explodeETag[1];
 			}
 		}
+
 		if($eTag === null) {
 			throw(new \RuntimeException("etag cannot be found", 404));
 		}
-
 
 		$config = readConfig("/etc/apache2/capstone-mysql/abquery.ini");
 		$eTags = json_decode($config["etags"]);
@@ -64,8 +67,6 @@ class DataDownloader {
 			return($previousETag);
 		}
 	}
-
-	//TODO: save etag in ini to be used by individual dlers
 
 
 	/**
@@ -95,12 +96,12 @@ class DataDownloader {
 			$jsonFeatures = $jsonConverted->features;
 
 			// create array from converted Json file
-			$attributes = new \SplFixedArray(count($jsonFeatures));
+			$features = new \SplFixedArray(count($jsonFeatures));
 
 	} catch(\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
-		return ($attributes);
+		return ($features);
 	}
 }
 
