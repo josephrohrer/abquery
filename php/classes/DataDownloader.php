@@ -64,7 +64,7 @@ class DataDownloader {
 		if($previousETag < $eTag) {
 			return ($eTag);
 		} else {
-			return($previousETag);
+			throw(new \OutOfBoundsException("same old story, same old song and dance", 401));
 		}
 	}
 
