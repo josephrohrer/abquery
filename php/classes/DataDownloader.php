@@ -28,6 +28,9 @@ class DataDownloader {
 	 **/
 
 	public static function getMetaData(string $url, string $whichETag) {
+		if($whichETag !== "crime" && $whichETag !== "park") {
+			throw(new \RuntimeException("not a valid etag", 400));
+		}
 		$options = [];
 		$options["http"] = [];
 		$options["http"]["method"] = "HEAD";
@@ -39,6 +42,7 @@ class DataDownloader {
 		}
 		fclose($fd);
 		$header = $metaData["wrapper_data"];
+		$eTag = null;
 		foreach($header as $value) {
 			$explodeETag = explode(": ", $value);
 			$findETag = array_search("ETag", $explodeETag);
@@ -46,7 +50,19 @@ class DataDownloader {
 				$eTag = $explodeETag[1];
 			}
 		}
-		return ($eTag);
+		if($eTag === null) {
+			throw(new \RuntimeException("etag cannot be found", 404));
+		}
+
+
+		$config = readConfig("/etc/apache2/capstone-mysql/abquery.ini");
+		$eTags = json_decode($config["etags"]);
+		$previousETag = $eTags->$whichETag;
+		if($previousETag < $eTag) {
+			return ($eTag);
+		} else {
+			return($previousETag);
+		}
 	}
 
 	//TODO: save etag in ini to be used by individual dlers
