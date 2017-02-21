@@ -6,7 +6,7 @@ require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
 
 
 /**
- * This class will download crime incedents data from the City of Albuquerque Database.
+ * This class will download crime incidents data from the City of Albuquerque Database.
  *
  * @author Brett Gilbert bgilbert9@cnm.edu
  **/
