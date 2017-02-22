@@ -39,19 +39,19 @@ try {
 	$parkGeometryY = filter_input(INPUT_GET, "parkGeometryY", FILTER_SANITIZE_NUMBER_FLOAT);
 	$parkDeveloped = filter_input(INPUT_GET, "parkDeveloped", FILTER_VALIDATE_BOOLEAN);
 
-	//make sure the id is valid for methods that require it
-	if(($method === "DELETE" || $method === "PUT") && (empty($id) === true || $id < 0)) {
-		throw(new InvalidArgumentException("YUNO PUT ID", 405));
-	}
-
 	// handle GET request - if id is present, that park is returned, otherwise all parks are returned
 	if($method === "GET") {
 		//set XSRF cookie
 		setXsrfCookie();
 
-		//get a specific park or all parks and update reply
+		//get all parks and update reply
 		if(empty($parkId) === false) {
 			$park = Park::getParkByParkId($pdo, $parkId);
+			if($park !== null) {
+				$reply->data = $park;
+			}
+		} else {
+			$park = Park::getAllParks($pdo);
 			if($park !== null) {
 				$reply->data = $park;
 			}

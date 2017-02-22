@@ -37,17 +37,12 @@ try {
 	$featureAmenityId = filter_input(INPUT_GET, "featureAmenityId", FILTER_VALIDATE_INT);
 	$featureValue = filter_input(INPUT_GET, "featureValue", FILTER_VALIDATE_INT);
 
-	//make sure the id is valid for methods that require it
-	if(($method === "DELETE" || $method === "PUT") && (empty($id) === true || $id < 0)) {
-		throw(new InvalidArgumentException("YUNO PUT ID", 405));
-	}
-
 	// handle GET request - if id is present, that feature is returned, otherwise all features are returned
 	if($method === "GET") {
 		//set XSRF cookie
 		setXsrfCookie();
 
-		//get a specific park or all features and update reply
+		//get a specific park id, amenity id, and all features and update reply
 		if(empty($featureParkId) === false) {
 			$feature = Feature::getFeatureByFeatureParkId($pdo, $parkId);
 			if($feature !== null) {
