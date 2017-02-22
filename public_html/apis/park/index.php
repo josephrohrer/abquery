@@ -35,9 +35,6 @@ try {
 	//sanitize input
 	$parkId = filter_input(INPUT_GET, "parkId", FILTER_VALIDATE_INT);
 	$parkName = filter_input(INPUT_GET, "parkName", FILTER_SANITIZE_STRING);
-	$parkGeometryX = filter_input(INPUT_GET, "parkGeometryX", FILTER_SANITIZE_NUMBER_FLOAT);
-	$parkGeometryY = filter_input(INPUT_GET, "parkGeometryY", FILTER_SANITIZE_NUMBER_FLOAT);
-	$parkDeveloped = filter_input(INPUT_GET, "parkDeveloped", FILTER_VALIDATE_BOOLEAN);
 
 	// handle GET request - if id is present, that park is returned, otherwise all parks are returned
 	if($method === "GET") {
