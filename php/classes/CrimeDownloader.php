@@ -20,13 +20,24 @@ class CrimeDownloader extends DataDownloader {
 	 * compare $eTag with $previousEtag if not the same, download data
 	 */
 	public static function compareAndDownload() {
+
 		$crimeUrl = "http://coagisweb.cabq.gov/arcgis/rest/services/public/APD_Incidents/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson";
-		$crimeETag = DataDownloader::getMetaData($crimeUrl, "crime");
-		if($previousETag < $crimeETag) { //FIXME: try block this shit
-			$features = self::readDataJson($crimeUrl);
-			$config = writeConfig("/etc/apache2/capstone-mysql/abquery.ini");
-			$previousETag = json_decode($config["etags"]);
-			return($previousETag);
+
+		/**
+		 * run getMetaData and catch exception if the data hasnt changed
+		 */
+		$features = null;
+		try {
+			DataDownloader::getMetaData($crimeUrl, "crime");
+			$features = DataDownloader::readDataJson($crimeUrl);
+			$crimeETag = DataDownloader::getMetaData($crimeUrl, "crime");
+			$config = readConfig("/etc/apache2/capstone-mysql/abquery.ini");
+			$eTags = json_decode($config["etags"]);
+			$eTags->crime = $crimeETag;
+			$config["etags"] = json_encode($eTags);
+			writeConfig($config, "/etc/apache2/capstone-mysql/abquery.ini");
+		} catch(\OutOfBoundsException $outOfBoundsException) {
+			echo("no new crime data found");
 		}
 		return($features);
 	}
@@ -34,7 +45,7 @@ class CrimeDownloader extends DataDownloader {
 	/**
 	 * assigns data from object->features->attributes
 	 */
-	public static function getCrimeData() {
+	public static function getCrimeData(\SplFixedArray $features) {
 		foreach($features as $feature) {
 			$crimeId = $feature->OBJECTID;
 			$crimeLocation = $feature->CV_BLOCK_ADD;
@@ -44,8 +55,3 @@ class CrimeDownloader extends DataDownloader {
 		}
 	}
 }
-
-
-$crimeUrl = "http://coagisweb.cabq.gov/arcgis/rest/services/public/APD_Incidents/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson";
-
-//TODO: pull new etag (getMetaData) and compare with the one saved in ini and compare. if different, download new data (readDataJson).
