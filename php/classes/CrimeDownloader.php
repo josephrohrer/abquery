@@ -47,10 +47,10 @@ class CrimeDownloader extends DataDownloader {
 	 */
 	public static function getCrimeData(\SplFixedArray $features) {
 		foreach($features as $feature) {
-			$crimeId = $feature->OBJECTID;
-			$crimeLocation = $feature->CV_BLOCK_ADD;
-			$crimeDescription = $feature->CVINC_TYPE;
-			$crimeDate = \DateTime::createFromFormat("U", ($feature->date / 1000));
+			$crimeId = $feature->attributes->OBJECTID;
+			$crimeLocation = $feature->attributes->CV_BLOCK_ADD;
+			$crimeDescription = $feature->attributes->CVINC_TYPE;
+			$crimeDate = \DateTime::createFromFormat("U", ($feature->attributes->date / 1000));
 			$crimeGeometry = new Point($feature->geometry->x, $feature->geometry->y);
 		}
 	}
