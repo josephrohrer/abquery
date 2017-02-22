@@ -31,6 +31,7 @@ try {
 
 	//stores the Primary Key ($crimeId) for the GET, DELETE, and PUT methods in $id. This key will come in the URL sent by the front end. If no key is present, $id will remain empty. Note that the input is filtered.
 	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+	$crimeLocation = filter_input(INPUT_GET, "crimeLocation", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 
 	//Here we check and make sure that we have the Primary Key ($crimeId) for the DELETE and PUT requests. If the request is a PUT or DELETE and no key is present in $id, An Exception is thrown.id is valid for methods that require it
 	if(($method === "DELETE" || $method === "PUT") && (empty($id) === true || $id < 0)) {
@@ -50,11 +51,6 @@ try {
 			}
 		} else if(empty($crimeLocation) === false) {
 			$crimes = Crime::getCrimeByCrimeLocation($pdo, $crimeLocation);
-			if($crimes !== null) {
-				$reply->data = $crimes;
-			}
-		} else if(empty($CrimeGeometry) === false) {
-			$crimes = Crime::getCrimeByCrimeGeometry($pdo, $crimeGeometry);
 			if($crimes !== null) {
 				$reply->data = $crimes;
 			}

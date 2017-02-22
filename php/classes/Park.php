@@ -194,7 +194,6 @@ class Park implements \JsonSerializable {
 	 * @throws \TypeError when variables are not the correct data type
 	 **/
 	public static function getParkByParkId(\PDO $pdo, int $parkId) {
-		var_dump($parkId);
 		if($parkId <= 0) {
 			throw(new \PDOException("park id is not positive"));
 		}
@@ -239,8 +238,8 @@ class Park implements \JsonSerializable {
 			} catch(\Exception $exception) {
 				throw(new \PDOException($exception->getMessage(), 0, $exception));
 			}
-			return ($parks);
 		}
+		return ($parks);
 	}
 
 	/**
