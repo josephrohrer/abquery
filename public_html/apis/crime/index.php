@@ -29,24 +29,21 @@ try {
 	//determine which HTTP method was used
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
 
-	//stores the Primary Key ($crimeId) for the GET, DELETE, and PUT methods in $id. This key will come in the URL sent by the front end. If no key is present, $id will remain empty. Note that the input is filtered.
+	//stores the Primary Key ($crimeId) for the GET method in $id. This key will come in the URL sent by the front end. If no key is present, $id will remain empty. Note that the input is filtered.
+
 	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 	$crimeLocation = filter_input(INPUT_GET, "crimeLocation", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	$crimeSunriseDate = filter_input(INPUT_GET, "crimeSunriseDate");
-	$crimeSunsetDate = filter_input(INPUT_GET, "crimeSunsetDate");
+	$crimeSunriseDate = filter_input(INPUT_GET, "crimeSunriseDate", FILTER_VALIDATE_INT);
+	$crimeSunsetDate = filter_input(INPUT_GET, "crimeSunsetDate", FILTER_VALIDATE_INT);
+	$crimeDate = filter_input(INPUT_GET, "crimeDate", FILTER_VALIDATE_INT);
 	$crimeDescription = filter_input(INPUT_GET, "crimeDescription", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-
-	//Here we check and make sure that we have the Primary Key ($crimeId) for the DELETE and PUT requests. If the request is a PUT or DELETE and no key is present in $id, An Exception is thrown.id is valid for methods that require it
-	if(($method === "DELETE" || $method === "PUT") && (empty($id) === true || $id < 0)) {
-		throw(new InvalidArgumentException("id cannot be empty or negative", 405));
-	}
 
 	// handle GET request - if id is present, that crime is returned, otherwise all crimes are returned
 	if($method === "GET") {
 		//set XSRF cookie
 		setXsrfCookie();
 
-		//get a specific tweet or all tweets and update reply
+		//get a specific crime or all crimes and update reply
 		if(empty($id) === false) {
 			$crime = Crime::getCrimeByCrimeId($pdo, $id);
 			if($crime !== null) {
@@ -63,7 +60,9 @@ try {
 				$reply->data = $crimes;
 			}
 		} else if(empty($crimeDate) === false) {
-			$crimes = Crime::getCrimeByCrimeDate($pdo, $crimeSunriseDate, $crimeSunsetDate);
+			$crimeDate = \DateTime::createFromFormat("U", ($crimeDate / 1000));
+			//$crimeSunsetDates = \DateTime::createFromFormat("U", ($crimeSunsetDate / 1000));
+			$crimes = Crime::getCrimeByCrimeDate($pdo, $crimeSunriseDate, $crimeSunsetDate)->toArray();
 			if($crimes !== null) {
 				$reply->data = $crimes;
 			}
@@ -76,7 +75,7 @@ try {
 
 	} else {
 		throw (new InvalidArgumentException("Invalid HTTP Method Request"));
-		// If the method request is not GET, PUT, POST, or DELETE, an exception is thrown
+		// If the method request is not GET an exception is thrown
 	}
 
 // update reply with exception information
