@@ -9,9 +9,8 @@ use Edu\Cnm\Abquery\Feature;
 /**
  * api for Feature class
  *
- * @author Benjamin Smith <bsmtih@cnm.edu>
+ * @author Abquery
  */
-
 
 // Check the session status. If inactive then start the session.
 if(session_status() !== PHP_SESSION_ACTIVE) {
@@ -35,7 +34,6 @@ try {
 	//sanitize input
 	$featureParkId = filter_input(INPUT_GET, "featureParkId", FILTER_VALIDATE_INT);
 	$featureAmenityId = filter_input(INPUT_GET, "featureAmenityId", FILTER_VALIDATE_INT);
-	$featureValue = filter_input(INPUT_GET, "featureValue", FILTER_VALIDATE_INT);
 
 	// handle GET request - if id is present, that feature is returned, otherwise all features are returned
 	if($method === "GET") {
@@ -44,12 +42,12 @@ try {
 
 		//get a specific park id, amenity id, and all features and update reply
 		if(empty($featureParkId) === false) {
-			$feature = Feature::getFeatureByFeatureParkId($pdo, $parkId);
+			$feature = Feature::getFeatureByFeatureParkId($pdo, $featureParkId);
 			if($feature !== null) {
 				$reply->data = $feature;
 			}
 		} else if(empty($featureAmenityId) === false) {
-			$feature = Feature::getFeatureByFeatureAmenityId($pdo, $parkId);
+			$feature = Feature::getFeatureByFeatureAmenityId($pdo, $featureAmenityId);
 			if($feature !== null) {
 				$reply->data = $feature;
 			}
