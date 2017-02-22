@@ -26,7 +26,7 @@ $reply->data = null;
 // We will use this object named $reply to store the results of the call to our API. The status 200 line adds a state variable to $reply called status and initializes it with the integer 200 (success code). The proceeding line adds a state variable to $reply called data. This is where the result of the API call will be stored. We will also update $reply->message as we proceed through the API.
 
 try {
-	//grab the mySQL database connection
+	//grab the mySQL connection
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/abquery.ini");
 
 	//determines which HTTP method needs to be processed and stores the result in $method.
@@ -58,7 +58,12 @@ try {
 			if($feature !== null) {
 				$reply->data = $feature;
 			}
-		}
+		} else {
+		$feature = Feature::getAllFeatures($pdo);
+		if($feature !== null) {
+			$reply->data = $feature;
+			}
+	}
 
 	} else {
 		throw (new InvalidArgumentException("Invalid HTTP method request"));
