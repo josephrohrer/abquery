@@ -35,7 +35,6 @@ try {
 	$crimeLocation = filter_input(INPUT_GET, "crimeLocation", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$crimeSunriseDate = filter_input(INPUT_GET, "crimeSunriseDate", FILTER_VALIDATE_INT);
 	$crimeSunsetDate = filter_input(INPUT_GET, "crimeSunsetDate", FILTER_VALIDATE_INT);
-	$crimeDate = filter_input(INPUT_GET, "crimeDate", FILTER_VALIDATE_INT);
 	$crimeDescription = filter_input(INPUT_GET, "crimeDescription", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 
 	// handle GET request - if id is present, that crime is returned, otherwise all crimes are returned
@@ -59,9 +58,9 @@ try {
 			if($crimes !== null) {
 				$reply->data = $crimes;
 			}
-		} else if(empty($crimeDate) === false) {
-			$crimeDate = \DateTime::createFromFormat("U", ($crimeDate / 1000));
-			//$crimeSunsetDates = \DateTime::createFromFormat("U", ($crimeSunsetDate / 1000));
+		} else if(empty($crimeSunriseDate) === false && empty($crimeSunsetDate) === false) {
+			$crimeSunriseDate = \DateTime::createFromFormat("U", ($crimeSunriseDate / 1000));
+			$crimeSunsetDate = \DateTime::createFromFormat("U", ($crimeSunsetDate / 1000));
 			$crimes = Crime::getCrimeByCrimeDate($pdo, $crimeSunriseDate, $crimeSunsetDate)->toArray();
 			if($crimes !== null) {
 				$reply->data = $crimes;
