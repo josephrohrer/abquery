@@ -13,15 +13,34 @@ require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
 class ParkDownloader extends \DataDownloader {
 
 
-	public static function getParkData() {
+	public static function compareAndContrast() {
 
-		/**
-		 * foreach that pulls name and parkId from the JSON
-		 */
+		$parkURL = "http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson";
 
-		foreach($attributes as $attribute) {
-			$parkId = $attribute->OBJECTID;
-			$parkName = $attribute->PARKNAME;
+		$features = null;
+		try {
+			DataDownloader::getMetaData($parkURL, "park");
+			$features = DataDownloader::readDataJson($parkURL);
+			$parkETag = DataDownloader::getMetaData($parkURL, "park");
+			$config = readConfig("/etc/apache2/capstone-mysql/abquery.ini");
+			$eTags = json_decode($config["etags"]);
+			$eTags->park = $parkETag;
+			$config["etags"] = json_encode($eTags);
+			writeConfig($config, "/etc/apache2/capstone-mysql/abquery.ini");
+		} catch(\OutOfBoundsException $outOfBoundsException) {
+			echo("Park Data not updated");
+		}
+		return ($features);
+	}
+
+
+	/**
+	 * foreach that pulls name and parkId from the JSON
+	 */
+	public static function getParkData(\SplFixedArray $features) {
+		foreach($features as $feature) {
+			$parkId = $feature->attributes->OBJECTID;
+			$parkName = $feature->attributes->PARKNAME;
 		}
 
 		/**
@@ -36,97 +55,109 @@ class ParkDownloader extends \DataDownloader {
 					$coordinates[$coordinates->key()] = $coordinate;
 					$coordinates->next();
 					// FIXME: Put into euclideanMean function
+
+					// (parkGeometryX, parkGeometryY)
 				}
 			}
 		}
+	}
 
-			/**
-			 * foreach to pull in developed acres and put it into parkDeveloped boolean to return if YES or NO for developed
-			 *
-			 **/
-
-		foreach($attributes as $attribute) {
-			$ = $attribute->DEVELOPEDACRES;
-		}
-
-			/**
-			 * foreach to take rest of park JSON and put into a features array
-
-			 **/
-
-		foreach($attributes as $attribute) {
-			$feature =
-			new \SplFixedArray
-
-
-		}
-
-
-
-
-		$parkURL = "http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson"
-}
-
-
-
-
-
-
-/**
- * // part 0:
- * // preload associative array to map "LITSOFTBALLFIELDS" to an actual primary key
- * // so $allAmentities["LITSOFTBALLFIELDS"] returns the amentity object
- * $allFlatAmentities = Amentity::getAllAmentities();
- * $allAmentities = [];
- * foreach($allFlatAmentities as $dylanHatesSpellingAmentities) {
- * 	$allAmentities[$dylanHatesSpellingAmentities->getAmentityCityName()] = $dylanHatesSpellingAmentities;
- * }
- *
- * // part 1: within existing loop
- * foreach(...) {
- * 	foreach($allAmentities as $amenity) {
- * 		if(empty($attribute->${$amenity->getCityName()}) === false) {
- * 			$feature = new Feature(...);
- * 			$feature->insert($pdo);
- * 		}
- * 	}
- * }
- **/
-
-
-		}
-
-
-
-
-
-
-		 *
-		 *
-		 * /**
-		 *
-		 * attributes
-		 * OBJECTID -> $parkId
-		 * PARKNAME -> $parkName
-		 * PARKSTATUS -> null
-		 * JURISDICTION -> null     Do you have to set these to null or can you skip them?!!!
-		 *
-		 *
-		 *
-		 * geometry
-		 * rings
-		 * -> create an array of points for each parkId
-		 * -> plug into ->
-		 * -> $euclideanMean
-		 *
-		 * FEATURES
-		 * attributes
-		 * $parkId ->
-		 *
+		/**
+		 * foreach to pull in developed acres and put it into parkDeveloped boolean to return if YES or NO for developed
 		 *
 		 **/
 
-//**DataDownloader::readDataJson("http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson");
+		public static function parkBoolean {
+			foreach($parkDevelopedAcres as $parkDevelopedAcre) {
+				$parkDevelopedAcre = $feature->attributes->DEVELOPEDACRES;
+				if($parkDevelopedAcres > 0) {
+					$"Yes"
+					}
+			}
+
+
+			//FIXME: if then block 1 0
+			foreach($attributes as $attribute) {
+				$ = $attribute->DEVELOPEDACRES;
+
+				return=$parkDeveloped
+			}
+		}
+
+		/**
+		 * foreach to take rest of park JSON and put into a features array
+		 *
+		 * // part 0:
+		 * // preload associative array to map "LITSOFTBALLFIELDS" to an actual primary key
+		 * // so $allAmentities["LITSOFTBALLFIELDS"] returns the amentity object
+		 * $allFlatAmentities = Amentity::getAllAmentities();
+		 * $allAmentities = [];
+		 * foreach($allFlatAmentities as $dylanHatesSpellingAmentities) {
+		 *   $allAmentities[$dylanHatesSpellingAmentities->getAmentityCityName()] = $dylanHatesSpellingAmentities;
+		 * }
+		 **/
+
+
+		public static function parkAmenities() {
+			$allFlatAmenities = Amenity::getAllAmenities();
+			$allAmenities = [];
+			foreach($allFlatAmenities as $Amenities) {
+				$allAmenities[$Amenities->getAmentityCityName()] = $Amenities;
+			}
+
+			foreach($allAmenities as $amenity) {
+				if(empty($attribute->${$amenity->getCityName()}) === false) {
+					$feature = new Feature(...);
+					$feature->insert($pdo);
+					}
+				}
+			}
+
+
+	/**
+	 *
+	 * // Dylan's given function part 1: within existing loop
+	 * foreach(...) {
+	 *   foreach($allAmentities as $amenity) {
+	 *      if(empty($attribute->${$amenity->getCityName()}) === false) {
+	 *         $feature = new Feature(...);
+	 *         $feature->insert($pdo);
+	 *      }
+	 *   }
+	 * }
+	 **/
+
+
+}
+
+
+*
+*
+*
+/**
+ *
+ * attributes
+ * OBJECTID -> $parkId
+ * PARKNAME -> $parkName
+ * PARKSTATUS -> null
+ * JURISDICTION -> null     Do you have to set these to null or can you skip them?!!!
+ *
+ *
+ *
+ * geometry
+ * rings
+ * -> create an array of points for each parkId
+ * -> plug into ->
+ * -> $euclideanMean
+ *
+ * FEATURES
+ * attributes
+ * $parkId ->
+ *
+ *
+ **/
+
+DataDownloader::parkURL("http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson");
 
 
 
