@@ -49,40 +49,37 @@ class ParkDownloader extends \DataDownloader {
 
 		foreach($jsonFeatures as $parkFeature) {
 			$park = $parkFeature->geometry;
-			if($parkFeature->geometry->type === "esriGeometryPoint") {
-				$coordinates = new \SplFixedArray(count($parkCoordinates));
-				foreach($parkCoordinates as $coordinate) {
-					$coordinates[$coordinates->key()] = $coordinate;
-					$coordinates->next();
-					// FIXME: Put into euclideanMean function
+			$coordinates = new \SplFixedArray(count($parkCoordinates));
+			foreach($parkCoordinates as $coordinate) {
+				$coordinates[$coordinates->key()] = $coordinate;
+				$coordinates->next();
 
-					// (parkGeometryX, parkGeometryY)
-				}
+				// FIXME: Put into euclideanMean function
+
+				// (parkGeometryX, parkGeometryY)
 			}
 		}
-	}
 
 		/**
 		 * foreach to pull in developed acres and put it into parkDeveloped boolean to return if YES or NO for developed
 		 *
 		 **/
 
-		public static function parkBoolean {
-			foreach($parkDevelopedAcres as $parkDevelopedAcre) {
-				$parkDevelopedAcre = $feature->attributes->DEVELOPEDACRES;
-				if($parkDevelopedAcres > 0) {
-					$"Yes"
+		//public static function parkBoolean {
+		foreach($parkDevelopedAcres as $parkDevelopedAcre) {
+			$parkDevelopedAcre = $feature->attributes->DEVELOPEDACRES;
+			if($parkDevelopedAcres > 0) {
+				$"Yes"
 					}
-			}
-
-
-			//FIXME: if then block 1 0
-			foreach($attributes as $attribute) {
-				$ = $attribute->DEVELOPEDACRES;
-
-				return=$parkDeveloped
-			}
 		}
+
+
+		//FIXME: if then block 1 0
+		foreach($attributes as $attribute) {
+			$ = $attribute->DEVELOPEDACRES;
+		}
+
+		//$parkDeveloped
 
 		/**
 		 * foreach to take rest of park JSON and put into a features array
@@ -98,20 +95,19 @@ class ParkDownloader extends \DataDownloader {
 		 **/
 
 
-		public static function parkAmenities() {
-			$allFlatAmenities = Amenity::getAllAmenities();
-			$allAmenities = [];
-			foreach($allFlatAmenities as $Amenities) {
-				$allAmenities[$Amenities->getAmentityCityName()] = $Amenities;
-			}
+		$allFlatAmenities = Amenity::getAllAmenities($pdo); //FIXME: PDO JUNK, dont Smtih the A
+		$allAmenities = [];
+		foreach($allFlatAmenities as $amenity) {
+			$allAmenities[$amenity->getAmentityCityName()] = $amenity;
+		}
 
-			foreach($allAmenities as $amenity) {
-				if(empty($attribute->${$amenity->getCityName()}) === false) {
-					$feature = new Feature(...);
-					$feature->insert($pdo);
-					}
-				}
+		foreach($allAmenities as $amenity) {
+			if(empty($attribute->${$amenity->getCityName()}) === false) {
+				$feature = new Feature(...);
+				$feature->insert($pdo);
 			}
+		}
+	}
 
 
 	/**
@@ -131,9 +127,6 @@ class ParkDownloader extends \DataDownloader {
 }
 
 
-*
-*
-*
 /**
  *
  * attributes
@@ -157,18 +150,13 @@ class ParkDownloader extends \DataDownloader {
  *
  **/
 
-DataDownloader::parkURL("http://coagisweb.cabq.gov/arcgis/rest/services/public/recreation/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson");
-
-
-
-
 /**"OBJECTID": 276728,
  * "PARKNAME": "AZTEC",
  * "PARKSTATUS": "D",
  * "JURISDICTION": "CITY",
  * "ACRES": 5.5388133799999997,
- * "DEVELOPEDACRES": 5.5,
- * "LITTENNISCOURTS": 0,
+ * "DEVELOPEDACRES": 5.5, //FIXME: Boolean
+ * "LITTENNISCOURTS": 0, //FIXME: Assign all this junk
  * "UNLITTENNISCOURTS": 6,
  * "PLAYAREAS": 2,
  * "FULLBASKETBALLCOURTS": 0,
@@ -187,7 +175,7 @@ DataDownloader::parkURL("http://coagisweb.cabq.gov/arcgis/rest/services/public/r
  * "PARKINGSPACES": 0,
  * "JOGGINGPATHS": 0,
  *
- * "geometry": {
+ * "geometry": { //FIXME: euclidean mean this junk
  * "rings": [
  * [
  * [
