@@ -90,13 +90,13 @@ class DataDownloader {
 			}
 
 			//decode the Json file
-			$jsonConverted = json_decode($jsonData, true);
+			$jsonConverted = json_decode($jsonData);
 
 			//format
 			$jsonFeatures = $jsonConverted->features;
 
 			// create array from converted Json file
-			$features = new \SplFixedArray(count($jsonFeatures));
+			$features = \SplFixedArray::fromArray($jsonFeatures);
 
 	} catch(\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));

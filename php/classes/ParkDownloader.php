@@ -38,15 +38,17 @@ class ParkDownloader extends DataDownloader {
 		$allFlatAmenities = Amenity::getAllAmenities($pdo);
 		$allAmenities = [];
 		foreach($allFlatAmenities as $amenity) {
-			$allAmenities[$amenity->getAmentityCityName()] = $amenity;
+			$allAmenities[$amenity->getAmenityCityName()] = $amenity;
 		}
 
 		foreach($features as $feature) {
 			$parkId = $feature->attributes->OBJECTID;
 			$parkName = $feature->attributes->PARKNAME;
-			$jsonCoordinates = $feature->geometry->rings;
+			$jsonCoordinates = $feature->geometry->rings[0];
 			$coordinates = new \SplFixedArray(count($jsonCoordinates));
 			foreach($jsonCoordinates as $jsonCoordinate) {
+				var_dump($jsonCoordinate[0]);
+				var_dump($jsonCoordinate[1]);
 				$coordinate = new Point($jsonCoordinate[0], $jsonCoordinate[1]);
 				$coordinates[$coordinates->key()] = $coordinate;
 				$coordinates->next();
