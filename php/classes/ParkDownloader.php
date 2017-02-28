@@ -55,9 +55,8 @@ class ParkDownloader extends DataDownloader {
 			$parkGeometry = Point::euclideanMean($coordinates);
 
 			$parkDeveloped = ($feature->attributes->DEVELOPEDACRES > 0);
-			//FIXME: Insert park before here
-
-
+			$park = new Park($parkId, $parkName, $parkGeometry, $parkDeveloped);
+			$park->insert($pdo);
 
 			foreach($allAmenities as $amenity) {
 				if(empty($feature->attributes->${$amenity->getCityName()}) === false) {
