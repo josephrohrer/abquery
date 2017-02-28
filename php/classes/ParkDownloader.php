@@ -37,21 +37,18 @@ class ParkDownloader extends DataDownloader {
 		foreach($features as $feature) {
 			$parkId = $feature->attributes->OBJECTID;
 			$parkName = $feature->attributes->PARKNAME;
-		}
-		foreach($features as $coordinateFeature) {
-			$jsonCoordinates = $coordinateFeature->geometry->rings;
+
+			$jsonCoordinates = $feature->geometry->rings;
 			$coordinates = new \SplFixedArray(count($jsonCoordinates));
-			foreach($jsonCoordinates as $coordinate) {
+			foreach($jsonCoordinates as $jsonCoordinate) {
+				$coordinate = new Point($jsonCoordinate[0], $jsonCoordinate[1]);
 				$coordinates[$coordinates->key()] = $coordinate;
 				$coordinates->next();
-				$parkCoordinate = new \SplFixedArray(count($coordinates));
-				foreach($coordinates as $singleCoordinate) {
-					$parkCoordinate = new \SplFixedArray(Point::euclideanMean($singleCoordinate));
-				}
-				return($parkCoordinate); //FIXME: what to return where?
 			}
-		}
-		foreach($features as $booleanFeature) { //FIXME: where do we translate 1 = yes 0 = no
+
+			$parkGeometry = Point::euclideanMean($coordinates);
+
+			//foreach($features as $booleanFeature) { //FIXME: where do we translate 1 = yes 0 = no
 			$parkBoolean = $booleanFeature->attributes->DEVELOPEDACRES;
 			$booleans = new \SplFixedArray(count($parkBoolean));
 			if($parkBoolean > 0) {
@@ -61,7 +58,6 @@ class ParkDownloader extends DataDownloader {
 			$booleans->next();
 			return ($booleans);
 		}
-		return($features); //FIXME: what to return where?
 	}
 
 	/**
