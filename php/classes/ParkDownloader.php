@@ -55,12 +55,13 @@ class ParkDownloader extends DataDownloader {
 			$parkBoolean = $booleanFeature->attributes->DEVELOPEDACRES;
 			$booleans = new \SplFixedArray(count($parkBoolean));
 			if($parkBoolean > 0) {
-				$booleans[$booleans->key()] = 1;
+				$booleans[$booleans->key()] = "Developed";
 			}
-			$booleans[$booleans->key()] = 0;
+			$booleans[$booleans->key()] = "Undeveloped";
 			$booleans->next();
+			return ($booleans);
 		}
-		return ($booleans); //FIXME: what to return where?
+		return($features); //FIXME: what to return where?
 	}
 
 	/**
