@@ -1,0 +1,59 @@
+{
+  "name": "ABQuery",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "ABQuery",
+    "email": "jminnich@cnm.edu, bgilbert9@cnm.edu, jrohrer@cnm.edu, bsmtih@cnm.edu",
+    "url": "https://bootcamp-coders.cnm.edu/~jminnich/abquery/angular"
+  },
+  "scripts": {
+    "build": "rimraf public_html/dist && tsc && webpack --config webpack/webpack.live.js --progress --profile --bail"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/josephrohrer/abquery/angular"
+  },
+  "dependencies": {
+    "@angular/common": "~2.4.0",
+    "@angular/compiler": "~2.4.0",
+    "@angular/core": "~2.4.0",
+    "@angular/forms": "~2.4.0",
+    "@angular/http": "~2.4.0",
+    "@angular/platform-browser": "~2.4.0",
+    "@angular/platform-browser-dynamic": "~2.4.0",
+    "@angular/router": "~3.4.0",
+    "core-js": "^2.4.1",
+    "rxjs": "5.0.1",
+    "jquery": "^3.1.1",
+    "zone.js": "^0.7.4"
+  },
+  "devDependencies": {
+    "@types/node": "^6.0.45",
+    "angular2-template-loader": "^0.6.0",
+    "awesome-typescript-loader": "^3.0.0-beta.17",
+    "bootstrap-loader": "^1.3.3",
+    "bootstrap-sass": "^3.3.7",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "font-awesome": "^4.7.0",
+    "font-awesome-webpack": "^0.0.4",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.25.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "node-sass": "^4.1.1",
+    "null-loader": "^0.1.1",
+    "raw-loader": "^0.5.1",
+    "resolve-url-loader": "^1.6.1",
+    "rimraf": "^2.5.4",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^1.3.3",
+    "typescript": "^2.1.4",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.14.0",
+    "webpack-merge": "^2.0.0"
+  }
+}
