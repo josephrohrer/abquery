@@ -34,10 +34,16 @@ class ParkDownloader extends DataDownloader {
 	}
 
 	public static function getParkData(\SplFixedArray $features) {
+		$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/abquery.ini");
+		$allFlatAmenities = Amenity::getAllAmenities($pdo);
+		$allAmenities = [];
+		foreach($allFlatAmenities as $amenity) {
+			$allAmenities[$amenity->getAmentityCityName()] = $amenity;
+		}
+
 		foreach($features as $feature) {
 			$parkId = $feature->attributes->OBJECTID;
 			$parkName = $feature->attributes->PARKNAME;
-
 			$jsonCoordinates = $feature->geometry->rings;
 			$coordinates = new \SplFixedArray(count($jsonCoordinates));
 			foreach($jsonCoordinates as $jsonCoordinate) {
@@ -48,15 +54,17 @@ class ParkDownloader extends DataDownloader {
 
 			$parkGeometry = Point::euclideanMean($coordinates);
 
-			//foreach($features as $booleanFeature) { //FIXME: where do we translate 1 = yes 0 = no
-			$parkBoolean = $booleanFeature->attributes->DEVELOPEDACRES;
-			$booleans = new \SplFixedArray(count($parkBoolean));
-			if($parkBoolean > 0) {
-				$booleans[$booleans->key()] = "Developed";
+			$parkDeveloped = ($feature->attributes->DEVELOPEDACRES > 0);
+			//FIXME: Insert park before here
+
+
+
+			foreach($allAmenities as $amenity) {
+				if(empty($feature->attributes->${$amenity->getCityName()}) === false) {
+					$feature = new Feature($amenity->getAmenityId(), $parkId, $feature->attributes->${$amenity->getCityName()});
+					$feature->insert($pdo);
+				}
 			}
-			$booleans[$booleans->key()] = "Undeveloped";
-			$booleans->next();
-			return ($booleans);
 		}
 	}
 
