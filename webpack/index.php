@@ -15,6 +15,6 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 	</head>
 	<body>
 		<!-- This custom tag much match your Angular @Component selector name in app/app.component.ts -->
-		<ABQuery>Loading&hellip;</ABQuery>
+		<abquery>Loading&hellip;</abquery>
 	</body>
 </html>
