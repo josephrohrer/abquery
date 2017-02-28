@@ -67,3 +67,10 @@ class ParkDownloader extends DataDownloader {
 		}
 	}
 }
+
+try {
+	$features = ParkDownloader::compareParkAndDownload();
+	ParkDownloader::getParkData($features);
+} catch(\Exception $exception) {
+	echo $exception->getMessage() . PHP_EOL;
+}
