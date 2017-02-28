@@ -66,49 +66,4 @@ class ParkDownloader extends DataDownloader {
 			}
 		}
 	}
-
-	/**
-	 * foreach to take rest of park JSON and put into a features array
-	 *
-	 * // part 0:
-	 * // preload associative array to map "LITSOFTBALLFIELDS" to an actual primary key
-	 * // so $allAmentities["LITSOFTBALLFIELDS"] returns the amentity object
-	 * $allFlatAmentities = Amentity::getAllAmentities();
-	 * $allAmentities = [];
-	 * foreach($allFlatAmentities as $dylanHatesSpellingAmentities) {
-	 *   $allAmentities[$dylanHatesSpellingAmentities->getAmentityCityName()] = $dylanHatesSpellingAmentities;
-	 * }
-	 **/
-
-	/**
-	 *
-	 * // Dylan's given function part 1: within existing loop
-	 * foreach(...) {
-	 *   foreach($allAmentities as $amenity) {
-	 *      if(empty($attribute->${$amenity->getCityName()}) === false) {
-	 *         $feature = new Feature(...);
-	 *         $feature->insert($pdo);
-	 *      }
-	 *   }
-	 * }
-	 **/
-
-	public static function amenityAssign() {
-		$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/abquery.ini");
-		$allFlatAmenities = Amenity::getAllAmenities($pdo);
-		$allAmenities = [];
-		foreach($allFlatAmenities as $amenity) {
-			$allAmenities[$amenity->getAmentityCityName()] = $amenity;
-		}
-
-		foreach($allAmenities as $amenity) {
-			if(empty($attribute->${$amenity->getCityName()}) === false) {
-				$feature = new Feature(...);
-				$feature->insert($pdo);
-			}
-			//FIXME: else here
-		}
-	}
 }
-
-
