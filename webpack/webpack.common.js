@@ -12,40 +12,26 @@ module.exports = {
 	},
 
 	resolve: {
-		extensions: ['', '.js', '.ts']
+		extensions: ['.ts', '.js']
 	},
 
 	module: {
-		loaders: [
+		rules: [
 			{
-				test: /\.html$/,
-				loader: 'html'
+				test: /\.(html|php)$/,
+				loader: 'html-loader'
 			},
 			{
 				test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-				loader: 'file?name=dist/[name].[hash].[ext]'
-			},
-			{
-				test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-				loader: "url-loader?name=/[name].[hash].[ext]&limit=10000&mimetype=application/font-woff"
-			},
-			{
-				test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-				loader: "file-loader?name=/[name].[hash].[ext]"
+				loader: 'file-loader?name=/assets/[name].[hash].[ext]'
 			},
 			{
 				test: /\.css$/,
-				exclude: helpers.root('src', 'app'),
-				loader: ExtractTextPlugin.extract('style', 'css?sourceMap', {publicPath: ''})
-			},
-			{
-				test: /\.css$/,
-				include: helpers.root('src', 'app'),
-				loader: 'raw'
+				loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?minimize=true' })
 			},
 			{
 				test: /\.ts$/,
-				loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+				loaders: ['awesome-typescript-loader']
 			}
 		]
 	},
