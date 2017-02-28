@@ -1,9 +1,9 @@
 {
-  "name": "ABQuery",
+  "name": "abquery",
   "version": "1.0.0",
   "license": "Apache-2.0",
   "author": {
-    "name": "ABQuery",
+    "name": "abquery",
     "email": "jminnich@cnm.edu, bgilbert9@cnm.edu, bsmtih@cnm.edu, jrohrer@cnm.edu",
     "url": "https://bootcamp-coders.cnm.edu/~jminnich/abquery"
   },
