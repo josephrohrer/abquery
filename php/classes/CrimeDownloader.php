@@ -51,7 +51,7 @@ class CrimeDownloader extends DataDownloader {
 			$crimeLocation = $feature->attributes->CV_BLOCK_ADD;
 			$crimeDescription = $feature->attributes->CVINC_TYPE;
 			$crimeDate = \DateTime::createFromFormat("U", ($feature->attributes->date / 1000));
-			$crimeGeometry = new Point($feature->geometry->x, $feature->geometry->y);
+			$crimeGeometry = new Point($feature->geometry["x"], $feature->geometry["y"]); //FIXME: i think i did
 		}
 	}
 }
