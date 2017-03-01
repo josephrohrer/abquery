@@ -8,4 +8,5 @@ import {Component} from "@angular/core";
 	templateUrl: './templates/abquery.php'
 })
 
-export class AppComponent {}
+export class AppComponent {
+}
