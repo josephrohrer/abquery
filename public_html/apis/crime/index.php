@@ -59,8 +59,8 @@ try {
 				$reply->data = $crimes;
 			}
 		} else if(empty($crimeSunriseDate) === false && empty($crimeSunsetDate) === false) {
-			$crimeSunriseDate = \DateTime::createFromFormat("U", ($crimeSunriseDate / 1000));
-			$crimeSunsetDate = \DateTime::createFromFormat("U", ($crimeSunsetDate / 1000));
+			$crimeSunriseDate = \DateTime::createFromFormat("U", ceil($crimeSunriseDate / 1000));
+			$crimeSunsetDate = \DateTime::createFromFormat("U", floor($crimeSunsetDate / 1000));
 			$crimes = Crime::getCrimeByCrimeDate($pdo, $crimeSunriseDate, $crimeSunsetDate)->toArray();
 			if($crimes !== null) {
 				$reply->data = $crimes;
