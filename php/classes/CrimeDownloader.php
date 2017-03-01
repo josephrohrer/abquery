@@ -46,15 +46,24 @@ class CrimeDownloader extends DataDownloader {
 	 * assigns data from object->features->attributes
 	 */
 	public static function getCrimeData(\SplFixedArray $features) {
+		$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/abquery.ini");
 		foreach($features as $feature) {
 			$crimeId = $feature->attributes->OBJECTID;
 			$crimeLocation = $feature->attributes->CV_BLOCK_ADD;
 			$crimeDescription = $feature->attributes->CVINC_TYPE;
 			$crimeDate = \DateTime::createFromFormat("U", ($feature->attributes->date / 1000));
-			$crimeGeometry = new Point($feature->geometry["x"], $feature->geometry["y"]); //FIXME: i think i did
+			//var_dump($feature->geometry);
+			if (empty($feature->geometry) === true) {
+				continue;
+			} else {
+				$crimeGeometry = new Point($feature->geometry->x, $feature->geometry->y);
+			}
+			$crime = new Crime($crimeId, $crimeLocation, $crimeGeometry, $crimeDescription, $crimeDate);
+			$crime->insert($pdo);
 		}
 	}
 }
+
 try {
 	$features = CrimeDownloader::compareCrimeAndDownload();
 	CrimeDownloader::getCrimeData($features);
