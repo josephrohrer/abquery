@@ -55,3 +55,9 @@ class CrimeDownloader extends DataDownloader {
 		}
 	}
 }
+try {
+	$features = CrimeDownloader::compareCrimeAndDownload();
+	CrimeDownloader::getCrimeData($features);
+} catch(\Exception $exception) {
+	echo $exception->getMessage() . PHP_EOL;
+}

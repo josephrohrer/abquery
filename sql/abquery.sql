@@ -44,3 +44,22 @@ CREATE TABLE feature (
 	FOREIGN KEY (featureParkId) REFERENCES park (parkId),
 	PRIMARY KEY (featureAmenityId, featureParkId)
 );
+
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("LITTENNISCOURTS", "Tennis Courts - Lit");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("UNLITTENNISCOURTS", "Tennis Courts - Unlit");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("PLAYAREAS", "Play Areas");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("FULLBASKETBALLCOURTS", "Basketball Courts - Full");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("HALFBASKETBALLCOURTS", "Basketball Courts - Half");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("SOCCERFIELDS", "Soccer Fields");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("LITSOFTBALLFIELDS", "Softball Fields - Lit");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("UNLITSOFTBALLFIELDS", "Softball Fields - Unlit");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("YOUTHBALLFIELDS", "Baseball Fields - Youth");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("INDOORPOOLS", "Pools - Indoor");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("OUTDOORPOOLS", "Pools - Outdoor");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("HORSESHOEPITS", "Horseshoe Pits");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("VOLLEYBALLCOURTS", "Volleyball Courts");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("BACKSTOPS", "Baseball - Backstops");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("PICNICTABLES", "Picnic Tables");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("SHADESTRUCTURES", "Shade Structures");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("PARKINGSPACES", "Parking Spaces");
+INSERT INTO amenity (amenityCityName, amenityName) VALUES ("JOGGINGPATHS", "Jogging Paths");
