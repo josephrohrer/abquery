@@ -35,11 +35,7 @@ class ParkDownloader extends DataDownloader {
 
 	public static function getParkData(\SplFixedArray $features) {
 		$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/abquery.ini");
-		$allFlatAmenities = Amenity::getAllAmenities($pdo);
-		$allAmenities = [];
-		foreach($allFlatAmenities as $amenity) {
-			$allAmenities[$amenity->getAmenityCityName()] = $amenity;
-		}
+		$allAmenities = Amenity::getAllAmenities($pdo);
 
 		foreach($features as $feature) {
 			$parkId = $feature->attributes->OBJECTID;
@@ -47,8 +43,6 @@ class ParkDownloader extends DataDownloader {
 			$jsonCoordinates = $feature->geometry->rings[0];
 			$coordinates = new \SplFixedArray(count($jsonCoordinates));
 			foreach($jsonCoordinates as $jsonCoordinate) {
-				//var_dump($jsonCoordinate[0]);
-				//var_dump($jsonCoordinate[1]);
 				$coordinate = new Point($jsonCoordinate[0], $jsonCoordinate[1]);
 				$coordinates[$coordinates->key()] = $coordinate;
 				$coordinates->next();
@@ -64,8 +58,8 @@ class ParkDownloader extends DataDownloader {
 				$amenityName = $amenity->getAmenityCityName();
 				$amenityValue = $feature->attributes->$amenityName ?? 0;
 				if($amenityValue !== 0) {
-					$feature = new Feature($amenity->getAmenityId(), $parkId, $amenityValue);
-					$feature->insert($pdo);
+					$parkFeature = new Feature($amenity->getAmenityId(), $parkId, $amenityValue);
+					$parkFeature->insert($pdo);
 				}
 			}
 		}
