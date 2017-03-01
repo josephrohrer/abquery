@@ -5,7 +5,7 @@
   "author": {
     "name": "abquery",
     "email": "jminnich@cnm.edu",
-    "url": "https://bootcamp-coders.cnm.edu/~jminnnich/abquery"
+    "url": "https://bootcamp-coders.cnm.edu/~jminnich/abquery"
   },
   "scripts": {
     "build": "rimraf public_html/dist && tsc && webpack --config webpack/webpack.live.js --progress --profile --bail"
@@ -23,9 +23,10 @@
     "@angular/platform-browser": "~2.4.7",
     "@angular/platform-browser-dynamic": "~2.4.7",
     "@angular/router": "~3.4.7",
+    "angular2-google-maps": "^0.17.0",
     "core-js": "^2.4.1",
-    "rxjs": "5.0.1",
     "jquery": "^3.1.1",
+    "rxjs": "5.0.1",
     "zone.js": "^0.7.7"
   },
   "devDependencies": {
