@@ -47,8 +47,8 @@ class ParkDownloader extends DataDownloader {
 			$jsonCoordinates = $feature->geometry->rings[0];
 			$coordinates = new \SplFixedArray(count($jsonCoordinates));
 			foreach($jsonCoordinates as $jsonCoordinate) {
-				var_dump($jsonCoordinate[0]);
-				var_dump($jsonCoordinate[1]);
+				//var_dump($jsonCoordinate[0]);
+				//var_dump($jsonCoordinate[1]);
 				$coordinate = new Point($jsonCoordinate[0], $jsonCoordinate[1]);
 				$coordinates[$coordinates->key()] = $coordinate;
 				$coordinates->next();
@@ -57,14 +57,17 @@ class ParkDownloader extends DataDownloader {
 			$parkGeometry = Point::euclideanMean($coordinates);
 
 			$parkDeveloped = ($feature->attributes->DEVELOPEDACRES > 0);
-			$park = new Park($parkId, $parkName, $parkGeometry, $parkDeveloped);
-			$park->insert($pdo);
+			//$park = new Park($parkId, $parkName, $parkGeometry, $parkDeveloped);
+			//$park->insert($pdo);
 
 			foreach($allAmenities as $amenity) {
-				if(empty($feature->attributes->${$amenity->getCityName()}) === false) {
-					$feature = new Feature($amenity->getAmenityId(), $parkId, $feature->attributes->${$amenity->getCityName()});
-					$feature->insert($pdo);
-				}
+
+				$test = $amenity->getAmenityCityName();
+				var_dump($test);
+				//if(empty($feature->attributes->${$amenity->getAmenityCityName()}) === true) {
+					//$feature = new Feature($amenity->getAmenityId(), $parkId, $feature->attributes->${$amenity->getAmenityCityName()});
+					//$feature->insert($pdo);
+				//}
 			}
 		}
 	}

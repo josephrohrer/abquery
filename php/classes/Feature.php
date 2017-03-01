@@ -38,7 +38,7 @@ class Feature implements \JsonSerializable {
 	 * @throws \TypeError if the data violates type
 	 * @throws \Exception if any other exception occurs
 	 */
-	public function __construct(int $newFeatureAmenityId = null, int $newFeatureParkId = null, int $newFeatureValue = null) {
+	public function __construct(int $newFeatureAmenityId, int $newFeatureParkId, int $newFeatureValue) {
 		try {
 			$this->setFeatureAmenityId($newFeatureAmenityId);
 			$this->setFeatureParkId($newFeatureParkId);
