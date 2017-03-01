@@ -57,17 +57,16 @@ class ParkDownloader extends DataDownloader {
 			$parkGeometry = Point::euclideanMean($coordinates);
 
 			$parkDeveloped = ($feature->attributes->DEVELOPEDACRES > 0);
-			//$park = new Park($parkId, $parkName, $parkGeometry, $parkDeveloped);
-			//$park->insert($pdo);
+			$park = new Park($parkId, $parkName, $parkGeometry, $parkDeveloped);
+			$park->insert($pdo);
 
 			foreach($allAmenities as $amenity) {
-
-				$test = $amenity->getAmenityCityName();
-				var_dump($test);
-				//if(empty($feature->attributes->${$amenity->getAmenityCityName()}) === true) {
-					//$feature = new Feature($amenity->getAmenityId(), $parkId, $feature->attributes->${$amenity->getAmenityCityName()});
-					//$feature->insert($pdo);
-				//}
+				$amenityName = $amenity->getAmenityCityName();
+				$amenityValue = $feature->attributes->$amenityName ?? 0;
+				if($amenityValue !== 0) {
+					$feature = new Feature($amenity->getAmenityId(), $parkId, $amenityValue);
+					$feature->insert($pdo);
+				}
 			}
 		}
 	}

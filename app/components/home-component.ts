@@ -5,7 +5,7 @@ import {Component} from "@angular/core";
 })
 
 export class HomeComponent {
-	title: string = 'My first angular2-google-maps project';
-	lat: number = 51.678418;
-	lng: number = 7.809007;
+	title: string = 'ABQuery';
+	lat: number = 35.105332;
+	lng: number = -106.629385;
 }
