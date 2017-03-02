@@ -64,7 +64,7 @@
 		<!-- Intro Section -->
 		<section id="intro" class="intro-section">
 
-		</section>-->
+		</section>
 
 		<!-- About Section -->
 		<section id="about" class="about-section">
