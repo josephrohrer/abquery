@@ -56,8 +56,8 @@
 
 		<!-- Navigation -->
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-			<div class="container">
-
+			<div class="container" style="text-align: center">
+				<img src="images/logosmaller.png" alt="ABQUery logo">
 			</div>
 		</nav>
 
@@ -71,7 +71,7 @@
 		<!-- Intro Section -->
 		<section id="intro" class="intro-section">
 
-		</section>-->
+		</section>
 
 		<!-- About Section -->
 		<section id="about" class="about-section">

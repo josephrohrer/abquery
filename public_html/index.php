@@ -12,7 +12,7 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 		<base href="<?php echo dirname($_SERVER["PHP_SELF"]) . "/"; ?>" />
 
 		<title>ABQuery</title>
-	<link href="dist/vendor.affdd2bbe1484c331d01.css" rel="stylesheet"><link href="dist/css.affdd2bbe1484c331d01.css" rel="stylesheet"><script type="text/javascript" src="dist/polyfills.affdd2bbe1484c331d01.js"></script><script type="text/javascript" src="dist/vendor.affdd2bbe1484c331d01.js"></script><script type="text/javascript" src="dist/app.affdd2bbe1484c331d01.js"></script><script type="text/javascript" src="dist/css.affdd2bbe1484c331d01.js"></script></head>
+	<link href="dist/vendor.1d27ac60ed61c539e710.css" rel="stylesheet"><link href="dist/css.1d27ac60ed61c539e710.css" rel="stylesheet"><script type="text/javascript" src="dist/polyfills.1d27ac60ed61c539e710.js"></script><script type="text/javascript" src="dist/vendor.1d27ac60ed61c539e710.js"></script><script type="text/javascript" src="dist/app.1d27ac60ed61c539e710.js"></script><script type="text/javascript" src="dist/css.1d27ac60ed61c539e710.js"></script></head>
 	<body>
 		<!-- This custom tag much match your Angular @Component selector name in app/app.component.ts -->
 		<abquery>Loading&hellip;</abquery>
