@@ -68,24 +68,26 @@
 			</div>
 		</header>
 
-		<!-- Intro Section -->
-		<section id="intro" class="intro-section">
-
+		<!-- Map Section -->
+		<section id="map" class="map-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12">
+						This is where the map goes
+					</div>
+				</div>
+			</div>
 		</section>
 
-		<!-- About Section -->
-		<section id="about" class="about-section">
-
-		</section>
-
-		<!-- Portfolio Section -->
-		<section id="portfolio" class="portfolio-section">
-
-		</section>
-
-		<!-- Contact Section -->
-		<section id="contact" class="contact-section">
-
+		<!-- Information Section -->
+		<section id="information" class="information-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12">
+						This is where the information goes
+					</div>
+				</div>
+			</div>
 		</section>
 
 		<footer>
@@ -93,10 +95,12 @@
 				<div class="row">
 					<div class="col-md-4">
 						<span class="copyright">Copyright &copy; ABQuery 2017</span>
+
 					</div>
 					<div class="col-md-4">
 					</div>
 					<div class="col-md-4">
+						<a href="#about">About Us</a>
 					</div>
 				</div>
 			</div>
