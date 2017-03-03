@@ -4,7 +4,9 @@ require_once dirname(__DIR__,3)."/php/classes/autoload.php";
 require_once dirname(__DIR__,3)."/php/lib/xsrf.php";
 require_once "/etc/apache2/capstone-mysql/encrypted-config.php";
 
-use Edu\Cnm\Abquery\Crime;
+use Edu\Cnm\Abquery\{
+	Crime, Point
+};
 
 /**
  * * api for Crime class
@@ -36,6 +38,9 @@ try {
 	$crimeSunriseDate = filter_input(INPUT_GET, "crimeSunriseDate", FILTER_VALIDATE_INT);
 	$crimeSunsetDate = filter_input(INPUT_GET, "crimeSunsetDate", FILTER_VALIDATE_INT);
 	$crimeDescription = filter_input(INPUT_GET, "crimeDescription", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	$userLocationX = filter_input(INPUT_GET, "userLocationX", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+	$userLocationY = filter_input(INPUT_GET, "userLocationY", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+	$userDistance = filter_input(INPUT_GET, "userDistance", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
 	// handle GET request - if id is present, that crime is returned, otherwise all crimes are returned
 	if($method === "GET") {
@@ -50,6 +55,11 @@ try {
 			}
 		} else if(empty($crimeLocation) === false) {
 			$crimes = Crime::getCrimeByCrimeLocation($pdo, $crimeLocation);
+			if($crimes !== null) {
+				$reply->data = $crimes;
+			}
+		} elseif(empty($crimeGeometry) === false) {
+			$crimes = Crime::getCrimesByCrimeGeometry($pdo, new Point($userLocationX, $userLocationY), $userDistance)->toArray();
 			if($crimes !== null) {
 				$reply->data = $crimes;
 			}

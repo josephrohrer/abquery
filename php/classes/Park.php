@@ -215,11 +215,48 @@ class Park implements \JsonSerializable {
 		return ($park);
 	}
 
+
+	/**
+	 * gets park by park geometry
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param Point $userLocation user input location to compare with Point park geometry
+	 * @param float $userDistance distance user chooses in UI to search within
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct type
+	 * @returns \SplFixedArray array of parks that are found
+	 */
+	public static function getParksByParkGeometry (\PDO $pdo, Point $userLocation, float $userDistance) {
+		//sanitize
+		if(empty($userLocation) === true) {
+			throw(new \PDOException("User location is not valid"));
+		}
+		//create query template
+		$query = "CALL getParksByParkGeometry(POINT(:userLocationX, :userLocationY), :userDistance)";
+		$statement = $pdo->prepare($query);
+		$parameters = ["userLocationX" => $userLocation->getLongitude(), "userLocationY" => $userLocation->getLatitude(), "userDistance" => $userDistance];
+		$statement->execute($parameters);
+		//create an array of parks
+		$parks = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$park = new Park($row["parkId"], $row["parkName"], new Point($row["parkGeometryX"], $row["parkGeometryY"]), $row["parkDeveloped"]);
+				$parks[$parks->key()] = $park;
+				$parks->next();
+			} catch(\Exception $exception) {
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($parks);
+	}
+
+
 	/**
 	 * gets all parks
 	 *
 	 * @param \PDO $pdo PDO connection object
-	 * @return \SplFixedArray SplFixedArray of crimes found or null if not found
+	 * @return \SplFixedArray SplFixedArray of parks found or null if not found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
 	 */

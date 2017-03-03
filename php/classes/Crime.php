@@ -310,6 +310,42 @@ class Crime implements \JsonSerializable {
 
 
 	/**
+	 * gets crime by crime geometry
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param Point $userLocation user input location to compare with Point crime geometry
+	 * @param float $userDistance distance user chooses in UI to search within
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct type
+	 * @returns \SplFixedArray array of crimes that are found
+	 */
+	public static function getCrimesByCrimeGeometry (\PDO $pdo, Point $userLocation, float $userDistance) {
+		//sanitize
+		if(empty($userLocation) === true) {
+			throw(new \PDOException("User location is not valid"));
+		}
+		//create query template
+		$query = "CALL getCrimesByCrimeGeometry(POINT(:userLocationX, :userLocationY), :userDistance)";
+		$statement = $pdo->prepare($query);
+		$parameters = ["userLocationX" => $userLocation->getLongitude(), "userLocationY" => $userLocation->getLatitude(), "userDistance" => $userDistance];
+		$statement->execute($parameters);
+		//create an array of crimes
+		$crimes = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$crime = new Crime($row["crimeId"], $row["crimeLocation"], new Point($row["crimeGeometryX"], $row["crimeGeometryY"]), $row["crimeDescription"], $row["crimeDate"]);
+				$crimes[$crimes->key()] = $crime;
+				$crimes->next();
+			} catch(\Exception $exception) {
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($crimes);
+	}
+
+
+	/**
 	 * gets crime by description
 	 *
 	 * @param \PDO $pdo PDO connection object

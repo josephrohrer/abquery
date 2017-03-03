@@ -4,7 +4,9 @@ require_once dirname(__DIR__,3)."/php/classes/autoload.php";
 require_once dirname(__DIR__,3)."/php/lib/xsrf.php";
 require_once "/etc/apache2/capstone-mysql/encrypted-config.php";
 
-use Edu\Cnm\Abquery\Park;
+use Edu\Cnm\Abquery\{
+	Park, Point
+};
 
 /**
  * api for Park class
@@ -35,6 +37,9 @@ try {
 	//sanitize input
 	$parkId = filter_input(INPUT_GET, "parkId", FILTER_VALIDATE_INT);
 	$parkName = filter_input(INPUT_GET, "parkName", FILTER_SANITIZE_STRING);
+	$userLocationX = filter_input(INPUT_GET, "userLocationX", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+	$userLocationY = filter_input(INPUT_GET, "userLocationY", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+	$userDistance = filter_input(INPUT_GET, "userDistance", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
 	// handle GET request - if id is present, that park is returned, otherwise all parks are returned
 	if($method === "GET") {
@@ -46,6 +51,11 @@ try {
 			$park = Park::getParkByParkId($pdo, $parkId);
 			if($park !== null) {
 				$reply->data = $park;
+			}
+		} elseif(empty($parkGeometry) === false) {
+			$parks = Park::getParksByParkGeometry($pdo, new Point($userLocationX, $userLocationY), $userDistance)->toArray();
+			if($parks !== null) {
+				$reply->data = $parks;
 			}
 		} else {
 			$park = Park::getAllParks($pdo);
