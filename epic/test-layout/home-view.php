@@ -8,6 +8,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
+		<link rel="icon" href="../../favicon.ico">
+		<--FIXME: Create favicon -->
 
 		<title>ABQuery</title>
 
@@ -81,15 +83,16 @@
 
 		</section>
 
-		<footer>
+		<footer class="footer">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4">
-						<span class="copyright">Copyright &copy; ABQuery 2017</span>
+						<p class="text-muted">Copyright &copy; ABQuery 2017</p>
 					</div>
 					<div class="col-md-4">
 					</div>
 					<div class="col-md-4">
+						<a href="about-view.php"><p class="text-muted">About Us</p></a>
 					</div>
 				</div>
 			</div>
