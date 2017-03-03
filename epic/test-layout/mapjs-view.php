@@ -8,6 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
+		<link rel="icon" href="../../favicon.ico">
 
 		<title>ABQuery</title>
 
@@ -44,9 +45,15 @@
 
 		<!-- MY Custom JS -->
 		<script src="js/custom.js" type="text/javascript"></script>
-		<style type="text/css">
-		</style>
 
+		<!-- CSS for Map -->
+		<style type="text/css">
+			#map {
+				height: 800px;
+				width: 100%;
+				background-color: grey;
+			}
+		</style>
 
 	</head>
 
@@ -69,14 +76,26 @@
 		</header>
 
 		<!-- Map Section -->
-		<section id="map" class="map-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-12">
-						This is where the map goes
-					</div>
-				</div>
+		<section class="map-section">
+			<div id="map" class="container">
 			</div>
+			<!-- Scripts for Google Maps Javascript -->
+			<script>
+				function initMap() {
+					var uluru = {lat: 35.104874, lng: -106.627808};
+					var map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 12,
+						center: uluru
+					});
+					var marker = new google.maps.Marker({
+						position: uluru,
+						map: map
+					});
+				}
+			</script>
+			<script async defer
+					  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu21jbQZ73LpaSpGsA4qrZOrASk7pzlN8&callback=initMap">
+			</script>
 		</section>
 
 		<!-- Information Section -->
@@ -90,17 +109,16 @@
 			</div>
 		</section>
 
-		<footer>
+		<footer class="footer">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4">
-						<span class="copyright">Copyright &copy; ABQuery 2017</span>
-
+						<p class="text-muted">Copyright &copy; ABQuery 2017</p>
 					</div>
 					<div class="col-md-4">
 					</div>
 					<div class="col-md-4">
-						<a href="#about">About Us</a>
+						<a href="about-view.php"><p class="text-muted">About Us</p></a>
 					</div>
 				</div>
 			</div>
