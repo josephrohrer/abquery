@@ -46,8 +46,6 @@
 		<script src="js/custom.js" type="text/javascript"></script>
 		<style type="text/css">
 		</style>
-
-
 	</head>
 
 
@@ -68,6 +66,18 @@
 			</div>
 		</header>
 
+		<section id="test" class="map-section">
+			<div id="bgDiv" style="height: 800px;opacity: 1; background-image: url(http://www.bing.com/ImageResolution.aspx?w=414&h=736&hash=2f654743fa37f9d2a3ad702f76d17afc)";>
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12">
+							This is where the map goes
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<!-- Map Section -->
 		<section id="map" class="map-section">
 			<div class="container">
@@ -77,6 +87,7 @@
 					</div>
 				</div>
 			</div>
+
 		</section>
 
 		<!-- Information Section -->
