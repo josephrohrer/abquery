@@ -24,9 +24,3 @@ body {
 	background-position-x: center;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
-
-#map {
-	height: 100%;
-	width: 100%;
-	background-color: grey;
-}
