@@ -32,6 +32,7 @@
 
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css">
+
 		<!-- jQuery -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" type="text/javascript"></script>
 
@@ -40,11 +41,6 @@
 				  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 				  crossorigin="anonymous"></script>
 
-		<!-- MY Custom JS -->
-		<script src="js/custom.js" type="text/javascript"></script>
-		<style type="text/css">
-		</style>
-
 	</head>
 
 	<!-- splash page==================================================== !-->
@@ -52,12 +48,12 @@
 	<body>
 
 		<!-- background vid -->
-		<div class="container fluid">
-			<div class="row">
-				<div class="embed-responsive embed-responsive-16by9">
-			<video src="video/abq%20sky.mp4" type="video" autoplay muted loop <video></video>
+		<div class="video-abq">
+				<div class="row">
+					<div class="embed-responsive embed-responsive-16by9">
+						<video src="video/abq%20sky.mp4" type="video" autoplay muted loop <video></video>
+					</div>
 				</div>
-			</div>
 		</div>
 		<!-- Abquery Logo -->
 
