@@ -8,8 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<link rel="icon" href="../../favicon.ico">
-		<--FIXME: Create favicon -->
+		<link rel="icon" href="../../favicon.ico" <!--FIXME: Create favicon-->
 
 		<title>ABQuery</title>
 
@@ -17,12 +16,8 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 				integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-		<!-- Font Awesome -->
-		<link type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css"
-				rel="stylesheet"/>
-
-		<!-- Custom CSS -->
-		<link rel="stylesheet" href="css/style.css" type="text/css">
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,13 +26,14 @@
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 
+		<!-- Font Awesome -->
+		<link type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css"
+				rel="stylesheet"/>
+
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<!-- jQuery -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" type="text/javascript"></script>
-
-		<!-- jQuery Form, Validate, Additional Methods -->
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js" type="text/javascript"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/additional-methods.min.js" type="text/javascript"></script>
 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -49,40 +45,25 @@
 		<style type="text/css">
 		</style>
 
-
 	</head>
 
+	<!-- splash page==================================================== !-->
 
+	<body>
 
-	<body id="page-top">
-
-		<!-- Header -->
-		<header>
-			<div class="container">
-
+		<!-- background vid -->
+		<div class="container fluid">
+			<div class="row">
+				<div class="embed-responsive embed-responsive-16by9">
+			<video src="video/abq%20sky.mp4" type="video" autoplay muted loop <video></video>
+				</div>
 			</div>
-		</header>
+		</div>
+		<!-- Abquery Logo -->
 
-		<!-- Intro Section -->
-		<section id="intro" class="intro-section">
+		<!-- Search bar -->
 
-		</section>
-
-		<!-- About Section -->
-		<section id="about" class="about-section">
-
-		</section>
-
-		<!-- Portfolio Section -->
-		<section id="portfolio" class="portfolio-section">
-
-		</section>
-
-		<!-- Contact Section -->
-		<section id="contact" class="contact-section">
-
-		</section>
-
+		<!-- Footer -->
 		<footer class="footer">
 			<div class="container">
 				<div class="row">
