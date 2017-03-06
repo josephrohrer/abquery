@@ -71,9 +71,9 @@
 		<!-- Team photos -->
 			<section id="photos">
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-md-3 col-sm-6">
 						<div class="team-member">
-							<img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
+							<img src="" class="img-responsive img-circle" alt="">
 							<h4>Brett Gilbert</h4>
 							<ul class="list-inline social-buttons">
 								<li><a href="#"><i class="fa fa-github"></i></a>
@@ -83,12 +83,11 @@
 							</ul>
 						</div>
 					</div>
-			</section>
 
 
-					<div class="col-sm-4">
+				<div class="col-md-3 col-sm-6">
 						<div class="team-member">
-							<img src="img/team/2.jpg" class="img-responsive img-circle" alt="">
+							<img src="" class="img-responsive img-circle" alt="">
 							<h4>Joseph Rohrer</h4>
 							<ul class="list-inline social-buttons">
 								<li><a href="#"><i class="fa fa-github"></i></a>
@@ -97,12 +96,12 @@
 								</li>
 							</ul>
 						</div>
-					</div>
+				</div>
 
 
-					<div class="col-sm-4">
+				<div class="col-md-3 col-sm-6">
 						<div class="team-member">
-							<img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
+							<img src="" class="img-responsive img-circle" alt="">
 							<h4>Jennifer Minnich</h4>
 							<ul class="list-inline social-buttons">
 								<li><a href="#"><i class="fa fa-github"></i></a>
@@ -111,31 +110,32 @@
 								</li>
 							</ul>
 						</div>
+				</div>
+
+
+
+				<div class="col-md-3 col-sm-6">
+					<div class="team-member">
+						<img src="" class="img-responsive img-circle" alt="">
+						<h4>Benjamin Smith</h4>
+						<ul class="list-inline social-buttons">
+							<li><a href="#"><i class="fa fa-github"></i></a>
+							</li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a>
+							</li>
+						</ul>
 					</div>
-				</div>		<!-- Team photos -->
+				</div>
+		</section>
+		</div>		<!-- Team photos -->
 
-
-		<div class="col-sm-4">
-			<div class="team-member">
-				<img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
-				<h4>Benjamin Smith</h4>
-				<ul class="list-inline social-buttons">
-					<li><a href="#"><i class="fa fa-github"></i></a>
-					</li>
-					<li><a href="#"><i class="fa fa-linkedin"></i></a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		</div>
-
-				<div class="row">
+				<!--<div class="row">
 					<div class="col-lg-8 col-lg-offset-2 text-center">
 						<p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
 					</div>
 				</div>
-			</div>
-		</section>
+			</div>-->
+
 
 
 		<!-- Footer -->
