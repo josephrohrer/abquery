@@ -55,12 +55,12 @@
 			</div>
 		</div>-->
 
-		<!-- Abquery Logo -->
-		<div class="logo">
-			<div class="media-middle">
-				<img class="media-object" src="images/abqueryname.png" alt="abquery logo">
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container" style="text-align: center">
+				<img src="images/logosmaller.png" alt="ABQUery logo">
 			</div>
-		</div>
+		</nav>
 
 		<!--This will be the card format for the park information hopefully-->
 		<div class="container">
