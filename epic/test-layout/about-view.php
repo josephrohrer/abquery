@@ -54,69 +54,81 @@
 		</nav>
 
 		<!-- Team Section -->
-		<section id="team" class="bg-light-gray">
+		<section id="team">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 text-center">
-						<h3 class="section-subheading text-muted">About our amazing team.</h3>
-									<div class="col-xl-12">
-										<p>ABQuery is a local web platform that can be used to search for relevant information about a specific area in Albuquerque. This could be used for a resident or potential resident who wanted to gather query data relative to a given location.</p>
-										<p>Data sets were provided by the City of Albuquerque’s open data initiative. The initial data sets utilized were Crime Incidents and Parks. Future data could include: restaurants, breweries, dog parks, and/or sex offenders.</p>
-										<p>This project is the final capstone project from a group of students at the Deep Dive Coding Bootcamp, a 10-week web development and programming bootcamp taught at the CNM STEMulus Center in downtown Albuquerque.</p>
-									</div>
-								</div>
-							</div>
-						</section>	<!-- Team Section -->
-
-		<!-- Team photos -->
-			<section id="photos">
-				<div class="row">
-					<div class="col-md-3 col-sm-6">
-						<div class="team-member">
-							<img src="" class="img-responsive img-circle" alt="">
-							<h4>Brett Gilbert</h4>
-							<ul class="list-inline social-buttons">
-								<li><a href="#"><i class="fa fa-github"></i></a>
-								</li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a>
-								</li>
-							</ul>
+						<h3 class="section-subheading text-muted">About This Project</h3>
+						<div class="col-xl-12">
+							<p>ABQuery is a local web platform that can be used to search for relevant information about a
+								specific area in Albuquerque. This could be used for a resident or potential resident who wanted
+								to gather query data relative to a given location.</p>
+							<p>Data sets were provided by the City of Albuquerque’s open data initiative. The initial data sets
+								utilized were Crime Incidents and Parks. Future data could include: restaurants, breweries, dog
+								parks, and/or sex offenders.</p>
+							<p>This project is the final capstone project from a group of students at the Deep Dive Coding
+								Bootcamp, a 10-week web development and programming bootcamp taught at the CNM STEMulus Center
+								in downtown Albuquerque.</p>
 						</div>
 					</div>
-
-
-				<div class="col-md-3 col-sm-6">
-						<div class="team-member">
-							<img src="" class="img-responsive img-circle" alt="">
-							<h4>Joseph Rohrer</h4>
-							<ul class="list-inline social-buttons">
-								<li><a href="#"><i class="fa fa-github"></i></a>
-								</li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a>
-								</li>
-							</ul>
-						</div>
 				</div>
+			</div>
+		</section>
 
-
-				<div class="col-md-3 col-sm-6">
-						<div class="team-member">
-							<img src="" class="img-responsive img-circle" alt="">
-							<h4>Jennifer Minnich</h4>
-							<ul class="list-inline social-buttons">
-								<li><a href="#"><i class="fa fa-github"></i></a>
-								</li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a>
-								</li>
-							</ul>
-						</div>
+		<!-- Team Section -->
+		<section id="team-section" class="bg-light-gray">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading">Our Team</h2>
 				</div>
+			</div>
 
-
-
-				<div class="col-md-3 col-sm-6">
+			<div class="row">
+				<div class="col-md-6">
 					<div class="team-member">
-						<img src="" class="img-responsive img-circle" alt="">
+						<img src="images/bgilbert.jpg" class="img-responsive img-circle" alt="">
+						<h4>Brett Gilbert</h4>
+						<ul class="list-inline social-buttons">
+							<li><a href="#"><i class="fa fa-github"></i></a>
+							</li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="col-md-6">
+					<div class="team-member">
+						<img src="images/jrohrer.jpg" class="img-responsive img-circle" alt="">
+						<h4>Joseph Rohrer</h4>
+						<ul class="list-inline social-buttons">
+							<li><a href="http://www.github.com/josephrohrer"><i class="fa fa-github"></i></a>
+							</li>
+							<li><a href="http://www.linkedin.com/josephrohrer"><i class="fa fa-linkedin"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="col-md-6">
+					<div class="team-member">
+						<img src="images/jminnich.jpg" class="img-responsive img-circle" alt="">
+						<h4>Jennifer Minnich</h4>
+						<ul class="list-inline social-buttons">
+							<li><a href="#"><i class="fa fa-github"></i></a>
+							</li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="col-sm-12 col-md-6">
+					<div class="team-member">
+						<img src="images/bsmtih.jpg" class="img-responsive img-circle" alt="">
 						<h4>Benjamin Smith</h4>
 						<ul class="list-inline social-buttons">
 							<li><a href="#"><i class="fa fa-github"></i></a>
@@ -127,15 +139,32 @@
 					</div>
 				</div>
 		</section>
-		</div>		<!-- Team photos -->
+		</div>
 
-				<!--<div class="row">
-					<div class="col-lg-8 col-lg-offset-2 text-center">
-						<p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+		<aside class="links">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-6">
+						<a href="#">
+						</a>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<a href="https://stemuluscenter.org/deep-dive-fullstack/">
+							<img src="images/icon-ddcb-lg.png" class="img-responsive img-centered" alt="">
+						</a>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<a href="https://www.cabq.gov">
+							<img src="images/Medallion_Dome_3_in.png" class="img-responsive img-centered" alt="">
+						</a>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<a href="#">
+						</a>
 					</div>
 				</div>
-			</div>-->
-
+			</div>
+		</aside>
 
 
 		<!-- Footer -->

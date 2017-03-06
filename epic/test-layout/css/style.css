@@ -6,6 +6,12 @@
 	display: block;
 }
 
+.vertical-align {
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+
 /* video
 -------------------------------------------------- */
 #background-video {
@@ -74,7 +80,24 @@ ___________________________________________________________ */
 
 
 /*ABOUT PAGE====================================================*/
+.bg-light-gray {
+	background-color: #eeeeee;
+}
 .section-subheading{
 	margin-top: 70px;
 	margin-bottom: 20px;
+}
+.team-member {
+	text-align: center;
+	margin-bottom: 50px;
+}
+.team-member img {
+	margin: 0 auto;
+	border: 7px solid white;
+}
+.links {
+	padding: 20px 20px;
+}
+.links img{
+	max-height: 100px;
 }
