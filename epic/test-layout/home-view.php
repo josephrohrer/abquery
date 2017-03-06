@@ -10,6 +10,7 @@
 		<meta name="author" content="">
 		<link rel="icon" href="images/favicon.ico"
 
+		<title>ABQuery - Home</title>
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -50,19 +51,19 @@
 		<div class="video-abq">
 			<div id="background-video">
 					<div class="embed-responsive embed-responsive-16by9">
-						<video src="video/abq%20sky.mp4" type="video" autoplay muted loop <video></video>
+						<video src="video/abq%20sky.mp4" type="video" autoplay muted loop </video>
 						</div>
 					</div>
 				</div>
 
 		<!-- Abquery Logo -->
-		<div class="logo">
-			<div class="media-middle">
-				<img class="media-object" src="images/abqueryname.png" alt="abquery logo">
+		<div>
+			<div class="logo">
+				<img src="images/abqueryname.png" alt="ABQuery logo">
 			</div>
 		</div>
 
-		</div><!-- container-fluid -->
+		<!-- container-fluid -->
 
 
 		<!-- Search bar -->
