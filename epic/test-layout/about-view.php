@@ -156,21 +156,19 @@
 		<aside class="links">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-12 text-center">
-						<div class="col-md-3">
-						</div>
-						<div class="col-md-3">
-							<a href="https://stemuluscenter.org/deep-dive-fullstack/" target="_blank">
-								<img src="images/icon-ddcb-lg.png" class="img-responsive img-centered"
+					<div class="col-xs-4">
+					</div>
+					<div class="col-xs-2">
+						<a href="https://stemuluscenter.org/deep-dive-fullstack/" target="_blank">
+							<img src="images/icon-ddcb-lg.png" class="img-responsive img-centered"
 								  alt="Deep Dive Coding Bootcamp"></a>
-						</div>
-						<div class="col-md-3">
+					</div>
+						<div class="col-xs-2">
 							<a href="https://www.cabq.gov" target="_blank">
 								<img src="images/Medallion_Dome_3_in.png" class="img-responsive img-centered"
-								  alt="City of Albuquerque">
-							</a>
+									  alt="City of Albuquerque"></a>
 						</div>
-						<div class="col-md-3">
+						<div class="col-xs-4">
 						</div>
 					</div>
 				</div>
