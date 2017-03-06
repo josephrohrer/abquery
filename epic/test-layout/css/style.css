@@ -33,34 +33,39 @@
 	}
 }
 
-		/* search bar
-		-------------------------------------------------- */
+/* search bar
+-------------------------------------------------- */
 
 
 
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+	position: relative;
+	min-height: 100%;
+}
 
-		/* Sticky footer styles
-		-------------------------------------------------- */
-		html {
-			position: relative;
-			min-height: 100%;
-		}
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
 
-		body {
-			/* Margin bottom by footer height */
-			margin-bottom: 60px;
-		}
-
-		.footer {
-			position: absolute;
-			bottom: 0;
-			width: 100%;
-			/* Set the fixed height of the footer here */
-			height: 60px;
-			background-color: #f5f5f5;
-		}
-
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #f5f5f5;
+}
 
 
-
+/* about
+___________________________________________________________ */
+.about-section {
+	padding-top: 80px;
+	font-family: Helvetica;
+	font-size: large;
+	text-align: center;
+}
 
