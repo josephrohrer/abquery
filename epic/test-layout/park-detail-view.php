@@ -64,9 +64,10 @@
 
 		<!--This will be the card format for the park information hopefully-->
 		<div class="container">
-			<div class="col-sm-12 park-head"
+			<div class="col-sm-12 park-head">
 				  This will be the head where the info is on parks nearby so depending on the query and location it could
-				  return
+				return.
+			</div>
 			"There are 8 parks within 10 miles of 1234 1st street."
 			<div class="col-sm-12 park-box"><!-- this will be the main div containing the other info-->
 				<div class="col-sm-6 park-name">Will be the park name</div>
