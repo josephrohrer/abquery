@@ -101,17 +101,17 @@
 			</div>
 		</section>
 
-		<footer>
+		<!-- Footer -->
+		<footer class="footer">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4">
-						<span class="copyright">Copyright &copy; ABQuery 2017</span>
-
+						<p class="text-muted">Copyright &copy; ABQuery 2017</p>
 					</div>
 					<div class="col-md-4">
 					</div>
 					<div class="col-md-4">
-						<a href="#about">About Us</a>
+						<a href="about-view.php"><p class="text-muted">About Us</p></a>
 					</div>
 				</div>
 			</div>
