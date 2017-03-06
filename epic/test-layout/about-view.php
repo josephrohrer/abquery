@@ -117,9 +117,9 @@
 						<img src="images/jminnich.jpg" class="img-responsive img-circle" alt="">
 						<h4>Jennifer Minnich</h4>
 						<ul class="list-inline social-buttons">
-							<li><a href="#"><i class="fa fa-github"></i></a>
+							<li><a href="https://github.com/QUAY17"><i class="fa fa-github"></i></a>
 							</li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a>
+							<li><a href="#"><i class="https://www.linkedin.com/in/jennifer-quay-minnich/"></i></a>
 							</li>
 						</ul>
 					</div>
