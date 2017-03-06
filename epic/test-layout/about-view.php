@@ -53,8 +53,8 @@
 			</div>
 		</nav>
 
-		<!-- Team Section -->
-		<section id="team">
+		<!-- About Section -->
+		<section id="about-section">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 text-center">
