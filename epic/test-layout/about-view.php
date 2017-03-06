@@ -85,7 +85,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xl-12">
-						This is where the map goes
 					</div>
 				</div>
 			</div>
@@ -97,7 +96,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xl-12">
-						This is where the information goes
 					</div>
 				</div>
 			</div>
