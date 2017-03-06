@@ -8,9 +8,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<link rel="icon" href="../../favicon.ico" <!--FIXME: Create favicon-->
+		<link rel="icon" href="images/favicon.ico"
 
-		<title>ABQuery</title>
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -49,13 +48,22 @@
 
 		<!-- background vid -->
 		<div class="video-abq">
-				<div class="row">
+			<div id="background-video">
 					<div class="embed-responsive embed-responsive-16by9">
 						<video src="video/abq%20sky.mp4" type="video" autoplay muted loop <video></video>
+						</div>
 					</div>
 				</div>
-		</div>
+
 		<!-- Abquery Logo -->
+		<div class="logo">
+			<div class="media-middle">
+				<img class="media-object" src="images/abqueryname.png" alt="abquery logo">
+			</div>
+		</div>
+
+		</div><!-- container-fluid -->
+
 
 		<!-- Search bar -->
 
