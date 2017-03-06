@@ -53,7 +53,7 @@ try {
 				$reply->data = $park;
 			}
 		} elseif(empty($parkGeometry) === false) {
-			$parks = Park::getParksByParkGeometry($pdo, new Point($userLocationX, $userLocationY), $userDistance)->toArray();
+			$parks = Park::getParkByParkGeometry($pdo, new Point($userLocationX, $userLocationY), $userDistance)->toArray();
 			if($parks !== null) {
 				$reply->data = $parks;
 			}

@@ -226,13 +226,13 @@ class Park implements \JsonSerializable {
 	 * @throws \TypeError when variables are not the correct type
 	 * @returns \SplFixedArray array of parks that are found
 	 */
-	public static function getParksByParkGeometry (\PDO $pdo, Point $userLocation, float $userDistance) {
+	public static function getParkByParkGeometry (\PDO $pdo, Point $userLocation, float $userDistance) {
 		//sanitize
 		if(empty($userLocation) === true) {
 			throw(new \PDOException("User location is not valid"));
 		}
 		//create query template
-		$query = "CALL getParksByParkGeometry(POINT(:userLocationX, :userLocationY), :userDistance)";
+		$query = "CALL getParkByParkGeometry(POINT(:userLocationX, :userLocationY), :userDistance)";
 		$statement = $pdo->prepare($query);
 		$parameters = ["userLocationX" => $userLocation->getLongitude(), "userLocationY" => $userLocation->getLatitude(), "userDistance" => $userDistance];
 		$statement->execute($parameters);

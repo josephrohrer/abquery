@@ -67,9 +67,9 @@ INSERT INTO amenity (amenityCityName, amenityName) VALUES ("JOGGINGPATHS", "Jogg
 -- this stored procedure was written by Brett Gilbert and Ben Smtih.
 -- with guidance and mathematics/statistics help from Dylan McDonald and Sprout Swap. @dylan-mcdonald
 
-DROP PROCEDURE IF EXISTS getCrimesByCrimeLocation;
+DROP PROCEDURE IF EXISTS getCrimeByCrimeGeometry;
 DELIMITER $$
-CREATE PROCEDURE getCrimesByCrimeLocation(IN userLocation POINT, IN userDistance FLOAT) #does userLocation and distance need to be specified between the methods?
+CREATE PROCEDURE getCrimeByCrimeGeometry(IN userLocation POINT, IN userDistance FLOAT) #does userLocation and distance need to be specified between the methods?
 	BEGIN
 		DECLARE varCrimeId INT UNSIGNED;
 		DECLARE varCrimeLocation VARCHAR(72);
@@ -141,9 +141,9 @@ DELIMITER ;
 -- Repeated for parks
 
 
-DROP PROCEDURE IF EXISTS getParksByParkLocation;
+DROP PROCEDURE IF EXISTS getParkByParkGeometry;
 DELIMITER $$
-CREATE PROCEDURE getParksByParkLocation(IN userLocation POINT, IN userDistance FLOAT)
+CREATE PROCEDURE getParkByParkGeometry(IN userLocation POINT, IN userDistance FLOAT)
 	BEGIN
 		DECLARE varParkId INT UNSIGNED;
 		DECLARE varParkName VARCHAR(60);

@@ -39,6 +39,16 @@ class ParkTest extends AbqueryTest {
 	 * @var int $VALID_PARKDEVELOPED
 	 */
 	protected $VALID_PARKDEVELOPED = 1;
+	/**
+	 * user input address
+	 * @var Point $VALID_USERLOCATION
+	 */
+	protected $VALID_USERLOCATION = null;
+	/**
+	 * distance computed from user
+	 * @var int distance in miles
+	 */
+	protected $VALID_USERDISTANCE = null;
 
 
 	/**
@@ -48,6 +58,9 @@ class ParkTest extends AbqueryTest {
 		parent::setUp();
 
 		$this->VALID_PARKGEOMETRY = new Point(-106.69703244562174, 35.10964229145246);
+
+		$this->VALID_USERLOCATION = new Point(-106.69703244562174, 35.10964229145246);
+		$this->VALID_USERDISTANCE = 5;
 	}
 
 	/**
@@ -80,6 +93,38 @@ class ParkTest extends AbqueryTest {
 //		$park = new Park(AbqueryTest::INVALID_KEY, $this->VALID_PARKNAME, $this->VALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
 //		$park->insert($this->getPDO());
 //	}
+
+	/**
+	 * test getting park by park geometry
+	 */
+	public function testGetParkByParkGeometry () {
+		$numRows = $this->getConnection()->getRowCount("park");
+		$park = new Park($this->VALID_PARKID, $this->VALID_PARKNAME, $this->VALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
+		$park->insert($this->getPDO());
+		$results = Park::getParkByParkGeometry($this->getPDO(), $park->getParkGeometry(), 5);
+		foreach($results as $park) {
+			$this->assertEquals($park->getParkGeometry()->getLongitude(), $this->VALID_PARKGEOMETRY->getLongitude(), '', 0.6);
+			$this->assertEquals($park->getParkGeometry()->getLatitude(), $this->VALID_PARKGEOMETRY->getLatitude(), '', 0.6);
+		}
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("park"));
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\Park", $results);
+	}
+
+
+	/**
+	 * test getting crimes that are too far
+	 */
+	public function testGetInvalidParkByParkGeometry () {
+		$numRows = $this->getConnection()->getRowCount("park");
+		$park = new Park($this->VALID_PARKID, $this->VALID_PARKNAME, $this->VALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
+		$park->insert($this->getPDO());
+		$results = Park::getParkByParkGeometry($this->getPDO(), $this->VALID_USERLOCATION, $this->VALID_USERDISTANCE);
+		foreach($results as $park) {
+			$this->assertSame($park->getParkGeometry->getLongitude(), $this->VALID_USERLOCATION->getLongitude(), '', 0.6);
+			$this->assertSame($park->getParkGeometry->getLatitude(), $this->VALID_USERLOCATION->getLatitude(), '', 0.6);
+		}
+		$this->assertEmpty($results);
+	}
 
 	/**
 	 * test grabbing all Parks

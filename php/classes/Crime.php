@@ -319,13 +319,13 @@ class Crime implements \JsonSerializable {
 	 * @throws \TypeError when variables are not the correct type
 	 * @returns \SplFixedArray array of crimes that are found
 	 */
-	public static function getCrimesByCrimeGeometry (\PDO $pdo, Point $userLocation, float $userDistance) {
+	public static function getCrimeByCrimeGeometry (\PDO $pdo, Point $userLocation, float $userDistance) {
 		//sanitize
 		if(empty($userLocation) === true) {
 			throw(new \PDOException("User location is not valid"));
 		}
 		//create query template
-		$query = "CALL getCrimesByCrimeGeometry(POINT(:userLocationX, :userLocationY), :userDistance)";
+		$query = "CALL getCrimeByCrimeGeometry(POINT(:userLocationX, :userLocationY), :userDistance)";
 		$statement = $pdo->prepare($query);
 		$parameters = ["userLocationX" => $userLocation->getLongitude(), "userLocationY" => $userLocation->getLatitude(), "userDistance" => $userDistance];
 		$statement->execute($parameters);

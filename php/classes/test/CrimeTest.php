@@ -51,6 +51,16 @@ class CrimeTest extends AbqueryTest {
 	 * @var \DateTime $VALID_CRIMESUNSETDATE
 	 */
 	protected $VALID_CRIMESUNSETDATE = null;
+	/**
+	 * user input address
+	 * @var Point $VALID_USERLOCATION
+	 */
+	protected $VALID_USERLOCATION = null;
+	/**
+	 * distance computed from user
+	 * @var int distance in miles
+	 */
+	protected $VALID_USERDISTANCE = null;
 
 
 	/**
@@ -68,6 +78,9 @@ class CrimeTest extends AbqueryTest {
 
 		$this->VALID_CRIMESUNSETDATE = new \DateTime();
 		$this->VALID_CRIMESUNSETDATE->add(new \DateInterval("P10D"));
+
+		$this->VALID_USERLOCATION = new Point(-106.69703244562174, 35.10964229145246);
+		$this->VALID_USERDISTANCE = 5;
 	}
 
 
@@ -117,8 +130,8 @@ class CrimeTest extends AbqueryTest {
 		$pdoCrime = $results[0];
 		$this->assertEquals($pdoCrime->getCrimeId(), $this->VALID_CRIMEID);
 		$this->assertEquals($pdoCrime->getCrimeLocation(), $this->VALID_CRIMELOCATION);
-		$this->assertEquals($pdoCrime->getCrimeDescription(), $this->VALID_CRIMEDESCRIPTION);
 		$this->assertEquals($pdoCrime->getcrimeGeometry(), $this->VALID_CRIMEGEOMETRY);
+		$this->assertEquals($pdoCrime->getCrimeDescription(), $this->VALID_CRIMEDESCRIPTION);
 		$this->assertEquals($pdoCrime->getCrimeDate(), $this->VALID_CRIMEDATE);
 	}
 
@@ -129,6 +142,39 @@ class CrimeTest extends AbqueryTest {
 	public function testGetInvalidCrimeByCrimeLocation() {
 		$crime = Crime::getCrimeByCrimeLocation($this->getPDO(), "wabba lubba dub dub, there's nothing here for crime location, Morty!");
 		$this->assertCount(0, $crime);
+	}
+
+
+	/**
+	 * test getting crime by crime geometry
+	 */
+	public function testGetCrimeByCrimeGeometry () {
+		$numRows = $this->getConnection()->getRowCount("crime");
+		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEDATE);
+		$crime->insert($this->getPDO());
+		$results = Crime::getCrimeByCrimeGeometry($this->getPDO(), $crime->getCrimeGeometry(), 5);
+		foreach($results as $crime) {
+			$this->assertEquals($crime->getCrimeGeometry()->getLongitude(), $this->VALID_CRIMEGEOMETRY->getLongitude(), '', 0.6);
+			$this->assertEquals($crime->getCrimeGeometry()->getLatitude(), $this->VALID_CRIMEGEOMETRY->getLatitude(), '', 0.6);
+		}
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("crime"));
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\Crime", $results);
+	}
+
+
+	/**
+	 * test getting crimes that are too far
+	 */
+	public function testGetInvalidCrimeByCrimeGeometry () {
+		$numRows = $this->getConnection()->getRowCount("crime");
+		$crime = new Crime($this->VALID_CRIMEID, $this->VALID_CRIMELOCATION, $this->VALID_CRIMEGEOMETRY, $this->VALID_CRIMEDESCRIPTION, $this->VALID_CRIMEDATE);
+		$crime->insert($this->getPDO());
+		$results = Crime::getCrimeByCrimeGeometry($this->getPDO(), $this->VALID_USERLOCATION, $this->VALID_USERDISTANCE);
+		foreach($results as $crime) {
+			$this->assertSame($crime->getCrimeGeometry->getLongitude(), $this->VALID_USERLOCATION->getLongitude(), '', 0.6);
+			$this->assertSame($crime->getCrimeGeometry->getLatitude(), $this->VALID_USERLOCATION->getLatitude(), '', 0.6);
+		}
+		$this->assertEmpty($results);
 	}
 
 
@@ -149,8 +195,8 @@ class CrimeTest extends AbqueryTest {
 		$pdoCrime = $results[0];
 		$this->assertEquals($pdoCrime->getCrimeId(), $this->VALID_CRIMEID);
 		$this->assertEquals($pdoCrime->getCrimeLocation(), $this->VALID_CRIMELOCATION);
-		$this->assertEquals($pdoCrime->getCrimeDescription(), $this->VALID_CRIMEDESCRIPTION);
 		$this->assertEquals($pdoCrime->getcrimeGeometry(), $this->VALID_CRIMEGEOMETRY);
+		$this->assertEquals($pdoCrime->getCrimeDescription(), $this->VALID_CRIMEDESCRIPTION);
 		$this->assertEquals($pdoCrime->getCrimeDate(), $this->VALID_CRIMEDATE);
 	}
 
@@ -181,8 +227,8 @@ class CrimeTest extends AbqueryTest {
 		$pdoCrime = $results[0];
 		$this->assertEquals($pdoCrime->getCrimeId(), $this->VALID_CRIMEID);
 		$this->assertEquals($pdoCrime->getCrimeLocation(), $this->VALID_CRIMELOCATION);
-		$this->assertEquals($pdoCrime->getCrimeDescription(), $this->VALID_CRIMEDESCRIPTION);
 		$this->assertEquals($pdoCrime->getcrimeGeometry(), $this->VALID_CRIMEGEOMETRY);
+		$this->assertEquals($pdoCrime->getCrimeDescription(), $this->VALID_CRIMEDESCRIPTION);
 		$this->assertEquals($pdoCrime->getCrimeDate(), $this->VALID_CRIMEDATE);
 	}
 
@@ -213,8 +259,8 @@ class CrimeTest extends AbqueryTest {
 		$pdoCrime = $results[0];
 		$this->assertEquals($pdoCrime->getCrimeId(), $this->VALID_CRIMEID);
 		$this->assertEquals($pdoCrime->getCrimeLocation(), $this->VALID_CRIMELOCATION);
-		$this->assertEquals($pdoCrime->getCrimeDescription(), $this->VALID_CRIMEDESCRIPTION);
 		$this->assertEquals($pdoCrime->getcrimeGeometry(), $this->VALID_CRIMEGEOMETRY);
+		$this->assertEquals($pdoCrime->getCrimeDescription(), $this->VALID_CRIMEDESCRIPTION);
 		$this->assertEquals($pdoCrime->getCrimeDate(), $this->VALID_CRIMEDATE);
 	}
 }
