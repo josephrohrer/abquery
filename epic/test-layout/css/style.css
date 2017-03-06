@@ -71,19 +71,36 @@ body {
 
 /* About
 ___________________________________________________________ */
-
-.about-section {
-	padding-top: 120px;
+#about-section {
+	padding-top: 80px;
 	padding-bottom: 80px;
+}
+
+.about {
 	font-family: Helvetica;
 	font-size: large;
 	text-align: center;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+@media (max-width: 768px) {
+	.about {
+		font-size: medium;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	#about-section {
+		padding-top: 60px;
+		padding-bottom: 30px;
+
+	}
 }
 .bg-light-gray {
 	background-color: #f5f5f5;
 }
 .section-subheading{
-	margin-top: 70px;
+	margin-top: 60px;
 	margin-bottom: 20px;
 }
 .team-member {
@@ -95,8 +112,8 @@ ___________________________________________________________ */
 	border: 7px solid white;
 }
 .links {
-	padding: 20px 20px;
+	padding: 30px 30px;
 }
 .links img{
-	max-height: 100px;
+	max-height: 80px;
 }
