@@ -66,6 +66,7 @@ INSERT INTO amenity (amenityCityName, amenityName) VALUES ("JOGGINGPATHS", "Jogg
 
 -- this stored procedure was written by Brett Gilbert and Ben Smtih.
 -- with guidance and mathematics/statistics help from Dylan McDonald and Sprout Swap. @dylan-mcdonald
+-- this procedure enables the use of the haversine method to find distance from a given point
 
 DROP PROCEDURE IF EXISTS getCrimeByCrimeGeometry;
 DELIMITER $$
