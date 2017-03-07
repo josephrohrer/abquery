@@ -145,9 +145,9 @@
 								<img src="images/bsmtih.jpg" class="img-responsive img-circle" alt="">
 								<h4>Benjamin Smith</h4>
 								<ul class="list-inline social-buttons">
-									<li><a href="https://github.com/bsmith1188"><i class="fa fa-github"></i></a>
+									<li><a href="https://github.com/bsmith1188" target="_blank"><i class="fa fa-github"></i></a>
 									</li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a>
+									<li><a href="https://www.linkedin.com/in/ben-smith1188/" target="_blank"><i class="fa fa-linkedin"></i></a>
 									</li>
 								</ul>
 							</div>
