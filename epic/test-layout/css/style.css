@@ -1,79 +1,40 @@
-/* logo
--------------------------------------------------- */
-.logo img {
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
-}
-
-.vertical-align {
-	display: inline-block;
-	height: 100%;
-	vertical-align: middle;
-}
-
-/* video
--------------------------------------------------- */
-#background-video {
-	width:100%;
-	height:100%;
-	opacity: 0.5;
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	overflow: hidden;
-	z-index: -100;
-	background-size: cover;
-}
-
-@media (min-width: 992px) and (max-width: 1200px) {
-	.video-abq {
-		min-width:100%;
-		min-height:100%;
-	}
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-	.video-abq {
-		min-height: 100%;
-		max-height: 100%;
-	}
-}
-
-/* search bar
--------------------------------------------------- */
-
-
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-	position: relative;
-	min-height: 100%;
-}
-
-body {
-	/* Margin bottom by footer height */
-	margin-bottom: 60px;
-}
-
-.footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	/* Set the fixed height of the footer here */
-	height: 60px;
+/* Template CSS */
+/*---------------------------------*/
+.template-header {
 	background-color: #f5f5f5;
 }
+.template-footer {
+	background-color: #f5f5f5;
+}
+.footer-content {
+	font-size: 12px;
+	margin-bottom: 0;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
 
+/* Flexbox Sticky Footer CSS */
+/*---------------------------------*/
 
-/* About
-___________________________________________________________ */
+.sfooter {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+.sfooter-content {
+	flex: 1;
+}
+
+/* About Us CSS */
+/*---------------------------------*/
 #about-section {
-	padding-top: 80px;
-	padding-bottom: 80px;
+	padding-top: 30px;
+	padding-bottom: 40px;
+}
+
+#team-section {
+	padding-top: 20px;
 }
 
 .about {
@@ -87,35 +48,37 @@ ___________________________________________________________ */
 @media (max-width: 768px) {
 	.about {
 		font-size: medium;
-		padding-left: 0px;
-		padding-right: 0px;
-	}
-	#about-section {
-		padding-top: 60px;
-		padding-bottom: 30px;
-
+		padding-left: 0;
+		padding-right: 0;
 	}
 }
+
 .bg-light-gray {
 	background-color: #f5f5f5;
 }
+
 .section-subheading{
 	margin-top: 60px;
 	margin-bottom: 20px;
 }
+
 .team-member {
 	text-align: center;
 	margin-bottom: 50px;
 }
+
 .team-member img {
 	margin: 0 auto;
 	border: 7px solid white;
 }
+
 .links {
 	padding: 30px 30px;
 }
+
 .links img{
 	max-height: 80px;
 }
+
 .img-centered {margin:0 auto;
 }
