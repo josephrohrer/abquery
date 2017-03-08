@@ -148,7 +148,6 @@
 /*---------------------------------*/
 .button-wrap {
 	position: absolute;
-	top: 65vh;
 	bottom: 3vh;
 }
 .button-wrap > section {

@@ -105,7 +105,7 @@
 						<div class="row">
 							<div class="col-lg-3">
 								<a href="park-detail-view.php">
-									<img class="img-circle img-responsive" src="images/parksiconblack.png" alt="park button"></a>
+									<img class="img-circle img-responsive" src="images/parksearchicon.png" alt="park button"></a>
 							</div>
 						</div>
 					</div>
