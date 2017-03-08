@@ -45,6 +45,11 @@ class ParkTest extends AbqueryTest {
 	 */
 	protected $VALID_USERLOCATION = null;
 	/**
+	 * invalid user input address
+	 * @var Point $INVALID_USERLOCATION
+	 */
+	protected $INVALID_PARKGEOMETRY = null;
+	/**
 	 * distance computed from user
 	 * @var int distance in miles
 	 */
@@ -57,9 +62,12 @@ class ParkTest extends AbqueryTest {
 	public final function setUp() {
 		parent::setUp();
 
-		$this->VALID_PARKGEOMETRY = new Point(-106.69703244562174, 35.10964229145246);
+		$this->VALID_PARKGEOMETRY = new Point(-106.626815, 35.081375);
 
-		$this->VALID_USERLOCATION = new Point(-106.69703244562174, 35.10964229145246);
+		$this->VALID_USERLOCATION = new Point(-106.625517, 35.081213);
+
+		$this->INVALID_PARKGEOMETRY = new Point(-105.954073, 35.690733);
+
 		$this->VALID_USERDISTANCE = 5;
 	}
 
@@ -116,7 +124,7 @@ class ParkTest extends AbqueryTest {
 	 */
 	public function testGetInvalidParkByParkGeometry () {
 		$numRows = $this->getConnection()->getRowCount("park");
-		$park = new Park($this->VALID_PARKID, $this->VALID_PARKNAME, $this->VALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
+		$park = new Park($this->VALID_PARKID, $this->VALID_PARKNAME, $this->INVALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
 		$park->insert($this->getPDO());
 		$results = Park::getParkByParkGeometry($this->getPDO(), $this->VALID_USERLOCATION, $this->VALID_USERDISTANCE);
 		foreach($results as $park) {

@@ -95,7 +95,8 @@ CREATE PROCEDURE getCrimeByCrimeGeometry(IN userLocation POINT, IN userDistance 
 		CREATE TEMPORARY TABLE selectedCrime (
 			crimeId          INT UNSIGNED NOT NULL,
 			crimeLocation    VARCHAR(72)  NOT NULL,
-			crimeGeometry    POINT        NOT NULL,
+			crimeGeometryX   FLOAT        NOT NULL,
+			crimeGeometryY   FLOAT        NOT NULL,
 			crimeDescription VARCHAR(255) NOT NULL,
 			crimeDate        DATETIME,
 			crimeDistance    FLOAT
@@ -105,11 +106,11 @@ CREATE PROCEDURE getCrimeByCrimeGeometry(IN userLocation POINT, IN userDistance 
 
 			FETCH crimeCursor
 			INTO
-				crimeId,
-				crimeLocation,
-				crimeGeometry,
-				crimeDescription,
-				crimeDate;
+				varCrimeId,
+				varCrimeLocation,
+				varCrimeGeometry,
+				varCrimeDescription,
+				varCrimeDate;
 
 			SET varCrimeDistance = haversine(varCrimeDistance, userLocation);
 			INSERT INTO selectedCrime (crimeId, crimeLocation, crimeGeometryX, crimeGeometryY, crimeDescription, crimeDate, crimeDistance)
@@ -167,7 +168,8 @@ CREATE PROCEDURE getParkByParkGeometry(IN userLocation POINT, IN userDistance FL
 		CREATE TEMPORARY TABLE selectedPark (
 			parkId        INT UNSIGNED NOT NULL,
 			parkName      VARCHAR(60)  NOT NULL,
-			parkGeometry  POINT        NOT NULL,
+			parkGeometryX FLOAT        NOT NULL,
+			parkGeometryY FLOAT        NOT NULL,
 			parkDeveloped TINYINT UNSIGNED,
 			parkDistance  FLOAT
 		);
@@ -176,10 +178,10 @@ CREATE PROCEDURE getParkByParkGeometry(IN userLocation POINT, IN userDistance FL
 
 			FETCH parkCursor
 			INTO
-				parkId,
-				parkName,
-				parkGeometry,
-				parkDeveloped;
+				varParkId,
+				varParkName,
+				varParkGeometry,
+				varParkDeveloped;
 
 
 			SET varParkDistance = haversine(varParkDistance, userLocation);
