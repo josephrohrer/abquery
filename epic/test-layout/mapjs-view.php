@@ -105,7 +105,7 @@
 						<div class="row">
 							<div class="col-lg-3">
 								<a href="park-detail-view.php">
-									<img class="img-circle img-responsive" src="images/parksearchicon.png" alt="park button"></a>
+									<img class="img-responsive" src="images/parksearchicon.png" alt="Parks"></a>
 							</div>
 						</div>
 					</div>
@@ -116,8 +116,7 @@
 						<div class="row">
 							<div class="col-lg-3">
 								<a href="crime-detail-view.php">
-									<img class="img-circle img-responsive" src="images/crimesearchicon.png"
-										  alt="crime button"></a>
+									<img class="img-responsive" src="images/crimesearchicon.png" alt="Crime Incidents"></a>
 							</div>
 						</div>
 					</div>
