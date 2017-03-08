@@ -116,7 +116,7 @@
 						<div class="row">
 							<div class="col-lg-3">
 								<a href="crime-detail-view.php">
-									<img class="img-circle img-responsive" src="images/parksiconblack.png"
+									<img class="img-circle img-responsive" src="images/crimesearchicon.png"
 										  alt="crime button"></a>
 							</div>
 						</div>
