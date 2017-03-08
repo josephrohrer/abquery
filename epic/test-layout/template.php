@@ -53,7 +53,7 @@
 		</header>
 
 		<main class="template-main sfooter-content">
-			<p>Main</p>
+
 		</main>
 
 		<footer class="template-footer">
