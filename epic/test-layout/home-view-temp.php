@@ -10,7 +10,7 @@
 		<meta name="author" content="">
 		<link rel="icon" href="images/favicon.ico">
 
-		<title>Insert Title Here</title>
+		<title>ABQuery - Home</title>
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
