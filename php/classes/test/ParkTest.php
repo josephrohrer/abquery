@@ -64,7 +64,7 @@ class ParkTest extends AbqueryTest {
 
 		$this->VALID_PARKGEOMETRY = new Point(-106.626815, 35.081375);
 
-		$this->VALID_USERLOCATION = new Point(-106.625517, 35.081213);
+		$this->VALID_USERLOCATION = new Point( -106.613138, 35.087466);
 
 		$this->INVALID_PARKGEOMETRY = new Point(-105.954073, 35.690733);
 
@@ -127,10 +127,6 @@ class ParkTest extends AbqueryTest {
 		$park = new Park($this->VALID_PARKID, $this->VALID_PARKNAME, $this->INVALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
 		$park->insert($this->getPDO());
 		$results = Park::getParkByParkGeometry($this->getPDO(), $this->VALID_USERLOCATION, $this->VALID_USERDISTANCE);
-		foreach($results as $park) {
-			$this->assertSame($park->getParkGeometry->getLongitude(), $this->VALID_USERLOCATION->getLongitude(), '', 0.6);
-			$this->assertSame($park->getParkGeometry->getLatitude(), $this->VALID_USERLOCATION->getLatitude(), '', 0.6);
-		}
 		$this->assertEmpty($results);
 	}
 

@@ -238,9 +238,11 @@ class Park implements \JsonSerializable {
 		$statement->execute($parameters);
 		//create an array of parks
 		$parks = new \SplFixedArray($statement->rowCount());
+		var_dump($statement->rowCount());
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
+				var_dump($row);
 				$park = new Park($row["parkId"], $row["parkName"], new Point($row["parkGeometryX"], $row["parkGeometryY"]), $row["parkDeveloped"]);
 				$parks[$parks->key()] = $park;
 				$parks->next();

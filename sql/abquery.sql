@@ -112,7 +112,7 @@ CREATE PROCEDURE getCrimeByCrimeGeometry(IN userLocation POINT, IN userDistance 
 				varCrimeDescription,
 				varCrimeDate;
 
-			SET varCrimeDistance = haversine(varCrimeDistance, userLocation);
+			SET varCrimeDistance = haversine(varCrimeGeometry, userLocation);
 			INSERT INTO selectedCrime (crimeId, crimeLocation, crimeGeometryX, crimeGeometryY, crimeDescription, crimeDate, crimeDistance)
 			VALUES (varCrimeId, varCrimeLocation, ST_X(varCrimeGeometry), ST_Y(varCrimeGeometry), varCrimeDescription, varCrimeDate, varCrimeDistance);
 
@@ -184,7 +184,7 @@ CREATE PROCEDURE getParkByParkGeometry(IN userLocation POINT, IN userDistance FL
 				varParkDeveloped;
 
 
-			SET varParkDistance = haversine(varParkDistance, userLocation);
+			SET varParkDistance = haversine(varParkGeometry, userLocation);
 			INSERT INTO selectedPark (parkId, parkName, parkGeometryX, parkGeometryY, parkDeveloped, parkDistance)
 			VALUES(varParkId, varParkName, ST_X(varParkGeometry), ST_Y(varParkGeometry), varParkDeveloped, varParkDistance);
 
@@ -203,7 +203,7 @@ CREATE PROCEDURE getParkByParkGeometry(IN userLocation POINT, IN userDistance FL
 			parkDeveloped,
 			parkDistance
 		FROM selectedPark
-		WHERE parkDistance <= userDistance
+# 		WHERE parkDistance <= userDistance
 		ORDER BY parkDistance;
 
 	END $$
