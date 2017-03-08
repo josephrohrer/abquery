@@ -64,6 +64,10 @@
 
 		<!--This will be the card format for the park information hopefully-->
 		<div class="container">
+			<div class="col-sm-12 exit-button">
+				<!--button to close the view and go back to the map-->
+				<button class="park-close-button">X</button>
+			</div>
 			<div class="col-sm-12 park-head">
 				  This will be the head where the info is on parks nearby so depending on the query and location it could
 				return.
