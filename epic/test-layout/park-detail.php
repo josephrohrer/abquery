@@ -39,8 +39,7 @@
 				  crossorigin="anonymous"></script>
 	</head>
 
-	<!--  ==================================================== !-->
-
+	<!--  nav & search ==================================================== !-->
 
 
 	<body class="sfooter">
@@ -52,12 +51,71 @@
 		</header>
 
 		<main class="template-main sfooter-content">
-			<p>Main</p>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-1">
+					</div>
+					<div class="col-sm-10" id="detail-header">
+						<h1>PARKS</h1>
+					</div>
+					<div class="col-sm-1">
+					</div>
+				</div>
+				<!--  list of parks ==================================================== !-->
+
+				<div class="row">
+					<div class="col-sm-1">
+					</div>
+					<div class="col-sm-10" id="parks">
+						<h2>West Bluff</h2>
+						<p>2408 Alamogordo Dr NW<br>
+							Developed: Yes<br>
+							Play Areas: 1<br>
+							Basketball Courts- Half: 2<br>
+							Soccer Fields: 1<br>
+							Picnic Tables: 7<br>
+							Shade Structures: 2<br>
+						</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-1">
+					</div>
+					<div class="col-sm-10" id="parks">
+						<h2>Aztec</h2>
+						<p>3400 Moon St NE<br>
+							Developed: Yes<br>
+							Tennis Courts- Unlit: 6<br>
+							Play Areas: 2<br>
+							Soccer Fields: 1<br>
+							Picnic Tables: 7<br>
+							Shade Structures: 1<br>
+						</p>
+					</div>
+				</div>
+
+					<div class="row">
+						<div class="col-sm-1">
+						</div>
+						<div class="col-sm-10" id="parks">
+							<h2>Rio Grande Pool</h2>
+							<p>1410 Iron Ave SW<br>
+								Developed: Yes<br>
+								Play Areas: 1<br>
+								Outdoor Pools: 1<br>
+								Parking Spaces: 50<br>
+							</p>
+						</div>
+					</div>
+
+
 		</main>
 
 		<footer class="template-footer">
 			<div class="col-12 text-center">
-				<p class="footer-content text-muted">Copyright &copy; ABQuery 2017  |  <a href="about-view.php">About Us</a></p>
+				<p class="footer-content text-muted">Copyright &copy; ABQuery 2017 | <a href="about-view.php">About Us</a>
+				</p>
 			</div>
 		</footer>
 
