@@ -30,7 +30,7 @@ class ParkTest extends AbqueryTest {
 	 */
 	protected $VALID_PARKNAME = "Park For Little Shits";
 	/**
-	 * content of the crime geometry
+	 * content of the park geometry
 	 * @var Point $VALID_PARKGEOMETRY
 	 */
 	protected $VALID_PARKGEOMETRY = null;
@@ -120,7 +120,7 @@ class ParkTest extends AbqueryTest {
 
 
 	/**
-	 * test getting crimes that are too far
+	 * test getting parks that are too far
 	 */
 	public function testGetInvalidParkByParkGeometry () {
 		$numRows = $this->getConnection()->getRowCount("park");
