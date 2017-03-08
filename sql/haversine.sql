@@ -22,10 +22,10 @@ CREATE FUNCTION haversine(origin POINT, destination POINT) RETURNS FLOAT
 
 		-- assign the variables that were declared & use them
 		SET radius = 3959; -- radius of the earth in miles
-		SET latitudeAngle1 = RADIANS(X(origin));
-		SET latitudeAngle2 = RADIANS(X(destination));
-		SET latitudePhase = RADIANS(X(destination) - X(origin));
-		SET longitudePhase = RADIANS(Y(destination) - Y(origin));
+		SET latitudeAngle1 = RADIANS(Y(origin));
+		SET latitudeAngle2 = RADIANS(Y(destination));
+		SET latitudePhase = RADIANS(Y(destination) - Y(origin));
+		SET longitudePhase = RADIANS(X(destination) - X(origin));
 
 		SET alpha = SIN(latitudePhase / 2) * SIN(latitudePhase / 2)
 						+ SIN(longitudePhase / 2) * SIN(longitudePhase / 2)
