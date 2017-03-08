@@ -137,7 +137,7 @@
 	#background {
 		display: none;
 	}
-	body {
+	#homebody {
 		background-image: url("../images/test.jpg") !important;
 		background-size: cover !important;
 		background-repeat: no-repeat !important;

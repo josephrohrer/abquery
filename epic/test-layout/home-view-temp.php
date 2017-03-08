@@ -47,7 +47,7 @@
 
 
 
-	<body class="sfooter">
+	<body id="homebody" class="sfooter">
 
 		<header class="template-header">
 			<div class="col-12 text-center">
@@ -74,6 +74,7 @@
 					</div>
 				</form>
 			</div>
+			<!-- consider wrapping video tag in a div with class of hidden-xs -->
 			<video autoplay loop muted poster="images/screenshot.jpg" id="background">
 				<source src="video/backgroundmovie.mp4" type="video/mp4">
 			</video>
