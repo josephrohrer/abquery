@@ -146,15 +146,7 @@
 }
 /* Map View CSS */
 /*---------------------------------*/
-
 .button-wrap {
 	position: absolute;
-	bottom: 3vh;
-}
-.button-wrap > section {
-	margin: 1rem 0;
-}
-#button img {
-	height: 100px;
-	width: 100px;
+	top: 65vh;
 }

@@ -51,19 +51,31 @@
 		</style>
 	</head>
 
-	<!-- nav ==================================================== !-->
-
+	<!-- nav & search ==================================================== !-->
 
 	<body class="sfooter">
+		<header class="template-header navbar-fixed-top">
+			<div class="col-12 text-center">
+				<img src="images/logosmaller.png">
+			</div>
+
+				<div class="form-group">
+					<label for="searchAddress" class="sr-only">Search an Albuqueruqe Address</label>
+					<div class="input-group">
+						<input id="searchAddress" name="searchAddress" type="text" class="form-control input-lg" placeholder="Enter an ABQ address"/>
+						<div class="input-group-btn">
+							<button class="btn btn-default btn-lg" type="button">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</div>
+				</div><!--from-group-->
+		</header>
 
 		<main class="template-main sfooter-content">
-			<header class="template-header navbar-fixed-top">
-				<div class="col-12 text-center">
-					<img src="images/logosmaller.png">
-				</div>
-			</header>
 
 			<!-- map ==================================================== !-->
+
 			<section class="map-section">
 				<div id="map" class="container-fluid">
 				</div>
@@ -93,7 +105,7 @@
 						<div class="row">
 							<div class="col-lg-3">
 								<a href="park-detail-view.php">
-									<img class="img-responsive" src="images/parksearchicon.png" alt="Parks"></a>
+									<img class="img-circle img-responsive" src="images/parksiconblack.png" alt="park button"></a>
 							</div>
 						</div>
 					</div>
@@ -104,7 +116,8 @@
 						<div class="row">
 							<div class="col-lg-3">
 								<a href="crime-detail-view.php">
-									<img class="img-responsive" src="images/crimesearchicon.png" alt="Crime Incidents"></a>
+									<img class="img-circle img-responsive" src="images/parksiconblack.png"
+										  alt="crime button"></a>
 							</div>
 						</div>
 					</div>
