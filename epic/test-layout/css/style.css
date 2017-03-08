@@ -107,6 +107,10 @@
 		max-height: 100% !important;
 	}
 }
+
+/* Home View CSS */
+/*---------------------------------*/
+
 @media screen and (min-width: 768px) {
 	#background {
 		opacity: .75;
@@ -139,4 +143,9 @@
 		background-repeat: no-repeat !important;
 		background-position: center center !important;
 	}
+}
+/* Map View CSS */
+.button-wrap {
+	position: absolute;
+	top: 65vh;
 }
