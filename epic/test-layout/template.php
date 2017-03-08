@@ -9,6 +9,9 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<link rel="icon" href="images/favicon.ico">
+		<!--This is the google places auto complete api using the key that I (Smtih) generated-->
+		<script type="text/javascript"
+				  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBq3y-2qCFZqdD_fJ9grn4l61JEFwom5Y0&libraries=places"></script>
 
 		<title>Insert Title Here</title>
 
