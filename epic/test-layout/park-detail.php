@@ -52,60 +52,89 @@
 
 		<main class="template-main sfooter-content">
 
+			<!--  list of parks================================================= !-->
+
 			<div class="container">
-					<div class="col-lg-12" id="detail-header">
-						<h1 class="text-center">PARKS</h1>
+
+				<div class="demo-card">
+					<div class="card-header">
+						PARKS
 					</div>
+
+					<div class="card-block">
+						<h4 class="card-title">West Bluff Park</h4>
+						<h6 class="card-subtitle text-muted">2408 Alamogordo Dr NW</h6>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Developed: Yes</li>
+							<li class="list-group-item">Play Areas: 1</li>
+							<li class="list-group-item">Basketball Courts- Half: 2</li>
+							<li class="list-group-item">Soccer Fields: 1</li>
+							<li class="list-group-item">Picnic Tables: 7</li>
+							<li class="list-group-item">Shade Structures: 2</li>
+						</ul>
+					</div>
+
+					<div class="card-block">
+						<a href="#mapjs-view" class="btn btn-primary">Map</a>
+					</div>
+					<div class="card-footer text-muted">
+						Abquery: List of Parks
+					</div>
+				</div><!--card-->
+
+
+				<div class="demo-card">
+					<div class="card-header">
+						PARKS
+					</div>
+
+					<div class="card-block">
+						<h4 class="card-title">Aztec Park</h4>
+						<h6 class="card-subtitle text-muted">3400 Moon St NE</h6>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Developed: Yes</li>
+							<li class="list-group-item">Tennis Courts- Unlit: 6</li>
+							<li class="list-group-item">Play Areas: 2</li>
+							<li class="list-group-item">Soccer Fields: 1</li>
+							<li class="list-group-item">Picnic Tables: 7</li>
+							<li class="list-group-item">Shade Structures: 1</li>
+						</ul>
+					</div>
+
+					<div class="card-block">
+						<a href="#mapjs-view" class="btn btn-primary">Map</a>
+					</div>
+					<div class="card-footer text-muted">
+						Abquery: List of Parks
+					</div>
+				</div><!--card-->
+
+				<div class="demo-card">
+					<div class="card-header">
+						PARKS
+					</div>
+
+					<div class="card-block">
+					<h4 class="card-title">Rio Grande Pool</h4>
+					<h6 class="card-subtitle text-muted">1410 Iron Ave SW</h6>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">Developed: Yes</li>
+						<li class="list-group-item">Play Areas: 1</li>
+						<li class="list-group-item">Outdoor Pools: 1</li>
+						<li class="list-group-item">Parking Spaces: 50</li>
+					</ul>
 				</div>
-				<!--  list of parks ==================================================== !-->
 
-				<div class="row">
-					<div class="col-sm-1">
-					</div>
-					<div class="col-sm-10" id="parks">
-						<h2>West Bluff</h2>
-						<p>2408 Alamogordo Dr NW<br>
-							Developed: Yes<br>
-							Play Areas: 1<br>
-							Basketball Courts- Half: 2<br>
-							Soccer Fields: 1<br>
-							Picnic Tables: 7<br>
-							Shade Structures: 2<br>
-						</p>
-					</div>
+				<div class="card-block">
+					<a href="#mapjs-view" class="btn btn-primary">Map</a>
 				</div>
-
-				<div class="row">
-					<div class="col-sm-1">
-					</div>
-					<div class="col-sm-10" id="parks">
-						<h2>Aztec</h2>
-						<p>3400 Moon St NE<br>
-							Developed: Yes<br>
-							Tennis Courts- Unlit: 6<br>
-							Play Areas: 2<br>
-							Soccer Fields: 1<br>
-							Picnic Tables: 7<br>
-							Shade Structures: 1<br>
-						</p>
-					</div>
+				<div class="card-footer text-muted">
+					Abquery: List of Parks
 				</div>
+			</div><!--card-->
 
-					<div class="row">
-						<div class="col-sm-1">
-						</div>
-						<div class="col-sm-10" id="parks">
-							<h2>Rio Grande Pool</h2>
-							<p>1410 Iron Ave SW<br>
-								Developed: Yes<br>
-								Play Areas: 1<br>
-								Outdoor Pools: 1<br>
-								Parking Spaces: 50<br>
-							</p>
-						</div>
-					</div>
+			</div><!--container-->
 
-			</div>
 		</main>
 
 		<footer class="template-footer">
