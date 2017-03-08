@@ -45,16 +45,6 @@ jhthghh
 
 	<body>
 
-
-		<!-- background vid -->
-		<!--<div class="video-abq">
-			<div id="background-video">
-				<div class="embed-responsive embed-responsive-16by9">
-					<video src="video/abq%20sky.mp4" type="video" autoplay muted loop <video></video>
-				</div>
-			</div>
-		</div>-->
-
 		<!-- Navigation -->
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container" style="text-align: center">
