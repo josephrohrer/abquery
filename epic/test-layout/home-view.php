@@ -47,33 +47,29 @@
 
 	<body>
 
-		<!-- background vid -->
-		<div class="video-abq">
-			<div id="background-video">
-					<div class="embed-responsive embed-responsive-16by9">
-						<video src="video/abq%20sky.mp4" type="video" autoplay muted loop </video>
+
+		<div class="container">
+			<div class="vertical-align">
+				<!-- background vid -->
+				<div class="video-abq">
+					<div id="background-video">
+						<div class="embed-responsive embed-responsive-16by9">
+							<video src="video/abq%20sky.mp4" type="video" autoplay muted loop
+							</video>
 						</div>
 					</div>
 				</div>
-
-		<!-- Abquery Logo -->
-		<div>
-			<div class="logo">
-				<img src="images/abqueryname.png" alt="ABQuery logo">
-			</div>
-		</div>
-
-		<!-- container-fluid -->
-
-
-		<!-- Search bar -->
-		<div class="container">
-			<div class="row">
-
+				<!-- Abquery Logo -->
+				<div>
+					<div class="logo">
+						<img src="images/abqueryname.png" alt="ABQuery logo">
+					</div>
+				</div>
+				<!-- Search bar -->
 				<div class="col-sm-6 col-sm-offset-3">
 					<div id="imaginary_container">
 						<div class="input-group stylish-input-group">
-							<input type="text" class="form-control"  placeholder="Search" >
+							<input type="text" class="form-control" placeholder="Search">
 							<span class="input-group-addon">
                         <button type="submit">
                             <span class="glyphicon glyphicon-search"></span>
