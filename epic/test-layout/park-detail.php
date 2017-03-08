@@ -51,14 +51,10 @@
 		</header>
 
 		<main class="template-main sfooter-content">
+
 			<div class="container">
-				<div class="row">
-					<div class="col-sm-1">
-					</div>
-					<div class="col-sm-10" id="detail-header">
-						<h1>PARKS</h1>
-					</div>
-					<div class="col-sm-1">
+					<div class="col-lg-12" id="detail-header">
+						<h1 class="text-center">PARKS</h1>
 					</div>
 				</div>
 				<!--  list of parks ==================================================== !-->
@@ -109,7 +105,7 @@
 						</div>
 					</div>
 
-
+			</div>
 		</main>
 
 		<footer class="template-footer">
