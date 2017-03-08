@@ -109,7 +109,7 @@
 						</div>
 					</div>
 				</section>
-			</div><!--button wrap-->
+			</div><!--button wrap--->
 		</main>
 
 
