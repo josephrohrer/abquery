@@ -128,11 +128,8 @@
 		background: url("../images/screenshot.jpg") no-repeat;
 		background-size: cover;
 	}
-
-	.container h1 {
-		color: white;
-	}
 }
+
 @media screen and (max-width: 768px) {
 	#background {
 		display: none;
@@ -161,17 +158,20 @@
 	margin-right: 20px;
 }
 
-/* Detail View Generic CSS */
-/*---------------------------------*/
-
-#detail-header {
-
-}
 
 
 /* Crime Detail View CSS */
 /*---------------------------------*/
 
+#crime-detail-header {
+	border-bottom: medium black;
+	background-color: green;
+}
 #crime-incident {
 
 }
+
+
+
+/* Park Detail View CSS */
+/*---------------------------------*/

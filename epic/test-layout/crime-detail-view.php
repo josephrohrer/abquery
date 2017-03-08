@@ -54,11 +54,13 @@
 
 		<main class="template-main sfooter-content">
 			<div class="container">
-				<div class="row" id="detail-header">
+				<div class="row">
 					<div class="col-sm-1">
 					</div>
 					<div class="col-sm-10">
-						<h1>CRIME INCIDENTS</h1>
+						<div id="detail-header">
+							<h1>CRIME INCIDENTS</h1>
+						</div>
 					</div>
 					<div class="col-sm-1">
 					</div>
@@ -83,6 +85,18 @@
 						<h2>Larceny All Other</h2>
 						<p>8200 Block Krim Dr NE<br>
 							03/06/2016</p>
+					</div>
+					<div class="col-sm-1">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-1">
+					</div>
+					<div class="col-sm-10" id="crime-incident">
+						<h2>Vandalism, Malicious Mischief, Graffiti</h2>
+						<p>5300 Block San Mateo Blvd NE<br>
+							03/01/2016</p>
 					</div>
 					<div class="col-sm-1">
 					</div>
