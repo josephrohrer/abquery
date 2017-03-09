@@ -1,21 +1,26 @@
-<section class="welcome">
-	<div class="container">
-		<div class="jumbotron text-center">
-			<h1><i class="fa fa-microchip"></i> Welcome to ABQuery!</h1>
-			<p class="lead orange">8==================D~~~~~~</p>
+
+
+<div class=" container logo-search">
+	<div class="logo text-center">
+		<img class="logo-resize" src="images/abqueryname.png" alt="abquery logo">
+	</div>
+
+	<form class="col-sm-8 col-sm-offset-2">
+		<div class="form-group">
+			<label for="searchAddress" class="sr-only">Enter an Albuquerque Address</label>
+			<div class="input-group">
+				<input id="searchAddress" name="searchAddress" type="text" class="form-control input-lg" placeholder="Enter an ABQ address"/>
+				<div class="input-group-btn">
+					<button class="btn btn-default btn-lg" type="button">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+				</div>
+			</div>
 		</div>
-	</div>
-</section>
+	</form>
+</div>
 
-<section>
-	<div class="container">
-		<h1>{{ title }}</h1>
-
-		<!-- this creates a google map on the page with the given lat/lng from -->
-		<!-- the component as the initial center of the map: -->
-
-		<sebm-google-map [latitude]="lat" [longitude]="lng">
-			<sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
-		</sebm-google-map>
-	</div>
-</section>
+<!-- consider wrapping video tag in a div with class of hidden-xs -->
+<video autoplay loop muted poster="images/screenshot.jpg" id="background">
+	<source src="images/backgroundmovie.mp4" type="video/mp4">
+</video>

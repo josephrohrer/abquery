@@ -1,3 +1,217 @@
+/* Angular map */
+
 .sebm-google-map-container {
 	height: 600px;
+}
+
+#map {
+	height: 100vh;
+	width: 100%;
+	background-color: grey;
+}
+
+/* Template CSS */
+/*---------------------------------*/
+
+.template-header {
+	background-color: #f5f5f5;
+}
+
+.template-footer {
+	background-color: #f5f5f5;
+}
+
+.footer-content {
+	font-size: 12px;
+	margin-bottom: 0;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+/* Flexbox Sticky Footer CSS */
+/*---------------------------------*/
+
+.sfooter {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+.sfooter-content {
+	flex: 1;
+}
+
+/* About Us CSS */
+/*---------------------------------*/
+
+#about-section {
+	padding-top: 30px;
+	padding-bottom: 40px;
+}
+
+#team-section {
+	padding-top: 20px;
+}
+
+.about {
+	font-family: Helvetica;
+	font-size: large;
+	text-align: center;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+@media (max-width: 768px) {
+	.about {
+		font-size: medium;
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+.bg-light-gray {
+	background-color: #f5f5f5;
+}
+
+.section-subheading{
+	margin-top: 60px;
+	margin-bottom: 20px;
+}
+
+.team-member {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.team-member img {
+	margin: 0 auto;
+	border: 7px solid white;
+}
+
+.links {
+	padding: 30px 30px;
+}
+
+.links img{
+	max-height: 80px;
+}
+
+.img-centered {
+	margin:0 auto;
+}
+
+/* Home View CSS */
+/*---------------------------------*/
+
+.logo-search {
+	padding-top: 200px;
+}
+
+@media screen and (max-width: 768px) {
+	.logo-resize {
+		max-width: 100% !important;
+		height: auto !important;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.logo-resize {
+		max-width: 100% !important;
+		max-height: 100% !important;
+	}
+}
+
+/* Home View CSS */
+/*---------------------------------*/
+
+@media screen and (min-width: 768px) {
+	#background {
+		opacity: .75;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		margin: 0 auto;
+		width: auto;
+		height: auto;
+		z-index: -100;
+		-webkit-transform: translateX(-50%) translateY(-50%);
+		transform: translateX(-50%) translateY(-50%);
+		background: url("images/screenshot.jpg") no-repeat;
+		background-size: cover;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	#background {
+		display: none;
+	}
+	#homebody {
+		background-image: url("images/mobile.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+	;
+	}
+}
+/* Map View CSS */
+/*---------------------------------*/
+.button-wrap {
+	position: absolute;
+	bottom: 3vh;
+}
+.button-wrap > section {
+	margin: 1rem 0;
+}
+#button img {
+	height: 100px;
+}
+.input-group {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#searchAddress {
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+/* Crime Detail View CSS */
+/*---------------------------------*/
+.container-crime {
+	margin-left: 20px;
+	margin-right:20px;
+}
+
+/* Park Detail View CSS */
+/*---------------------------------*/
+.container-park {
+	margin-left: 20px;
+	margin-right:20px;
+}
+
+.demo-card {
+	padding-top: 25px;
+	width: 100%;
+	max-width: 500px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+
+.card-title {
+	text-align: left;
+}
+
+/* park & crime desktop view */
+/*---------------------------------*/
+.container-crime-desktop{
+	padding-top: 40px;
+}
+
+/* Directory View CSS */
+/*---------------------------------*/
+.data-drop {
+	padding-top: 100px;
 }

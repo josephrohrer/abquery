@@ -54,6 +54,7 @@
 				<div class="logo text-center">
 					<img class="logo-resize" src="images/abqueryname.png" alt="abquery logo">
 				</div>
+
 				<form class="col-sm-8 col-sm-offset-2">
 					<div class="form-group">
 						<label for="searchAddress" class="sr-only">Enter an Albuquerque Address</label>
