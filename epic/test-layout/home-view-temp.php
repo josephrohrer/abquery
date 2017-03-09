@@ -2,7 +2,6 @@
 <html lang="en">
 
 	<head>
-
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,15 +43,10 @@
 
 
 
-
-
-
 	<body id="homebody" class="sfooter">
 
-		<header class="template-header">
-			<div class="col-12 text-center">
-				<img src="images/logosmaller.png">
-			</div>
+		<header>
+
 		</header>
 
 		<main class="sfooter-content">
@@ -82,7 +76,7 @@
 
 		<footer class="template-footer">
 			<div class="col-12 text-center">
-				<p class="footer-content text-muted">Copyright &copy; ABQuery 2017  |  <a href="about-view.php">About Us</a></p>
+				<p class="footer-content text-muted">Copyright &copy; ABQuery 2017  |  <a href="about-view-temp.php">About Us</a></p>
 			</div>
 		</footer>
 
