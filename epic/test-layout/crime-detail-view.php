@@ -10,7 +10,7 @@
 		<meta name="author" content="">
 		<link rel="icon" href="images/favicon.ico">
 
-		<title>Insert Title Here</title>
+		<title>Crime Detail View</title>
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -110,7 +110,6 @@
 	</div><!--container-->
 
 	</main>
-
 
 		<footer class="template-footer">
 			<div class="col-12 text-center">
