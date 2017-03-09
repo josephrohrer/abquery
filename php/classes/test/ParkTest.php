@@ -109,10 +109,10 @@ class ParkTest extends AbqueryTest {
 		$numRows = $this->getConnection()->getRowCount("park");
 		$park = new Park($this->VALID_PARKID, $this->VALID_PARKNAME, $this->VALID_PARKGEOMETRY, $this->VALID_PARKDEVELOPED);
 		$park->insert($this->getPDO());
-		$results = Park::getParkByParkGeometry($this->getPDO(), $park->getParkGeometry(), 5);
+		$results = Park::getParkByParkGeometry($this->getPDO(), $this->VALID_USERLOCATION, 5);
 		foreach($results as $park) {
-			$this->assertEquals($park->getParkGeometry()->getLongitude(), $this->VALID_PARKGEOMETRY->getLongitude(), '', 0.6);
-			$this->assertEquals($park->getParkGeometry()->getLatitude(), $this->VALID_PARKGEOMETRY->getLatitude(), '', 0.6);
+			$this->assertEquals($park->getParkGeometry()->getLongitude(), $this->VALID_PARKGEOMETRY->getLongitude(), '', .1);
+			$this->assertEquals($park->getParkGeometry()->getLatitude(), $this->VALID_PARKGEOMETRY->getLatitude(), '', .1);
 		}
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("park"));
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Abquery\\Park", $results);

@@ -203,7 +203,7 @@ CREATE PROCEDURE getParkByParkGeometry(IN userLocation POINT, IN userDistance FL
 			parkDeveloped,
 			parkDistance
 		FROM selectedPark
-# 		WHERE parkDistance <= userDistance
+		WHERE parkDistance <= userDistance
 		ORDER BY parkDistance;
 
 	END $$
