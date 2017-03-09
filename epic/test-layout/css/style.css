@@ -160,7 +160,10 @@
 	margin-right: 20px;
 }
 
-
+#searchAddress {
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
 
 /* Crime Detail View CSS */
 /*---------------------------------*/
