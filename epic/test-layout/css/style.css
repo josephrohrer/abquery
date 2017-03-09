@@ -164,38 +164,6 @@
 /* Crime Detail View CSS */
 /*---------------------------------*/
 
-#crime-detail-header {
-	background-color: red;
-	margin-bottom: 20px;
-	font-size: 3rem;
-	color: white;;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.2);
-}
-#crime-incident {
-	background-color: white;
-	/**border: 2px gray;**/
-	margin: 5px 5px;
-	padding-left: 10px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.2);
-	/**border-radius: 10px;*/
-}
-
-@media (max-width: 768px) {
-	#crime-incident {
-		padding-top: 10px;
-		padding-bottom: 10px;
-	}
-}
-
-.bg-darker-gray {
-	background-color: #C7C7C7;
-}
-
-
 /* Park Detail View CSS */
 /*---------------------------------*/
 .container {

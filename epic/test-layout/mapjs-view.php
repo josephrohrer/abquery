@@ -51,7 +51,7 @@
 		</style>
 	</head>
 
-	<!-- nav & search ==================================================== !-->
+	<!-- nav ==================================================== !-->
 
 	<body class="sfooter">
 		<header class="template-header navbar-fixed-top">
