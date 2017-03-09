@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 
 @Component({
+	selector: "query-map",
 	templateUrl: "./templates/map.php"
 })
 
