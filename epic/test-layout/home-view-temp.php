@@ -56,7 +56,7 @@
 				</div>
 				<form class="col-sm-8 col-sm-offset-2">
 					<div class="form-group">
-						<label for="searchAddress" class="sr-only">Search an Albuqueruqe Address</label>
+						<label for="searchAddress" class="sr-only">Enter an Albuquerque Address</label>
 						<div class="input-group">
 							<input id="searchAddress" name="searchAddress" type="text" class="form-control input-lg" placeholder="Enter an ABQ address"/>
 							<div class="input-group-btn">

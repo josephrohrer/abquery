@@ -136,10 +136,11 @@
 		display: none;
 	}
 	#homebody {
-		background-image: url("../images/mobiletest2.jpg") !important;
-		background-size: cover !important;
-		background-repeat: no-repeat !important;
-		background-position: center center !important;
+		background-image: url("../images/mobile.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		;
 	}
 }
 /* Map View CSS */
