@@ -163,6 +163,11 @@
 
 /* Crime Detail View CSS */
 /*---------------------------------*/
+.container-crime {
+	margin-left: 20px;
+	margin-right:20px;
+}
+
 /* Park Detail View CSS */
 /*---------------------------------*/
 .container-park {

@@ -41,7 +41,7 @@
 
 	<!--  list of crimes ================================================= !-->
 
-	<div class="container">
+	<div class="container-crime">
 
 		<div class="demo-card">
 			<div class="card-header">
