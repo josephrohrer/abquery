@@ -51,7 +51,7 @@
 		</style>
 	</head>
 
-	<!-- nav ==================================================== !-->
+	<!-- nav & search ==================================================== !-->
 
 	<body class="sfooter">
 		<header class="template-header navbar-fixed-top">
@@ -104,7 +104,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-3">
-								<a href="park-detail-view.php">
+								<a href="park-detail.php">
 									<img class="img-responsive" src="images/parksearchicon.png" alt="Parks"></a>
 							</div>
 						</div>

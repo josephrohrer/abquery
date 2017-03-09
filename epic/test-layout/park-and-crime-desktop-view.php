@@ -65,7 +65,7 @@
 
 		<main class="template-main sfooter-content">
 
-			<!-- nav & search ==================================================== !-->
+			<!-- nav ==================================================== !-->
 
 			<body class="sfooter">
 				<header class="template-header navbar-fixed-top">
@@ -73,23 +73,23 @@
 						<img src="images/logosmaller.png">
 					</div>
 
-					<div class="form-group">
-						<label for="searchAddress" class="sr-only">Search an Albuqueruqe Address</label>
-						<div class="input-group">
-							<input id="searchAddress" name="searchAddress" type="text" class="form-control input-lg"
-									 placeholder="Enter an ABQ address"/>
-							<div class="input-group-btn">
-								<button class="btn btn-default btn-lg" type="button">
-									<i class="glyphicon glyphicon-search"></i>
-								</button>
+					<div class="form-group-desktop">
+							<label for="searchAddress" class="sr-only">Search an Albuqueruqe Address</label>
+							<div class="input-group">
+								<input id="searchAddress" name="searchAddress" type="text" class="form-control input-lg"
+										 placeholder="Enter an ABQ address"/>
+								<div class="input-group-btn">
+									<button class="btn btn-default btn-lg" type="button">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</div>
 							</div>
-						</div>
 					</div><!--from-group-->
 				</header>
 
 				<!--  list of crimes ================================================= !-->
 
-				<div class="container-crime">
+				<div class="container-crime-desktop">
 					<div class="col-lg-6">
 						<div class="demo-card">
 							<div class="card-header">
@@ -124,6 +124,50 @@
 								<ul class="list-group list-group-flush">
 									<li class="list-group-item">03/06/2016</li>
 									<li class="list-group-item">8200 Block Krim Dr NE</li>
+								</ul>
+							</div>
+
+							<div class="card-block">
+								<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php"
+									class="btn btn-primary">Map</a>
+							</div>
+							<div class="card-footer text-muted">
+								Abquery: List of Crime Incidents
+							</div>
+						</div><!--card-->
+
+						<div class="demo-card">
+							<div class="card-header">
+								CRIME INCIDENTS
+							</div>
+
+							<div class="card-block">
+								<h4 class="card-title">Malicious Mischief, Graffiti</h4>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">03/01/2016</li>
+									<li class="list-group-item">5300 Block San Mateo Blvd NE</li>
+								</ul>
+							</div>
+
+							<div class="card-block">
+								<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php"
+									class="btn btn-primary">Map</a>
+							</div>
+							<div class="card-footer text-muted">
+								Abquery: List of Crime Incidents
+							</div>
+						</div><!--card-->
+
+						<div class="demo-card">
+							<div class="card-header">
+								CRIME INCIDENTS
+							</div>
+
+							<div class="card-block">
+								<h4 class="card-title">Malicious Mischief, Graffiti</h4>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">03/01/2016</li>
+									<li class="list-group-item">5300 Block San Mateo Blvd NE</li>
 								</ul>
 							</div>
 

@@ -192,6 +192,12 @@
 	text-align: left;
 }
 
+/* park & crime desktop view */
+/*---------------------------------*/
+.container-crime-desktop{
+	padding-top: 40px;
+}
+
 /* Directory View CSS */
 /*---------------------------------*/
 .data-drop {
