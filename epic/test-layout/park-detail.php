@@ -75,7 +75,7 @@
 					</div>
 
 					<div class="card-block">
-						<a href="#mapjs-view" class="btn btn-primary">Map</a>
+						<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php" class="btn btn-primary">Map</a>
 					</div>
 					<div class="card-footer text-muted">
 						Abquery: List of Parks
@@ -102,7 +102,7 @@
 					</div>
 
 					<div class="card-block">
-						<a href="#mapjs-view" class="btn btn-primary">Map</a>
+						<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php" class="btn btn-primary">Map</a>
 					</div>
 					<div class="card-footer text-muted">
 						Abquery: List of Parks
@@ -126,7 +126,7 @@
 				</div>
 
 				<div class="card-block">
-					<a href="#mapjs-view" class="btn btn-primary">Map</a>
+					<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php" class="btn btn-primary">Map</a>
 				</div>
 				<div class="card-footer text-muted">
 					Abquery: List of Parks

@@ -45,8 +45,6 @@
 
 
 
-
-
 	<body class="sfooter">
 
 		<header class="template-header">
