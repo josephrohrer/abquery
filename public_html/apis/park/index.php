@@ -58,7 +58,6 @@ try {
 				$reply->data = $parks;
 			}
 		} else {
-			$reply->message = "Y U NO VARIABLE";
 			$park = Park::getAllParks($pdo);
 			if($park !== null) {
 				$reply->data = $park;
