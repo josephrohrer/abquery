@@ -39,7 +39,20 @@
 				  crossorigin="anonymous"></script>
 	</head>
 
-	<!--  list of crimes ================================================= !-->
+	<!--  nav & search ==================================================== !-->
+
+
+	<body class="sfooter">
+
+		<header class="template-header">
+			<div class="col-12 text-center">
+				<img src="images/logosmaller.png">
+			</div>
+		</header>
+
+		<main class="template-main sfooter-content">
+
+		<!--  list of crimes ================================================= !-->
 
 	<div class="container-crime">
 
