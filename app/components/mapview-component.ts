@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 
 @Component({
-	templateUrl: "./templates/mapview.php"
+	templateUrl: "./templates/map-view.php"
 })
 
 export class MapViewComponent {
