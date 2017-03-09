@@ -64,7 +64,7 @@ class ParkTest extends AbqueryTest {
 
 		$this->VALID_PARKGEOMETRY = new Point(-106.626815, 35.081375);
 
-		$this->VALID_USERLOCATION = new Point( -106.613138, 35.087466);
+		$this->VALID_USERLOCATION = new Point(-106.613138, 35.087466);
 
 		$this->INVALID_PARKGEOMETRY = new Point(-105.954073, 35.690733);
 

@@ -52,12 +52,13 @@ try {
 			if($park !== null) {
 				$reply->data = $park;
 			}
-		} elseif(empty($parkGeometry) === false) {
+		} elseif(empty($userLocationX) === false && empty($userLocationY) === false && empty($userDistance) === false) {
 			$parks = Park::getParkByParkGeometry($pdo, new Point($userLocationX, $userLocationY), $userDistance)->toArray();
 			if($parks !== null) {
 				$reply->data = $parks;
 			}
 		} else {
+			$reply->message = "Y U NO VARIABLE";
 			$park = Park::getAllParks($pdo);
 			if($park !== null) {
 				$reply->data = $park;

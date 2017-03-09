@@ -58,7 +58,7 @@ try {
 			if($crimes !== null) {
 				$reply->data = $crimes;
 			}
-		} elseif(empty($crimeGeometry) === false) {
+		} elseif(empty($userLocationX) === false && empty($userLocationY) === false && empty($userDistance) === false) {
 			$crimes = Crime::getCrimeByCrimeGeometry($pdo, new Point($userLocationX, $userLocationY), $userDistance)->toArray();
 			if($crimes !== null) {
 				$reply->data = $crimes;
