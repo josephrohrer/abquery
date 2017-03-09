@@ -54,7 +54,7 @@
 
 			<!--  list of parks================================================= !-->
 
-			<div class="container">
+			<div class="container-park">
 
 				<div class="demo-card">
 					<div class="card-header">
