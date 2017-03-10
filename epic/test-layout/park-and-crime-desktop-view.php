@@ -74,22 +74,81 @@
 					</div>
 
 					<div class="form-group-desktop">
-							<label for="searchAddress" class="sr-only">Search an Albuqueruqe Address</label>
-							<div class="input-group">
-								<input id="searchAddress" name="searchAddress" type="text" class="form-control input-lg"
-										 placeholder="Enter an ABQ address"/>
-								<div class="input-group-btn">
-									<button class="btn btn-default btn-lg" type="button">
-										<i class="glyphicon glyphicon-search"></i>
-									</button>
-								</div>
+						<label for="searchAddress" class="sr-only">Search an Albuqueruqe Address</label>
+						<div class="input-group">
+							<input id="searchAddress" name="searchAddress" type="text" class="form-control input-lg"
+									 placeholder="Enter an ABQ address"/>
+							<div class="input-group-btn">
+								<button class="btn btn-default btn-lg" type="button">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
 							</div>
+						</div>
 					</div><!--from-group-->
 				</header>
 
+				<!--  directory drop down ================================================= !-->
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 data-drop">
+							<div class="col-md-4">
+								<h4>Data Type</h4>
+								<p>Please choose crime or park data</p>
+								<div class="dropdown">
+									<button class="btn btn-default dropdown-toggle" type="button" id="menu1"
+											  data-toggle="dropdown">
+										Data Type
+										<span class="caret"></span></button>
+									<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Park Data</a></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Crime Data</a></li>
+									</ul>
+								</div>
+							</div><!--col-md-4-->
+
+							<div class="col-md-4">
+								<h4>Dropdowns</h4>
+								<p>The .dropdown class is used to indicate a dropdown menu.</p>
+								<div class="dropdown">
+									<button class="btn btn-default dropdown-toggle" type="button" id="menu1"
+											  data-toggle="dropdown">
+										Tutorials
+										<span class="caret"></span></button>
+									<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+										<li role="presentation" class="divider"></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+									</ul>
+								</div>
+							</div><!--col-md-4-->
+
+							<div class="col-md-4">
+								<h4>Park Amenities</h4>
+								<p>Please select the amenity you would like to search for</p>
+								<div class="dropdown">
+									<button class="btn btn-default dropdown-toggle" type="button" id="menu1"
+											  data-toggle="dropdown">
+										Tutorials
+										<span class="caret"></span></button>
+									<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+										<li role="presentation" class="divider"></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div><!--col-md-4-->
+				</div><!--data drop-->
+
 				<!--  list of crimes ================================================= !-->
 
-					<div class="container-crime-desktop" data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+				<div class="container-crime-desktop" data-spy="scroll" data-target="#myScrollspy" data-offset="20">
 					<div class="col-lg-6 col-lg-6-detail-view">
 						<div class="demo-card">
 							<div class="card-header">

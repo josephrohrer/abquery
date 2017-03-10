@@ -205,8 +205,8 @@
 
 }
 
-/* Directory View CSS */
-/*---------------------------------*/
 .data-drop {
-	padding-top: 100px;
+	padding-top: 70px;
+	margin-left: 15px;
+	margin-right: 15px;
 }
