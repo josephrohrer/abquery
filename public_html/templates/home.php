@@ -1,5 +1,3 @@
-
-
 <div class=" container logo-search">
 	<div class="logo text-center">
 		<img class="logo-resize" src="images/abqueryname.png" alt="abquery logo">
