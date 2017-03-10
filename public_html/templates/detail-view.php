@@ -1,8 +1,8 @@
 <search-header></search-header>
 <!--  list of crimes ================================================= !-->
 
-<div class="container-crime-desktop">
-	<div class="col-lg-6">
+<div class="container-crime-desktop" data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+	<div class="col-lg-6 col-lg-6-detail-view">
 		<div class="demo-card">
 			<div class="card-header">
 				CRIME INCIDENTS
