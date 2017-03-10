@@ -126,7 +126,7 @@ body.sfooter > * {
 /*---------------------------------*/
 
 @media screen and (min-width: 768px) {
-	#background {
+	.background {
 		opacity: .75;
 		position: fixed;
 		top: 50%;
@@ -145,15 +145,16 @@ body.sfooter > * {
 }
 
 @media screen and (max-width: 768px) {
-	#background {
+	.background {
 		display: none;
 	}
 	#homebody {
-		background-image: url("images/mobile.jpg");
+		background: url("images/mobile.jpg");
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center center;
-	;
+		min-height: 100%;
+		height: auto;
 	}
 }
 /* Map View CSS */
