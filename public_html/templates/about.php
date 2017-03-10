@@ -1,4 +1,8 @@
-<search-header></search-header>
+<header class="template-header">
+	<div class="col-12 text-center">
+		<a routerLink=""><img src="images/logosmaller.png"></a>
+	</div>
+</header>
 <!-- About Section -->
 <section id="about-section">
 	<div class="container">

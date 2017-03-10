@@ -1,6 +1,6 @@
 <header class="template-header navbar-fixed-top">
 	<div class="col-12 text-center">
-		<img src="images/logosmaller.png">
+		<a routerLink=""><img src="images/logosmaller.png"></a>
 	</div>
 
 	<div class="form-group">

@@ -11,7 +11,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3">
-					<a href="park-detail.php">
+					<a routerLink="/detail-view">
 						<img class="img-responsive" src="images/parksearchicon.png" alt="Parks"></a>
 				</div>
 			</div>
@@ -22,7 +22,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3">
-					<a href="crime-detail-view.php">
+					<a routerLink="/detail-view">
 						<img class="img-responsive" src="images/crimesearchicon.png" alt="Crime Incidents"></a>
 				</div>
 			</div>
