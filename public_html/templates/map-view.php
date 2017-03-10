@@ -10,10 +10,10 @@
 	<section id="button" class="park-link">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3">
-					<a routerLink="/detail-view">
-						<img class="img-responsive" src="images/parksearchicon.png" alt="Parks"></a>
-				</div>
+					<div class="visible-xs-block">
+						<a routerLink="/detail-view">
+							<img class="img-responsive" src="images/parksearchicon.png" alt="Parks"></a>
+					</div>
 			</div>
 		</div>
 	</section>
@@ -21,7 +21,7 @@
 	<section id="button" class="crime-link">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3">
+				<div class="visible-xs-block">
 					<a routerLink="/detail-view">
 						<img class="img-responsive" src="images/crimesearchicon.png" alt="Crime Incidents"></a>
 				</div>
