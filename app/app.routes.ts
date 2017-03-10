@@ -5,13 +5,15 @@ import {NotFoundComponent} from "./components/notfound-component";
 import {MapComponent} from "./components/map-component";
 import {HeaderComponent} from "./components/header-component";
 import {MapViewComponent} from "./components/mapview-component";
+import {DetailViewComponent} from "./components/detailview-component";
 
-export const allAppComponents = [HomeComponent, AboutComponent, MapComponent, NotFoundComponent, HeaderComponent, MapViewComponent];
+export const allAppComponents = [HomeComponent, AboutComponent, MapComponent, NotFoundComponent, HeaderComponent, MapViewComponent, DetailViewComponent];
 
 export const routes: Routes = [
 	{path: "", component: HomeComponent},
 	{path: "about", component: AboutComponent},
-	{path: "map", component: MapViewComponent},
+	{path: "map-view", component: MapViewComponent},
+	{path: "detail-view", component: DetailViewComponent},
 	{path: "**", component: NotFoundComponent}
 ];
 
