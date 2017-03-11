@@ -1,7 +1,7 @@
 /* Angular map */
 
 .sebm-google-map-container {
-	height: 600px;
+	height: 50vh;
 }
 
 #map {
