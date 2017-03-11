@@ -25,7 +25,7 @@ export class AmenityService extends BaseService {
 	}
 
 	getAmenityByAmenityName(amenityName: string) : Observable<Amenity> {
-		return(this.http.get(this.amenityUrl + amenityName)
+		return(this.http.get(this.amenityUrl + "?amenityName=" + amenityName)
 			.map(this.extractData)
 			.catch(this.handleError));
 	}

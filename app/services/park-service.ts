@@ -3,6 +3,7 @@ import {Http} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import {BaseService} from "./base-service";
 import {Park} from "../classes/park";
+import {PointDistance} from "../classes/point-distance";
 
 @Injectable()
 export class parkService extends BaseService {
@@ -24,8 +25,8 @@ export class parkService extends BaseService {
 			.catch(this.handleError));
 	}
 
-	getParkByParkGeometry(userLocationX: number, userLocationY: number, userDistance: number) : Observable<Park> {
-		return(this.http.get(this.parkUrl + parkDistance)
+	getParkByParkGeometry(pointDistance: PointDistance) : Observable<Park[]> {
+		return(this.http.get(this.parkUrl + "?userLocationX=" + pointDistance.userLocationX + "&userLocationY=" + pointDistance.userLocationY + "&userDistance=" + pointDistance.userDistance)
 			.map(this.extractData)
 			.catch(this.handleError));
 	}

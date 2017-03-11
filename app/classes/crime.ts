@@ -1,4 +1,4 @@
-import DateTimeFormat = Intl.DateTimeFormat;
+import {Point} from "./point";
 export class Crime {
-	constructor(public crimeId: number, public crimeLocation: string, public crimeGeometryX: number, public crimeGeometryY: number, public crimeDescription: string, public crimeDate: number) {}
+	constructor(public crimeId: number, public crimeLocation: string, public crimeGeometry: Point, public crimeDescription: string, public crimeDate: Date) {}
 }

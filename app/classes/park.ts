@@ -1,3 +1,4 @@
+import {Point} from "./point";
 export class Park {
-	constructor(public parkId: number, public parkName: string, public parkGeometryX: number, public parkGeometryY: number, public parkDeveloped: number) {}
+	constructor(public parkId: number, public parkName: string, public parkGeometry: Point, public parkDeveloped: number) {}
 }
