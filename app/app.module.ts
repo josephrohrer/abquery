@@ -9,6 +9,10 @@ import {CommonModule} from "@angular/common";
 import {AgmCoreModule} from "angular2-google-maps/core";
 
 import {allAppComponents, appRoutingProviders, routing} from "./app.routes";
+import {AmenityService} from "./services/amenity-service";
+import {CrimeService} from "./services/crime-service";
+import {FeatureService} from "./services/feature-service";
+import {ParkService} from "./services/park-service";
 
 const moduleDeclarations = [AppComponent];
 
@@ -16,6 +20,6 @@ const moduleDeclarations = [AppComponent];
 	imports:      [BrowserModule, FormsModule, HttpModule, routing, CommonModule, AgmCoreModule.forRoot({apiKey: 'AIzaSyCu21jbQZ73LpaSpGsA4qrZOrASk7pzlN8'})],
 	declarations: [...moduleDeclarations, ...allAppComponents],
 	bootstrap:    [AppComponent],
-	providers:    [appRoutingProviders]
+	providers:    [appRoutingProviders, AmenityService, CrimeService, FeatureService, ParkService]
 })
 export class AppModule {}
