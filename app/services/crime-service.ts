@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import {BaseService} from "./base-service";
-import {Amenity} from "../classes/amenity";
+import {Crime} from "../classes/crime";
 
 @Injectable()
 export class CrimeService extends BaseService {
@@ -12,13 +12,13 @@ export class CrimeService extends BaseService {
 
 	private crimeUrl = "api/crime/";
 
-	getAllCrimes() : Observable<Amenity[]> {
+	getAllCrimes() : Observable<Crime[]> {
 		return(this.http.get(this.crimeUrl)
 			.map(this.extractData)
 			.catch(this.handleError));
 	}
 
-	getCrimeByCrimeId(crimeId: number) : Observable<Amenity> {
+	getCrimeByCrimeId(crimeId: number) : Observable<Crime> {
 		return(this.http.get(this.crimeUrl + crimeId)
 			.map(this.extractData)
 			.catch(this.handleError));
@@ -30,9 +30,15 @@ export class CrimeService extends BaseService {
 			.catch(this.handleError));
 	}
 
-	getCrimeByCrimeGeometry(userLocationX: number, userLocationY: number, userDistance: number) Observable<Crime> {
-	return(this.http.get(this.crimeUrl + userLocationX + userLocationY + userDistance)
+	getCrimeByCrimeGeometry(userLocationX: number, userLocationY: number, userDistance: number) : Observable<Crime> {
+	return(this.http.get(this.crimeUrl + crimeDistance)
 		.map(this.extractData)
 		.catch(this.handleError));
+	}
+
+	getCrimeByCrimeDate(crimeDate: number) : Observable<Crime> {
+		return(this.http.get(this.crimeUrl + crimeDate)
+			.map(this.extractData)
+			.catch(this.handleError));
 	}
 }
