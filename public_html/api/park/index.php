@@ -58,7 +58,7 @@ try {
 				$reply->data = $parks;
 			}
 		} else {
-			$park = Park::getAllParks($pdo);
+			$park = Park::getAllParks($pdo)->toArray();
 			if($park !== null) {
 				$reply->data = $park;
 			}
