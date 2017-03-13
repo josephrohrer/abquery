@@ -1,15 +1,3 @@
-/* Angular map */
-
-.sebm-google-map-container {
-	height: 50vh;
-}
-
-#map {
-	height: 100vh;
-	width: 100%;
-	background-color: grey;
-}
-
 /* Template CSS */
 /*---------------------------------*/
 
@@ -31,8 +19,7 @@
 /* Flexbox Sticky Footer CSS */
 /*---------------------------------*/
 
-/*.sfooter, */
-body.sfooter > * {
+.sfooter {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
@@ -126,7 +113,7 @@ body.sfooter > * {
 /*---------------------------------*/
 
 @media screen and (min-width: 768px) {
-	.background {
+	#background {
 		opacity: .75;
 		position: fixed;
 		top: 50%;
@@ -145,16 +132,15 @@ body.sfooter > * {
 }
 
 @media screen and (max-width: 768px) {
-	.background {
+	#background {
 		display: none;
 	}
 	#homebody {
-		background: url("images/mobile.jpg");
+		background-image: url("images/mobile.jpg");
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center center;
-		min-height: 100%;
-		height: auto;
+	;
 	}
 }
 /* Map View CSS */
@@ -170,6 +156,7 @@ body.sfooter > * {
 	height: 100px;
 }
 .input-group {
+	padding-top:10px;
 	margin-left: 20px;
 	margin-right: 20px;
 }
@@ -179,11 +166,23 @@ body.sfooter > * {
 	padding-top: 5px;
 }
 
+.detail-view {
+	max-height: 100vh;
+	overflow-y: scroll;
+}
+
+.data-drop {
+	padding-top: 70px;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+
 /* Crime Detail View CSS */
 /*---------------------------------*/
 .container-crime {
 	margin-left: 20px;
-	margin-right:20px;
+	margin-right: 20px;
 }
 
 /* Park Detail View CSS */
@@ -194,11 +193,11 @@ body.sfooter > * {
 }
 
 .demo-card {
-	padding-top: 25px;
 	width: 100%;
-	max-width: 500px;
+	margin-top: 20px;
 	margin-left: 0px;
 	margin-right: 0px;
+	padding: 10px;
 }
 
 
@@ -208,7 +207,7 @@ body.sfooter > * {
 
 /* park & crime desktop view */
 /*---------------------------------*/
-.container-crime-desktop{
+.container-crime-desktop {
 	padding-top: 40px;
 }
 
@@ -218,8 +217,29 @@ body.sfooter > * {
 	overflow-y: scroll;
 }
 
-/* Directory View CSS */
-/*---------------------------------*/
-.data-drop {
-	padding-top: 100px;
+.map {
+	height: 100vh;
 }
+
+/* Map-View Sidebar Detail */
+/*----------------------------------*/
+
+.dropdown-group {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.crime-right {
+	text-align: right;
+}
+
+.park-right {
+	text-align: right;
+}
+.input-crime {
+	width: 30px;
+}
+.amenities-list {
+	padding-top: 15px;
+}
+
