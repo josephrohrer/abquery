@@ -41,14 +41,6 @@
 				  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 				  crossorigin="anonymous"></script>
 
-		<!-- CSS for Map -->
-		<style type="text/css">
-			#map {
-				height: 100vh;
-				width: 50%;
-			}
-		</style>
-
 	</head>
 
 	<!-- nav ==================================================== !-->
@@ -63,7 +55,8 @@
 		<main class="template-main sfooter-content">
 			<div class="container-fluid">
 				<div class="row-fluid">
-					<div class="hidden-xs col-sm-6 col-md-5 col-lg-4">
+					<div class="hidden-xs col-sm-6 col-md-5 col-lg-4 detail-view" data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
 						<!--Sidebar content-->
 						<div class="form-group">
 							<label for="searchAddress" class="sr-only">Search an Albuqueruqe Address</label>
@@ -130,6 +123,166 @@
 
 						</div><!--card-->
 
+						<div class="demo-card">
+							<div class="card-block">
+								<h4 class="card-title">Malicious Mischief, Graffiti</h4>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">Date: 03/01/2016</li>
+									<li class="list-group-item">Address: 5300 Block San Mateo Blvd NE</li>
+								</ul>
+							</div>
+
+							<div class="card-block">
+								<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php"
+									class="btn btn-primary">Map</a>
+							</div>
+
+						</div><!--card-->
+
+						<div class="demo-card">
+							<div class="card-block">
+								<h4 class="card-title">Malicious Mischief, Graffiti</h4>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">Date: 03/01/2016</li>
+									<li class="list-group-item">Address: 5300 Block San Mateo Blvd NE</li>
+								</ul>
+							</div>
+
+							<div class="card-block">
+								<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php"
+									class="btn btn-primary">Map</a>
+							</div>
+
+						</div><!--card-->
+
+						<div class="demo-card">
+							<div class="card-block">
+								<h4 class="card-title">Malicious Mischief, Graffiti</h4>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">Date: 03/01/2016</li>
+									<li class="list-group-item">Address: 5300 Block San Mateo Blvd NE</li>
+								</ul>
+							</div>
+
+							<div class="card-block">
+								<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php"
+									class="btn btn-primary">Map</a>
+							</div>
+
+						</div><!--card-->
+
+						<div class="demo-card">
+							<div class="card-block">
+								<h4 class="card-title">Malicious Mischief, Graffiti</h4>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">Date: 03/01/2016</li>
+									<li class="list-group-item">Address: 5300 Block San Mateo Blvd NE</li>
+								</ul>
+							</div>
+
+							<div class="card-block">
+								<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php"
+									class="btn btn-primary">Map</a>
+							</div>
+
+						</div><!--card-->
+
+						<div class="demo-card">
+							<div class="card-block">
+								<h4 class="card-title">Malicious Mischief, Graffiti</h4>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">Date: 03/01/2016</li>
+									<li class="list-group-item">Address: 5300 Block San Mateo Blvd NE</li>
+								</ul>
+							</div>
+
+							<div class="card-block">
+								<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php"
+									class="btn btn-primary">Map</a>
+							</div>
+
+						</div><!--card-->
+
+						<div class="demo-card">
+							<div class="card-block">
+								<h4 class="card-title">Malicious Mischief, Graffiti</h4>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">Date: 03/01/2016</li>
+									<li class="list-group-item">Address: 5300 Block San Mateo Blvd NE</li>
+								</ul>
+							</div>
+
+							<div class="card-block">
+								<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php"
+									class="btn btn-primary">Map</a>
+							</div>
+
+						</div><!--card-->
+
+						<div class="demo-card">
+							<div class="card-block">
+								<h4 class="card-title">Malicious Mischief, Graffiti</h4>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">Date: 03/01/2016</li>
+									<li class="list-group-item">Address: 5300 Block San Mateo Blvd NE</li>
+								</ul>
+							</div>
+
+							<div class="card-block">
+								<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php"
+									class="btn btn-primary">Map</a>
+							</div>
+
+						</div><!--card-->
+
+						<div class="demo-card">
+							<div class="card-block">
+								<h4 class="card-title">Malicious Mischief, Graffiti</h4>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">Date: 03/01/2016</li>
+									<li class="list-group-item">Address: 5300 Block San Mateo Blvd NE</li>
+								</ul>
+							</div>
+
+							<div class="card-block">
+								<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php"
+									class="btn btn-primary">Map</a>
+							</div>
+
+						</div><!--card-->
+
+						<div class="demo-card">
+							<div class="card-block">
+								<h4 class="card-title">Malicious Mischief, Graffiti</h4>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">Date: 03/01/2016</li>
+									<li class="list-group-item">Address: 5300 Block San Mateo Blvd NE</li>
+								</ul>
+							</div>
+
+							<div class="card-block">
+								<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php"
+									class="btn btn-primary">Map</a>
+							</div>
+
+						</div><!--card-->
+
+						<div class="demo-card">
+							<div class="card-block">
+								<h4 class="card-title">Malicious Mischief, Graffiti</h4>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">Date: 03/01/2016</li>
+									<li class="list-group-item">Address: 5300 Block San Mateo Blvd NE</li>
+								</ul>
+							</div>
+
+							<div class="card-block">
+								<a href="https://bootcamp-coders.cnm.edu/~jminnich/abquery/epic/test-layout/mapjs-view.php"
+									class="btn btn-primary">Map</a>
+							</div>
+
+						</div><!--card-->
+
 
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8 red">
@@ -158,7 +311,6 @@
 								</div>
 							</section>
 						</div><!--button wrap--->
-
 					</div>
 				</div>
 			</div>

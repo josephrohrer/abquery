@@ -156,6 +156,7 @@
 	height: 100px;
 }
 .input-group {
+	padding-top:10px;
 	margin-left: 20px;
 	margin-right: 20px;
 }
@@ -164,6 +165,18 @@
 	padding-bottom: 5px;
 	padding-top: 5px;
 }
+
+.detail-view {
+	max-height: 100vh;
+	overflow-y: scroll;
+}
+
+.data-drop {
+	padding-top: 70px;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
 
 /* Crime Detail View CSS */
 /*---------------------------------*/
@@ -202,11 +215,20 @@
 	width: 50%;
 	max-height: 500px;
 	overflow-y: scroll;
-
 }
 
-.data-drop {
-	padding-top: 70px;
-	margin-left: 15px;
-	margin-right: 15px;
+
+
+
+.red {
+	background-color: red;
+	height: 100vh;
 }
+
+.dropdown-group {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+
+
