@@ -204,6 +204,9 @@ body.sfooter > * {
 .card-title {
 	text-align: left;
 }
+.detail-dropdown {
+	margin: 20px;
+}
 
 /* park & crime desktop view */
 /*---------------------------------*/
