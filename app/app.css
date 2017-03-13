@@ -140,7 +140,6 @@ body.sfooter > * {
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center center;
-	;
 	}
 }
 /* Map View CSS */
@@ -204,6 +203,10 @@ body.sfooter > * {
 .card-title {
 	text-align: left;
 }
+.detail-dropdown {
+	margin: 20px;
+}
+
 .detail-dropdown {
 	margin: 20px;
 }

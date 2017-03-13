@@ -7,8 +7,8 @@
 
 <div class="dropdown dropdown-group">
 	<select class="form-control" id="sel1">
-		<option>Parks</option>
-		<option>Crime</option>
+		<option routerLink="park">Parks</option>
+		<option routerLink="crime>">Crime</option>
 	</select>
 </div>
 
