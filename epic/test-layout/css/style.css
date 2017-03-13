@@ -182,7 +182,7 @@
 /*---------------------------------*/
 .container-crime {
 	margin-left: 20px;
-	margin-right:20px;
+	margin-right: 20px;
 }
 
 /* Park Detail View CSS */
@@ -193,11 +193,11 @@
 }
 
 .demo-card {
-	padding-top: 25px;
 	width: 100%;
-	max-width: 500px;
+	margin-top: 20px;
 	margin-left: 0px;
 	margin-right: 0px;
+	padding: 10px;
 }
 
 
@@ -217,12 +217,9 @@
 	overflow-y: scroll;
 }
 
-
-
-
-.red {
-	background-color: red;
+.map {
 	height: 100vh;
+	background-color: red;
 }
 
 .dropdown-group {
@@ -230,5 +227,17 @@
 	margin-right: 20px;
 }
 
+.crime-right {
+	text-align: right;
+}
 
+.park-right {
+	text-align: right;
+}
+.input-crime {
+	width: 30px;
+}
+.amenities-list {
+	padding-top: 15px;
+}
 
