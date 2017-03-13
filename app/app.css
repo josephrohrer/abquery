@@ -1,7 +1,7 @@
 /* Angular map */
 
 .sebm-google-map-container {
-	height: 50vh;
+	height: 100vh;
 }
 
 #map {
@@ -234,9 +234,6 @@ body.sfooter > * {
 	overflow-y: scroll;
 }
 
-.map {
-	height: 100vh;
-}
 
 /* Map-View Sidebar Detail */
 /*----------------------------------*/
