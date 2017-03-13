@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {ParkService} from "../services/park-service";
-import {Park} from "../classes/park";
+import {CrimeService} from "../services/crime-service";
+import {Crime} from "../classes/crime";
 
 @Component({
 	templateUrl: "./templates/crime.php"
@@ -8,7 +8,7 @@ import {Park} from "../classes/park";
 
 export class CrimeComponent implements OnInit {
 
-	parks : Park[] = [] ;
+	crimes : Crime[] = [] ;
 
 	constructor (private crimeService : CrimeService) {}
 
@@ -16,8 +16,8 @@ export class CrimeComponent implements OnInit {
 		this.getAllCrimes();
 	}
 
-	getAllParks() : void {
-		this.parkService.getAllCrimes()
-			.subscribe(parks => this.crimes = parks);
+	getAllCrimes() : void {
+		this.crimeService.getAllCrimes()
+			.subscribe(crimes => this.crimes = crimes);
 	}
 }
