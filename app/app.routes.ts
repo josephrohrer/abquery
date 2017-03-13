@@ -7,16 +7,16 @@ import {HeaderComponent} from "./components/header-component";
 import {MapViewComponent} from "./components/mapview-component";
 import {DetailViewComponent} from "./components/detailview-component";
 import {ParkComponent} from "./components/park-component";
+import {CrimeComponent} from "./components/crime-component";
 
-export const allAppComponents = [HomeComponent, AboutComponent, MapComponent, NotFoundComponent, HeaderComponent, MapViewComponent, DetailViewComponent, ParkComponent];
+export const allAppComponents = [HomeComponent, AboutComponent, MapComponent, NotFoundComponent, HeaderComponent, MapViewComponent, DetailViewComponent, ParkComponent, CrimeComponent];
 
 export const routes: Routes = [
 	{path: "about", component: AboutComponent},
-	{path: "park", component: ParkComponent},
 	{path: "map-view", component: MapViewComponent},
 	{path: "detail-view", component: DetailViewComponent},
 	{path: "", component: HomeComponent},
-	{path: "**", component: NotFoundComponent}
+	{path: "**", component: NotFoundComponent},
 ];
 
 export const appRoutingProviders: any[] = [];
