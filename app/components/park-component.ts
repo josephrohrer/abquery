@@ -3,6 +3,7 @@ import {ParkService} from "../services/park-service";
 import {Park} from "../classes/park";
 
 @Component({
+	selector: "park",
 	templateUrl: "./templates/park.php"
 })
 

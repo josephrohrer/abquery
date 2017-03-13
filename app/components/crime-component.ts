@@ -3,6 +3,7 @@ import {CrimeService} from "../services/crime-service";
 import {Crime} from "../classes/crime";
 
 @Component({
+	selector: "crime",
 	templateUrl: "./templates/crime.php"
 })
 
