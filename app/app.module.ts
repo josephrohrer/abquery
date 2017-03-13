@@ -18,7 +18,7 @@ const moduleDeclarations = [AppComponent];
 
 @NgModule({
 	imports:      [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, routing, CommonModule, AgmCoreModule.forRoot({
-		apiKey: 'AIzaSyCQcLemUhUYrUpLF_G3EJ_AoFTN-YXtfp4',
+		apiKey: 'AIzaSyBq3y-2qCFZqdD_fJ9grn4l61JEFwom5Y0',
 		libraries: ["places"]
 	})],
 	declarations: [...moduleDeclarations, ...allAppComponents],

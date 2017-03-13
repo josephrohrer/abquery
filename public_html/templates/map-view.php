@@ -15,7 +15,7 @@
 				<label for="searchAddress" class="sr-only">Search an Albuquerque Address</label>
 				<div class="input-group">
 					<input id="searchAddress" name="searchAddress" type="text" class="form-control input-md"
-							 placeholder="Enter an ABQ address"/>
+							 placeholder="Enter an ABQ address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"/>
 					<div class="input-group-btn">
 						<button class="btn btn-default btn-md" type="button">
 							<i class="glyphicon glyphicon-search"></i>
