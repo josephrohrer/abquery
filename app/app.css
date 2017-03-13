@@ -199,7 +199,6 @@ body.sfooter > * {
 	padding: 10px;
 }
 
-
 .card-title {
 	text-align: left;
 }
@@ -231,6 +230,8 @@ body.sfooter > * {
 /*----------------------------------*/
 
 .dropdown-group {
+	margin-top: 10px;
+	margin-bottom: 20px;
 	margin-left: 20px;
 	margin-right: 20px;
 }
