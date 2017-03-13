@@ -9,7 +9,7 @@
 			<div class="form-group">
 				<label for="searchAddress" class="sr-only">Enter an Albuquerque Address</label>
 				<div class="input-group">
-					<input id="searchAddress" name="searchAddress" type="text" class="form-control input-lg"
+					<input id="autocomplete" name="searchAddress" type="text" class="form-control input-lg"
 							 placeholder="Enter an ABQ address"/>
 
 					<div class="input-group-btn">
@@ -22,6 +22,7 @@
 		</form>
 	</div>
 </div>
+
 
 <!-- consider wrapping video tag in a div with class of hidden-xs -->
 <video autoplay loop muted poster="images/screenshot.jpg" id="background">
