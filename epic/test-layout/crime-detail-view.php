@@ -64,12 +64,13 @@
 					<h4>Filters</h4>
 				</div>
 
+				<!---------TYPES------->
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 					<div class="panel panel-default">
 						<div class="panel-heading" role="tab" id="headingOne">
 							<h4 class="panel-title">
 								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-									aria-expanded="true" aria-controls="collapseOne">
+									aria-expanded="false" aria-controls="collapseOne">
 									Type
 								</a>
 							</h4>
@@ -80,6 +81,8 @@
 							</div>
 						</div>
 					</div>
+
+					<!--------DISTANCE------>
 					<div class="panel panel-default">
 						<div class="panel-heading" role="tab" id="headingTwo">
 							<h4 class="panel-title">
@@ -95,6 +98,8 @@
 							</div>
 						</div>
 					</div>
+
+					<!------DATE RANGE------>
 					<div class="panel panel-default">
 						<div class="panel-heading" role="tab" id="headingThree">
 							<h4 class="panel-title">
@@ -107,7 +112,12 @@
 						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
 							  aria-labelledby="headingThree">
 							<div class="panel-body">
-								Two boxes with one that defaults to recent date
+								<div class="input-group">
+									<div class="input-group-btn">
+										<input type="text" class="form-control input-crime" placeholder="Date">
+										<input type="text" class="form-control input-crime" placeholder="Date">
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
