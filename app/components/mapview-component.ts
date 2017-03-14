@@ -1,4 +1,4 @@
-import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import {Component, ElementRef, NgZone, OnInit, ViewChild, Output} from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
 
@@ -10,8 +10,10 @@ declare var google: any;
 
 export class MapViewComponent implements OnInit {
 
-	public lat: number;
-	public lng: number;
+	@Output() lat: number;
+	@Output() lng: number;
+	//public lat: number;
+	//public lng: number;
 	public searchControl: FormControl;
 	public zoom: number;
 

@@ -21,7 +21,7 @@
 			<hr>
 			<div [ngSwitch]="value">
 
-				<div *ngSwitchCase="1"><crime></crime></div>
+				<div *ngSwitchCase="1"><crime [lat]="lat" [lng]="lng"></crime></div>
 				<div *ngSwitchCase="2"><park></park></div>
 				<div *ngSwitchDefault><park></park></div>
 
