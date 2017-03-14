@@ -114,10 +114,10 @@
 	</div>
 
 	<!----PARK CARD----->
-	<div class="demo-card bg-light-gray">
+	<div class="demo-card bg-light-gray" *ngFor="let park of parksFiltered">>
 		<div class="row">
 			<div class="col-xs-8">
-				<h4>WEST BLUFF</h4>
+				<h4>{{ park.parkName }}</h4>
 			</div>
 			<div class="col-xs-4 park-right">
 				3.4 mi.
@@ -144,24 +144,5 @@
 		</div>
 	</div><!--PARK CARD END-->
 
-	<!----PARK CARD----->
-	<div class="demo-card bg-light-gray">
-		<div class="row">
-			<div class="col-xs-8">
-				<h4>WEST BLUFF</h4>
-			</div>
-			<div class="col-xs-4 park-right">
-				3.4 mi.
-				<a href="#"><img src="images/mappoint.png" alt="Point"> </a>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-8">
-				3200 San Mateo Blvd.
-			</div>
-			<div class="col-xs-4 park-right">
-			</div>
-		</div>
-	</div><!--PARK CARD END-->
 
 </div><!--container-->
