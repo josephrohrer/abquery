@@ -4,6 +4,19 @@
 	</div>
 </header>
 
+<div class="form-group input-mobile">
+	<div class="visible-xs-block col-lg-12">
+		<div class="input-group">
+			<input id="searchAddress" placeholder="Enter a location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"/>
+			<div class="input-group-btn">
+				<button class="btn btn-default btn-md" type="button">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+			</div>
+		</div><!--form-group-->
+	</div>
+</div>
+
 <div class="container-fluid" id="map-padding">
 	<div class="row-fluid">
 		<div class="hidden-xs col-sm-6 col-md-5 col-lg-4 detail-view" data-spy="scroll"
@@ -19,7 +32,7 @@
 						</button>
 					</div>
 				</div>
-			</div><!--from-group-->
+			</div><!--form-group-->
 
 
 
