@@ -4,7 +4,6 @@
 	</div>
 </header>
 
-
 <div class="container-fluid" id="map-padding">
 	<div class="row-fluid">
 		<div class="hidden-xs col-sm-6 col-md-5 col-lg-4 detail-view" data-spy="scroll"
@@ -12,10 +11,8 @@
 
 			<!--Sidebar content-->
 			<div class="form-group">
-				<label for="searchAddress" class="sr-only">Search an Albuquerque Address</label>
 				<div class="input-group">
-					<input id="searchAddress" name="searchAddress" type="text" class="form-control input-md"
-							 placeholder="Enter an ABQ address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"/>
+					<input id="searchAddress" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"/>
 					<div class="input-group-btn">
 						<button class="btn btn-default btn-md" type="button">
 							<i class="glyphicon glyphicon-search"></i>
@@ -26,10 +23,10 @@
 
 
 
-			<div class="dropdown dropdown-group">
+			<div class="dropdown dropdown-group detail-dropdown">
 				<select class="form-control" id="sel1">
-					<option>Parks</option>
-					<option>Crime</option>
+					<option href="#">Parks</option>
+					<option href="#">Crime</option>
 				</select>
 			</div>
 
@@ -38,7 +35,9 @@
 			<!--Body content-->
 			<section class="map-section">
 				<div id="map" class="container-fluid">
-					<query-map></query-map>
+					<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+						<sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+					</sebm-google-map>
 				</div>
 			</section>
 
