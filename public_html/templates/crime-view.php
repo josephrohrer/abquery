@@ -4,6 +4,6 @@
 	</div>
 </header>
 
-<a routerlink="/map-view">BACK</a>
+<a routerLink="/map-view">BACK</a>
 
 <crime></crime>
