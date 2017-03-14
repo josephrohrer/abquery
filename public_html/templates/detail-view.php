@@ -5,11 +5,19 @@
 	</div>
 </header>
 
-<div class="dropdown dropdown-group">
-	<select class="form-control" id="sel1">
-		<option routerLink="park">Parks</option>
-		<option routerLink="crime>">Crime</option>
-	</select>
+
+
+<div class="container text-center dropdown-group">
+<button (click)="value=1">Crime</button>
+<button (click)="value=2">Park</button>
 </div>
 
-<park></park>
+
+<hr>
+<div [ngSwitch]="value">
+
+	<div *ngSwitchCase="1"><crime></crime></div>
+	<div *ngSwitchCase="2"><park></park></div>
+	<div *ngSwitchDefault class="text-center">Please select crime or park</div>
+
+</div>

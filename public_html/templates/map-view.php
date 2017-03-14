@@ -12,15 +12,20 @@
 			  data-target="#myScrollspy" data-offset="20">
 
 			<!--Sidebar content-->
-
-			<div class="dropdown dropdown-group detail-dropdown">
-				<select class="form-control" id="sel1">
-					<option href="#">Parks</option>
-					<option href="#">Crime</option>
-				</select>
+			<div class="text-center dropdown-group">
+				<button (click)="value=1">Crime</button>
+				<button (click)="value=2">Park</button>
 			</div>
 
-			<park></park>
+
+			<hr>
+			<div [ngSwitch]="value">
+
+				<div *ngSwitchCase="1"><crime></crime></div>
+				<div *ngSwitchCase="2"><park></park></div>
+				<div *ngSwitchDefault class="text-center"><park></park></div>
+
+			</div>
 
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8" id="map-padding">
