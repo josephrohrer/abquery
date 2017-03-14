@@ -68,10 +68,10 @@
 	</div>
 
 	<!----CRIME CARD----->
-	<div class="demo-card bg-light-gray">
+	<div class="demo-card bg-light-gray" *ngFor="let crime of crimesFiltered">
 		<div class="row">
 			<div class="col-xs-8">
-				<h4>AGGRAVATED ASSAULT</h4>
+				<h4>{{ crime.crimeDescription }}</h4>
 			</div>
 			<div class="col-xs-4 crime-right">
 				3.4 mi.
@@ -80,31 +80,10 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-8">
-				400 BLOCK CHACOMA PL SW
+				{{ crime.crimeLocation }}
 			</div>
 			<div class="col-xs-4 crime-right">
-				03/16/17
-			</div>
-		</div>
-	</div><!--CRIME CARD END-->
-
-	<!----CRIME CARD----->
-	<div class="demo-card bg-light-gray">
-		<div class="row">
-			<div class="col-xs-8">
-				<h4>VANDALISM, MALICIOUS MISCHIEF, GRAFFITI</h4>
-			</div>
-			<div class="col-xs-4 crime-right">
-				3.4 mi.
-				<a href="#"><img src="images/mappoint.png" alt="Point"> </a>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-8">
-				400 BLOCK CHACOMA PL SW
-			</div>
-			<div class="col-xs-4 crime-right">
-				03/16/17
+				{{ crime.crimeDate | date }}
 			</div>
 		</div>
 	</div><!--CRIME CARD END-->

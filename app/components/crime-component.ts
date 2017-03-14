@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {CrimeService} from "../services/crime-service";
 import {Crime} from "../classes/crime";
+import {Observable} from "rxjs";
+import "rxjs/add/observable/from";
 
 @Component({
 	selector: "crime",
@@ -8,8 +10,8 @@ import {Crime} from "../classes/crime";
 })
 
 export class CrimeComponent implements OnInit {
-
-	crimes : Crime[] = [] ;
+	crimesFiltered : Crime[] = [];
+	crimeObservable : Observable<Crime> = null;
 
 	constructor (private crimeService : CrimeService) {}
 
@@ -19,6 +21,9 @@ export class CrimeComponent implements OnInit {
 
 	getAllCrimes() : void {
 		this.crimeService.getAllCrimes()
-			.subscribe(crimes => this.crimes = crimes);
+			.subscribe(crimes => {
+				this.crimeObservable = Observable.from(crimes);
+				this.crimesFiltered = crimes.slice(0, 75);
+			});
 	}
 }
