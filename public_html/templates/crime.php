@@ -19,7 +19,7 @@
 					</a>
 				</h4>
 			</div>
-			<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+			<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 				<div class="panel-body">
 					Drop down with a list of crime types
 				</div>
