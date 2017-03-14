@@ -14,6 +14,9 @@ import {CrimeService} from "./services/crime-service";
 import {FeatureService} from "./services/feature-service";
 import {ParkService} from "./services/park-service";
 
+// custom pipe filter
+import {ParkDevelopedPipe} from "./components/park-developed.pipe";
+
 const moduleDeclarations = [AppComponent];
 
 @NgModule({
@@ -21,7 +24,7 @@ const moduleDeclarations = [AppComponent];
 		apiKey: 'AIzaSyBq3y-2qCFZqdD_fJ9grn4l61JEFwom5Y0',
 		libraries: ["places"]
 	})],
-	declarations: [...moduleDeclarations, ...allAppComponents],
+	declarations: [...moduleDeclarations, ...allAppComponents, ParkDevelopedPipe],
 	bootstrap:    [AppComponent],
 	providers:    [appRoutingProviders, AmenityService, CrimeService, FeatureService, ParkService]
 })
