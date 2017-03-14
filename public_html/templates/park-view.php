@@ -4,4 +4,6 @@
 	</div>
 </header>
 
+<a routerlink="/map-view">BACK</a>
+
 <park></park>
