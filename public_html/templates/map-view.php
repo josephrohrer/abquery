@@ -23,7 +23,7 @@
 
 				<div *ngSwitchCase="1"><crime></crime></div>
 				<div *ngSwitchCase="2"><park></park></div>
-				<div *ngSwitchDefault class="text-center"><park></park></div>
+				<div *ngSwitchDefault><park></park></div>
 
 			</div>
 

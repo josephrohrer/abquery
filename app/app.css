@@ -227,8 +227,8 @@ body.sfooter > * {
 .demo-card {
 	width: 100%;
 	margin-top: 20px;
-	margin-left: 0px;
-	margin-right: 0px;
+	margin-left: 0;
+	margin-right: 0;
 	padding: 10px;
 }
 
@@ -246,7 +246,7 @@ body.sfooter > * {
 
 .dropdown-group {
 	margin-top: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	margin-left: 20px;
 	margin-right: 20px;
 }
