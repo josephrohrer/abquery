@@ -58,7 +58,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="visible-xs-block col-lg-3">
-								<a routerlink="/park-view">
+								<a routerLink="/park-view">
 									<img class="img-responsive" src="images/parksearchicon.png" alt="Parks"></a>
 							</div>
 						</div>
