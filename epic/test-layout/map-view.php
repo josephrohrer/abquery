@@ -55,7 +55,8 @@
 		<main class="template-main sfooter-content">
 			<div class="container-fluid">
 				<div class="row-fluid">
-					<div class="hidden-xs col-sm-6 col-md-5 col-lg-4 detail-view" data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+					<div class="hidden-xs col-sm-6 col-md-5 col-lg-4 detail-view" data-spy="scroll"
+						  data-target="#myScrollspy" data-offset="20">
 
 						<!--Sidebar content-->
 						<div class="form-group">
@@ -71,12 +72,15 @@
 							</div>
 						</div><!--from-group-->
 
+
+
 						<div class="dropdown dropdown-group">
 							<select class="form-control" id="sel1">
 								<option>Parks</option>
 								<option>Crime</option>
 							</select>
 						</div>
+
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8 map">
 						<!--Body content-->
@@ -106,7 +110,6 @@
 						</div><!--button wrap--->
 					</div>
 				</div>
-			</div>
 			</div>
 		</main>
 
