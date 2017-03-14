@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges} from "@angular/core";
+import {Component, OnInit, Input, OnChanges, Output} from "@angular/core";
 import {CrimeService} from "../services/crime-service";
 import {Crime} from "../classes/crime";
 import {Observable} from "rxjs";
@@ -14,12 +14,16 @@ export class CrimeComponent implements OnChanges {
 
 	@Input() lat : number;
 	@Input() lng : number;
-	crimesFiltered : Crime[] = [];
+	@Output() crimesFiltered : Crime[] = [];
 	crimeObservable : Observable<Crime> = null;
 
 	constructor (private crimeService : CrimeService) {}
 	ngOnChanges() : void {
 		this.getCrimeByCrimeGeometry();
+	}
+
+	getCrimesFiltered() : Crime[] {
+		return (this.crimesFiltered);
 	}
 
 	getCrimeByCrimeGeometry() : void {

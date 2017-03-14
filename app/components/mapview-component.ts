@@ -1,6 +1,8 @@
-import {Component, ElementRef, NgZone, OnInit, ViewChild, Output} from '@angular/core';
+import {Component, ElementRef, NgZone, OnInit, ViewChild, Output, Input} from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
+import {Crime} from "../classes/crime";
+import {Park} from "../classes/park";
 
 declare var google: any;
 
@@ -10,6 +12,9 @@ declare var google: any;
 
 export class MapViewComponent implements OnInit {
 
+	points : any[] = [];
+	@Input() crimesFiltered : Crime[] = [];
+	@Input() parksFiltered : Park[] = [];
 	@Output() lat: number;
 	@Output() lng: number;
 	//public lat: number;
@@ -24,6 +29,11 @@ export class MapViewComponent implements OnInit {
 		private mapsAPILoader: MapsAPILoader,
 		private ngZone: NgZone
 	) {}
+
+	ngOnChanges() : void {
+		this.points = [];
+		this.crimesFiltered.map(crime => this.points.push({lat: crime.crimeGeometry.lat, lng: crime.crimeGeometry.lng}));
+	}
 
 	ngOnInit() {
 		//set google maps defaults
@@ -66,7 +76,7 @@ export class MapViewComponent implements OnInit {
 			navigator.geolocation.getCurrentPosition((position) => {
 				this.lat = position.coords.latitude;
 				this.lng = position.coords.longitude;
-				this.zoom = 12;
+				this.zoom = 16;
 			});
 		}
 	}
