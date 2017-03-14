@@ -135,13 +135,7 @@
 	#background {
 		display: none;
 	}
-	#homebody {
-		background-image: url("../images/mobile.jpg");
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center center;
-		;
-	}
+
 }
 /* Map View CSS */
 /*---------------------------------*/

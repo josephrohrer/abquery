@@ -1,4 +1,5 @@
 <div id="homebody">
+
 	<div class=" container logo-search">
 		<div class="logo text-center">
 			<img class="logo-resize" src="images/abqueryname.png" alt="abquery logo">
@@ -21,10 +22,10 @@
 			</div>
 		</form>
 	</div>
-</div>
-
 
 <!-- consider wrapping video tag in a div with class of hidden-xs -->
 <video autoplay loop muted poster="images/screenshot.jpg" id="background">
 	<source src="images/backgroundmovie.mp4" type="video/mp4">
 </video>
+
+</div>

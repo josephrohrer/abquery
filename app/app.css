@@ -147,13 +147,17 @@ body.sfooter > * {
 	#background {
 		display: none;
 	}
+
 	#homebody {
 		background-image: url("images/mobile.jpg");
 		background-size: cover;
 		background-repeat: no-repeat;
-		background-position: center center;
+		background-position: top center;
+		height: 100vh;
 	}
 }
+
+
 /* Map View CSS */
 /*---------------------------------*/
 .button-wrap {
