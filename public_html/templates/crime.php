@@ -1,5 +1,3 @@
-<!--  list of crimes ================================================= !-->
-
 <div class="container-crime">
 
 	<div class="text-center">
@@ -21,7 +19,7 @@
 					</a>
 				</h4>
 			</div>
-			<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+			<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 				<div class="panel-body">
 					Drop down with a list of crime types
 				</div>
@@ -90,6 +88,25 @@
 		</div>
 	</div><!--CRIME CARD END-->
 
-
+	<!----CRIME CARD----->
+	<div class="demo-card bg-light-gray">
+		<div class="row">
+			<div class="col-xs-8">
+				<h4>VANDALISM, MALICIOUS MISCHIEF, GRAFFITI</h4>
+			</div>
+			<div class="col-xs-4 crime-right">
+				3.4 mi.
+				<a href="#"><img src="images/mappoint.png" alt="Point"> </a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-8">
+				400 BLOCK CHACOMA PL SW
+			</div>
+			<div class="col-xs-4 crime-right">
+				03/16/17
+			</div>
+		</div>
+	</div><!--CRIME CARD END-->
 
 </div><!--container-->

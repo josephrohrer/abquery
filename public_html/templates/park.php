@@ -63,10 +63,10 @@
 								<label><input type="checkbox" value="">Shade Structures</label>
 							</div>
 							<div class="checkbox">
-								<label><input type="checkbox" value="">Soccer Fields </label>
+								<label><input type="checkbox" value="">Soccer Fields</label>
 							</div>
 							<div class="checkbox">
-								<label><input type="checkbox" value="">Softball Fields - Lit </label>
+								<label><input type="checkbox" value="">Softball Fields - Lit</label>
 							</div>
 							<div class="checkbox">
 								<label><input type="checkbox" value="">Softball Fields - Unlit</label>
@@ -75,7 +75,7 @@
 								<label><input type="checkbox" value="">Tennis Courts - Lit</label>
 							</div>
 							<div class="checkbox">
-								<label><input type="checkbox" value=""> Tennis Courts - Unlit </label>
+								<label><input type="checkbox" value="">Tennis Courts - Unlit</label>
 							</div>
 							<div class="checkbox">
 								<label><input type="checkbox" value="">Volleyball Courts</label>
@@ -98,7 +98,15 @@
 			</div>
 			<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 				<div class="panel-body">
-					Guided up to 50 miles
+					<input id="ex19" type="text"
+							 data-provide="slider"
+							 data-slider-ticks="[1, 2, 3]"
+							 data-slider-ticks-labels='["short", "medium", "long"]'
+							 data-slider-min="1"
+							 data-slider-max="3"
+							 data-slider-step="1"
+							 data-slider-value="3"
+							 data-slider-tooltip="hide"/>
 				</div>
 			</div>
 		</div>
@@ -136,5 +144,24 @@
 		</div>
 	</div><!--PARK CARD END-->
 
+	<!----PARK CARD----->
+	<div class="demo-card bg-light-gray">
+		<div class="row">
+			<div class="col-xs-8">
+				<h4>WEST BLUFF</h4>
+			</div>
+			<div class="col-xs-4 park-right">
+				3.4 mi.
+				<a href="#"><img src="images/mappoint.png" alt="Point"> </a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-8">
+				3200 San Mateo Blvd.
+			</div>
+			<div class="col-xs-4 park-right">
+			</div>
+		</div>
+	</div><!--PARK CARD END-->
 
 </div><!--container-->
