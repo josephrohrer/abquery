@@ -7,13 +7,11 @@
 
 		<form class="col-sm-8 col-sm-offset-2">
 			<div class="form-group">
-				<label for="searchAddress" class="sr-only">Enter an Albuquerque Address</label>
 				<div class="input-group">
-					<input id="autocomplete" name="searchAddress" type="text" class="form-control input-lg"
-							 placeholder="Enter an ABQ address"/>
+					<input id="searchAddress" placeholder="Enter a location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"/>
 
 					<div class="input-group-btn">
-						<button class="btn btn-default btn-lg" type="button">
+						<button class="btn btn-default btn-md" type="button">
 							<i class="glyphicon glyphicon-search"></i>
 						</button>
 					</div>
@@ -22,9 +20,28 @@
 		</form>
 	</div>
 
-	<!-- consider wrapping video tag in a div with class of hidden-xs -->
+
 	<video autoplay loop muted poster="images/screenshot.jpg" id="background">
 		<source src="images/backgroundmovie.mp4" type="video/mp4">
 	</video>
 
 </div>
+
+
+
+
+
+
+
+<div class="form-group input-mobile">
+	<div class="col-lg-12">
+		<div class="input-group">
+			<input id="searchAddress" placeholder="Enter a location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"/>
+			<div class="input-group-btn">
+				<button class="btn btn-default btn-md" type="button">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+			</div>
+		</div><
+	</div>
+</div>!--form-group-->
