@@ -2,14 +2,16 @@ import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core'
 import { FormControl } from "@angular/forms";
 import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
 
+declare var google: any;
+
 @Component({
 	templateUrl: "./templates/map-view.php"
 })
 
 export class MapViewComponent implements OnInit {
 
-	public latitude: number;
-	public longitude: number;
+	public lat: number;
+	public lng: number;
 	public searchControl: FormControl;
 	public zoom: number;
 
@@ -23,9 +25,9 @@ export class MapViewComponent implements OnInit {
 
 	ngOnInit() {
 		//set google maps defaults
-		this.zoom = 4;
-		this.latitude = 39.8282;
-		this.longitude = -98.5795;
+		this.zoom = 12;
+		this.lat = 35.105332;
+		this.lng = -106.629385;
 
 		//create search FormControl
 		this.searchControl = new FormControl();
@@ -49,8 +51,8 @@ export class MapViewComponent implements OnInit {
 					}
 
 					//set latitude, longitude and zoom
-					this.latitude = place.geometry.location.lat();
-					this.longitude = place.geometry.location.lng();
+					this.lat = place.geometry.location.lat();
+					this.lng = place.geometry.location.lng();
 					this.zoom = 12;
 				});
 			});
@@ -60,8 +62,8 @@ export class MapViewComponent implements OnInit {
 	private setCurrentPosition() {
 		if ("geolocation" in navigator) {
 			navigator.geolocation.getCurrentPosition((position) => {
-				this.latitude = position.coords.latitude;
-				this.longitude = position.coords.longitude;
+				this.lat = position.coords.latitude;
+				this.lng = position.coords.longitude;
 				this.zoom = 12;
 			});
 		}
