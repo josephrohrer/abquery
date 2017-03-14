@@ -7,7 +7,7 @@
 
 
 
-<div class="container text-center dropdown-group">
+<div class="container-fluid text-center dropdown-group">
 <button (click)="value=1">Crime</button>
 <button (click)="value=2">Park</button>
 </div>
