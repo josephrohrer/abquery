@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ParkService} from "../services/park-service";
 import {Park} from "../classes/park";
+import {Observable} from "rxjs";
 
 @Component({
 	selector: "park",
@@ -8,8 +9,8 @@ import {Park} from "../classes/park";
 })
 
 export class ParkComponent implements OnInit {
-
-	parks : Park[] = [] ;
+	parksFiltered : Park[] = [];
+	parkObservable : Observable<Park> = null;
 
 	constructor (private parkService : ParkService) {}
 
@@ -19,6 +20,9 @@ export class ParkComponent implements OnInit {
 
 	getAllParks() : void {
 		this.parkService.getAllParks()
-			.subscribe(parks => this.parks = parks);
+			.subscribe(parks => {
+				this.parkObservable = Observable.from(parks);
+				this.parksFiltered = parks.slice(0, 75);
+			});
 	}
 }
