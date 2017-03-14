@@ -27,7 +27,7 @@ export class MapViewComponent implements OnInit {
 
 	ngOnInit() {
 		//set google maps defaults
-		this.zoom = 12;
+		this.zoom = 16;
 		this.lat = 35.105332;
 		this.lng = -106.629385;
 
@@ -55,7 +55,7 @@ export class MapViewComponent implements OnInit {
 					//set latitude, longitude and zoom
 					this.lat = place.geometry.location.lat();
 					this.lng = place.geometry.location.lng();
-					this.zoom = 12;
+					this.zoom = 16;
 				});
 			});
 		});
