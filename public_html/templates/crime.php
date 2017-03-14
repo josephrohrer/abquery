@@ -75,7 +75,7 @@
 			</div>
 			<div class="col-xs-4 crime-right">
 				3.4 mi.
-				<a href="#"><img src="images/mappoint.png" alt="Point"> </a>
+				<img src="images/mappoint.png" alt="Point">
 			</div>
 		</div>
 		<div class="row">
