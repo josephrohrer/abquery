@@ -4,18 +4,7 @@
 	</div>
 </header>
 
-<div class="form-group input-mobile">
-	<div class="visible-xs-block col-lg-12">
-		<div class="input-group">
-			<input id="searchAddress" placeholder="Enter a location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"/>
-			<div class="input-group-btn">
-				<button class="btn btn-default btn-md" type="button">
-					<i class="glyphicon glyphicon-search"></i>
-				</button>
-			</div>
-		</div><!--form-group-->
-	</div>
-</div>
+
 
 <div class="container-fluid" id="map-padding">
 	<div class="row-fluid">
@@ -23,18 +12,6 @@
 			  data-target="#myScrollspy" data-offset="20">
 
 			<!--Sidebar content-->
-			<div class="form-group">
-				<div class="input-group">
-					<input id="searchAddress" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"/>
-					<div class="input-group-btn">
-						<button class="btn btn-default btn-md" type="button">
-							<i class="glyphicon glyphicon-search"></i>
-						</button>
-					</div>
-				</div>
-			</div><!--form-group-->
-
-
 
 			<div class="dropdown dropdown-group detail-dropdown">
 				<select class="form-control" id="sel1">
@@ -43,9 +20,25 @@
 				</select>
 			</div>
 
+			<park></park>
+
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8" id="map-padding">
 			<!--Body content-->
+
+			<div class="form-group input-mobile">
+				<div class="col-lg-12">
+					<div class="input-group">
+						<input id="searchAddress" placeholder="Enter a location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"/>
+						<div class="input-group-btn">
+							<button class="btn btn-default btn-md" type="button">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</div><!--form-group-->
+				</div>
+			</div>
+
 			<section class="map-section">
 				<div id="map" class="container-fluid">
 					<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
