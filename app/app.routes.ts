@@ -8,15 +8,19 @@ import {MapViewComponent} from "./components/mapview-component";
 import {DetailViewComponent} from "./components/detailview-component";
 import {ParkComponent} from "./components/park-component";
 import {CrimeComponent} from "./components/crime-component";
+import {ParkViewComponent} from "./components/parkview-component";
+import {CrimeViewComponent} from "./components/crimeview-component";
 
-export const allAppComponents = [HomeComponent, AboutComponent, MapComponent, NotFoundComponent, HeaderComponent, MapViewComponent, DetailViewComponent, ParkComponent, CrimeComponent];
+export const allAppComponents = [HomeComponent, AboutComponent, MapComponent, NotFoundComponent, HeaderComponent, MapViewComponent, DetailViewComponent, ParkComponent, CrimeComponent, ParkViewComponent, CrimeViewComponent];
 
 export const routes: Routes = [
 	{path: "about", component: AboutComponent},
 	{path: "map-view", component: MapViewComponent},
-	{path: "detail-view", component: DetailViewComponent},
+	{path: "crime-view", component: CrimeViewComponent},
+	{path: "park-view", component: ParkViewComponent},
 	{path: "", component: HomeComponent},
 	{path: "**", component: NotFoundComponent},
+
 ];
 
 export const appRoutingProviders: any[] = [];

@@ -58,7 +58,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="visible-xs-block col-lg-3">
-								<a href="park-detail.php">
+								<a routerlink="/park-view">
 									<img class="img-responsive" src="images/parksearchicon.png" alt="Parks"></a>
 							</div>
 						</div>
@@ -69,7 +69,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="visible-xs-block col-lg-3">
-								<a href="crime-detail-view.php">
+								<a routerLink="/crime-view">
 									<img class="img-responsive" src="images/crimesearchicon.png" alt="Crime Incidents"></a>
 							</div>
 						</div>
