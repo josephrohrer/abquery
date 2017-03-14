@@ -54,7 +54,7 @@ try {
 				$reply->data = $crime;
 			}
 		} else if(empty($crimeLocation) === false) {
-			$crimes = Crime::getCrimeByCrimeLocation($pdo, $crimeLocation);
+			$crimes = Crime::getCrimeByCrimeLocation($pdo, $crimeLocation)->toArray();
 			if($crimes !== null) {
 				$reply->data = $crimes;
 			}
@@ -64,7 +64,7 @@ try {
 				$reply->data = $crimes;
 			}
 		} else if(empty($crimeDescription) === false) {
-			$crimes = Crime::getCrimeByCrimeDescription($pdo, $crimeDescription);
+			$crimes = Crime::getCrimeByCrimeDescription($pdo, $crimeDescription)->toArray();
 			if($crimes !== null) {
 				$reply->data = $crimes;
 			}
@@ -76,7 +76,7 @@ try {
 				$reply->data = $crimes;
 			}
 		} else {
-			$crimes = Crime::getAllCrimes($pdo);
+			$crimes = Crime::getAllCrimes($pdo)->toArray();
 			if($crimes !== null) {
 				$reply->data = $crimes;
 			}

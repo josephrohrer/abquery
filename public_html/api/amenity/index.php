@@ -45,12 +45,12 @@ try {
 				$reply->data = $amenity;
 			}
 		} else if(empty($amenityName) === false) {
-			$amenity = Amenity::getAmenityByAmenityName($pdo, $amenityName);
+			$amenity = Amenity::getAmenityByAmenityName($pdo, $amenityName)->toArray();
 			if($amenity !== null) {
 				$reply->data = $amenity;
 			}
 		} else {
-			$amenity = Amenity::getAllAmenities($pdo);
+			$amenity = Amenity::getAllAmenities($pdo)->toArray();
 			if($amenity !== null) {
 				$reply->data = $amenity;
 			}

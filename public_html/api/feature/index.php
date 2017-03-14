@@ -42,17 +42,17 @@ try {
 
 		//get a specific park id, amenity id, and all features and update reply
 		if(empty($featureParkId) === false) {
-			$feature = Feature::getFeatureByFeatureParkId($pdo, $featureParkId);
+			$feature = Feature::getFeatureByFeatureParkId($pdo, $featureParkId)->toArray();
 			if($feature !== null) {
 				$reply->data = $feature;
 			}
 		} else if(empty($featureAmenityId) === false) {
-			$feature = Feature::getFeatureByFeatureAmenityId($pdo, $featureAmenityId);
+			$feature = Feature::getFeatureByFeatureAmenityId($pdo, $featureAmenityId)->toArray();
 			if($feature !== null) {
 				$reply->data = $feature;
 			}
 		} else {
-		$feature = Feature::getAllFeatures($pdo);
+		$feature = Feature::getAllFeatures($pdo)->toArray();
 		if($feature !== null) {
 			$reply->data = $feature;
 			}
