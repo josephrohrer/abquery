@@ -126,10 +126,6 @@
 		<div class="row">
 			<div class="col-xs-8 amenities-list">
 				Developed: {{ park.parkDeveloped | parkDeveloped }}<br>
-				Baseball - Backstops: 1<br>
-				Basketball Courts - Full: 1<br>
-				Picnic Tables: 4<br>
-				Shade Structures: 1<br>
 			</div>
 			<div class="col-xs-4 park-right">
 			</div>
