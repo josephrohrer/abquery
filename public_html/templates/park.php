@@ -85,32 +85,6 @@
 				</div>
 			</div>
 		</div>
-
-		<!--------DISTANCE------>
-		<div class="panel panel-default">
-			<div class="panel-heading" role="tab" id="headingTwo">
-				<h4 class="panel-title">
-					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-						href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-						Distance
-					</a>
-				</h4>
-			</div>
-			<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-				<div class="panel-body">
-					<input id="ex19" type="text"
-							 data-provide="slider"
-							 data-slider-ticks="[1, 2, 3]"
-							 data-slider-ticks-labels='["short", "medium", "long"]'
-							 data-slider-min="1"
-							 data-slider-max="3"
-							 data-slider-step="1"
-							 data-slider-value="3"
-							 data-slider-tooltip="hide"/>
-				</div>
-			</div>
-		</div>
-
 	</div>
 
 	<!----PARK CARD----->
