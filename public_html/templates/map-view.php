@@ -12,7 +12,7 @@
 			  data-target="#myScrollspy" data-offset="20">
 
 			<!--Sidebar content-->
-			<div class="dropdown dropdown-group detail-dropdown">
+			<div class="text-center dropdown dropdown-group detail-dropdown">
 				<button (click)="value=1">Crime</button>
 				<button (click)="value=2">Park</button>
 			</div>
