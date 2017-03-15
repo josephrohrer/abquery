@@ -19,10 +19,8 @@
 					</a>
 				</h4>
 			</div>
-
-
 			<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-				<div class="panel-body amenities-select">
+				<div class="panel-body">
 					<div class="row">
 						<div class="col-xs-6">
 							<div class="checkbox">
@@ -145,23 +143,6 @@
 								<label><input type="checkbox" value="">Worthless Checks</label>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!--------DISTANCE------>
-		<div class="panel panel-default">
-			<div class="panel-heading" role="tab" id="headingTwo">
-				<h4 class="panel-title">
-					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-						href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-						Distance
-					</a>
-				</h4>
-			</div>
-			<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-				<div class="panel-body">
 				</div>
 			</div>
 		</div>
@@ -172,6 +153,7 @@
 				<h4 class="panel-title">
 					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
 						href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						Date Range
 					</a>
 				</h4>
 			</div>
@@ -196,7 +178,7 @@
 				<h4>{{ crime.crimeDescription }}</h4>
 			</div>
 			<div class="col-xs-4 crime-right">
-				<!-- <img src="images/mappoint.png" alt="Point"> -->
+				<!--<img src="images/mappoint.png" alt="Point">--->
 			</div>
 		</div>
 		<div class="row">
