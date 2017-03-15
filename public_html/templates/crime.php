@@ -162,7 +162,6 @@
 			</div>
 			<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 				<div class="panel-body">
-					Guided up to 50 miles
 				</div>
 			</div>
 		</div>
@@ -173,7 +172,6 @@
 				<h4 class="panel-title">
 					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
 						href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-						Date Range
 					</a>
 				</h4>
 			</div>
