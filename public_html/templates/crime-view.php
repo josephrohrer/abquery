@@ -6,4 +6,4 @@
 
 <a routerLink="/map-view">BACK</a>
 
-<crime></crime>
+<crime [lat]="lat" [lng]="lng"></crime>

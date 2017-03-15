@@ -7,4 +7,4 @@
 
 <a routerLink="/map-view">BACK</a>
 
-<park></park>
+<park [lat]="lat" [lng]="lng"></park>
