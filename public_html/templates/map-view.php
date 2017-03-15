@@ -21,9 +21,9 @@
 			<hr>
 			<div [ngSwitch]="value">
 
-				<div *ngSwitchCase="1"><crime [lat]="lat" [lng]="lng"></crime></div>
-				<div *ngSwitchCase="2"><park [lat]="lat" [lng]="lng"></park></div>
-				<div *ngSwitchDefault><park [lat]="lat" [lng]="lng"></park></div>
+				<div *ngSwitchCase="1"><crime [lat]="lat" [lng]="lng" (onFiltered)="mapCrime($event);"></crime></div>
+				<div *ngSwitchCase="2"><park [lat]="lat" [lng]="lng" (onFiltered)="mapPark($event);"></park></div>
+				<div *ngSwitchDefault><park [lat]="lat" [lng]="lng" (onFiltered)="mapPark($event);"></park></div>
 
 			</div>
 
@@ -47,7 +47,7 @@
 			<section class="map-section">
 				<div id="map" class="container-fluid">
 					<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-						<sebm-google-map-marker *ngFor="let point of points" [latitude]="point.lat" [longitude]="point.lng"></sebm-google-map-marker>
+						<sebm-google-map-marker *ngFor="let point of points" [latitude]="point.lat" [longitude]="point.lng" [label]="point.name"></sebm-google-map-marker>
 					</sebm-google-map>
 				</div>
 			</section>

@@ -1,4 +1,4 @@
-import {Component, ElementRef, NgZone, OnInit, ViewChild, Output, Input} from '@angular/core';
+import {Component, ElementRef, NgZone, OnInit, ViewChild, Output, Input, OnChanges} from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
 import {Crime} from "../classes/crime";
@@ -13,14 +13,15 @@ declare var google: any;
 })
 
 export class MapViewComponent implements OnInit {
-	@ViewChild(CrimeComponent) crimesFiltered: CrimeComponent;
-	@ViewChild(ParkComponent) parksFiltered: ParkComponent;
+	@ViewChild(CrimeComponent) crimeComponent: CrimeComponent;
+	@ViewChild(ParkComponent) parkComponent: ParkComponent;
 
+	// @Input() crimesFiltered : Crime[] = [];
+	// @Input() parksFiltered : Park[] = [];
 	points : any[] = [];
-	//@Input() crimesFiltered : Crime[] = [];
-	//@Input() parksFiltered : Park[] = [];
 	@Output() lat: number;
 	@Output() lng: number;
+	@Output() name: string;
 	//public lat: number;
 	//public lng: number;
 	public searchControl: FormControl;
@@ -34,9 +35,14 @@ export class MapViewComponent implements OnInit {
 		private ngZone: NgZone
 	) {}
 
-	ngOnChanges() : void {
+	mapCrime(crimesFiltered : Crime[]) : void {
 		this.points = [];
-		this.crimesFiltered.map(crime => this.points.push({lat: crime.crimeGeometry.lat, lng: crime.crimeGeometry.lng}));
+		crimesFiltered.map(crime => this.points.push({lat: crime.crimeGeometry.lat, lng: crime.crimeGeometry.lng}));
+	}
+
+	mapPark(parksFiltered : Park[]) : void {
+		this.points = [];
+		parksFiltered.map(park => this.points.push({lat: park.parkGeometry.lat, lng: park.parkGeometry.lng, name:park.parkName}));
 	}
 
 	ngOnInit() {

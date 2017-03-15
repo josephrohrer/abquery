@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, Output} from "@angular/core";
+import {Component, OnInit, Input, OnChanges, Output, EventEmitter} from "@angular/core";
 import {CrimeService} from "../services/crime-service";
 import {Crime} from "../classes/crime";
 import {Observable} from "rxjs";
@@ -14,7 +14,9 @@ export class CrimeComponent implements OnChanges {
 
 	@Input() lat : number;
 	@Input() lng : number;
+	@Input() name : string;
 	@Output() crimesFiltered : Crime[] = [];
+	@Output() onFiltered = new EventEmitter<Crime[]>();
 	crimeObservable : Observable<Crime> = null;
 
 	constructor (private crimeService : CrimeService) {}
@@ -22,16 +24,12 @@ export class CrimeComponent implements OnChanges {
 		this.getCrimeByCrimeGeometry();
 	}
 
-	getCrimesFiltered() : Crime[] {
-		return (this.crimesFiltered);
-	}
-
 	getCrimeByCrimeGeometry() : void {
 		let pointDistance = new PointDistance(this.lng, this.lat, 5);
-		this.crimeService.getCrimeByCrimeGeometry(pointDistance)
-			.subscribe(crimes => {
+		this.crimeService.getCrimeByCrimeGeometry(pointDistance).subscribe(crimes => {
 				this.crimeObservable = Observable.from(crimes);
-				this.crimesFiltered = crimes.slice(0, 50);
+				this.crimesFiltered = crimes.slice(0, 200);
+				this.onFiltered.emit(this.crimesFiltered);
 			});
 	}
 }

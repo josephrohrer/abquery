@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, Output, Input} from "@angular/core";
+import {Component, OnInit, OnChanges, Output, Input, EventEmitter} from "@angular/core";
 import {ParkService} from "../services/park-service";
 import {Park} from "../classes/park";
 import {Observable} from "rxjs";
@@ -15,24 +15,20 @@ export class ParkComponent implements OnChanges {
 	@Input() lat: number;
 	@Input() lng: number;
 	@Output() parksFiltered: Park[] = [];
+	@Output() onFiltered = new EventEmitter<Park[]>();
 	parkObservable: Observable<Park> = null;
 
-	constructor(private parkService: ParkService) {
-	}
-
+	constructor(private parkService: ParkService) {}
 	ngOnChanges(): void {
 		this.getParkByParkGeometry();
-	}
-
-	getParksFiltered(): Park[] {
-		return (this.parksFiltered);
 	}
 
 	getParkByParkGeometry(): void {
 		let pointDistance = new PointDistance(this.lng, this.lat, 5);
 		this.parkService.getParkByParkGeometry(pointDistance).subscribe(parks => {
 			this.parkObservable = Observable.from(parks);
-			this.parksFiltered = parks.slice(0, 50);
+			this.parksFiltered = parks.slice(0, 25);
+			this.onFiltered.emit(this.parksFiltered);
 		});
 	}
 }
