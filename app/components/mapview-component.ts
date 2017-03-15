@@ -3,6 +3,8 @@ import { FormControl } from "@angular/forms";
 import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
 import {Crime} from "../classes/crime";
 import {Park} from "../classes/park";
+import {CrimeComponent} from "./crime-component";
+import {ParkComponent} from "./park-component";
 
 declare var google: any;
 
@@ -11,10 +13,12 @@ declare var google: any;
 })
 
 export class MapViewComponent implements OnInit {
+	@ViewChild(CrimeComponent) crimesFiltered: CrimeComponent;
+	@ViewChild(ParkComponent) parksFiltered: ParkComponent;
 
 	points : any[] = [];
-	@Input() crimesFiltered : Crime[] = [];
-	@Input() parksFiltered : Park[] = [];
+	//@Input() crimesFiltered : Crime[] = [];
+	//@Input() parksFiltered : Park[] = [];
 	@Output() lat: number;
 	@Output() lng: number;
 	//public lat: number;
