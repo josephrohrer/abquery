@@ -11,7 +11,7 @@
 					<input id="searchAddress" placeholder="Enter a location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"/>
 
 					<div class="input-group-btn">
-						<button class="btn btn-default btn-md" type="button">
+						<button class="btn btn-default btn-md" type="button" routerLink="/map-view">
 							<i class="glyphicon glyphicon-search"></i>
 						</button>
 					</div>
