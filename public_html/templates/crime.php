@@ -74,8 +74,7 @@
 				<h4>{{ crime.crimeDescription }}</h4>
 			</div>
 			<div class="col-xs-4 crime-right">
-				3.4 mi.
-				<img src="images/mappoint.png" alt="Point">
+				<!-- <img src="images/mappoint.png" alt="Point"> -->
 			</div>
 		</div>
 		<div class="row">

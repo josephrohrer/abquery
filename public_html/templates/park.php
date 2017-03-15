@@ -120,8 +120,7 @@
 				<h4>{{ park.parkName }}</h4>
 			</div>
 			<div class="col-xs-4 park-right">
-				3.4 mi.
-				<img src="images/mappoint.png" alt="Point">
+				<!-- <img src="images/mappoint.png" alt="Point"> -->
 			</div>
 		</div>
 		<div class="row">
