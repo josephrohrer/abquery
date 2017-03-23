@@ -1,6 +1,7 @@
 import {Component, OnInit, NgZone, ElementRef, ViewChild} from "@angular/core";
 import {MapsAPILoader} from 'angular2-google-maps/core';
 import {LocationService} from "../services/location-service";
+import {FormControl} from "@angular/forms";
 
 declare var google: any;
 
@@ -13,6 +14,8 @@ export class AutocompleteComponent implements OnInit {
 	lng : number;
 	zoom : number;
 
+	public searchControl: FormControl;
+
 	@ViewChild("search")
 	public searchElementRef: ElementRef;
 
@@ -23,6 +26,8 @@ export class AutocompleteComponent implements OnInit {
 	) {}
 
 	ngOnInit() : void {
+		this.searchControl = new FormControl();
+
 		//load Places Autocomplete
 		this.mapsAPILoader.load().then(() => {
 			let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
