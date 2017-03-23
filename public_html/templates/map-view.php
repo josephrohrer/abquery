@@ -12,13 +12,7 @@
 			  data-target="#myScrollspy" data-offset="20">
 
 			<!--Sidebar content-->
-			<div class="text-center dropdown dropdown-group detail-dropdown">
-				<button (click)="value=1">Crime</button>
-				<button (click)="value=2">Park</button>
-			</div>
 
-
-			<hr>
 			<div [ngSwitch]="value">
 
 				<div *ngSwitchCase="1"><crime [lat]="lat" [lng]="lng" (onFiltered)="mapCrime($event);"></crime></div>
@@ -62,6 +56,11 @@
 									<img class="img-responsive" src="images/parksearchicon.png" alt="Parks"></a>
 							</div>
 						</div>
+						<div [ngSwitch]="value" class="row">
+							<div class="hidden-xs col-lg-3">
+									<img (click)="value=2" class="img-responsive" src="images/parksearchicon.png" alt="Parks">
+							</div>
+						</div>
 					</div>
 				</section>
 
@@ -71,6 +70,11 @@
 							<div class="visible-xs-block col-lg-3">
 								<a routerLink="/crime-view">
 									<img class="img-responsive" src="images/crimesearchicon.png" alt="Crime Incidents"></a>
+							</div>
+						</div>
+						<div [ngSwitch]="value" class="row">
+							<div class="hidden-xs col-lg-3">
+									<img button (click)="value=1" class="img-responsive" src="images/crimesearchicon.png" alt="Crime Incidents">
 							</div>
 						</div>
 					</div>
