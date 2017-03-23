@@ -1,9 +1,12 @@
-import {Component, OnInit, ViewChild, Output} from '@angular/core';
+import {Component, ElementRef, NgZone, OnInit, ViewChild, Output, Input, OnChanges} from '@angular/core';
+import { FormControl } from "@angular/forms";
+import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
 import {Crime} from "../classes/crime";
 import {Park} from "../classes/park";
 import {CrimeComponent} from "./crime-component";
 import {ParkComponent} from "./park-component";
-import {LocationService} from "../services/location-service";
+
+declare var google: any;
 
 @Component({
 	templateUrl: "./templates/map-view.php"
@@ -13,37 +16,78 @@ export class MapViewComponent implements OnInit {
 	@ViewChild(CrimeComponent) crimeComponent: CrimeComponent;
 	@ViewChild(ParkComponent) parkComponent: ParkComponent;
 
+	// @Input() crimesFiltered : Crime[] = [];
+	// @Input() parksFiltered : Park[] = [];
 	points : any[] = [];
-	public lat: number = 0;
-	public lng: number = 0;
+	@Output() lat: number;
+	@Output() lng: number;
 	@Output() name: string;
-	public zoom: number = 12;
+	//public lat: number;
+	//public lng: number;
+	public searchControl: FormControl;
+	public zoom: number;
 
-	constructor(private locationService: LocationService) {}
+	@ViewChild("search")
+	public searchElementRef: ElementRef;
+
+	constructor(
+		private mapsAPILoader: MapsAPILoader,
+		private ngZone: NgZone
+	) {}
 
 	mapCrime(crimesFiltered : Crime[]) : void {
 		this.points = [];
-		this.updateLocation();
 		crimesFiltered.map(crime => this.points.push({lat: crime.crimeGeometry.lat, lng: crime.crimeGeometry.lng}));
 	}
 
 	mapPark(parksFiltered : Park[]) : void {
 		this.points = [];
-		this.updateLocation();
 		parksFiltered.map(park => this.points.push({lat: park.parkGeometry.lat, lng: park.parkGeometry.lng, name:park.parkName}));
 	}
 
-	ngOnInit() : void {
-		this.locationService.setCurrentPositionFromGPS()
-			.subscribe(location => {
-				this.lat = location.lat;
-				this.lng = location.lng;
+	ngOnInit() {
+		//set google maps defaults
+		this.zoom = 16;
+		this.lat = 35.105332;
+		this.lng = -106.629385;
+
+		//create search FormControl
+		this.searchControl = new FormControl();
+
+		//set current position
+		this.setCurrentPosition();
+
+		//load Places Autocomplete
+		this.mapsAPILoader.load().then(() => {
+			let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+				types: ["address"]
 			});
+			autocomplete.addListener("place_changed", () => {
+				this.ngZone.run(() => {
+					//get the place result
+					let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+					//verify result
+					if (place.geometry === undefined || place.geometry === null) {
+						return;
+					}
+
+					//set latitude, longitude and zoom
+					this.lat = place.geometry.location.lat();
+					this.lng = place.geometry.location.lng();
+					this.zoom = 16;
+				});
+			});
+		});
 	}
 
-	updateLocation() : void {
-		let location = this.locationService.getCurrentPosition();
-		this.lat = location.lat;
-		this.lng = location.lng;
+	private setCurrentPosition() {
+		if ("geolocation" in navigator) {
+			navigator.geolocation.getCurrentPosition((position) => {
+				this.lat = position.coords.latitude;
+				this.lng = position.coords.longitude;
+				this.zoom = 16;
+			});
+		}
 	}
 }

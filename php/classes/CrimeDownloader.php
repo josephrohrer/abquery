@@ -47,11 +47,6 @@ class CrimeDownloader extends DataDownloader {
 	 */
 	public static function getCrimeData(\SplFixedArray $features) {
 		$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/abquery.ini");
-
-		$query = "DELETE FROM crime";
-		$statement = $pdo->prepare($query);
-		$statement->execute();
-
 		foreach($features as $feature) {
 			$crimeId = $feature->attributes->OBJECTID;
 			$crimeLocation = $feature->attributes->CV_BLOCK_ADD;
