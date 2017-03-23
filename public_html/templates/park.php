@@ -19,6 +19,7 @@
 					</a>
 				</h4>
 			</div>
+
 			<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 				<div class="panel-body amenities-select">
 					<div class="row">
@@ -47,7 +48,6 @@
 							<div class="checkbox">
 								<label><input type="checkbox" value="">Picnic Tables</label>
 							</div>
-
 						</div>
 						<div class="col-xs-6">
 							<div class="checkbox">
