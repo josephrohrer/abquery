@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
 	constructor(private locationService: LocationService) {}
 
 	ngOnInit() {
-		this.locationService.setCurrentPositionFromGPS();
+		this.locationService.setCurrentPositionFromGPS()
+			.subscribe(() => {});
 	}
 }
