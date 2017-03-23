@@ -34,7 +34,11 @@ export class MapViewComponent implements OnInit {
 	}
 
 	ngOnInit() : void {
-		this.updateLocation();
+		this.locationService.setCurrentPositionFromGPS()
+			.subscribe(location => {
+				this.lat = location.lat;
+				this.lng = location.lng;
+			});
 	}
 
 	updateLocation() : void {
