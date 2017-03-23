@@ -5,7 +5,7 @@
 			<img class="logo-resize" src="images/abqueryname.png" alt="abquery logo">
 		</div>
 
-		<autocomplete [lat]="lat" [lng]="lng" [zoom]="zoom"></autocomplete>
+		<autocomplete></autocomplete>
 <!--		<form class="col-sm-8 col-sm-offset-2">-->
 <!--			<div class="form-group">-->
 <!--				<div class="input-group">-->

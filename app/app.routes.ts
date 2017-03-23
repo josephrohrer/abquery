@@ -10,8 +10,9 @@ import {ParkComponent} from "./components/park-component";
 import {CrimeComponent} from "./components/crime-component";
 import {ParkViewComponent} from "./components/parkview-component";
 import {CrimeViewComponent} from "./components/crimeview-component";
+import {AutocompleteComponent} from "./components/autocomplete-component";
 
-export const allAppComponents = [HomeComponent, AboutComponent, MapComponent, NotFoundComponent, HeaderComponent, MapViewComponent, DetailViewComponent, ParkComponent, CrimeComponent, ParkViewComponent, CrimeViewComponent];
+export const allAppComponents = [HomeComponent, AboutComponent, AutocompleteComponent, MapComponent, NotFoundComponent, HeaderComponent, MapViewComponent, DetailViewComponent, ParkComponent, CrimeComponent, ParkViewComponent, CrimeViewComponent];
 
 export const routes: Routes = [
 	{path: "about", component: AboutComponent},

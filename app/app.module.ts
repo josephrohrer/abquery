@@ -16,6 +16,7 @@ import {ParkService} from "./services/park-service";
 
 // custom pipe filter
 import {ParkDevelopedPipe} from "./components/park-developed.pipe";
+import {LocationService} from "./services/location-service";
 
 const moduleDeclarations = [AppComponent];
 
@@ -26,6 +27,6 @@ const moduleDeclarations = [AppComponent];
 	})],
 	declarations: [...moduleDeclarations, ...allAppComponents, ParkDevelopedPipe],
 	bootstrap:    [AppComponent],
-	providers:    [appRoutingProviders, AmenityService, CrimeService, FeatureService, ParkService]
+	providers:    [appRoutingProviders, AmenityService, CrimeService, LocationService, FeatureService, ParkService]
 })
 export class AppModule {}

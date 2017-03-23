@@ -1,5 +1,5 @@
-import {Component, OnInit, NgZone, ElementRef, ViewChild, Input} from "@angular/core";
-import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
+import {Component, OnInit, NgZone, ElementRef, ViewChild} from "@angular/core";
+import {MapsAPILoader} from 'angular2-google-maps/core';
 import {LocationService} from "../services/location-service";
 
 declare var google: any;
@@ -8,10 +8,10 @@ declare var google: any;
 	selector: "autocomplete",
 	templateUrl: "./templates/autocomplete.php"
 })
-class AutocompleteComponent implements OnInit {
-	@Input() lat : number;
-	@Input() lng : number;
-	@Input() zoom : number;
+export class AutocompleteComponent implements OnInit {
+	lat : number;
+	lng : number;
+	zoom : number;
 
 	@ViewChild("search")
 	public searchElementRef: ElementRef;
