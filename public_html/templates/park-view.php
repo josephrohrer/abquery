@@ -5,6 +5,6 @@
 </header>
 
 
-<a routerLink="/map-view">BACK</a>
+<a routerLink="">BACK</a>
 
 <park [lat]="lat" [lng]="lng"></park>
