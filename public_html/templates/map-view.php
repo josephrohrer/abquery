@@ -1,6 +1,13 @@
 <header class="template-header">
-	<div class="col-12 text-center">
+	<div class="row">
+	<div class="col-xs-6 col-sm-12 text-center">
 		<img src="images/logosmaller.png">
+	</div>
+	<div class="col-xs-6 text-center visible-xs-block">
+		Update Points:<br>
+		<button (click)="value=1">Crime</button>
+		<button (click)="value=2">Park</button>
+	</div>
 	</div>
 </header>
 
@@ -12,10 +19,7 @@
 			  data-target="#myScrollspy" data-offset="20">
 
 			<!--Sidebar content-->
-			<div class="text-center dropdown dropdown-group detail-dropdown">
-				<button (click)="value=1">Crime</button>
-				<button (click)="value=2">Park</button>
-			</div>
+
 
 			<div [ngSwitch]="value">
 
