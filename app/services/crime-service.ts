@@ -25,7 +25,7 @@ export class CrimeService extends BaseService {
 			.catch(this.handleError));
 	}
 
-	getCrimeByCrimeLocation(crimeLocation: string) : Observable<Crime> {
+	getCrimeByCrimeLocation(crimeLocation: string) : Observable<Crime[]> {
 		return(this.http.get(this.crimeUrl + "?crimeLocation=" + crimeLocation)
 			.map(this.extractData)
 			.catch(this.handleError));

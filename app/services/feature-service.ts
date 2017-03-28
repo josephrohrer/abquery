@@ -18,14 +18,14 @@ export class FeatureService extends BaseService {
 			.catch(this.handleError));
 	}
 
-	getFeatureByFeatureAmenityId(featureAmenityId: number) : Observable<Feature> {
-		return(this.http.get(this.featureUrl + featureAmenityId)
+	getFeatureByFeatureAmenityId(featureAmenityId: number) : Observable<Feature[]> {
+		return(this.http.get(this.featureUrl + "?featureAmenityId=" + featureAmenityId)
 			.map(this.extractData)
 			.catch(this.handleError));
 	}
 
-	getFeatureByFeatureParkId(featureParkId: number) : Observable<Feature> {
-		return(this.http.get(this.featureUrl + featureParkId)
+	getFeatureByFeatureParkId(featureParkId: number) : Observable<Feature[]> {
+		return(this.http.get(this.featureUrl + "?featureParkId=" + featureParkId)
 			.map(this.extractData)
 			.catch(this.handleError));
 	}
