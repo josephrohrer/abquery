@@ -15,10 +15,9 @@ export const allAppComponents = [HomeComponent, AboutComponent, MapComponent, No
 
 export const routes: Routes = [
 	{path: "about", component: AboutComponent},
-	{path: "map-view", component: MapViewComponent},
 	{path: "crime-view", component: CrimeViewComponent},
 	{path: "park-view", component: ParkViewComponent},
-	{path: "", component: HomeComponent},
+	{path: "", component: MapViewComponent},
 	{path: "**", component: NotFoundComponent},
 
 ];
