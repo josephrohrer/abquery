@@ -37,9 +37,13 @@ class ParkDownloader extends DataDownloader {
 		$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/abquery.ini");
 		$allAmenities = Amenity::getAllAmenities($pdo);
 
+		$query = "DELETE FROM feature";
+		$statement = $pdo->prepare($query);
+		$statement->execute();
+
 		$query = "DELETE FROM park";
-		+		$statement = $pdo->prepare($query);
-		+		$statement->execute();
+		$statement = $pdo->prepare($query);
+		$statement->execute();
 
 		foreach($features as $feature) {
 			$parkId = $feature->attributes->OBJECTID;

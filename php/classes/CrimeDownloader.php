@@ -49,8 +49,8 @@ class CrimeDownloader extends DataDownloader {
 		$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/abquery.ini");
 
 		$query = "DELETE FROM crime";
-		+		$statement = $pdo->prepare($query);
-		+		$statement->execute();
+		$statement = $pdo->prepare($query);
+		$statement->execute();
 
 		foreach($features as $feature) {
 			$crimeId = $feature->attributes->OBJECTID;
