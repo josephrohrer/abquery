@@ -99,7 +99,7 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-8 amenities-list">
-				Developed: {{ park.parkDeveloped | parkDeveloped }}<br>
+				<p>Developed: {{ park.parkDeveloped | parkDeveloped }}</p>
 				<div *ngIf="parkFeatures[park.parkId] !== undefined">
 					<p *ngFor="let amenity of getParkAmenities(park.parkId)">{{ amenity.amenityName }}: {{ amenity.amenityValue }}</p>
 				</div>
